@@ -11,18 +11,19 @@ fi
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
+
+# Rentrak specific settings
 export CVSROOT=:ext:cvsuser@rtkcvs:/cvs_repositories/corp_dev
 #source ~/.bashrc_sources/cvswork.sh   # first
 export CVSWORK="${HOME}/work/current/perl_lib"
 export CVS_BASE_DIR="${HOME}/work/current"
 export CVS_RSH=ssh
 export SERVER_PORT=8080
-
 export COLOR_TESTS=1
 export DIFF_COLOR_DO_HORIZONTAL=1
-export EDITOR='/usr/bin/vim'
 export RLWRAP_HOME="${HOME}/.rlwrap_home"
 
+export EDITOR='/usr/bin/vim'
 if [ "$PS1" ]; then
 
     #eval `dircolors`
