@@ -2,12 +2,40 @@ set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
-" Load matchit (% to bounce from do to end, etc.)
-runtime! macros/matchit.vim
+let g:rtk_user_customized_vimrc_files_dir='~/.vimrc_files/'
+source ~/.vimrc_files/reasonably_stable_mappings.vim
+map ,be :BufExplorer<cr>
 
-augroup myfiletypes
-  " Clear old autocmds in group
-  autocmd!
-  " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-augroup END
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set smarttab
+set ai
+"set list listchars=tab:>-, trail:., extends:>, precedes:<, eol:$
+set list listchars=tab:>-,trail:.,extends:>,precedes:<
+" file name completion
+set wildmenu
+set wildmode=longest,list
+
+" For modifying the .vimrc
+nmap ,e :e $HOME/.vimrc<cr>
+
+" For modifying the .bashrc
+nmap ,b :e $HOME/.bashrc<cr>
+
+nmap ,s :write!<cr>:source $HOME/.vimrc<cr>
+nmap ,d :write!<cr>:!source $HOME/.bashrc<cr>
+
+map! ,p <Esc>:set paste!<cr>i
+
+highlight StatusLine ctermfg=darkblue ctermbg=grey
+set statusline=[%n]\ %.300F\ %(\ %M%R%H)%)\%=\@(%l\,%c%V)\ %P
+set laststatus=2
+set ignorecase
+set smartcase         " Smart case in search patterns when 'ignorecase' is on
+set incsearch
+
+" Folding and unfolding
+map ,f :set foldmethod=indent<cr>zM<cr>
+map ,F :set foldmethod=manual<cr>zR<cr>
+
