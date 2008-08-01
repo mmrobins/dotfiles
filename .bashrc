@@ -9,7 +9,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Rentrak specific settings
@@ -23,44 +23,13 @@ export COLOR_TESTS=1
 export DIFF_COLOR_DO_HORIZONTAL=1
 export RLWRAP_HOME="${HOME}/.rlwrap_home"
 
-export EDITOR='/usr/bin/vim'
-if [ "$PS1" ]; then
-
-    #eval `dircolors`
-    LS_COLORS='';
-    export LS_COLORS
-
-    case $TERM in
-    xterm*)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-        ;;
-    rxvt*)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-        ;;
-    *)
-        ;;
-    esac
-    #export PS1="\n\u@\h:\w\n$ "
-    export PS1="\n[$?:\h:\w]\n$ "
-    export PS2='> '
-fi
-if [ "$PS1" ]
-then
-    cpc=$PROMPT_COLOR
-    xt='\[\e]0;\H (\u) \w\a\]'
-    export PS1=$C7'      \@  \u'$C16'@'$cpc'\H'$C16':'$C10'\w'$cpc'\n'$C16$EMOTICON_COLOR$EMOTICON$C16"  ; "$P
-    case $TERM in xterm*) export PS1=$xt$PS1 ;; esac
-    unset xt cpc
-fi
-
+# color yellow time color lightblue user@host : path end color
+P_TIME="\@"
+P_COLOR1="\e[32;1m\]"
+P_END_COLOR="\e[0m\]"
+P_COLOR2="\e[36;1m\]"
+P_USER="\u@\H"
+P_PATH="\w"
+PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH\n >$P_END_COLOR"
 umask 0002
-alias         ..='cd ..'
-alias        ...='cd ../..'
-alias       ....='cd ../../..'
-alias      .....='cd ../../../..'
-alias     ......='cd ../../../../..'
-alias    .......='cd ../../../../../..'
-alias   ........='cd ../../../../../../..'
-alias  .........='cd ../../../../../../../..'
-alias ..........='cd ../../../../../../../../..'
 

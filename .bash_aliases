@@ -13,3 +13,13 @@ alias comlive='db -s common -l'
 alias cvsstat='cvs status |grep Status: Local'
 alias rtk_console='perl -d ~/debugger_console.pl'
 
+alias         ..='cd ..'
+alias        ...='cd ../..'
+alias       ....='cd ../../..'
+alias      .....='cd ../../../..'
+alias     ......='cd ../../../../..'
+alias    .......='cd ../../../../../..'
+alias   ........='cd ../../../../../../..'
+alias  .........='cd ../../../../../../../..'
+alias ..........='cd ../../../../../../../../..'
+
