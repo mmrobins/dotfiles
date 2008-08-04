@@ -23,6 +23,9 @@ export COLOR_TESTS=1
 export DIFF_COLOR_DO_HORIZONTAL=1
 export RLWRAP_HOME="${HOME}/.rlwrap_home"
 
+# Needed for edit to work in sqlplus
+export EDITOR=`which vim`
+
 # color yellow time color lightblue user@host : path end color
 P_TIME="\@"
 P_COLOR1="\e[32;1m\]"
