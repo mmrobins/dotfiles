@@ -1,0 +1,44 @@
+if [ -L ~/.vimrc ]
+then
+    rm ~/.vimrc
+elif [ -f ~/.vimrc ] 
+then
+    mv ~/.vimrc ~/.vimrc.$(date +%Y%m%d).old
+fi
+ln -s ~/config-files/.vimrc ~/.vimrc
+
+if [ -L ~/.bashrc ]
+then
+    rm ~/.bashrc
+elif [ -f ~/.bashrc ] 
+then
+    mv ~/.bashrc ~/.bashrc.$(date +%Y%m%d).old
+fi
+ln -s ~/config-files/.bashrc ~/.bashrc
+
+if [ -L ~/.bash_aliases ]
+then
+    rm ~/.bash_aliases
+elif [ -f ~/.bash_aliases ] 
+then
+    mv ~/.bash_aliases ~/.bash_aliases.$(date +%Y%m%d).old
+fi
+ln -s ~/config-files/.bash_aliases ~/.bash_aliases
+
+if [ -L ~/.bash_profile ]
+then
+    rm ~/.bash_profile
+elif [ -f ~/.bash_profile ] 
+then
+    mv ~/.bash_profile ~/.bash_profile.$(date +%Y%m%d).old
+fi
+ln -s ~/config-files/.bash_profile ~/.bash_profile
+
+if [ -L ~/.vim ]
+then
+    rm ~/.vim
+elif [ -d ~/.vim ] 
+then
+    mv ~/.vim ~/.vim.$(date +%Y%m%d).old
+fi
+ln -s ~/config-files/.vim ~/.vim
