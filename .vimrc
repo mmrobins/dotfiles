@@ -4,7 +4,7 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 " Rentrak specific stuff
 let g:rtk_user_customized_vimrc_files_dir='~/.vimrc_files/'
-source ~/.vimrc_files/reasonably_stable_mappings.vim
+runtime ~/.vimrc_files/reasonably_stable_mappings.vim
 
 " Tab spacing
 set shiftwidth=4 "number of space characters inserted for indentation
