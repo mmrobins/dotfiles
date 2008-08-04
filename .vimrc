@@ -29,6 +29,9 @@ set ignorecase
 set smartcase " Smart case in search patterns when 'ignorecase' is on
 set incsearch "Incremental search
 
+" Mouse usable in xterm
+set mouse=a
+
 map ,be :BufExplorer<cr>
 
 " For modifying the .vimrc
