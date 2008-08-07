@@ -46,6 +46,7 @@ nmap ,b :e $HOME/.bashrc<cr>
 nmap ,d :write!<cr>:!source $HOME/.bashrc<cr>
 
 map! ,p <Esc>:set paste!<cr>i
+map  ,p :set paste!<cr>i
 
 " Folding and unfolding
 map ,f :set foldmethod=indent<cr>zM<cr>
