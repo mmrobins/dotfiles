@@ -1,3 +1,12 @@
+if [ -L ~/.vimrc_files ]
+then
+    rm ~/.vimrc_files
+elif [ -f ~/.vimrc_files ] 
+then
+    mv ~/.vimrc_files ~/.vimrc_files.$(date +%Y%m%d).old
+fi
+ln -s ~/config-files/.vimrc_files ~/.vimrc_files
+
 if [ -L ~/.vimrc ]
 then
     rm ~/.vimrc
