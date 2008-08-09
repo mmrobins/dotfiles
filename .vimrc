@@ -29,8 +29,8 @@ set ignorecase
 set smartcase " Smart case in search patterns when 'ignorecase' is on
 set incsearch "Incremental search
 
-" Mouse usable in xterm
-set mouse=a
+" Mouse usable in xterm but messes up other stuff like ctrl+M
+" set mouse=a
 
 map ,be :BufExplorer<cr>
 
