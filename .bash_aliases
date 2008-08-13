@@ -1,6 +1,7 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
 alias ls="ls -FC --color"
 alias rm="rm -i"
+alias ack="ack-grep"
 
 # Rentrak specific
 alias edev2="ssh edev2 "

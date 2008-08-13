@@ -54,3 +54,9 @@ map ,F :set foldmethod=manual<cr>zR<cr>
 
 " Toggling the taglist
 map ,l :TlistToggle<cr>
+
+" Highlights code that goes beyond 80 chars
+":au BufWinEnter * let w:m1=matchadd('Search','\%<81v.\%>71v',-1)
+":au BufWinEnter * let w:m2=matchadd('ErrorMsg','\%81v.*',-1)
+:au BufWinEnter * let w:m1=matchadd('Search','\%<81v.\%>80v',-1)
+
