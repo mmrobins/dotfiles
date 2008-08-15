@@ -4,8 +4,10 @@ alias rm="rm -i"
 alias db='rlwrap -i --remember rtk_database_login.pl'
 alias dbl='rtk_database_login.pl --list'
 
+alias retailtest='db -s retail -t'
 alias retaildev='db -s retail -d'
 alias retaillive='db -s retail -l'
+alias hvetest='db -s hve -t'
 alias hvedev='db -s hve -d'
 alias hvelive='db -s hve -l'
 alias comdev='db -s common -d'
