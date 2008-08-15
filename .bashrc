@@ -3,6 +3,10 @@
 # User specific aliases and functions
 
 # Source global definitionslias definitions.
+# enable bash completion in interactive shells
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
