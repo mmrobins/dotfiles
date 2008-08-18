@@ -34,7 +34,7 @@ set smartcase " Smart case in search patterns when 'ignorecase' is on
 set incsearch "Incremental search
 
 " Mouse usable in xterm but messes up other stuff like ctrl+M
-" set mouse=a
+set mouse=a
 
 map ,be :BufExplorer<cr>
 
@@ -55,8 +55,6 @@ map ,F :set foldmethod=manual<cr>zR<cr>
 " Toggling the taglist
 map ,l :TlistToggle<cr>
 
-" Highlights code that goes beyond 80 chars
-":au BufWinEnter * let w:m1=matchadd('Search','\%<81v.\%>71v',-1)
-":au BufWinEnter * let w:m2=matchadd('ErrorMsg','\%81v.*',-1)
-:au BufWinEnter * let w:m1=matchadd('Search','\%<81v.\%>80v',-1)
+" Highlights code that goes beyond 100 chars
+match Todo '\%101v'
 
