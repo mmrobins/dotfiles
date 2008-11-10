@@ -7,6 +7,15 @@ then
 fi
 ln -s ~/config-files/.vimrc_files ~/.vimrc_files
 
+if [ -L ~/.dir_colors ]
+then
+    rm ~/.dir_colors
+elif [ -f ~/.dir_colors ] 
+then
+    mv ~/.dir_colors ~/.dir_colors.$(date +%Y%m%d).old
+fi
+ln -s ~/config-files/.dir_colors ~/.dir_colors
+
 if [ -L ~/.vimrc ]
 then
     rm ~/.vimrc
