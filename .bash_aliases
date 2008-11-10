@@ -5,7 +5,7 @@ alias ack="ack-grep"
 
 # Rentrak specific
 alias edev2="ssh edev2 "
-alias db='rlwrap -i --remember rtk_database_login.pl'
+alias db='rlwrap --remember rtk_database_login.pl'
 alias dbl='rtk_database_login.pl --list'
 
 alias retailtest='db -s retail -t'
