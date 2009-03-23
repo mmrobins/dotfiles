@@ -1,5 +1,6 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
 alias ls="ls -FC --color"
+alias ll="ls -l"
 alias rm="rm -i"
 alias ack="ack-grep"
 
