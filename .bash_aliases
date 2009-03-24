@@ -22,7 +22,7 @@ alias edev2="ssh edev2 "
 alias db='rlwrap --remember rtk_database_login.pl'
 alias dbl='rtk_database_login.pl --list'
 alias buall='/home/msw/bin/bu `slnu`'
-alias testhere='dt=`date +%y%m%d_%H_%M`; rtk_appropriate_perl_for_directory -S rtk_test -thc > test_output_$dt &'
+alias testhere='dt=`date +%y%m%d_%H_%M`; proj=`pwd | sed "s/.*RTK\///"`; rtk_appropriate_perl_for_directory -S rtk_test -thc > ${proj}_test_output_$dt &'
 
 alias retailtest='db -s retail -t'
 alias retaildev='db -s retail -d'

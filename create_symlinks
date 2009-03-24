@@ -1,62 +1,57 @@
-if [ -L ~/.vimrc_files ]
-then
-    rm ~/.vimrc_files
-elif [ -f ~/.vimrc_files ] 
-then
-    mv ~/.vimrc_files ~/.vimrc_files.$(date +%Y%m%d).old
-fi
-ln -s ~/config-files/.vimrc_files ~/.vimrc_files
+#! /usr/local/bin/perl58 -w
 
-if [ -L ~/.dir_colors ]
-then
-    rm ~/.dir_colors
-elif [ -f ~/.dir_colors ] 
-then
-    mv ~/.dir_colors ~/.dir_colors.$(date +%Y%m%d).old
-fi
-ln -s ~/config-files/.dir_colors ~/.dir_colors
+use strict;
+use File::Copy;
 
-if [ -L ~/.vimrc ]
-then
-    rm ~/.vimrc
-elif [ -f ~/.vimrc ] 
-then
-    mv ~/.vimrc ~/.vimrc.$(date +%Y%m%d).old
-fi
-ln -s ~/config-files/.vimrc ~/.vimrc
+die file_links();
+link_files();
 
-if [ -L ~/.bashrc ]
-then
-    rm ~/.bashrc
-elif [ -f ~/.bashrc ] 
-then
-    mv ~/.bashrc ~/.bashrc.$(date +%Y%m%d).old
-fi
-ln -s ~/config-files/.bashrc ~/.bashrc
+sub get_timestamp {
+   my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+   if ($mon < 10) { $mon = "0$mon"; }
+   if ($hour < 10) { $hour = "0$hour"; }
+   if ($min < 10) { $min = "0$min"; }
+   if ($sec < 10) { $sec = "0$sec"; }
+   $year=$year+1900;
 
-if [ -L ~/.bash_aliases ]
-then
-    rm ~/.bash_aliases
-elif [ -f ~/.bash_aliases ] 
-then
-    mv ~/.bash_aliases ~/.bash_aliases.$(date +%Y%m%d).old
-fi
-ln -s ~/config-files/.bash_aliases ~/.bash_aliases
+   return $year . $mon . $mday . '_' . $hour . '_' . $min;
+}
 
-if [ -L ~/.bash_profile ]
-then
-    rm ~/.bash_profile
-elif [ -f ~/.bash_profile ] 
-then
-    mv ~/.bash_profile ~/.bash_profile.$(date +%Y%m%d).old
-fi
-ln -s ~/config-files/.bash_profile ~/.bash_profile
+sub file_names
+{
+    my @names = qw/
+        bash_aliases
+        bash_profile
+        bashrc
+        dir_colors
+        vim
+        vimrc
+        vimrc_files
+    /;
+    return @names;
+}
 
-if [ -L ~/.vim ]
-then
-    rm ~/.vim
-elif [ -d ~/.vim ] 
-then
-    mv ~/.vim ~/.vim.$(date +%Y%m%d).old
-fi
-ln -s ~/config-files/.vim ~/.vim
+sub file_links
+{
+    return map {glob("~/.$_") => glob("~/config-files/.$_")} file_names();
+}
+
+sub link_files
+{
+    my %file_links = file_links();
+    my $backup_date = get_timestamp();
+
+    for my $file (keys %file_links) {
+        if (-l $file) {
+            unlink $file;
+        } elsif (-e $file) {
+            move($file, "${file}.${backup_date}");
+        }
+        my $symlink_exists = eval { symlink($file_links{$file}, $file); 1 };
+        die "Symlinking no workie" unless $symlink_exists;
+    }
+
+    print "Linking Complete\n";
+    my @file_names = file_names();
+    print "@file_names\n";
+}
