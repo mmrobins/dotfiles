@@ -1,0 +1,90 @@
+#! /usr/local/bin/perl58 -w
+
+use strict;
+use lib '/home/ajl/lib/';
+use AppropriateLibrary;
+use RTK::Util::ReasonableParams;
+
+use Getopt::Long;
+use Cwd                   qw/ chdir    /;
+use File::Spec::Functions qw/ catdir   /;
+use Workroot              qw/ workroot /;
+
+my $filter = 'test_output';
+GetOptions(
+    'f|filter=s' => \$filter,
+    'v|verbose'  => \my $verbose,
+    'h|help'     => \my $show_help,
+);
+
+print STDOUT <<USAGE and exit if $show_help;
+find_failed_tests: locates test output files that seem to have failures in them
+
+Usage:
+    find_faild_tests [FLAGS]
+
+Flags:
+    -h [--help]      print this usage message and exit
+    -f [--filter]    only look in files with the string, defaults to 'test_output'
+    -v [--verbose]   print failed modules, not just projects with failures
+USAGE
+
+my $dir = catdir(workroot(), qw/test_output/);
+
+my $found_any_test_files = 0;
+my %files_with_failures;
+my %files_with_warnings;
+
+opendir MYDIR, $dir;
+my @test_output_files = grep {/$filter/i} readdir MYDIR;
+closedir MYDIR;
+chdir($dir);
+
+for my $tests_file_name ( @test_output_files) {
+    if (-e $tests_file_name) {
+        $found_any_test_files++;
+        get_failing_tests($dir, $tests_file_name);
+    }
+}
+
+sub get_failing_tests($dir, $tests_file_name)
+{
+    open(my $fh, '<', $tests_file_name) or warn "Could not open $dir/$tests_file_name: $!";
+    my $line;
+    do {
+        $line = <$fh>;
+    } while ( defined $line && $line !~ /(Yikes)|(Warnings in)/i );
+
+    if ( defined $line && $line =~ /Warnings in/i ) {
+        $files_with_warnings{$tests_file_name} ||= [];
+        $line = <$fh>;
+        while ( defined $line && $line =~ /\.pm/ ) {
+            chomp $line;
+            $line =~ s/\[\d(;)?\d*m//g;
+            push @{$files_with_warnings{$tests_file_name}}, $line;
+            $line = <$fh>;
+        }
+    }
+    if ( defined $line && $line =~ /Yikes/i ) {
+        $files_with_failures{$tests_file_name} ||= [];
+        $line = <$fh>;
+        while ( defined $line && $line =~ /\.pm/ ) {
+            chomp $line;
+            $line =~ s/\[\d(;)?\d*m//g;
+            push @{$files_with_failures{$tests_file_name}}, $line;
+            $line = <$fh>;
+        }
+    }
+    close $fh;
+}
+
+for my $tests_file_name ( sort { $a cmp $b } keys %files_with_failures ) {
+    print "Failures in $dir/$tests_file_name :\n";
+    print join("", map { "$_\n" } @{$files_with_failures{$tests_file_name}}) if $verbose;
+}
+for my $tests_file_name ( sort { $a cmp $b } keys %files_with_warnings ) {
+    print "Warnings in $dir/$tests_file_name :\n";
+    print join("", map { "$_\n" } @{$files_with_warnings{$tests_file_name}}) if $verbose;
+}
+
+print STDERR "Completed without finding any test files at all!\n" unless $found_any_test_files;

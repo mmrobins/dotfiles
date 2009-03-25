@@ -34,8 +34,8 @@ set ignorecase
 set smartcase " Smart case in search patterns when 'ignorecase' is on
 set incsearch "Incremental search
 
-" Mouse usable in xterm but messes up other stuff like ctrl+M
-set mouse=nv
+" Still trying to figure out if the mouse is usefull.  Messes up copy paste from terminal
+" set mouse=nv
 
 map ,be :BufExplorer<cr>
 
@@ -50,7 +50,8 @@ map! ,p <Esc>:set paste!<cr>i
 map  ,p :set paste!<cr>i
 
 "
-map ,dd o<cr>use Data::Dump qw/ dump /;<cr>warn dump
+map ,dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
+map ,wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
 
 " Folding and unfolding
 map ,f :set foldmethod=indent<cr>zM<cr>
@@ -58,6 +59,9 @@ map ,F :set foldmethod=manual<cr>zR<cr>
 
 " Toggling the taglist
 map ,l :TlistToggle<cr>
+
+"map ,ua <Esc>0gg/use Aliased<cr>Ouse Aliases qw/<Esc>:%s/use Aliased '//g<cr>o/;<Esc>kV?use Aliases<cr>j>>V/\/;<cr>k:s/';//g<cr>jj
+map ,ua <Esc>0gg/use Aliased<cr>Ouse Aliases qw/<Esc>:%s/use Aliased '//g<cr>o/;<Esc>kV?use Aliases<cr>j>/\/;<cr>kV?\/<cr>:s/';//g<cr>
 
 " Highlights code that goes beyond 100 chars
 match Todo '\%101v'

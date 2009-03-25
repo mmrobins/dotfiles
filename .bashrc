@@ -1,5 +1,10 @@
 # .bashrc
 
+# Use vim key bindings
+# Not liking this.  Might take some getting used to...
+# set -o vi
+set -o emacs
+
 # User specific aliases and functions
 
 # enable bash completion in interactive shells
@@ -40,7 +45,7 @@ umask 0002
 # Rentrak specific settings
 export CVSROOT=:ext:cvsuser@rtkcvs:/cvs_repositories/corp_dev
 export RTK_SUBSYSTEM=retail
-export CVSWORK="${HOME}/work/current/perl_lib"
+export CVSWORK="${HOME}/work/retail_current/perl_lib"
 export CVS_BASE_DIR="${HOME}/work/current"
 export CVS_RSH=ssh
 export SERVER_PORT=8080

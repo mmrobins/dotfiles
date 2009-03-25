@@ -1,0 +1,135 @@
+#! /usr/local/bin/perl58 -w
+
+use strict;
+
+use lib '/home/ajl/lib/';
+use AppropriateLibrary;
+use RTK::Util::ReasonableParams;
+
+use Cwd             qw/ chdir     /;
+use RTK::Util::Misc qw/ is_one_of /;
+use Workroot        qw/ workroot  /;
+use File::Spec::Functions qw/
+    catdir
+    updir
+/;
+
+use Aliases qw/
+    RTK::Util::DateTime
+/;
+
+$|++;
+# VOD
+my %db_families = (
+    voddb => [ qw/
+        Util
+        RogueUtil
+        MusicChoice
+        Promo
+    /],
+    fmoviesdb => [ qw/
+        Rentask
+        Reel
+        MysteryShopper
+        Mobile
+        MForMovies
+        ITDashboard
+        DigiDown
+        DemoSites
+        Corp
+        AdMonitor
+    /],
+    e3dev => [ qw/
+        Retail
+        Common
+        Calendar
+    /],
+    webdev => [qw/
+        PPTToolbox
+        PPT
+        IRPM
+        HomeVideo
+    /],
+    lindevdb => [qw/
+        TVUtil
+        Linear
+    /],
+);
+
+my @perl58 = qw/
+        Ad AdMonitor Calendar Common Corp DemoSites DigiDown ITDashboard Linear MForMovies Mobile MusicChoice MysteryShopper Reel Rentask Retail RogueUtil TVUtil Util VOD
+/;
+my @perl56 = qw/
+        Calendar Common DemoSites HomeVideo IRPM PPT PPTToolbox Util
+/;
+
+my @child_pids;
+my $num_tabs = 0;
+my $spaces = '                        ';#should be the same width as 'Done with MysteryShopper' where MysteryShopper is the longest project name
+
+my $test_output_dir = workroot() . '/test_output';
+mkdir $test_output_dir;
+
+my $testrun_start = DateTime->new()->as_str('yyyymmdd_HH24:MM');
+say('Starting: ' . $testrun_start);
+
+$SIG{'INT'} = sub {
+    kill 9, $_ for @child_pids;
+    print "Hurrrrp. Bleah.\n";
+    die;
+};
+
+chdir(catdir(workroot(), 'perl_lib', 'RTK'))
+    or die 'something has gone horribly wrong and I could not chdir into perl_lib/RTK!';
+
+for (keys %db_families) {
+    if (my $pid = fork) {
+        push @child_pids, $pid;
+        $num_tabs++;
+        next;
+    };
+    run_tests_for_family($_);
+    exit;
+}
+
+while (wait != -1) {}
+
+sub run_tests_for_family($family)
+{
+    my $did_anything = 0;
+    for my $project ( @{$db_families{$family}} ) {
+        next unless -d $project;
+        $did_anything++;
+        chdir $project;
+        my $test_output_file = $test_output_dir . '/' . $project . '_test_output_' . $testrun_start;
+        my $start_time = DateTime->new();
+        if (is_one_of($project, \@perl58)) {
+            say("$project: perl 5.8\n");
+            system('rtk_test -tch -r 1 &> ' . $test_output_file);
+        }
+        if (is_one_of($project, \@perl56)) {
+            say("$project: perl 5.6\n");
+            system('RTK_SUBSYSTEM=calendar rtk_test -tch -r 1 &> '. $test_output_file);
+        }
+        my $elapsed_minutes = sprintf("%.1f", DateTime->new()->days_after($start_time) * 24 * 60);
+        say("Done at " . DateTime->new()->as_str('HH24:MM') . " in $elapsed_minutes mins");
+        chdir(updir());
+    }
+    say("This DB family's done") if $did_anything;
+}
+
+sub say($message)
+{
+    my $output = $spaces x $num_tabs . "$message\n";
+#   print $output;
+    open (TESTRUN_OUTPUT, ">>${test_output_dir}/testrun_output_$testrun_start");
+    print TESTRUN_OUTPUT $output;
+    close (TESTRUN_OUTPUT);
+}
+
+
+__DATA__
+TODO:
+spiders
+generate db families based on database_xml
+die/warn/log if we try to chdir into a project that doesn't exist?
