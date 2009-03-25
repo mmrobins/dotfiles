@@ -3,7 +3,6 @@
 use strict;
 use File::Copy;
 
-die file_links();
 link_files();
 
 sub get_timestamp {
@@ -17,9 +16,9 @@ sub get_timestamp {
    return $year . $mon . $mday . '_' . $hour . '_' . $min;
 }
 
-sub file_names
+sub file_links
 {
-    my @names = qw/
+    my @simple_names = qw/
         bash_aliases
         bash_profile
         bashrc
@@ -28,12 +27,9 @@ sub file_names
         vimrc
         vimrc_files
     /;
-    return @names;
-}
-
-sub file_links
-{
-    return map {glob("~/.$_") => glob("~/config-files/.$_")} file_names();
+    my %file_links = map {glob("~/.$_") => glob("~/config-files/.$_")} @simple_names;
+    $file_links{glob("~/bin/diff_painter.pl")} = glob("~/config-files/diff_painter.pl");
+    return %file_links;
 }
 
 sub link_files
@@ -52,6 +48,4 @@ sub link_files
     }
 
     print "Linking Complete\n";
-    my @file_names = file_names();
-    print "@file_names\n";
 }
