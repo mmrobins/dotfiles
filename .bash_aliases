@@ -8,6 +8,10 @@ alias bgh="history | grep"
 alias sdl="svn_diff_less"
 alias sst="svn status"
 
+# Git
+alias gdl="git diff HEAD | diff_painter.pl | less -R"
+alias gst="git status"
+
 # Compress the cd, ls -l series of commands.
 alias lc="cl"
 function cl () {

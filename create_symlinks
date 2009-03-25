@@ -16,19 +16,25 @@ sub get_timestamp {
    return $year . $mon . $mday . '_' . $hour . '_' . $min;
 }
 
+sub file_names
+{
+    return qw{
+        .bash_aliases
+        .bash_profile
+        .bashrc
+        .dir_colors
+        .vim
+        .vimrc
+        .vimrc_files
+        bin/diff_painter.pl
+        bin/find_failed_tests
+        bin/test_all_parallel
+    };
+}
+
 sub file_links
 {
-    my @simple_names = qw/
-        bash_aliases
-        bash_profile
-        bashrc
-        dir_colors
-        vim
-        vimrc
-        vimrc_files
-    /;
-    my %file_links = map {glob("~/.$_") => glob("~/config-files/.$_")} @simple_names;
-    $file_links{glob("~/bin/diff_painter.pl")} = glob("~/config-files/diff_painter.pl");
+    my %file_links = map {glob("~/$_") => glob("~/config-files/$_")} file_names();
     return %file_links;
 }
 
@@ -42,10 +48,12 @@ sub link_files
             unlink $file;
         } elsif (-e $file) {
             move($file, "${file}.${backup_date}");
+            print("Backed up $file to ${file}.${backup_date}\n");
         }
         my $symlink_exists = eval { symlink($file_links{$file}, $file); 1 };
         die "Symlinking no workie" unless $symlink_exists;
     }
 
-    print "Linking Complete\n";
+    print "\nLinking Complete\n";
+    print "$_\n" for file_names();
 }
