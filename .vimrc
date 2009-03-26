@@ -4,8 +4,8 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 " Rentrak specific stuff
 let g:rtk_user_customized_vimrc_files_dir='~/.vimrc_files/'
-source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
-"source ~/.vimrc_files/reasonably_stable_mappings.vim
+"source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
+source ~/.vimrc_files/reasonably_stable_mappings.vim
 
 " Tab spacing
 set shiftwidth=4 "number of space characters inserted for indentation
@@ -61,4 +61,15 @@ map ,l :TlistToggle<cr>
 
 " Highlights code that goes beyond 100 chars
 match Todo '\%101v'
+
+" Run Ruby unit tests with gT (for all) or gt (only test under
+" cursor) in command mode
+augroup RubyTests
+  au!
+  autocmd BufRead,BufNewFile *_test.rb,test_*.rb
+    \ :nmap ,t V:<C-U>!$HOME/.vim/ruby_run_focused_unit_test 
+    \ % <C-R>=line("'<")<CR>p <CR>|
+    \ :nmap ,T :<C-U>!ruby %<CR>
+augroup END
+
 

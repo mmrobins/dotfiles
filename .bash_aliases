@@ -2,6 +2,7 @@
 alias ls="ls -FC --color"
 alias rm="rm -i"
 alias ack="ack-grep"
+alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
 
 # Rentrak specific
 alias edev2="ssh edev2 "
