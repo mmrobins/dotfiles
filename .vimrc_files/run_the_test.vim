@@ -3,7 +3,7 @@ set viminfo='20,\"50,%  " (vi) read/write a .viminfo file, don't store more
 call RTKSource('go_to_test.vim')
 
 if ! exists("g:rtk_test_command")
-    let g:rtk_test_command = "rtk_test"
+    let g:rtk_test_command = "nice rtk_appropriate_perl_for_directory /usr/local/bin/rtk_test"
 endif
 
 set errorformat=%f^^%l^^%m
