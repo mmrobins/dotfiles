@@ -1,5 +1,9 @@
 # .bashrc
 
+# Keep more history
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
 # Use vim key bindings
 # Not liking this.  Might take some getting used to...
 # set -o vi

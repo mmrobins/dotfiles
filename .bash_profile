@@ -14,10 +14,6 @@ PATH=$HOME/bin:$PATH
 #export ORACLE_HOME
 #export ORACLE_SID=XE
 
-# Keep more history
-export HISTSIZE=100000
-export HISTFILESIZE=100000
-
 export PATH
 export SQLPATH=$HOME/sql
 unset USERNAME
