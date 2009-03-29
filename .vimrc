@@ -66,3 +66,14 @@ map ,ua <Esc>0gg/use Aliased<cr>Ouse Aliases qw/<Esc>:%s/use Aliased '//g<cr>o/;
 " Highlights code that goes beyond 100 chars
 match Todo '\%101v'
 
+" Run Ruby unit tests with gT (for all) or gt (only test under
+" cursor) in command mode
+augroup RubyTests
+  au!
+  autocmd BufRead,BufNewFile *_test.rb,test_*.rb
+    \ :nmap ,t V:<C-U>!$HOME/.vim/ruby_run_focused_unit_test 
+    \ % <C-R>=line("'<")<CR>p <CR>|
+    \ :nmap ,T :<C-U>!ruby %<CR>
+augroup END
+
+
