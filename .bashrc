@@ -39,9 +39,6 @@ umask 0002
 
 # Rentrak specific settings
 export CVSROOT=:ext:cvsuser@rtkcvs:/cvs_repositories/corp_dev
-export RTK_SUBSYSTEM=retail
-export CVSWORK="${HOME}/work/retail_current/perl_lib"
-export CVS_BASE_DIR="${HOME}/work/current"
 export CVS_RSH=ssh
 export SERVER_PORT=8080
 export COLOR_TESTS=1
