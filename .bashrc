@@ -1,5 +1,9 @@
 # .bashrc
 
+# Keep more history
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
 # Use vim key bindings
 # Not liking this.  Might take some getting used to...
 # set -o vi
@@ -7,8 +11,9 @@ set -o emacs
 
 # User specific aliases and functions
 
-# Source global definitionslias definitions.
 # enable bash completion in interactive shells
+# Source global definitions and alias definitions.
+# source user specific definitions
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
@@ -19,6 +24,10 @@ fi
 
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
+fi
+
+if [ -f ~/.bash_specific_to_local ]; then
+    . ~/.bash_specific_to_local
 fi
 
 #source ~/.bashrc_sources/cvswork.sh   # first
@@ -67,3 +76,5 @@ function cdtt
 {
     cd $(tt)
 }
+
+#. /usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin/oracle_env.sh
