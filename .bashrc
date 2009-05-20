@@ -1,13 +1,13 @@
 # .bashrc
 
 # Keep more history
-export HISTSIZE=100000
-export HISTFILESIZE=100000
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
 
 # Use vim key bindings
 # Not liking this.  Might take some getting used to...
 # set -o vi
-set -o emacs
+# set -o emacs
 
 # User specific aliases and functions
 
@@ -36,23 +36,26 @@ export RLWRAP_HOME="${HOME}/.rlwrap_home"
 # Needed for edit to work in sqlplus
 export EDITOR=`which vim`
 
-# color yellow time color lightblue user@host : path end color
+# color yellow time color lightblue user@host : path (git branch) end color
 P_TIME="\@"
 P_COLOR1="\[\e[32;1m\]"
 P_END_COLOR="\[\e[0m\]"
 P_COLOR2="\[\e[36;1m\]"
 P_USER="\u@\H"
 P_PATH="\w"
-PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH\n >$P_END_COLOR"
+GITBRANCH='$(__git_ps1 "(%s)")'
+PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH $GITBRANCH\n >$P_END_COLOR"
 umask 0002
 
 # Rentrak specific settings
-export CVSROOT=:ext:cvsuser@rtkcvs:/cvs_repositories/corp_dev
+# export CVSROOT=:ext:cvsuser@rtkcvs:/cvs_repositories/corp_dev
 export CVS_RSH=ssh
 export SERVER_PORT=8080
 export COLOR_TESTS=1
 export DIFF_COLOR_DO_HORIZONTAL=1
 export CAG_RSH=ssh
+
+export PSQL_EDITOR='vim -c "set ft=sql"'
 
 function tt () # tree top
 {
@@ -78,3 +81,8 @@ function cdtt
 }
 
 #. /usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin/oracle_env.sh
+
+# git
+source ~/.git-completion.sh # command line completion for git
+complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
+GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch
