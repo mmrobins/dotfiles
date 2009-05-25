@@ -85,4 +85,4 @@ function cdtt
 # git
 source ~/.git-completion.sh # command line completion for git
 complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
-GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch
+#GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch but is slow when changing to directory
