@@ -12,6 +12,7 @@ alias sst="svn status"
 # Git
 alias gdl="git diff HEAD | diff_painter.pl | less -R"
 alias gst="git status"
+alias gco="git checkout"
 
 # Compress the cd, ls -l series of commands.
 alias lc="cl"
@@ -37,9 +38,12 @@ alias hvedev='db -s hve -d'
 alias hvelive='db -s hve -l'
 alias comdev='db -s common -d'
 alias comlive='db -s common -l'
-alias addev='rtk_database_login.pl -s ad_monitor -d'
-alias adlive='rtk_database_login.pl -s ad_monitor -l'
-alias adtest='rtk_database_login.pl -s ad_monitor -t'
+#alias addev='rtk_database_login.pl -s ad_monitor -d'
+#alias adlive='rtk_database_login.pl -s ad_monitor -l'
+#alias adtest='rtk_database_login.pl -s ad_monitor -t'
+alias addev='db -s ad_monitor -d'
+alias adlive='db -s ad_monitor -l'
+alias adtest='db -s ad_monitor -t'
 alias cvsstat='cvs status |grep Status: Local'
 alias rtk_console='perl -d ~/debugger_console.pl'
 

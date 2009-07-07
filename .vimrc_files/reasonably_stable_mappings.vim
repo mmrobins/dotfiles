@@ -10,7 +10,6 @@ if has('eval')
     endfunction
 
     set nocompatible
-    call RTKSource('edit_compressed_files.vim')
     call RTKSource('go_to_base_class.vim')
     call RTKSource('go_to_component.vim')
     call RTKSource('go_to_path.vim')

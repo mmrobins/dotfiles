@@ -23,6 +23,7 @@ sub file_names
         .bash_profile
         .bashrc
         .dir_colors
+        .screenrc
         .vim
         .vimrc
         .vimrc_files
