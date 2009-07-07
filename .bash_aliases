@@ -1,7 +1,7 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
 alias ls="ls -FC --color"
 alias lt="ls -ltr"
-alias ll="ls -l"
+alias ll="ls -la"
 alias rm="rm -i"
 alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
 alias ack="ack-grep --ignore-dir data --ignore-dir images"
@@ -23,7 +23,7 @@ function cl () {
    fi
 }
 # Rentrak specific
-alias edev2="ssh edev2 "
+alias edev2="ssh -t edev2 screen -R"
 alias db='rlwrap --remember rtk_database_login.pl'
 alias dbl='rtk_database_login.pl --list'
 alias buall='/home/msw/bin/bu `slnu`'
@@ -43,6 +43,7 @@ alias adtest='rtk_database_login.pl -s ad_monitor -t'
 alias cvsstat='cvs status |grep Status: Local'
 alias rtk_console='perl -d ~/debugger_console.pl'
 
+# Change directory up
 alias         ..='cd ..'
 alias        ...='cd ../..'
 alias       ....='cd ../../..'
