@@ -83,6 +83,8 @@ function cdtt
 #. /usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin/oracle_env.sh
 
 # git
-source ~/.git-completion.sh # command line completion for git
+if [ -f ~/.git-completion.sh ]; then
+    source ~/.git-completion.sh # command line completion for git if the system doesn't already have it installed
+fi
 complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
 #GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch but is slow when changing to directory
