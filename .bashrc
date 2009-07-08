@@ -1,5 +1,9 @@
 # .bashrc
 
+# screen doesn't source bash_profile, so I moved this here from there.
+PATH=$HOME/bin:$PATH
+export PATH
+
 # Keep more history
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
@@ -88,3 +92,6 @@ if [ -f ~/.git-completion.sh ]; then
 fi
 complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
 #GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch but is slow when changing to directory
+
+export SQLPATH=$HOME/sql
+unset USERNAME
