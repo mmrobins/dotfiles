@@ -2,6 +2,9 @@ set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
+" history for vim
+set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
+
 " Rentrak specific stuff
 let g:rtk_user_customized_vimrc_files_dir='~/.vimrc_files/'
 "source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
@@ -33,12 +36,15 @@ highlight StatusLine ctermfg=darkblue ctermbg=grey
 " Searching
 set ignorecase
 set smartcase " Smart case in search patterns when 'ignorecase' is on
-set incsearch "Incremental search
+set incsearch " Incremental search
+set hlsearch  " highlight matches
 
 " Still trying to figure out if the mouse is usefull.  Messes up copy paste from terminal
 " set mouse=nv
 
+" Buffers
 map ,be :BufExplorer<cr>
+map ,bp :BufExplorer<cr>j<cr>
 
 " For modifying the .vimrc
 nmap ,e :e $HOME/.vimrc<cr>
@@ -50,7 +56,7 @@ nmap ,d :write!<cr>:!source $HOME/.bashrc<cr>
 map! ,p <Esc>:set paste!<cr>i
 map  ,p :set paste!<cr>i
 
-"
+" Perl Debugging
 map ,dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
 map ,wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
 
@@ -61,7 +67,7 @@ map ,F :set foldmethod=manual<cr>zR<cr>
 " Toggling the taglist
 map ,l :TlistToggle<cr>
 
-"map ,ua <Esc>0gg/use Aliased<cr>Ouse Aliases qw/<Esc>:%s/use Aliased '//g<cr>o/;<Esc>kV?use Aliases<cr>j>>V/\/;<cr>k:s/';//g<cr>jj
+" Convert Aliased to Aliases
 map ,ua <Esc>0gg/use Aliased<cr>Ouse Aliases qw/<Esc>:%s/use Aliased '//g<cr>o/;<Esc>kV?use Aliases<cr>j>/\/;<cr>kV?\/<cr>:s/';//g<cr>
 
 " Highlights code that goes beyond 100 chars
@@ -72,9 +78,7 @@ match Todo '\%101v'
 augroup RubyTests
   au!
   autocmd BufRead,BufNewFile *_test.rb,test_*.rb
-    \ :nmap ,t V:<C-U>!$HOME/.vim/ruby_run_focused_unit_test 
+    \ :nmap ,t V:<C-U>!$HOME/.vim/ruby_run_focused_unit_test
     \ % <C-R>=line("'<")<CR>p <CR>|
     \ :nmap ,T :<C-U>!ruby %<CR>
 augroup END
-
-

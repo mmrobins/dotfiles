@@ -10,7 +10,7 @@ alias sdl="svn_diff_less"
 alias sst="svn status"
 
 # Git
-alias gdl="git diff HEAD | diff_painter.pl | less -R"
+alias gdl="git diff trunk | diff_painter.pl | less -R"
 alias gst="git status"
 alias gco="git checkout"
 
