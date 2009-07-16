@@ -1,10 +1,8 @@
-map  ,sd       :w!<CR>:! svn diff             % \| diff_painter.pl \| less -R<CR>
-map! ,sd  <ESC>:w!<CR>:! svn diff             % \| diff_painter.pl \| less -R<CR>
+map  ,sd       :w!<CR>:! if [ -d .svn ]; then svn diff %; else git diff %; fi \| diff_painter.pl \| less -R<CR>
+map! ,sd  <ESC>:w!<CR>:! if [ -d .svn ]; then svn diff %; else git diff %; fi \| diff_painter.pl \| less -R<CR>
 
-map  ,gd       :w!<CR>:! git diff             % \| diff_painter.pl \| less -R<CR>
-map! ,gd  <ESC>:w!<CR>:! git diff             % \| diff_painter.pl \| less -R<CR>
-map  ,gdh      :w!<CR>:! git diff HEAD        % \| diff_painter.pl \| less -R<CR>
-map! ,gdh <ESC>:w!<CR>:! git diff HEAD        % \| diff_painter.pl \| less -R<CR>
+map  ,gdh      :w!<CR>:! git diff trunk % \| diff_painter.pl \| less -R<CR>
+map! ,gdh <ESC>:w!<CR>:! git diff trunk % \| diff_painter.pl \| less -R<CR>
 
 " need to look up how you tell svn to use the real diff
 "map  ,sdf      :w!<CR>:! svn diff       -1000 % \| diff_painter.pl \| less -R<CR>

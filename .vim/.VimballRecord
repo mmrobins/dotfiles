@@ -1,1 +1,2 @@
 visincr.vba: call delete('/home/mattr/.vim/plugin/visincrPlugin.vim')|call delete('/home/mattr/.vim/autoload/visincr.vim')|call delete('/home/mattr/.vim/doc/visincr.txt')|call delete('/home/mattr/.vim/autoload/calutil.vim')
+twitvim-0.4.2.vba: call delete('/home/mro/.vim/plugin/twitvim.vim')|call delete('/home/mro/.vim/doc/twitvim.txt')

@@ -93,3 +93,8 @@ complete -o default -o nospace -F _git_checkout gco # so that autocomplete works
 
 export SQLPATH=$HOME/sql
 unset USERNAME
+
+function bgh ()
+{
+    history | grep "$1" | tail -50
+}

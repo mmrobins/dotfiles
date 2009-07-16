@@ -5,14 +5,19 @@ alias ll="ls -l"
 alias rm="rm -i"
 alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
 alias ack="ack-grep --ignore-dir data --ignore-dir images"
-alias bgh="history | grep"
-alias sdl="svn_diff_less"
-alias sst="svn status"
+
+
+# Version Control
+alias sdl="if [ -d .svn ]; then svn_diff_less; else git diff trunk --no-prefix | diff_painter.pl | less -R; fi"
+alias sst="if [ -d .svn ]; then svn status; else git diff trunk --name-status; fi"
+alias gdl="git diff";
+alias gst="git status";
 
 # Git
-alias gdl="git diff trunk | diff_painter.pl | less -R"
-alias gst="git status"
 alias gco="git checkout"
+
+# Show most used commands that might be good candidates for aliases
+alias mu='history | cut -d " " -f3 | sort | uniq -c | sort -nr | head -50'
 
 # Compress the cd, ls -l series of commands.
 alias lc="cl"
@@ -56,4 +61,3 @@ alias    .......='cd ../../../../../..'
 alias   ........='cd ../../../../../../..'
 alias  .........='cd ../../../../../../../..'
 alias ..........='cd ../../../../../../../../..'
-
