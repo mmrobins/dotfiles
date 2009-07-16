@@ -24,7 +24,7 @@ function cl () {
    fi
 }
 # Rentrak specific
-alias edev2="ssh -t edev2 screen -R"
+alias edev2="ssh -t edev2 uscreen -R"
 alias db='rlwrap --remember rtk_database_login.pl'
 alias dbl='rtk_database_login.pl --list'
 alias buall='/home/msw/bin/bu `slnu`'
