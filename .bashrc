@@ -27,7 +27,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 if [ -f ~/.bash_specific_to_local ]; then
-    . ~/.bash_specific_to_local
+    source ~/.bash_specific_to_local
 fi
 
 #source ~/.bashrc_sources/cvswork.sh   # first
@@ -83,6 +83,8 @@ function cdtt
 #. /usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin/oracle_env.sh
 
 # git
-source ~/.git-completion.sh # command line completion for git
-complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
+if [ -f ~/.git-completion.sh ]; then
+    source ~/.git-completion.sh # command line completion for git
+    complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
+fi
 #GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch but is slow when changing to directory

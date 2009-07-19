@@ -76,5 +76,3 @@ augroup RubyTests
     \ % <C-R>=line("'<")<CR>p <CR>|
     \ :nmap ,T :<C-U>!ruby %<CR>
 augroup END
-
-
