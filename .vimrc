@@ -84,8 +84,10 @@ augroup RubyTests
 augroup END
 
 " Twitter
-source ~/.vim_private "Store login info there
-map ,tp <Esc>:PosttoTwitter<cr>
+if filereadable("~/.vim_private")
+    source ~/.vim_private "Store login info there
+    map ,tp <Esc>:PosttoTwitter<cr>
+endif
 
 " Use ack instead of grep
 " set grepprg=ack\ -a\ --nobinary\ --sort-files\ --ignore-dir=data\ --ignore-dir=images\ --color
