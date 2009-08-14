@@ -1,5 +1,5 @@
-map  ,sd       :w!<CR>:! if [ -d .svn ]; then svn diff %; else git diff %; fi \| diff_painter.pl \| less -R<CR>
-map! ,sd  <ESC>:w!<CR>:! if [ -d .svn ]; then svn diff %; else git diff %; fi \| diff_painter.pl \| less -R<CR>
+map  ,sd       :w!<CR>:! if [ -d .svn ]; then svn diff %; else git diff trunk --no-prefix %; fi \| diff_painter.pl \| less -R<CR>
+map! ,sd  <ESC>:w!<CR>:! if [ -d .svn ]; then svn diff %; else git diff trunk --no-prefix %; fi \| diff_painter.pl \| less -R<CR>
 
 map  ,gdh      :w!<CR>:! git diff trunk % \| diff_painter.pl \| less -R<CR>
 map! ,gdh <ESC>:w!<CR>:! git diff trunk % \| diff_painter.pl \| less -R<CR>

@@ -29,8 +29,8 @@ function cl () {
    fi
 }
 # Rentrak specific
-alias edev2="ssh -t edev2 uscreen -R"
-alias db='rlwrap --remember rtk_database_login.pl'
+alias edev2="ssh -t edev2 screen -R"
+alias db='rlwrap --remember --histsize 10000 rtk_database_login.pl -x'
 alias dbl='rtk_database_login.pl --list'
 alias buall='/home/msw/bin/bu `slnu`'
 alias testhere='dt=`date +%y%m%d_%H_%M`; proj=`pwd | sed "s/.*RTK\///"`; rtk_appropriate_perl_for_directory -S rtk_test -thc > ${proj}_test_output_$dt &'

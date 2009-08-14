@@ -86,3 +86,6 @@ augroup END
 " Twitter
 source ~/.vim_private "Store login info there
 map ,tp <Esc>:PosttoTwitter<cr>
+
+" Use ack instead of grep
+" set grepprg=ack\ -a\ --nobinary\ --sort-files\ --ignore-dir=data\ --ignore-dir=images\ --color

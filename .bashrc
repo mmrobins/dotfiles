@@ -58,6 +58,7 @@ export SERVER_PORT=8080
 export COLOR_TESTS=1
 export DIFF_COLOR_DO_HORIZONTAL=1
 export CAG_RSH=ssh
+export TEST_FLUSH="but_of_course"
 
 export PSQL_EDITOR='vim -c "set ft=sql"'
 
@@ -89,8 +90,8 @@ function cdtt
 # git
 if [ -f ~/.git-completion.sh ]; then
     source ~/.git-completion.sh # command line completion for git if the system doesn't already have it installed
+    complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
 fi
-complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
 #GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch but is slow when changing to directory
 
 export SQLPATH=$HOME/sql
@@ -98,5 +99,5 @@ unset USERNAME
 
 function bgh ()
 {
-    history | grep "$1" | tail -50
+    history | grep "$1" | perl -pwe 's/^.{6}//;' | sort -u | tail -50
 }
