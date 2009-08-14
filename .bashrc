@@ -31,7 +31,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 if [ -f ~/.bash_specific_to_local ]; then
-    . ~/.bash_specific_to_local
+    source ~/.bash_specific_to_local
 fi
 
 #source ~/.bashrc_sources/cvswork.sh   # first
