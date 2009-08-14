@@ -84,5 +84,7 @@ augroup RubyTests
 augroup END
 
 " Twitter
-source ~/.vim_private "Store login info there
-map ,tp <Esc>:PosttoTwitter<cr>
+if filereadable("~/.vim_private")
+    source ~/.vim_private "Store login info there
+    map ,tp <Esc>:PosttoTwitter<cr>
+endif
