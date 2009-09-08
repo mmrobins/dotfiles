@@ -3,7 +3,8 @@ alias ls="ls -FC --color"
 alias lt="ls -ltr"
 alias ll="ls -la"
 alias rm="rm -i"
-alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
+#alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
+alias splitmp3="mp3splt -a -t 5.0 -o @f/@n"
 alias ack="ack-grep --ignore-dir data --ignore-dir images"
 
 
@@ -29,7 +30,7 @@ function cl () {
    fi
 }
 # Rentrak specific
-alias edev2="ssh -t edev2 uscreen -R"
+alias edev2="ssh -t edev2 screen -R"
 alias db='rlwrap --remember rtk_database_login.pl'
 alias dbl='rtk_database_login.pl --list'
 alias buall='/home/msw/bin/bu `slnu`'
