@@ -1,0 +1,2 @@
+set show-all-if-unmodified on
+"\M-[3~": delete-char

@@ -1,26 +1,29 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
-alias ls="ls -FC --color"
-alias lt="ls -ltr"
-alias ll="ls -la"
-alias rm="rm -i"
-alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
-alias ack="ack-grep --ignore-dir data --ignore-dir images"
+alias ls='ls -FC --color'
+alias lt='ls -ltr'
+alias ll='ls -al'
+alias rm='rm -i'
+alias splitmp3='mp3splt -a -t 5.0 -d split_files -o @n_@f'
+alias ack='ack-grep --ignore-dir data --ignore-dir images'
 
 
 # Version Control
-alias sdl="if [ -d .svn ]; then svn_diff_less; else git diff trunk --no-prefix | diff_painter.pl | less -R; fi"
-alias sst="if [ -d .svn ]; then svn status; else git diff trunk --name-status; fi"
-alias gdl="git diff";
-alias gst="git status";
+alias sdl='if [ -d .svn ]; then svn_diff_less; else git diff trunk --no-prefix | diff_painter.pl | less -R; fi'
+alias sst='if [ -d .svn ]; then svn status; else git diff trunk --name-status; fi'
+alias gdl='git diff --no-prefix HEAD~ | diff_painter.pl | less -R'
+alias gst='git status'
+alias gsr='git svn rebase'
+alias viall='vi `sst | perl -pne "s/^\S\s+//"`';
+
 
 # Git
-alias gco="git checkout"
+alias gco='git checkout'
 
 # Show most used commands that might be good candidates for aliases
 alias mu='history | cut -d " " -f3 | sort | uniq -c | sort -nr | head -50'
 
 # Compress the cd, ls -l series of commands.
-alias lc="cl"
+alias lc='cl'
 function cl () {
    if [ $# = 0 ]; then
       cd && ll
@@ -29,7 +32,7 @@ function cl () {
    fi
 }
 # Rentrak specific
-alias edev2="ssh -t edev2 screen -R"
+alias edev2='ssh -t edev2 screen -R'
 alias db='rlwrap --remember --histsize 10000 rtk_database_login.pl -x'
 alias dbl='rtk_database_login.pl --list'
 alias buall='/home/msw/bin/bu `slnu`'

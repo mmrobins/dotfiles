@@ -91,3 +91,6 @@ endif
 
 " Use ack instead of grep
 " set grepprg=ack\ -a\ --nobinary\ --sort-files\ --ignore-dir=data\ --ignore-dir=images\ --color
+
+" remove space next to enclosing parens
+map ,dw :%s/( \(.\{-}\) )/(\1)/g<cr>
