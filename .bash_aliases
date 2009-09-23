@@ -1,10 +1,11 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
-alias ls='ls -FC --color'
-alias lt='ls -ltr'
-alias ll='ls -al'
-alias rm='rm -i'
-alias splitmp3='mp3splt -a -t 5.0 -d split_files -o @n_@f'
-alias ack='ack-grep --ignore-dir data --ignore-dir images'
+alias ls="ls -FC --color"
+alias lt="ls -ltr"
+alias ll="ls -la"
+alias rm="rm -i"
+#alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
+alias splitmp3="mp3splt -a -t 5.0 -o @f/@n"
+alias ack="ack-grep --ignore-dir data --ignore-dir images"
 
 
 # Version Control
