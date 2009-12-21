@@ -2,6 +2,13 @@ set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
+runtime! macros/matchit.vim
+
+augroup myfiletypes
+  autocmd!
+  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+augroup END
+
 " history for vim
 set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
 

@@ -32,6 +32,7 @@ sub file_names
         bin/diff_painter.pl
         bin/find_failed_tests
         bin/test_all_parallel
+        perl5
     };
 }
 
