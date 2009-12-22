@@ -3,19 +3,6 @@
 use strict;
 use File::Copy;
 
-link_files();
-
-sub get_timestamp {
-   my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
-   if ($mon < 10) { $mon = "0$mon"; }
-   if ($hour < 10) { $hour = "0$hour"; }
-   if ($min < 10) { $min = "0$min"; }
-   if ($sec < 10) { $sec = "0$sec"; }
-   $year=$year+1900;
-
-   return $year . $mon . $mday . '_' . $hour . '_' . $min;
-}
-
 sub file_names
 {
     return qw{
@@ -32,8 +19,23 @@ sub file_names
         bin/diff_painter.pl
         bin/find_failed_tests
         bin/test_all_parallel
+        bin/tree.sh
         perl5
     };
+}
+
+
+link_files();
+
+sub get_timestamp {
+   my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+   if ($mon < 10) { $mon = "0$mon"; }
+   if ($hour < 10) { $hour = "0$hour"; }
+   if ($min < 10) { $min = "0$min"; }
+   if ($sec < 10) { $sec = "0$sec"; }
+   $year=$year+1900;
+
+   return $year . $mon . $mday . '_' . $hour . '_' . $min;
 }
 
 sub file_links
