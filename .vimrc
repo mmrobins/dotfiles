@@ -96,13 +96,15 @@ augroup RubyTests
 augroup END
 
 " Twitter
-if filereadable(expand("$HOME/.vim_private"))
-    source ~/.vim_private "Store login info there
-    map ,fb <Esc>:PosttoTwitter<cr>
+if filereadable($HOME . "/.vim_private_mattrobinsonnet")
+    map ,pw <Esc>:source ~/.vim_private_mattrobinsonnet<cr>:PosttoTwitter<cr>
+endif
+if filereadable($HOME . "/.vim_private_mmrobins")
+    map ,pp <Esc>:source ~/.vim_private_mmrobins<cr>:PosttoTwitter<cr>
 endif
 
 " Use ack instead of grep
 " set grepprg=ack\ -a\ --nobinary\ --sort-files\ --ignore-dir=data\ --ignore-dir=images\ --color
 
-" remove space next to enclosing parens
+" remove space next to enclosing parens aka de-wickline
 map ,dw :%s/( \(.\{-}\) )/(\1)/g<cr>
