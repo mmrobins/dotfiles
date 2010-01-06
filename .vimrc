@@ -70,6 +70,11 @@ map ,l :TlistToggle<cr>
 " Convert Aliased to Aliases
 map ,ua <Esc>0gg/use Aliased<cr>Ouse Aliases qw/<Esc>:%s/use Aliased '//g<cr>o/;<Esc>kV?use Aliases<cr>j>/\/;<cr>kV?\/<cr>:s/';//g<cr>
 
+" format one line sql into multiple
+" map ,sql <Esc>:%s/, /,\r/g<cr>:%s/select /select\r/<cr>:%s/from/\rfrom/<cr>:%s/from /from\r/<cr>:g/ inner join/%s/ inner join/\rinner join/g<cr>:%s/where/\rwhere/<cr>:%s/where /where\r/<cr>:g/group by/:%s/group by/\rgroup by/<cr>:g/group by /:%s/group by /group by\r/<cr>:%s/ and/\rand/g<cr>:%s/order by/\rorder by/<cr>:%s/order by /order by\r/<cr>:g!/select\\|from\\|where\\|group by\\|order by/><cr>
+
+map ,sql <Esc>:g/,/:%s/, /,\r/g<cr>:%s/select /select\r/<cr>:%s/from\\|where\\|group by\\|order by/\r&/g<cr>:%s/\(from\\|where\\|group by\\|order by\) /&\r/g<cr>:g/ inner join/:%s/ inner join/\rinner join/g<cr>:g/ and/:%s/ and/\rand/g<cr>:g!/select\\|from\\|where\\|group by\\|order by\\|\//><cr>
+
 " Highlights code that goes beyond 100 chars
 match Todo '\%101v'
 
@@ -84,9 +89,9 @@ augroup RubyTests
 augroup END
 
 " Twitter
-if filereadable("~/.vim_private")
+if filereadable(expand("$HOME/.vim_private"))
     source ~/.vim_private "Store login info there
-    map ,tp <Esc>:PosttoTwitter<cr>
+    map ,fb <Esc>:PosttoTwitter<cr>
 endif
 
 " Use ack instead of grep

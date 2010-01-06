@@ -24,6 +24,7 @@ sub file_names
         .bashrc
         .dir_colors
         .inputrc
+        .irbrc
         .screenrc
         .vim
         .vimrc

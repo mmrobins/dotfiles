@@ -5,7 +5,7 @@ alias ll="ls -la"
 alias rm="rm -i"
 #alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
 alias splitmp3="mp3splt -a -t 5.0 -o @f/@n"
-alias ack="ack-grep --ignore-dir data --ignore-dir images"
+alias ack="ack-grep --all --ignore-dir data --ignore-dir images"
 
 
 # Version Control
@@ -45,12 +45,13 @@ alias retaillive='db -s retail -l'
 alias hvetest='db -s hve -t'
 alias hvedev='db -s hve -d'
 alias hvelive='db -s hve -l'
+alias comtest='db -s common -t'
 alias comdev='db -s common -d'
 alias comlive='db -s common -l'
 #alias addev='rtk_database_login.pl -s ad_monitor -d'
 #alias adlive='rtk_database_login.pl -s ad_monitor -l'
 #alias adtest='rtk_database_login.pl -s ad_monitor -t'
-alias addev='db -s ad_monitor -d'
+alias addev='cd ~/sql/psql; db -s ad_monitor -d'
 alias adlive='db -s ad_monitor -l'
 alias adtest='db -s ad_monitor -t'
 alias cvsstat='cvs status |grep Status: Local'
@@ -66,3 +67,20 @@ alias    .......='cd ../../../../../..'
 alias   ........='cd ../../../../../../..'
 alias  .........='cd ../../../../../../../..'
 alias ..........='cd ../../../../../../../../..'
+
+# change to project directories
+alias retg='cd ~/work/retail_git'
+alias retc='cd ~/work/retail_clean'
+alias hveg='cd ~/work/hve_git'
+alias hvec='cd ~/work/hve_clean'
+alias adg='cd ~/work/admon_git'
+alias adc='cd ~/work/admon_clean'
+alias retgp='cd ~/work/retail_git/perl_lib/RTK/Retail'
+alias retcp='cd ~/work/retail_clean/perl_lib/RTK/Retail'
+alias hvegp='cd ~/work/hve_git/perl_lib/RTK/Homevideo'
+alias hvecp='cd ~/work/hve_clean/perl_lib/RTK/Homevideo'
+alias adgp='cd ~/work/admon_git/perl_lib/RTK/AdMonitor'
+alias adpc='cd ~/work/admon_clean/perl_lib/RTK/AdMonitor'
+
+# dir sizes summarized and sorted
+alias dus='du -s * | sort -n'
