@@ -83,4 +83,7 @@ alias adgp='cd ~/work/admon_git/perl_lib/RTK/AdMonitor'
 alias adpc='cd ~/work/admon_clean/perl_lib/RTK/AdMonitor'
 
 # dir sizes summarized and sorted
-alias dus='du -s * | sort -n'
+alias dus='du -sm * .[a-zA-Z0-9]*/ | sort -n'
+
+# -a archive preserves permissions, times etc -vv double verbose -P partial files okay and progress indicator --remove-soure-files removes files but not empty directories
+alias mvrsync='rsync -avvP --remove-source-files'

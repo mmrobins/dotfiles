@@ -101,5 +101,3 @@ function bgh ()
 {
     history | grep "$1" | perl -pwe 's/^.{6}//;' | sort -u | tail -50
 }
-# Use my local perl library
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
