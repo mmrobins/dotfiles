@@ -1,0 +1,25 @@
+[user]
+    name = Matt Robinson
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    llog = log --date=local
+    lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph"
+    review = "log --stat=160,180 -p -w --patience --reverse -M -C -C -c"
+    fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+    squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+    ri = rebase --interactive --autosquash
+    up-shared = submodule update --reference ~/work/shared
+[diff]
+    renames = copy # makes the diff much shorter when moving or copying files
+[commit]
+    template = ~/work/developer/util_src/git/.gitcommittemplate
+[status]
+    submodulesummary = true
+[branch "master"]
+    mergeoptions = --no-commit --no-ff

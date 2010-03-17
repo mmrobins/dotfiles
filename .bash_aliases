@@ -1,20 +1,23 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
 alias ls="ls -FC --color"
 alias lt="ls -ltr"
-alias ll="ls -la"
+alias ll="ls -l -a"
 alias rm="rm -i"
+alias llast='less `ls -tr1 | tail -1`'
 #alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
 alias splitmp3="mp3splt -a -t 5.0 -o @f/@n"
-alias ack="ack-grep --all --ignore-dir data --ignore-dir images"
+alias ack="ack --all --follow --ignore-dir data --ignore-dir images"
 
 
 # Version Control
 alias sdl='if [ -d .svn ]; then svn_diff_less; else git diff trunk --no-prefix | diff_painter.pl | less -R; fi'
 alias sst='if [ -d .svn ]; then svn status; else git diff trunk --name-status; fi'
-alias gdl='git diff --no-prefix HEAD~ | diff_painter.pl | less -R'
+alias gdl='git diff --no-prefix | diff_painter.pl | less -R'
+alias gdml='git diff --no-prefix master | diff_painter.pl | less -R'
 alias gst='git status'
 alias gsr='git svn rebase'
-alias viall='vi `sst | perl -pne "s/^\S\s+//"`';
+alias viall='vi `git diff --name-only master..HEAD`';
+alias paintless='diff_painter.pl | less -R'
 
 
 # Git
@@ -37,7 +40,7 @@ alias edev2='ssh -t edev2 screen -R'
 alias db='rlwrap --remember --histsize 10000 rtk_database_login.pl -x'
 alias dbl='rtk_database_login.pl --list'
 alias buall='/home/msw/bin/bu `slnu`'
-alias testhere='dt=`date +%y%m%d_%H_%M`; proj=`pwd | sed "s/.*RTK\///"`; rtk_appropriate_perl_for_directory -S rtk_test -thc > ${proj}_test_output_$dt &'
+alias testhere='dt=`date +%y%m%d_%H_%M`; proj=`pwd | sed "s/.*RTK\///"`; rtk_appropriate_perl_for_directory -S rtk_test -thc > test_results_${proj}_$dt &'
 
 alias retailtest='db -s retail -t'
 alias retaildev='db -s retail -d'

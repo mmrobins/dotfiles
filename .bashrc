@@ -49,7 +49,7 @@ P_USER="\u@\H"
 P_PATH="\w"
 GITBRANCH='$(__git_ps1 "(%s)")'
 PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH $GITBRANCH\n >$P_END_COLOR"
-umask 0002
+umask 000
 
 # Rentrak specific settings
 # export CVSROOT=:ext:cvsuser@rtkcvs:/cvs_repositories/corp_dev
