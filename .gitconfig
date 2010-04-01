@@ -1,5 +1,6 @@
 [user]
     name = Matt Robinson
+    email = mro@rentrak.com
 [color]
     diff = auto
     status = auto
@@ -23,3 +24,7 @@
     submodulesummary = true
 [branch "master"]
     mergeoptions = --no-commit --no-ff
+[rerere]
+	enabled = true
+[merge]
+	log = true
