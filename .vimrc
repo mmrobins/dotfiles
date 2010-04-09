@@ -96,10 +96,10 @@ augroup RubyTests
 augroup END
 
 " Twitter
-if filereadable($HOME . "/.vim_private_mattrobinsonnet")
+if filereadable(expand($HOME . "/.vim_private_mattrobinsonnet"))
     map ,pw <Esc>:source ~/.vim_private_mattrobinsonnet<cr>:PosttoTwitter<cr>
 endif
-if filereadable($HOME . "/.vim_private_mmrobins")
+if filereadable(expand($HOME . "/.vim_private_mmrobins"))
     map ,pp <Esc>:source ~/.vim_private_mmrobins<cr>:PosttoTwitter<cr>
 endif
 
