@@ -11,6 +11,7 @@ sub file_names
         .bashrc
         .dir_colors
         .gitconfig
+        .gitignore
         .inputrc
         .irbrc
         .screenrc
