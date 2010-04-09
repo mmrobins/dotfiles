@@ -1,6 +1,8 @@
 [user]
     name = Matt Robinson
     email = mro@rentrak.com
+[core]
+    excludesfile = ~/.gitignore
 [color]
     diff = auto
     status = auto
@@ -25,6 +27,6 @@
 [branch "master"]
     mergeoptions = --no-commit --no-ff
 [rerere]
-	enabled = true
+    enabled = true
 [merge]
-	log = true
+    log = true
