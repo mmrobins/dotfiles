@@ -90,3 +90,6 @@ alias dus='du -sm * .[a-zA-Z0-9]*/ | sort -n'
 
 # -a archive preserves permissions, times etc -vv double verbose -P partial files okay and progress indicator --remove-soure-files removes files but not empty directories
 alias mvrsync='rsync -avvP --remove-source-files'
+
+# newly updated files in the last 5 minutes
+alias nf='find . -cmin -5 -ls'
