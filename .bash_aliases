@@ -1,6 +1,7 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
-alias ls="ls -FC --color"
+#alias ls="ls -FC --color"
 alias lt="ls -ltr"
+alias ls="ls -FCG"
 alias ll="ls -l -a"
 alias rm="rm -i"
 alias llast='less `ls -tr1 | tail -1`'
@@ -10,12 +11,9 @@ alias ack="ack --all --follow --ignore-dir data --ignore-dir images"
 
 
 # Version Control
-alias sdl='if [ -d .svn ]; then svn_diff_less; else git diff trunk --no-prefix | diff_painter.pl | less -R; fi'
-alias sst='if [ -d .svn ]; then svn status; else git diff trunk --name-status; fi'
+alias sdl='git diff master --no-prefix | diff_painter.pl | less -R'
 alias gdl='git diff --no-prefix | diff_painter.pl | less -R'
-alias gdml='git diff --no-prefix master | diff_painter.pl | less -R'
 alias gst='git status'
-alias gsr='git svn rebase'
 alias viall='vi `git diff --name-only master..HEAD`';
 alias paintless='diff_painter.pl | less -R'
 

@@ -1,4 +1,4 @@
-#! /usr/local/bin/perl -w
+#! /usr/bin/perl -w
 
 use strict;
 use File::Copy;
@@ -9,6 +9,7 @@ sub file_names
         .bash_aliases
         .bash_profile
         .bashrc
+        bash_completion
         .dir_colors
         .gitconfig
         .gitignore
