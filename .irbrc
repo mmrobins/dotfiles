@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'activesupport'
+require 'active_support'
 require 'what_methods'
 require 'pp'
 require 'irb/completion'

@@ -1,6 +1,6 @@
 [user]
     name = Matt Robinson
-    email = mro@rentrak.com
+    email = matt@puppetlabs.com
 [core]
     excludesfile = ~/.gitignore
 [color]

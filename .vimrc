@@ -1,26 +1,24 @@
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
+let mapleader = ","
 
 runtime! macros/matchit.vim
-
-augroup myfiletypes
-  autocmd!
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-augroup END
 
 " history for vim
 set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
 
-" Rentrak specific stuff
-let g:rtk_user_customized_vimrc_files_dir='~/.vimrc_files/'
-"source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
-source ~/.vimrc_files/reasonably_stable_mappings.vim
+" remember buffers between sessions - strange, didnt need this until using mac
+:exec 'set viminfo=%,' . &viminfo
+
+" When using non-terminal vim this proved necessary and can't hurt to have anyway
+set background=dark
 
 " Tab spacing
 set shiftwidth=4 "number of space characters inserted for indentation
 set tabstop=4 "number of space characters for tab key
 set expandtab "use spaces instead of tab characters
+set sw=4 " Shift width
 set smarttab
 set ai "Auto indent
 "set list listchars=tab:>-, trail:., extends:>, precedes:<, eol:$
@@ -50,37 +48,34 @@ set hlsearch  " highlight matches
 " set mouse=nv
 
 " Buffers
-map ,be :BufExplorer<cr>
-map ,bp :BufExplorer<cr>j<cr>
+map <leader>be :BufExplorer<cr>
+map <leader>bp :BufExplorer<cr>j<cr>
+autocmd BufEnter * lcd %:p:h:gs/ /\\ / " working directory is whatever file you're working in, not root
+set hidden " allow unsaved hidden buffers
 
 " For modifying the .vimrc
-nmap ,e :e $HOME/.vimrc<cr>
-nmap ,s :write!<cr>:source $HOME/.vimrc<cr>
+nmap <leader>e :e $HOME/.vimrc<cr>
+nmap <leader>s :write!<cr>:source $HOME/.vimrc<cr>
 " For modifying the .bashrc
-nmap ,b :e $HOME/.bashrc<cr>
-nmap ,d :write!<cr>:!source $HOME/.bashrc<cr>
+nmap <leader>b :e $HOME/.bashrc<cr>
+nmap <leader>d :write!<cr>:!source $HOME/.bashrc<cr>
 
-map! ,p <Esc>:set paste!<cr>i
-map  ,p :set paste!<cr>i
+" pasting without alignment problems
+map! <leader>p <Esc>:set paste!<cr>i
+map  <leader>p :set paste!<cr>i
 
 " Perl Debugging
-map ,dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
-map ,wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
+map <leader>dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
+map <leader>wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
 
 " Folding and unfolding
-map ,f :set foldmethod=indent<cr>zM<cr>
-map ,F :set foldmethod=manual<cr>zR<cr>
+map <leader>f :set foldmethod=indent<cr>zM<cr>
+map <leader>F :set foldmethod=manual<cr>zR<cr>
 
 " Toggling the taglist
-map ,l :TlistToggle<cr>
+map <leader>l :TlistToggle<cr>
 
-" Convert Aliased to Aliases
-map ,ua <Esc>0gg/use Aliased<cr>Ouse Aliases qw/<Esc>:%s/use Aliased '//g<cr>o/;<Esc>kV?use Aliases<cr>j>/\/;<cr>kV?\/<cr>:s/';//g<cr>
-
-" format one line sql into multiple
-" map ,sql <Esc>:%s/, /,\r/g<cr>:%s/select /select\r/<cr>:%s/from/\rfrom/<cr>:%s/from /from\r/<cr>:g/ inner join/%s/ inner join/\rinner join/g<cr>:%s/where/\rwhere/<cr>:%s/where /where\r/<cr>:g/group by/:%s/group by/\rgroup by/<cr>:g/group by /:%s/group by /group by\r/<cr>:%s/ and/\rand/g<cr>:%s/order by/\rorder by/<cr>:%s/order by /order by\r/<cr>:g!/select\\|from\\|where\\|group by\\|order by/><cr>
-
-map ,sql <Esc>:g/,/:%s/, /,\r/g<cr>:%s/select /select\r/<cr>:%s/from\\|where\\|group by\\|order by/\r&/g<cr>:%s/\(from\\|where\\|group by\\|order by\) /&\r/g<cr>:g/ inner join/:%s/ inner join/\rinner join/g<cr>:g/ and/:%s/ and/\rand/g<cr>:g!/select\\|from\\|where\\|group by\\|order by\\|\//><cr>
+map <leader>sql <Esc>:g/,/:%s/, /,\r/g<cr>:%s/select /select\r/<cr>:%s/from\\|where\\|group by\\|order by/\r&/g<cr>:%s/\(from\\|where\\|group by\\|order by\) /&\r/g<cr>:g/ inner join/:%s/ inner join/\rinner join/g<cr>:g/ and/:%s/ and/\rand/g<cr>:g!/select\\|from\\|where\\|group by\\|order by\\|\//><cr>
 
 " Highlights code that goes beyond 100 chars
 match Todo '\%101v'
@@ -90,21 +85,64 @@ match Todo '\%101v'
 augroup RubyTests
   au!
   autocmd BufRead,BufNewFile *_test.rb,test_*.rb
-    \ :nmap ,t V:<C-U>!$HOME/.vim/ruby_run_focused_unit_test
+    \ :nmap <leader>t V:<C-U>!$HOME/.vim/ruby_run_focused_unit_test
     \ % <C-R>=line("'<")<CR>p <CR>|
-    \ :nmap ,T :<C-U>!ruby %<CR>
+    \ :nmap <leader>T :<C-U>!ruby %<CR>
 augroup END
 
 " Twitter
 if filereadable(expand($HOME . "/.vim_private_mattrobinsonnet"))
-    map ,pw <Esc>:source ~/.vim_private_mattrobinsonnet<cr>:PosttoTwitter<cr>
+    map <leader>pw <Esc>:source ~/.vim_private_mattrobinsonnet<cr>:PosttoTwitter<cr>
 endif
 if filereadable(expand($HOME . "/.vim_private_mmrobins"))
-    map ,pp <Esc>:source ~/.vim_private_mmrobins<cr>:PosttoTwitter<cr>
+    map <leader>pp <Esc>:source ~/.vim_private_mmrobins<cr>:PosttoTwitter<cr>
 endif
 
 " Use ack instead of grep
-" set grepprg=ack\ -a\ --nobinary\ --sort-files\ --ignore-dir=data\ --ignore-dir=images\ --color
+set grepprg=ack\ -a\ --nobinary\ --sort-files\ --color
 
-" remove space next to enclosing parens aka de-wickline
-map ,dw :%s/( \(.\{-}\) )/(\1)/g<cr>
+"map <leader>gt :e %:s?lib/puppet?spec/unit?<CR>
+"map <leader>gi :e %:s?spec/unit?lib/puppet?<CR>
+
+"puppet test switching - may want to encapsulate this for other projects if I find I need that
+function! GoToTheImplementation()
+    if match( expand("%:p"), "spec/unit" ) > -1
+        :e %:p:s?spec/unit?lib/puppet?
+    endif
+endfunc
+
+function! GoToTheTest()
+    if match( expand("%:p"), "lib/puppet" ) > -1
+        :e %:p:s?lib/puppet?spec/unit?
+    endif
+endfunc
+map  <leader>gt      :call GoToTheTest()<CR>
+map! <leader>gt <ESC>:call GoToTheTest()<CR>i
+map  <leader>gi      :call GoToTheImplementation()<CR>
+map! <leader>gi <ESC>:call GoToTheImplementation()<CR>i
+
+" showing git diffs
+map  <leader>sd       :w!<CR>:! git diff master --no-prefix % \| diff_painter.pl \| less -R<CR>
+map! <leader>sd  <ESC>:w!<CR>:! git diff master --no-prefix % \| diff_painter.pl \| less -R<CR>
+
+map  <leader>gd      :w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
+map! <leader>gd <ESC>:w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
+
+function! RunSpec(args)
+ if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+   let spec = b:rails_root . "/script/spec"
+ else
+   let spec = "spec"
+ end
+ let cmd = ":! " . spec . " % -cfn " . a:args
+ execute cmd
+endfunction
+
+" run one rspec example or describe block based on cursor position
+map <leader>t :call RunSpec("-l " . <C-r>=line('.')<CR>)<CR>
+" run full rspec file
+map <leader>T :call RunSpec("")<CR>
+
+" remove trailing whitespace
+map  ,wt      :%s/\s\+$//<cr>
+map! ,wt <esc>:%s/\s\+$//<cr>i

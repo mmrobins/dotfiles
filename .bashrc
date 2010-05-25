@@ -1,7 +1,8 @@
 # .bashrc
 
 # screen doesn't source bash_profile, so I moved this here from there.
-PATH=$HOME/bin:/usr/lib/git-core:$PATH
+PATH=$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/sbin:$PATH
+RUBYLIB=$HOME/work/puppet/lib:$RUBYLIB
 export PATH
 
 # Keep more history
