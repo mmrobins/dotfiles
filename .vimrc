@@ -139,9 +139,9 @@ function! RunSpec(args)
 endfunction
 
 " run one rspec example or describe block based on cursor position
-map <leader>t :call RunSpec("-l " . <C-r>=line('.')<CR>)<CR>
+map <leader>t <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("-l " . <C-r>=line('.')<CR>)<CR>
 " run full rspec file
-map <leader>T :call RunSpec("")<CR>
+map <leader>T <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("")<CR>
 
 " remove trailing whitespace
 map  ,wt      :%s/\s\+$//<cr>

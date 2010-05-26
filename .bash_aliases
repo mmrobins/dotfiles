@@ -91,3 +91,5 @@ alias mvrsync='rsync -avvP --remove-source-files'
 
 # newly updated files in the last 5 minutes
 alias nf='find . -cmin -5 -ls'
+
+alias puppetsudo="sudo RUBYLIB=$RUBYLIB PATH=$PATH"
