@@ -1,9 +1,8 @@
 # .bashrc
 
 # screen doesn't source bash_profile, so I moved this here from there.
-export PATH=$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/sbin:$PATH
+export PATH=$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
 export RUBYLIB=$HOME/work/puppet/lib:$RUBYLIB
-export PATH
 
 # Keep more history
 export HISTSIZE=1000000
@@ -63,31 +62,6 @@ export TEST_FLUSH="but_of_course"
 
 export PSQL_EDITOR='vim -c "set ft=sql"'
 
-function tt () # tree top
-{
-    cwd=$(pwd)
-    path_before_work=${cwd%/work/*}
-    path_after_work=${cwd#*/work/}
-    dir_within_work=${path_after_work%%/*}
-    echo $path_before_work/work/$dir_within_work
-}
-function pl () # perl_lib
-{
-    echo $(tt)/perl_lib
-}
-
-function ws () # web_src
-{
-    echo $(tt)/web_src
-}
-
-function cdtt
-{
-    cd $(tt)
-}
-
-#. /usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin/oracle_env.sh
-
 # git
 if [ -f ~/.git-completion.sh ]; then
     source ~/.git-completion.sh # command line completion for git if the system doesn't already have it installed
@@ -103,4 +77,4 @@ function bgh ()
     history | grep "$1" | perl -pwe 's/^.{6}//;' | sort -u | tail -50
 }
 
-if [[ -s /home/user/.rvm/scripts/rvm ]] ; then source /home/user/.rvm/scripts/rvm ; fi
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
