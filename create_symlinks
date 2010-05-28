@@ -13,6 +13,7 @@ sub file_names
         .dir_colors
         .gitconfig
         .gitignore
+        .git-completion.sh
         .inputrc
         .irbrc
         .screenrc
