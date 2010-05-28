@@ -102,3 +102,5 @@ function bgh ()
 {
     history | grep "$1" | perl -pwe 's/^.{6}//;' | sort -u | tail -50
 }
+
+if [[ -s /home/user/.rvm/scripts/rvm ]] ; then source /home/user/.rvm/scripts/rvm ; fi
