@@ -101,9 +101,6 @@ endif
 " Use ack instead of grep
 set grepprg=ack\ -a\ --nobinary\ --sort-files\ --color
 
-"map <leader>gt :e %:s?lib/puppet?spec/unit?<CR>
-"map <leader>gi :e %:s?spec/unit?lib/puppet?<CR>
-
 "puppet test switching - may want to encapsulate this for other projects if I find I need that
 function! GoToTheImplementation()
     if match( expand("%:p"), "spec/unit" ) > -1
@@ -122,20 +119,17 @@ map  <leader>gi      :call GoToTheImplementation()<CR>
 map! <leader>gi <ESC>:call GoToTheImplementation()<CR>i
 
 " showing git diffs
-map  <leader>sd       :w!<CR>:! git diff master --no-prefix % \| diff_painter.pl \| less -R<CR>
-map! <leader>sd  <ESC>:w!<CR>:! git diff master --no-prefix % \| diff_painter.pl \| less -R<CR>
-
-map  <leader>gd      :w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
-map! <leader>gd <ESC>:w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
+map  <leader>sd      :w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
+map! <leader>sd <ESC>:w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
 
 function! RunSpec(args)
- if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
-   let spec = b:rails_root . "/script/spec"
- else
-   let spec = "spec"
- end
- let cmd = ":! " . spec . " % -cfn " . a:args
- execute cmd
+    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+      let spec = b:rails_root . "/script/spec"
+    else
+      let spec = "spec"
+    end
+    let cmd = ":! " . spec . " % -cfn --loadby mtime " . a:args
+    execute cmd
 endfunction
 
 " run one rspec example or describe block based on cursor position
@@ -144,5 +138,32 @@ map <leader>t <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("-l " . <C-r>=line
 map <leader>T <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("")<CR>
 
 " remove trailing whitespace
-map  ,wt      :%s/\s\+$//<cr>
-map! ,wt <esc>:%s/\s\+$//<cr>i
+map  <leader>wt      :%s/\s\+$//<cr>
+map! <leader>wt <esc>:%s/\s\+$//<cr>i
+
+function! CdRoot()
+    if match( expand("%:p"), "work/" ) > -1
+        :cd %:p:s?\(work/\w\+/\).*?\1?
+    endif
+endfunction
+map <leader>cr <esc>:call CdRoot()<CR>
+map <leader>ack <esc>:call CdRoot()<CR>:Ack
+
+function! GoToTheModule()
+    let module_path = expand("%:p")
+    echo module_path
+    if match(module_path, '/puppet/lib') > 0
+        let module_path = substitute(module_path, '/puppet/lib/.*', '/puppet/lib/', '')
+
+        if match(getline('.'), '[_a-zA-Z0-9]\+::[_a-zA-Z0-9:]\+') > -1
+            let module_name = matchstr(getline('.'), '[_a-zA-Z0-9]\+::[_a-zA-Z0-9:]\+')
+            let module_path = module_path . substitute(module_name, "::", "/", "g") . '.rb'
+            execute ":edit " . module_path
+        else
+            echom "no use line recognized with my wimpy regex"
+        endif
+    else
+        echom "no puppet lib found in " . module_path
+    endif
+endfunction
+map  <leader>gm      :call GoToTheModule()<cr>
