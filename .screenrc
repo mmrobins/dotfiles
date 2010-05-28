@@ -1,6 +1,6 @@
 startup_message off
 escape ^Ll # Don't like ctrl-a so now it's ctrl-l
-termcapinfo xterm*|xs|rxvt ti@:te@ # Give mouse scrolling
+termcapinfo screen|xterm*|xs|rxvt ti@:te@ # Give mouse scrolling
 caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %1` %m/%d/%y %C:%a"
 defscrollback 100000
 #setenv SSH_AUTH_SOCK $HOME/.ssh/.screen-ssh-agent

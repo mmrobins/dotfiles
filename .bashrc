@@ -77,4 +77,4 @@ function bgh ()
     history | grep "$1" | perl -pwe 's/^.{6}//;' | sort -u | tail -50
 }
 
-if [[ -s /Users/matthewrobinson/.rvm/scripts/rvm ]] ; then source /Users/matthewrobinson/.rvm/scripts/rvm ; fi
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
