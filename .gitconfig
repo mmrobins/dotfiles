@@ -24,8 +24,6 @@
     template = ~/work/developer/util_src/git/.gitcommittemplate
 [status]
     submodulesummary = true
-[branch "master"]
-    mergeoptions = --no-commit --no-ff
 [rerere]
     enabled = true
 [merge]
