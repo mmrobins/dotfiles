@@ -167,3 +167,8 @@ function! GoToTheModule()
     endif
 endfunction
 map  <leader>gm      :call GoToTheModule()<cr>
+
+function! Auto_Tableize()
+endfunction
+map  ,a      :call Auto_Tableize()<cr>
+map! ,a <esc>:call Auto_Tableize()<cr>i

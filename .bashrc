@@ -1,8 +1,8 @@
 # .bashrc
 
 # screen doesn't source bash_profile, so I moved this here from there.
-export PATH=$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
-export RUBYLIB=$HOME/work/puppet/lib:$RUBYLIB
+export PATH=$HOME/work/facter/lib:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
+export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$RUBYLIB
 
 # Keep more history
 export HISTSIZE=1000000
@@ -49,7 +49,7 @@ P_USER="\u@\H"
 P_PATH="\w"
 GITBRANCH=`if which git &> /dev/null; then echo '$(__git_ps1 "(%s)")'; else echo ''; fi`
 PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH $GITBRANCH\n >$P_END_COLOR"
-umask 000
+umask 022
 
 # Rentrak specific settings
 # export CVSROOT=:ext:cvsuser@rtkcvs:/cvs_repositories/corp_dev
