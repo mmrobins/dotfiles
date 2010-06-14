@@ -1,0 +1,7 @@
+name=$1
+dir=/Users/markus/projects/puppet/test_data/${name}m
+shift 1
+#sudo ruby install.rb &> /dev/null
+#sudo chmod -R +x /Library/Ruby/Site/1.8/
+RUBYLIB=lib bin/puppetmasterd --no-daemonize --autosign=true --debug --verbose --confdir=${dir} --vardir=${dir} --certname localhost $@
+
