@@ -1,7 +1,11 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
 #alias ls="ls -FC --color"
 alias lt="ls -ltr"
-alias ls="ls -FCG"
+if [[ `uname -a` =~ Darwin ]]; then
+    alias ls="ls -FCG"
+else
+    alias ls="ls -FC --color"
+fi
 alias ll="ls -l -a"
 alias rm="rm -i"
 alias llast='less `ls -tr1 | tail -1`'
@@ -92,4 +96,4 @@ alias mvrsync='rsync -avvP --remove-source-files'
 # newly updated files in the last 5 minutes
 alias nf='find . -cmin -5 -ls'
 
-alias puppetsudo="sudo RUBYLIB=$RUBYLIB PATH=$PATH"
+alias puppetsudo="sudo env RUBYLIB=$RUBYLIB PATH=$PATH"
