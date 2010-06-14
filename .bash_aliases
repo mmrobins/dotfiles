@@ -14,7 +14,7 @@ alias ack="ack --all --follow --ignore-dir data --ignore-dir images"
 alias sdl='git diff master --no-prefix | diff_painter.pl | less -R'
 alias gdl='git diff --no-prefix | diff_painter.pl | less -R'
 alias gst='git status'
-alias viall='vi `git diff --name-only master..HEAD`';
+alias viall='vi `git diff --name-only HEAD`';
 alias paintless='diff_painter.pl | less -R'
 
 

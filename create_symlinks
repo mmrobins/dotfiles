@@ -24,6 +24,8 @@ sub file_names
         bin/find_failed_tests
         bin/test_all_parallel
         bin/tree.sh
+        bin/tpm
+        bin/tpc
     };
 }
 
