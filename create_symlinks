@@ -16,6 +16,7 @@ sub file_names
         .git-completion.sh
         .inputrc
         .irbrc
+        .rdebugrc
         .screenrc
         .vim
         .vimrc
