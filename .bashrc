@@ -16,8 +16,6 @@ export HISTFILESIZE=1000000
 # set -o vi
 # set -o emacs
 
-# User specific aliases and functions
-
 # enable bash completion in interactive shells
 # Source global definitions and alias definitions.
 # source user specific definitions
@@ -25,8 +23,8 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.sh_aliases ]; then
+    . ~/.sh_aliases
 fi
 
 if [ -f /etc/bashrc ]; then

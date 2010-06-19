@@ -128,7 +128,7 @@ function! RunSpec(args)
     else
       let spec = "spec"
     end
-    let cmd = ":! " . spec . " % -cfn --loadby mtime " . a:args
+    let cmd = ":! " . spec . " % -cfn --debugger --loadby mtime " . a:args
     execute cmd
 endfunction
 
