@@ -6,7 +6,6 @@ use File::Copy;
 sub file_names
 {
     return qw{
-        .bash_aliases
         .bash_profile
         .bashrc
         bash_completion
@@ -18,9 +17,11 @@ sub file_names
         .irbrc
         .rdebugrc
         .screenrc
+        .sh_aliases
         .vim
         .vimrc
         .vimrc_files
+        .zshrc
         bin/diff_painter.pl
         bin/find_failed_tests
         bin/test_all_parallel
