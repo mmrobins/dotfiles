@@ -3,5 +3,5 @@ name=$1
 dir="${HOME}/work/puppet/test_data/${name}m"
 mkdir -p "${dir}/manifests"
 touch "${dir}/manifests/site.pp"
-puppetmasterd --no-daemonize --autosign=true --debug --verbose --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
+puppetmasterd --trace --no-daemonize --autosign=true --debug --verbose --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
 #puppetmasterd --no-daemonize --autosign=true --confdir=${dir} --vardir=${dir} --certname puppetmaster $@

@@ -28,3 +28,5 @@
     enabled = true
 [merge]
     log = true
+[branch "master"]
+    mergeoptions = --no-commit --no-ff
