@@ -128,7 +128,7 @@ function! RunSpec(args)
     else
       let spec = "spec"
     end
-    let cmd = ":! " . spec . " % -cfn --debugger --loadby mtime " . a:args
+    let cmd = ":!" . spec . " % -cfn --debugger --loadby mtime " . a:args
     execute cmd
 endfunction
 
@@ -143,7 +143,7 @@ map! <leader>wt <esc>:%s/\s\+$//<cr>i
 
 function! CdRoot()
     if match( expand("%:p"), "work/" ) > -1
-        :cd %:p:s?\(work/\w\+/\).*?\1?
+        :cd %:p:s?\(work/.\{-}/\).*?\1?
     endif
 endfunction
 map <leader>cr <esc>:call CdRoot()<CR>
@@ -172,3 +172,4 @@ function! Auto_Tableize()
 endfunction
 map  ,a      :call Auto_Tableize()<cr>
 map! ,a <esc>:call Auto_Tableize()<cr>i
+

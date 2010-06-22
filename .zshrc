@@ -1,4 +1,5 @@
-source ~/.bash_aliases
+source ~/.sh_aliases
+source ~/.shrc
 autoload -U colors && colors
 zmodload -i zsh/complist
 zstyle ':completion:*' add-space true
@@ -106,16 +107,9 @@ logcheck=30
 # %W = date
 WATCHFMT="%n from %M has %a tty%l at %T %W"
 
-function precmd {
-    if [[ "x$TERM" = "xscreen" ]] ; then
-        . ~/.display
-        export DISPLAY
-    fi
-}
-
 autoload -U zmv zargs
 
-eval `keychain -q --eval id_rsa id_rsa_new jhe jhe_monitor.dsa rentrak_id_dsa`
+#eval `keychain -q --eval id_rsa id_rsa_new jhe jhe_monitor.dsa rentrak_id_dsa`
 
 # zgitinit and prompt_wunjo_setup must be somewhere in your $fpath, see README for more.
 setopt promptsubst
@@ -137,3 +131,28 @@ zle -N        edit-command-line
 bindkey '\ee' edit-command-line
 
 bindkey -M menuselect '\e^M' accept-and-menu-complete
+
+# export PS1="%~ %T"
+# color yellow time color lightblue user@host : path (git branch) end color
+P_TIME="%T"
+P_COLOR1="%{\033[31m%}"
+P_END_COLOR="%{\033[0m%}"
+P_COLOR2="\[\e[36;1m\]"
+P_USER="%n@%m"
+P_PATH="%~"
+#GITBRANCH=`if which git &> /dev/null; then echo '$(__git_ps1 "(%s)")'; else echo ''; fi`
+GITBRANCH=''
+%m
+
+#export PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH $GITBRANCH\n >$P_END_COLOR"
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+
+# Colorful basic prompt option 1
+export PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+export RPS1="%{$fg[cyan]%}<%T%{$reset_color%}"
+export PS2="%_> "
+
+# Colorful basic prompt option 2 { Better than option 1 }
+#export PS1=$'%{\e[1;32m%}%n%{\e[0m%}%{\e[1;34m%}@%{\e[1;31m%}%m %{\e[1;34m%}%~ %{\e[0m%}%% '
+#export RPS1=$'%{\e[1;30m%}<%T%{\e[0m%}'
+#export PS2=$'%{\e[0;37m%} %_>%{\e[0m%} '
