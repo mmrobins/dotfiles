@@ -1,3 +1,6 @@
+" tpopes pathogen makes install vim plugins easier
+call pathogen#runtime_append_all_bundles()
+
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -173,3 +176,7 @@ endfunction
 map  ,a      :call Auto_Tableize()<cr>
 map! ,a <esc>:call Auto_Tableize()<cr>i
 
+"map <leader>pr A<cr>require 'profiler'<cr>Profiler__::start_profile<cr>Profiler__::stop_profile<cr>Profiler__::print_profile($stderr)<ESC>
+map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyProf.stop<cr>printer = RubyProf::GraphPrinter.new(rprofresult)<cr>printer.print(STDOUT,0)<ESC>
+
+map <leader>rd A<cr>require 'ruby-debug'<cr>debugger
