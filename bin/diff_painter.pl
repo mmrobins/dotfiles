@@ -20,7 +20,7 @@ sub question_mk            { $ENV{'DIFF_COLOR_QUESTIONS'}        || 'yellow'  }
 sub misc                   { $ENV{'DIFF_COLOR_MISC'}             || 'blue'    }
 sub hilight                { $ENV{'DIFF_COLOR_HILIGHT'}          || 'reverse' }
 sub both_ways              { $ENV{'DIFF_COLOR_BOTH_WAYS'}        || 'magenta' }
-sub do_horizontal_diffing  { $ENV{'DIFF_COLOR_DO_HORIZONTAL'}    || 0         } # 0 or 1
+sub do_horizontal_diffing  { $ENV{'DIFF_COLOR_DO_HORIZONTAL'}    || 1         } # 0 or 1
 sub max_chars_line_cleanup { $ENV{'DIFF_COLOR_MAX_LINE_CLEANUP'} || 3         } # <+int>
 sub max_merged_line_noise  { $ENV{'DIFF_COLOR_MAX_MERGE_NOISE'}  || 5         } # <+int>
 
@@ -53,6 +53,8 @@ sub process_input {
     }
 }
 sub handle_via_merge {
+    return unless $1;
+    return unless $2;
     return unless ( length($1) == length($2) );
     flush_merged_lines();
     return 1;

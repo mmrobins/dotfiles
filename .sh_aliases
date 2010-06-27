@@ -1,5 +1,4 @@
 #alias sqlplus='env -u NLS_LANG sqlplus'
-#alias ls="ls -FC --color"
 alias lt="ls -ltra"
 if [[ `uname -a` =~ Darwin ]]; then
     alias ls="ls -FCG"
@@ -7,6 +6,7 @@ else
     alias ls="ls -FC --color"
 fi
 alias ll="ls -l"
+alias l='ls -la'
 alias rm="rm -i"
 alias llast='less `ls -tr1 | tail -1`'
 #alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
@@ -20,6 +20,7 @@ alias gdl='git diff --no-prefix | diff_painter.pl | less -R'
 alias gst='git status'
 alias viall='vi `git diff --name-only HEAD`';
 alias paintless='diff_painter.pl | less -R'
+alias gco='git co'
 
 # Show most used commands that might be good candidates for aliases
 alias mu='history | cut -d " " -f3 | sort | uniq -c | sort -nr | head -50'
@@ -54,6 +55,11 @@ alias mvrsync='rsync -avvP --remove-source-files'
 # newly updated files in the last 5 minutes
 alias nf='find . -cmin -5 -ls'
 
+# sudo on both OSX and Ubuntu strip the environment variables
 alias puppetsudo="sudo env RUBYLIB=$RUBYLIB PATH=$PATH"
 
+# Most frequent committers
 alias gitcommiters='git ls-files | xargs -n1 git blame | ruby -n -e "$_ =~ /^.*\((.*?)\s[\d]{4}/; puts $1.strip" | sort -f | uniq -c | sort -n'
+
+# I always forget the damned flags for this
+alias untargz="tar zxf"
