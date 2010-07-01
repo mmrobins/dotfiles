@@ -63,3 +63,6 @@ alias gitcommiters='git ls-files | xargs -n1 git blame | ruby -n -e "$_ =~ /^.*\
 
 # I always forget the damned flags for this
 alias untargz="tar zxf"
+
+# Saving test output comes in handy
+alias testme='dt=`date +%Y%m%d_%H_%M`; spec --color spec/**/*_spec.rb > spec_results_$dt &'

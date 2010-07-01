@@ -107,13 +107,17 @@ set grepprg=ack\ -a\ --nobinary\ --sort-files\ --color
 "puppet test switching - may want to encapsulate this for other projects if I find I need that
 function! GoToTheImplementation()
     if match( expand("%:p"), "spec/unit" ) > -1
-        :e %:p:s?spec/unit?lib/puppet?
+        let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
+        let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
+        exec(":e ". imp_file)
     endif
 endfunc
 
 function! GoToTheTest()
     if match( expand("%:p"), "lib/puppet" ) > -1
-        :e %:p:s?lib/puppet?spec/unit?
+        let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
+        let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
+        exec(":e ". test_file)
     endif
 endfunc
 map  <leader>gt      :call GoToTheTest()<CR>
