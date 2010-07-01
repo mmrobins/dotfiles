@@ -1,5 +1,6 @@
 #/bin/bash
 name=$1
+shift 1
 dir="${HOME}/work/puppet/test_data/${name}m"
 mkdir -p "${dir}/manifests"
 touch "${dir}/manifests/site.pp"

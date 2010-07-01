@@ -1,5 +1,6 @@
 #/bin/bash
 name=$1
+shift 1
 dir="${HOME}/work/puppet/test_data/${name}c"
-puppetd --no-daemonize --debug --trace --verbose --confdir=${dir} --vardir=${dir} --server puppetmaster $@
+puppetd -t --confdir=${dir} --vardir=${dir} --server puppetmaster $@
 #puppetd --test --confdir=${dir} --vardir=${dir} --server puppetmaster $@
