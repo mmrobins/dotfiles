@@ -1,158 +1,111 @@
-source ~/.sh_aliases
-source ~/.shrc
-autoload -U colors && colors
+# Path to your oh-my-zsh configuration.
+# export ZSH=$HOME/.oh-my-zsh
+# source $ZSH/oh-my-zsh.sh
+
+# Set to this to use case-sensitive completion
+export CASE_SENSITIVE="true"
+
+# Completion
+unsetopt menu_complete   # do not autoselect the first completion entry
+unsetopt flowcontrol
+setopt auto_menu         # show completion menu on succesive tab press
+setopt complete_in_word
+setopt always_to_end
+
+WORDCHARS=''
+
+autoload -U compinit
+compinit -i
+
 zmodload -i zsh/complist
-zstyle ':completion:*' add-space true
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate _prefix
-zstyle ':completion:*' completions 1
-zstyle ':completion:*' expand prefix suffix
-zstyle ':completion:*' file-sort name
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' glob 1
-zstyle ':completion:*' ignore-parents parent pwd ..
-zstyle ':completion:*' insert-unambiguous false
-zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=$color[cyan]=$color[red]"
 
-zstyle ':completion:*:*:git:*:aliases' list-colors "=(#b)(*)  #-- alias for *=$color[none]=$color[green]"
-zstyle ':completion:*:*:git:*:commands' list-colors "=(#b)(*)  #-- *=$color[none]=$color[blue]"
-
-zstyle ':completion:*:*:git-branch:*:branch-names' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-
-zstyle ':completion:*:*:git-branch:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-checkout:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-cherry:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-cherry-pick:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-push:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-rebase:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-reset:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-
-zstyle ':completion:*:*:git-branch:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-checkout:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-cherry-pick:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-cherry:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-push:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-rebase:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-reset:*:tags' list-colors "=*=$color[yellow]"
-
-zstyle ':completion:*:*:git-fetch:*:remotes' list-colors "=*=$color[green]"
-zstyle ':completion:*:*:git-push:*:remotes' list-colors "=*=$color[green]"
-
-zstyle ':completion:*:*:git-add:*:modified-files' list-colors "=*=$color[red]"
-zstyle ':completion:*:*:git-add:*:other-files' list-colors "=*=$color[magenta]"
-
-zstyle ':completion:*:default' list-colors 'no=0:fi=0:di=34:ln=36:pi=33:so=35:bd=33:cd=33:or=37;41:su=2;37;41:sg=2;30;43:tw=1;30;42:ow=30;42:st=37:ex=1;32'
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' group-name ''
-#zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %l \(%p\): Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=**' '+l:|=* r:|=*'
-zstyle ':completion:*' match-original both
-zstyle ':completion:*' max-errors 3 numeric
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
-zstyle ':completion:*' menu select=1
-zstyle ':completion:*' original true
-zstyle ':completion:*' prompt 'Correct %e errors'
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %l \(%p\)%s
-zstyle ':completion:*' substitute 1
-zstyle ':completion:*' verbose true
-zstyle ':completion:*:*:*:*:processes' menu yes select
-zstyle ':completion:*:*:*:*:processes' force-list always
-
-# With commands like `rm' it's annoying if one gets offered the same filename
-# again even if it is already on the command line. To avoid that:
-zstyle ':completion:*:rm:*' ignore-line yes
-
-## Use cache
-# Some functions, like _apt and _dpkg, are very slow. You can use a cache in
-# order to proxy the list of results (like the list of available debian
-# packages)
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ${HOME}/.zsh_cache
-
-zstyle :compinstall filename '/home/jhelwig/.zshrc'
-
-autoload -Uz compinit zrecompile
-
-zsh_cache=${HOME}/.zsh_cache
-mkdir -p $zsh_cache
-
-if [ $UID -eq 0 ]; then
-    compinit
+## case-insensitive (all),partial-word and then substring completion
+if [ "x$CASE_SENSITIVE" = "xtrue" ]; then
+  zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+  unset CASE_SENSITIVE
 else
-    compinit -d $zsh_cache/zcomp-$HOST
-
-    for f in ~/.zshrc $zsh_cache/zcomp-$HOST; do
-        zrecompile -p $f && rm -f $f.zwc.old
-    done
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 fi
 
-HISTFILE=$HOME/.histfile
+zstyle ':completion:*' list-colors ''
+
+# should this be in keybindings?
+bindkey -M menuselect '^o' accept-and-infer-next-history
+
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+
+# Load known hosts file for auto-completion with ssh and scp commands
+if [ -f ~/.ssh/known_hosts ]; then
+  zstyle ':completion:*' hosts $( sed 's/[, ].*$//' $HOME/.ssh/known_hosts )
+  zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/\1/' ~/.ssh/known_hosts`
+fi
+
+# Uncomment following line if you want to disable colors in ls
+# export DISABLE_LS_COLORS="true"
+
+source ~/.sh_aliases
+
+# Customize to your needs...
+export PATH=$HOME/work/facter/bin/:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
+export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$RUBYLIB
+
+# Will return the current branch name
+# Usage example: git pull origin $(current_branch)
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+
+## Command history configuration
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000000
-SAVEHIST=50000
-setopt inc_append_history share_history extended_history beep extended_glob notify transient_rprompt short_loops local_options multios complete_aliases complete_in_word list_ambiguous
-unsetopt autocd nomatch clobber
+SAVEHIST=1000000
+setopt hist_ignore_dups # ignore duplication command history list
+#setopt share_history # share command history data # use fc -IR to share
 
-for zshrc_snipplet in ~/.zsh.d/S[0-9][0-9]*[^~] ; do
-#   source $zshrc_snipplet
-done
+setopt hist_verify
+setopt inc_append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_space
 
-### Be all creepy.
-## Watch for logins and logouts from all accounts including mine.
-watch=all
-## Watch every 30 seconds
-logcheck=30
-## Change the watch format to something more informative
-# %n = username, %M = hostname, %a = action, %l = tty, %T = time,
-# %W = date
-WATCHFMT="%n from %M has %a tty%l at %T %W"
+# get the name of the branch we are on
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
 
-autoload -U zmv zargs
+parse_git_dirty () {
+  if [[ -n $(git status -s 2> /dev/null) ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
+  else
+    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+  fi
+}
 
-#eval `keychain -q --eval id_rsa id_rsa_new jhe jhe_monitor.dsa rentrak_id_dsa`
+# Setup the prompt with pretty colors
+setopt prompt_subst
+# ls colors
+autoload colors; colors;
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-# zgitinit and prompt_wunjo_setup must be somewhere in your $fpath, see README for more.
-setopt promptsubst
-# Load the prompt theme system
-autoload -U promptinit
-promptinit
-# Use the wunjo prompt theme
-prompt wunjo
+# PROMPT PS1
+local red_op="%{$fg[red]%}[%{$reset_color%}"
+local red_cp="%{$fg[red]%}]%{$reset_color%}"
+local path_p="${red_op}%{$fg[green]%}%~${red_cp}"
+local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
+local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %T${red_cp}"
+PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)
+╰─ %# '
+local cur_cmd="${red_op}%_${red_cp}"
+PROMPT2="${cur_cmd}> "
+# git theming default: Variables for theming the git info prompt
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
+ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
+ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
 
-bindkey -e
-bindkey "^U" backward-kill-line
-bindkey "^[^?" vi-backward-kill-word
-bindkey "^[k" kill-region
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
-
-autoload -U   edit-command-line
-zle -N        edit-command-line
-bindkey '\ee' edit-command-line
-
-bindkey -M menuselect '\e^M' accept-and-menu-complete
-
-# export PS1="%~ %T"
-# color yellow time color lightblue user@host : path (git branch) end color
-P_TIME="%T"
-P_COLOR1="%{\033[31m%}"
-P_END_COLOR="%{\033[0m%}"
-P_COLOR2="\[\e[36;1m\]"
-P_USER="%n@%m"
-P_PATH="%~"
-#GITBRANCH=`if which git &> /dev/null; then echo '$(__git_ps1 "(%s)")'; else echo ''; fi`
-GITBRANCH=''
-%m
-
-#export PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH $GITBRANCH\n >$P_END_COLOR"
-PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
-
-# Colorful basic prompt option 1
-export PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
-export RPS1="%{$fg[cyan]%}<%T%{$reset_color%}"
-export PS2="%_> "
-
-# Colorful basic prompt option 2 { Better than option 1 }
-#export PS1=$'%{\e[1;32m%}%n%{\e[0m%}%{\e[1;34m%}@%{\e[1;31m%}%m %{\e[1;34m%}%~ %{\e[0m%}%% '
-#export RPS1=$'%{\e[1;30m%}<%T%{\e[0m%}'
-#export PS2=$'%{\e[0;37m%} %_>%{\e[0m%} '
+# Setup the prompt with pretty colors
+setopt prompt_subst
