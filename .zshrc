@@ -45,11 +45,7 @@ fi
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
 
-source ~/.sh_aliases
-
-# Customize to your needs...
-export PATH=$HOME/work/facter/bin/:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
-export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$RUBYLIB
+source ~/.sh_shared
 
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)
@@ -109,3 +105,11 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is c
 
 # Setup the prompt with pretty colors
 setopt prompt_subst
+
+# helper for writing my own completions
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
+
