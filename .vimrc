@@ -18,10 +18,10 @@ set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in register
 set background=dark
 
 " Tab spacing
-set shiftwidth=4 "number of space characters inserted for indentation
-set tabstop=4 "number of space characters for tab key
+set shiftwidth=2 "number of space characters inserted for indentation
+set tabstop=2 "number of space characters for tab key
 set expandtab "use spaces instead of tab characters
-set sw=4 " Shift width
+set sw=2 " Shift width
 set smarttab
 set ai "Auto indent
 "set list listchars=tab:>-, trail:., extends:>, precedes:<, eol:$

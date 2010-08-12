@@ -23,8 +23,8 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-if [ -f ~/.sh_aliases ]; then
-    . ~/.sh_aliases
+if [ -f ~/.sh_shared ]; then
+    . ~/.sh_shared
 fi
 
 if [ -f /etc/bashrc ]; then
@@ -35,7 +35,6 @@ if [ -f ~/.bash_specific_to_local ]; then
     source ~/.bash_specific_to_local
 fi
 
-#source ~/.bashrc_sources/cvswork.sh   # first
 export RLWRAP_HOME="${HOME}/.rlwrap_home"
 
 # Needed for edit to work in sqlplus
@@ -76,6 +75,12 @@ unset USERNAME
 function bgh ()
 {
     history | grep "$1" | perl -pwe 's/^.{6}//;' | sort -u | tail -50
+}
+
+function cdtt ()
+{
+    `pwd` =~ '(.*/work)/.*'
+    cd ${BASH_REMATCH[1]}
 }
 
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi

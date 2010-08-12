@@ -66,3 +66,20 @@ alias untargz="tar zxf"
 
 # Saving test output comes in handy
 alias testme='dt=`date +%Y%m%d_%H_%M`; spec --color spec/**/*_spec.rb > spec_results_$dt &'
+
+export PATH=$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
+export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$RUBYLIB
+
+function tt () # tree top
+{
+    cwd=$(pwd)
+    path_before_work=${cwd%/work/*}
+    path_after_work=${cwd#*/work/}
+    dir_within_work=${path_after_work%%/*}
+    echo $path_before_work/work/$dir_within_work
+}
+
+function cdtt
+{
+    cd $(tt)
+}
