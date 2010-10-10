@@ -83,3 +83,5 @@ function cdtt
 {
     cd $(tt)
 }
+
+alias drivespeed='dd if=/dev/zero of=test.file bs=1024k count=128 && rm -f test.file'
