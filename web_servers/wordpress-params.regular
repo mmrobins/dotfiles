@@ -1,0 +1,13 @@
+#  Wordpress pretty URLs
+if (-f $request_filename) {
+break;
+}
+ 
+if (-d $request_filename) {
+break;
+}
+ 
+rewrite ^(.+)$ /index.php?q=$1 last;
+ 
+#  Enable nice permalinks for WP
+error_page 404 = //index.php?q=$uri;
