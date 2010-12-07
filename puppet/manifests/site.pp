@@ -46,3 +46,8 @@ class nginx_fcgi {
 }
 
 include nginx_fcgi
+
+include home_machine
+class home_machine {
+  package { [encfs] : ensure => installed }
+}
