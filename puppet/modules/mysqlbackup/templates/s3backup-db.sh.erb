@@ -20,7 +20,7 @@ while [ $# -gt 0 ]
 do
   DBNAME=$1; shift
 
-  echo "Backing up MySQL db '$DBNAME' with '$DBUSER:$DBPWD'"
+  echo "Backing up MySQL db '$DBNAME' with '$DBUSER:secret_password"
   nice mysqldump -u $DBUSER -p$DBPWD -C -q $DBNAME | gzip -9 > $BACKUP$DBNAME.$NOW.sql.gz
 
   cd $BACKUP
