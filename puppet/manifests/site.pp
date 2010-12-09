@@ -1,5 +1,6 @@
 #package { xmpp4r-simple : ensure => installed, provider => gem, require => Package[rubygems] }
 #todo ack-grep symlink so i can just type ack
+#todo ssh key
 
 #todo get dump of /var/www directory somewhere, keep in mind passwords stored in mysql configuration files
 #todo get dump of databases somewhere
@@ -10,6 +11,7 @@
 #  server_name  => ['localhost'],
 #}
 
+import 'secrets.pp'
 # maybe this should be a node?
 # either way, at some point this should be all I need to bootstrap my server
 class nginx_wordpress_server {
@@ -30,20 +32,19 @@ class nginx_wordpress_server {
 
 }
 
-node 'mmrobins.com' {
-  include all_nodes
+node 'mmrobins.com' inherits basenode {
   include nginx_wordpress_server
   include journal_machine
-  include developer_machine
+  include puppet_developer_machine
   include irssi
+  include mysqlbackup
 }
 
-node default {
-  include all_nodes
+node default inherits basenode {
 }
 
-class all_nodes {
-  package { [screen, zsh, rubygems] : ensure => installed }
+node basenode {
+  package { [screen, zsh, bash-completion, exuberant-ctags] : ensure => installed }
   include ack
 }
 
@@ -60,7 +61,7 @@ class irssi {
 }
 
 class rubydev {
-  package { ['ruby',  'build-essential',  'libopenssl-ruby',  'ruby1.8-dev', 'irb'] : ensure => present }
+  package { ['ruby', 'build-essential', 'libopenssl-ruby', 'ruby1.8-dev', 'irb', 'rubygems'] : ensure => present }
 }
 
 # This should get added to the nginx::fcgi module at some point
@@ -91,14 +92,11 @@ class journal_machine {
   package { [encfs] : ensure => installed }
 }
 
-class mysql_backup {
-}
-
-class developer_machine {
+class puppet_developer_machine {
   include rubydev
-# vcsrepo { '/path/to/repo':
+# vcsrepo { '/root/work/puppet':
 #   ensure => present,
 #   provider => git,
-#   source => 'git://example.com/repo.git'
+#   source => 'git://github.com/mmrobins/puppet.git'
 # }
 }
