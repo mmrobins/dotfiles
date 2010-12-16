@@ -23,13 +23,9 @@ class nginx_wordpress_server {
   include nginx_fcgi
   include irssi
 
-  include mysql::server
-  Mysql_database { defaults => '/etc/mysql/debian.cnf' }
-  mysql_database { 'mmrobins_wrdp': ensure => present }
 
   # what module should this go in?  php? mysql? nginx?
   package { 'php5-mysql' : ensure => present }
-
 }
 
 node 'mmrobins.com' inherits basenode {
@@ -38,6 +34,13 @@ node 'mmrobins.com' inherits basenode {
   include puppet_developer_machine
   include irssi
   include mysqlbackup
+  mysqlbackup::database { 'mmrobins_wrdp' : }
+# exec { "backup_mysl_database":
+#   command     => "s3backup-db.sh mmrobins_wrdp",
+#   environment => ['S3CONF=/home/s3backup/.s3conf/'],
+#   path        => ["/usr/bin/", "/bin/", "/home/s3backup/"],
+#   user        => 's3backup'
+# }
 }
 
 node default inherits basenode {

@@ -177,8 +177,9 @@ map  <leader>gm      :call GoToTheModule()<cr>
 
 function! Auto_Tableize()
 endfunction
-map  ,a      :call Auto_Tableize()<cr>
-map! ,a <esc>:call Auto_Tableize()<cr>i
+
+map  <leader>a <esc>?^$<CR>/=><CR>V/^$<CR>?=><CR>:Align =><CR>/nofindme<CR>
+map! <leader>a <esc>?/^$<CR>V/^$<CR>:Align =><CR>i
 
 "map <leader>pr A<cr>require 'profiler'<cr>Profiler__::start_profile<cr>Profiler__::stop_profile<cr>Profiler__::print_profile($stderr)<ESC>
 map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyProf.stop<cr>printer = RubyProf::GraphPrinter.new(rprofresult)<cr>printer.print(STDOUT,0)<ESC>

@@ -1,1 +1,2 @@
 .*.sw[op]
+puppet/manifests/secrets.pp
