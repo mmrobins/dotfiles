@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'optparse'
+require 'aws/s3'
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+
+optparse.parse!
+
+AWS::S3::Base.establish_connection!(
+  :access_key_id     => '<%= aws_access_key_id %>',
+  :secret_access_key => '<%= aws_secret_access_key %>'
+)
+
+ARGV.each do |database_to_restore|
+  # Find the latest backup of the database in question
+  latest = AWS::S3::Bucket.find("mysql_db_backups").
+    objects.
+    select  {|o| o.key =~ /#{Regexp.escape(database_to_restore)}/}.
+    sort_by {|o| o.key}.
+    last
+  if latest
+    File.open(latest.key, "w") {|f| f.print latest.value}
+
+    unless File.exist?("/var/lib/mysql/#{database_to_restore}")
+      puts "Database #{database_to_restore} doesn't exist, creating"
+      `mysql -v -u root -p<%= mysql_db_password %> -e "create database if not exists #{database_to_restore}"`
+    end
+
+    puts "Restoring #{latest.key} to database #{database_to_restore}"
+    `gunzip < #{latest.key} | mysql -v -u root -p<%= mysql_db_password %> #{database_to_restore}`
+  else
+    raise "The database #{database_to_restore} didn't have any backups to restore"
+  end
+end
+
