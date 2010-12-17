@@ -1,5 +1,6 @@
 class mysqlbackup {
   include s3backup
+  include mysql::server
   File { ensure => present, owner => 's3backup', group => 's3backup', mode => 700 }
 
   file {'/home/s3backup/s3backup-db.sh' :
@@ -10,7 +11,6 @@ class mysqlbackup {
   package {'mysql' : ensure => present, provider => 'gem', require => Package['libmysqlclient-dev'] }
   # todo install mysql gem
 
-  include mysql::server
   Mysql_database { defaults => '/etc/mysql/debian.cnf' }
 
   define database () {
