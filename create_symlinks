@@ -15,6 +15,7 @@ sub file_names
         .git-completion.sh
         .inputrc
         .irbrc
+        .irssi
         .rdebugrc
         .screenrc
         .sh_aliases

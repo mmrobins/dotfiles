@@ -4,7 +4,7 @@ termcapinfo linux*|screen*|xterm*|xs|rxvt ti@:te@ # Give mouse scrolling
 caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %1` %m/%d/%y %C:%a"
 defscrollback 100000
 
-shell "/usr/local/bin/zsh"
+#shell "/usr/local/bin/zsh"
 #setenv SSH_AUTH_SOCK $HOME/.ssh/.screen-ssh-agent
 #screen -t bash 0 ssh-agent -a $SSH_AUTH_SOCK $SHELL
 #screen -t bash 1 ssh-add
