@@ -1,5 +1,6 @@
 " tpopes pathogen makes install vim plugins easier
 call pathogen#runtime_append_all_bundles()
+exe "set path=".expand("$PATH") 
 
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
@@ -106,19 +107,31 @@ set grepprg=ack\ -a\ --nobinary\ --sort-files\ --color
 
 "puppet test switching - may want to encapsulate this for other projects if I find I need that
 function! GoToTheImplementation()
-    if match( expand("%:p"), "spec/unit" ) > -1
-        let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
-        let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
-        exec(":e ". imp_file)
-    endif
+    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+      if match( expand("%:p"), "spec" ) > -1
+        exec(":A")
+      endif
+    else
+      if match( expand("%:p"), "spec/unit" ) > -1
+          let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
+          let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
+          exec(":e ". imp_file)
+      endif
+    end
 endfunc
 
 function! GoToTheTest()
-    if match( expand("%:p"), "lib/puppet" ) > -1
-        let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
-        let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
-        exec(":e ". test_file)
-    endif
+    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+      if match( expand("%:p"), "spec" ) <= 0
+        exec(":A")
+      endif
+    else
+      if match( expand("%:p"), "lib/puppet" ) > -1
+          let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
+          let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
+          exec(":e ". test_file)
+      endif
+    end
 endfunc
 map  <leader>gt      :call GoToTheTest()<CR>
 map! <leader>gt <ESC>:call GoToTheTest()<CR>i
@@ -131,11 +144,12 @@ map! <leader>sd <ESC>:w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
 
 function! RunSpec(args)
     if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+      :call CdRoot()
       let spec = b:rails_root . "/script/spec"
     else
       let spec = "spec"
     end
-    let cmd = ":!" . spec . " % -cfn --debugger --loadby mtime " . a:args
+    let cmd = ":!" . spec . ' ' . expand("%:p") . " -cfn --debugger --loadby mtime " . a:args
     execute cmd
 endfunction
 
@@ -177,10 +191,11 @@ map  <leader>gm      :call GoToTheModule()<cr>
 
 function! Auto_Tableize()
 endfunction
+
 map  ,a      :call Auto_Tableize()<cr>
 map! ,a <esc>:call Auto_Tableize()<cr>i
 
 "map <leader>pr A<cr>require 'profiler'<cr>Profiler__::start_profile<cr>Profiler__::stop_profile<cr>Profiler__::print_profile($stderr)<ESC>
 map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyProf.stop<cr>printer = RubyProf::GraphPrinter.new(rprofresult)<cr>printer.print(STDOUT,0)<ESC>
 
-map <leader>rd A<cr>require 'ruby-debug'<cr>debugger
+map <leader>rd A<cr>require 'ruby-debug'<cr>debugger; 1;
