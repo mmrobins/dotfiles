@@ -12,7 +12,7 @@
     ci = commit
     co = checkout
     llog = log --date=local
-    lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph"
+    lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order"
     review = "log --stat=160,180 -p -w --patience --reverse -M -C -C -c"
     fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
     squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
@@ -29,4 +29,6 @@
 [merge]
     log = true
 [branch "master"]
-    mergeoptions = --no-commit --no-ff
+    mergeoptions = --no-ff
+[branch "next"]
+    mergeoptions = --no-ff

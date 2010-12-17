@@ -2,8 +2,9 @@
 name=$1
 shift 1
 dir="${HOME}/work/puppet/test_data/${name}m"
-cp ~/auth.conf "${dir}/auth.conf"
+#cp ~/auth.conf "${dir}/auth.conf"
 mkdir -p "${dir}/manifests"
 touch "${dir}/manifests/site.pp"
 puppetmasterd --no-daemonize --trace --autosign=true --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
+#puppetmasterd --no-daemonize --trace --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
 #puppetmasterd --no-daemonize --autosign=true --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
