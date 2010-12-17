@@ -81,8 +81,14 @@ class nginx_fcgi {
   #http://www.howtoforge.com/installing-nginx-with-php-5.3-and-php-fpm-on-ubuntu-lucid-lynx-10.04-without-compiling-anything
   #maybe conditional on ubuntu version since this package shouldn't need a ppa in 10.10
 
+  file { 'php5-fpm-source' :
+    ensure  => present,
+    target  => '/etc/apt/sources.list.d/brianmercer-php-lucid.list',
+    content => "deb http://ppa.launchpad.net/brianmercer/php/ubuntu lucid main",
+  }
+
   package { php5 : ensure => installed }
-  package { php5-fpm : ensure => installed, require => Package['php5'] }
+  package { php5-fpm : ensure => installed, require => [Package['php5'], File['php5-fpm-source']] }
   service { php5-fpm:
     ensure     => running,
     enable     => true,
