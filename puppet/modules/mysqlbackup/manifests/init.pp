@@ -6,27 +6,15 @@ class mysqlbackup {
     content => template('mysqlbackup/s3backup-db.sh.erb'),
   }
 
-# define mysqlbackup_cron ($databases, $minute = 0, $hour = 23, $monthday = "*", $month = "*", $weekday = "*") {
-#   cron { 's3sync' :
-#     command  => "/home/s3backup/s3sync/s3sync.rb $databases",
-#     user     => 's3backup',
-#     minute   => $minute,
-#     hour     => $hour,
-#     monthday => $monthday,
-#     month    => $month,
-#     weekday  => $weekday,
-#   }
-# }
-
   package {'libmysqlclient-dev' : ensure => present }
-  package {'mysql' : ensure => present, provider => 'gem' }
+  package {'mysql' : ensure => present, provider => 'gem', require => Package['libmysqlclient-dev'] }
   # todo install mysql gem
 
   include mysql::server
   Mysql_database { defaults => '/etc/mysql/debian.cnf' }
 
   define database () {
-    mysql_database { $name : ensure => present }
+    #mysql_database { $name : ensure => present }
 
     cron { "sync_${name}" :
       ensure   => present,
@@ -38,7 +26,7 @@ class mysqlbackup {
       monthday => '*',
       month    => '*',
       weekday  => '*',
-      require  => Mysql_database[$name],
+      #require  => Mysql_database[$name],
     }
   }
 }
