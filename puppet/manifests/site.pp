@@ -1,10 +1,14 @@
 #package { xmpp4r-simple : ensure => installed, provider => gem, require => Package[rubygems] }
-#todo ack-grep symlink so i can just type ack
 #todo ssh key
 #todo how to make sure apt-get update is called when needed.  Cron job?   But first time?
+#todo why doesn't puppet apply mkusers work?
+#todo puppet tab completion for options
 
 #todo get dump of /var/www directory somewhere, keep in mind passwords stored in mysql configuration files
 #todo get dump of databases somewhere
+#todo set hostname
+#todo blog: ubuntu sources in sources.d directory
+#todo one puppet apply run for everything
 
 #nginx::fcgi::site {'test':
 #  root         => '/var/www/test',
@@ -13,8 +17,7 @@
 #}
 
 import 'secrets.pp'
-# maybe this should be a node?
-# either way, at some point this should be all I need to bootstrap my server
+
 class nginx_wordpress_server {
   $nginx_includes = '/etc/nginx/includes'
   $nginx_conf = '/etc/nginx/conf.d'
@@ -46,7 +49,8 @@ node default inherits basenode {
   include puppet_developer_machine
   include irssi
   include mysqlbackup
-  mysqlbackup::database { 'mmrobins_wrdp' : }
+  #todo how to make sure rubygems and aws-s3 is installed before this?
+  mysqlbackup::database { 'mmrobins_wrdp' : require => Class['rubydev']}
 }
 
 node basenode {
@@ -79,15 +83,11 @@ class nginx_fcgi {
 #   source => 'puppet:///modules/mysql_backup/brianmercer-php-lucid.list'
 # }
 
-  # turns out that I don't need this command, can just put the file in the right place /etc/apt/sources.list.d
-  #package { python-software-properties : ensure => installed } # necessary for add-apt-repository command
-  #http://www.howtoforge.com/installing-nginx-with-php-5.3-and-php-fpm-on-ubuntu-lucid-lynx-10.04-without-compiling-anything
-  #maybe conditional on ubuntu version since this package shouldn't need a ppa in 10.10
-
   file { 'php5-fpm-source' :
     ensure  => present,
     path    => '/etc/apt/sources.list.d/brianmercer-php-lucid.list',
     content => "deb http://ppa.launchpad.net/brianmercer/php/ubuntu lucid main",
+    require => Package['php5'],
   }
 
   exec { 'update-php5-fpm-source':
