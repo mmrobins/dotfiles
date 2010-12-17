@@ -1,6 +1,7 @@
 #package { xmpp4r-simple : ensure => installed, provider => gem, require => Package[rubygems] }
 #todo ack-grep symlink so i can just type ack
 #todo ssh key
+#todo how to make sure apt-get update is called when needed.  Cron job?   But first time?
 
 #todo get dump of /var/www directory somewhere, keep in mind passwords stored in mysql configuration files
 #todo get dump of databases somewhere
@@ -22,10 +23,6 @@ class nginx_wordpress_server {
 
   include nginx_fcgi
   include irssi
-
-
-  # what module should this go in?  php? mysql? nginx?
-  package { 'php5-mysql' : ensure => present }
 }
 
 node 'mmrobins.com' inherits basenode {
@@ -44,10 +41,16 @@ node 'mmrobins.com' inherits basenode {
 }
 
 node default inherits basenode {
+  include nginx_wordpress_server
+  include journal_machine
+  include puppet_developer_machine
+  include irssi
+  include mysqlbackup
+  mysqlbackup::database { 'mmrobins_wrdp' : }
 }
 
 node basenode {
-  package { [screen, zsh, bash-completion, exuberant-ctags] : ensure => installed }
+  package { [screen, zsh, bash-completion, exuberant-ctags, tree] : ensure => installed }
   include ack
 }
 
