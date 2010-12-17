@@ -86,12 +86,20 @@ class nginx_fcgi {
 
   file { 'php5-fpm-source' :
     ensure  => present,
-    target  => '/etc/apt/sources.list.d/brianmercer-php-lucid.list',
+    path    => '/etc/apt/sources.list.d/brianmercer-php-lucid.list',
     content => "deb http://ppa.launchpad.net/brianmercer/php/ubuntu lucid main",
   }
 
+  exec { 'update-php5-fpm-source':
+    command     => "/usr/bin/apt-get -q -q update",
+    logoutput   => false,
+    refreshonly => true,
+    subscribe   => File['php5-fpm-source']
+  }
+
   package { php5 : ensure => installed }
-  package { php5-fpm : ensure => installed, require => [Package['php5'], File['php5-fpm-source']] }
+  # need ensure to be the version so that --force-yes is called since this package is unauthenticated
+  package { php5-fpm : ensure => "5.3.2-1ubuntu4.5ppa5~lucid1", require => [Package['php5'], File['php5-fpm-source']] }
   service { php5-fpm:
     ensure     => running,
     enable     => true,
