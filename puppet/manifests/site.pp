@@ -1,6 +1,7 @@
 #package { xmpp4r-simple : ensure => installed, provider => gem, require => Package[rubygems] }
 #todo ack-grep symlink so i can just type ack
 #todo ssh key
+#todo how to make sure apt-get update is called when needed.  Cron job?   But first time?
 
 #todo get dump of /var/www directory somewhere, keep in mind passwords stored in mysql configuration files
 #todo get dump of databases somewhere
@@ -22,10 +23,6 @@ class nginx_wordpress_server {
 
   include nginx_fcgi
   include irssi
-
-
-  # what module should this go in?  php? mysql? nginx?
-  package { 'php5-mysql' : ensure => present }
 }
 
 node 'mmrobins.com' inherits basenode {
@@ -44,10 +41,16 @@ node 'mmrobins.com' inherits basenode {
 }
 
 node default inherits basenode {
+  include nginx_wordpress_server
+  include journal_machine
+  include puppet_developer_machine
+  include irssi
+  include mysqlbackup
+  mysqlbackup::database { 'mmrobins_wrdp' : }
 }
 
 node basenode {
-  package { [screen, zsh, bash-completion, exuberant-ctags] : ensure => installed }
+  package { [screen, zsh, bash-completion, exuberant-ctags, tree] : ensure => installed }
   include ack
 }
 
@@ -81,8 +84,22 @@ class nginx_fcgi {
   #http://www.howtoforge.com/installing-nginx-with-php-5.3-and-php-fpm-on-ubuntu-lucid-lynx-10.04-without-compiling-anything
   #maybe conditional on ubuntu version since this package shouldn't need a ppa in 10.10
 
+  file { 'php5-fpm-source' :
+    ensure  => present,
+    path    => '/etc/apt/sources.list.d/brianmercer-php-lucid.list',
+    content => "deb http://ppa.launchpad.net/brianmercer/php/ubuntu lucid main",
+  }
+
+  exec { 'update-php5-fpm-source':
+    command     => "/usr/bin/apt-get -q -q update",
+    logoutput   => false,
+    refreshonly => true,
+    subscribe   => File['php5-fpm-source']
+  }
+
   package { php5 : ensure => installed }
-  package { php5-fpm : ensure => installed, require => Package['php5'] }
+  # need ensure to be the version so that --force-yes is called since this package is unauthenticated
+  package { php5-fpm : ensure => "5.3.2-1ubuntu4.5ppa5~lucid1", require => [Package['php5'], File['php5-fpm-source']] }
   service { php5-fpm:
     ensure     => running,
     enable     => true,
