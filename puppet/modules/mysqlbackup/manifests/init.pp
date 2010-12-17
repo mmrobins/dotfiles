@@ -14,7 +14,7 @@ class mysqlbackup {
   Mysql_database { defaults => '/etc/mysql/debian.cnf' }
 
   define database () {
-    #mysql_database { $name : ensure => present }
+    mysql_database { $name : ensure => present }
 
     cron { "sync_${name}" :
       ensure   => present,
@@ -26,7 +26,7 @@ class mysqlbackup {
       monthday => '*',
       month    => '*',
       weekday  => '*',
-      #require  => Mysql_database[$name],
+      require  => Mysql_database[$name],
     }
   }
 }
