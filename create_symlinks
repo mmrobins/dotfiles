@@ -19,6 +19,7 @@ sub file_names
         .rdebugrc
         .screenrc
         .sh_aliases
+        .tmux.conf
         .vim
         .vimrc
         .vimrc_files

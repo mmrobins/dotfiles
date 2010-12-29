@@ -2,10 +2,6 @@
 
 source ~/.sh_aliases
 
-# screen doesn't source bash_profile, so I moved this here from there.
-export PATH=$HOME/work/facter/bin/:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
-export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$RUBYLIB
-
 # the up and down arrows and function keys weren't working in screen only on MAC
 export TERM=linux
 
