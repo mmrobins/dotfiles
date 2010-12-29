@@ -12,6 +12,12 @@ runtime! macros/matchit.vim
 " history for vim
 set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
 
+" :echo g:colors_name to find out current color scheme
+" colors desert
+" I like these colors better but the visual highlighting mode is terrible
+" colors wombat
+" colors zenburn
+
 " remember buffers between sessions - strange, didnt need this until using mac
 :exec 'set viminfo=%,' . &viminfo
 
@@ -94,7 +100,7 @@ augroup RubyTests
     \ :nmap <leader>T :<C-U>!ruby %<CR>
 augroup END
 
-" Twitter
+" Twitter - this hasn't been too useful, I'll probably delete it soon
 if filereadable(expand($HOME . "/.vim_private_mattrobinsonnet"))
     map <leader>pw <Esc>:source ~/.vim_private_mattrobinsonnet<cr>:PosttoTwitter<cr>
 endif
@@ -139,8 +145,8 @@ map  <leader>gi      :call GoToTheImplementation()<CR>
 map! <leader>gi <ESC>:call GoToTheImplementation()<CR>i
 
 " showing git diffs
-map  <leader>sd      :w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
-map! <leader>sd <ESC>:w!<CR>:! git diff HEAD % \| diff_painter.pl \| less -R<CR>
+map  <leader>sd      :w!<CR>:! git diff --color-words HEAD %<CR>
+map! <leader>sd <ESC>:w!<CR>:! git diff --color-words HEAD %<CR>
 
 function! RunSpec(args)
     if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
@@ -162,6 +168,8 @@ map <leader>T <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("")<CR>
 map  <leader>wt      :%s/\s\+$//<cr>
 map! <leader>wt <esc>:%s/\s\+$//<cr>i
 
+" change to the root of the project director so long as the project is under
+" the work directory
 function! CdRoot()
     if match( expand("%:p"), "work/" ) > -1
         :cd %:p:s?\(work/.\{-}/\).*?\1?
@@ -170,32 +178,12 @@ endfunction
 map <leader>cr <esc>:call CdRoot()<CR>
 map <leader>ack <esc>:call CdRoot()<CR>:Ack
 
-function! GoToTheModule()
-    let module_path = expand("%:p")
-    echo module_path
-    if match(module_path, '/puppet/lib') > 0
-        let module_path = substitute(module_path, '/puppet/lib/.*', '/puppet/lib/', '')
-
-        if match(getline('.'), '[_a-zA-Z0-9]\+::[_a-zA-Z0-9:]\+') > -1
-            let module_name = matchstr(getline('.'), '[_a-zA-Z0-9]\+::[_a-zA-Z0-9:]\+')
-            let module_path = module_path . substitute(module_name, "::", "/", "g") . '.rb'
-            execute ":edit " . module_path
-        else
-            echom "no use line recognized with my wimpy regex"
-        endif
-    else
-        echom "no puppet lib found in " . module_path
-    endif
-endfunction
-map  <leader>gm      :call GoToTheModule()<cr>
-
-function! Auto_Tableize()
-endfunction
-
+" A hackish attempt at doing an autoalign like I used to have at Rentrak
 map  <leader>a <esc>?^$<CR>/=><CR>V/^$<CR>?=><CR>:Align =><CR>/nofindme<CR>
 map! <leader>a <esc>?/^$<CR>V/^$<CR>:Align =><CR>i
 
 "map <leader>pr A<cr>require 'profiler'<cr>Profiler__::start_profile<cr>Profiler__::stop_profile<cr>Profiler__::print_profile($stderr)<ESC>
 map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyProf.stop<cr>printer = RubyProf::GraphPrinter.new(rprofresult)<cr>printer.print(STDOUT,0)<ESC>
 
-map <leader>rd A<cr>require 'ruby-debug'<cr>debugger; 1;
+" Insert debugger into code at cursor
+map <leader>rd A<cr>require 'ruby-debug'; debugger; 1;
