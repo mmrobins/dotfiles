@@ -13,7 +13,7 @@ runtime! macros/matchit.vim
 set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
 
 " :echo g:colors_name to find out current color scheme
-" colors desert
+colors desert
 " I like these colors better but the visual highlighting mode is terrible
 " colors wombat
 " colors zenburn
@@ -53,6 +53,7 @@ set ignorecase
 set smartcase " Smart case in search patterns when 'ignorecase' is on
 set incsearch " Incremental search
 set hlsearch  " highlight matches
+set hl=l:Visual " make highlights easier to see
 
 " Still trying to figure out if the mouse is usefull.  Messes up copy paste from terminal
 " set mouse=nv
@@ -152,10 +153,11 @@ function! RunSpec(args)
     if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
       :call CdRoot()
       let spec = b:rails_root . "/script/spec"
+      let cmd = ":!" . spec . ' ' . expand("%:p") . " -cfn --debugger --loadby mtime --backtrace " . a:args
     else
-      let spec = "spec"
+      let spec = "rspec"
+      let cmd = ":!" . spec . ' ' . expand("%:p") . " -cfd " . a:args
     end
-    let cmd = ":!" . spec . ' ' . expand("%:p") . " -cfn --debugger --loadby mtime " . a:args
     execute cmd
 endfunction
 
@@ -187,3 +189,7 @@ map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyP
 
 " Insert debugger into code at cursor
 map <leader>rd A<cr>require 'ruby-debug'; debugger; 1;
+
+" central store for swap files instead of having them sprinkled throughout my projects
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//

@@ -10,6 +10,7 @@ sub file_names
         .bashrc
         bash_completion
         .dir_colors
+        .gemrc
         .gitconfig
         .gitignore
         .git-completion.sh
@@ -30,6 +31,7 @@ sub file_names
         bin/tree.sh
         bin/tpm
         bin/tpc
+        bin/hub
     };
 }
 

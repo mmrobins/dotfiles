@@ -32,3 +32,7 @@
     mergeoptions = --no-ff
 [branch "next"]
     mergeoptions = --no-ff
+[branch "2.6.x"]
+    mergeoptions = --no-ff
+[branch "2.6.next"]
+    mergeoptions = --no-ff
