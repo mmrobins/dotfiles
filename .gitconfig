@@ -3,6 +3,7 @@
     email = matt@puppetlabs.com
 [core]
     excludesfile = ~/.gitignore
+    whitespace = trailing-space,space-before-tab
 [color]
     diff = auto
     status = auto
@@ -36,3 +37,5 @@
     mergeoptions = --no-ff
 [branch "2.6.next"]
     mergeoptions = --no-ff
+[apply]
+    whitespace = fix
