@@ -97,7 +97,8 @@ local red_cp="%{$fg[red]%}]%{$reset_color%}"
 local path_p="${red_op}%{$fg[green]%}%~${red_cp}"
 local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
 local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %T${red_cp}"
-PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)-$(~/.rvm/bin/rvm-prompt)
+local rvm_prompt_info=`~/.rvm/bin/rvm-prompt`
+PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)$(~/.rvm/bin/rvm-prompt i v p g)
 ╰─ %# '
 local cur_cmd="${red_op}%_${red_cp}"
 PROMPT2="${cur_cmd}> "
@@ -117,13 +118,7 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
-# Setup Amazon EC2 Command-Line Tools
-export EC2_HOME=~/.ec2
-export PATH=$PATH:$EC2_HOME/bin
-export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
-export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-
+# load rvm (Ruby Version Manager)
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
 compdef _git hub
