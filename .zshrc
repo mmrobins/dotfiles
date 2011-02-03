@@ -50,6 +50,7 @@ fi
 # export DISABLE_LS_COLORS="true"
 
 source ~/.sh_shared
+# source ~/.sh_aliases
 
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)

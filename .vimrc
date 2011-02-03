@@ -181,7 +181,7 @@ map <leader>cr <esc>:call CdRoot()<CR>
 map <leader>ack <esc>:call CdRoot()<CR>:Ack
 
 " A hackish attempt at doing an autoalign like I used to have at Rentrak
-map  <leader>a <esc>?^$\\|{<CR>/=><CR>V/^$\\|}<CR>?=><CR>:Align =><CR>/nofindme<CR>
+map  <leader>a <esc>?^$\\|{\\|(<CR>/=><CR>V/^$\\|}\\|)<CR>?=><CR>:Align =><CR>/nofindme<CR>
 "map! <leader>a <esc>?/^$<CR>V/^$<CR>:Align =><CR>i
 
 "map <leader>pr A<cr>require 'profiler'<cr>Profiler__::start_profile<cr>Profiler__::stop_profile<cr>Profiler__::print_profile($stderr)<ESC>
@@ -189,6 +189,9 @@ map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyP
 
 " Insert debugger into code at cursor
 map <leader>rd A<cr>require 'ruby-debug'; debugger; 1;
+
+" Reviewed by lines
+map <leader>rbn I<cr>Reviewed-by: Nick Lewis<esc>
 
 " central store for swap files instead of having them sprinkled throughout my projects
 set backupdir=~/.vim/backup//
