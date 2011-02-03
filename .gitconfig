@@ -29,6 +29,7 @@
     enabled = true
 [merge]
     log = true
+    conflictstyle = diff3
 [branch "master"]
     mergeoptions = --no-ff
 [branch "next"]

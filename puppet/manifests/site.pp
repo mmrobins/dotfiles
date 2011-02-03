@@ -21,6 +21,8 @@ import 'secrets.pp'
 class nginx_wordpress_server {
   $nginx_includes = '/etc/nginx/includes'
   $nginx_conf = '/etc/nginx/conf.d'
+  # necessary for wordpress twitter tools
+  package { [php5-curl] : ensure => installed }
   include nginx
   include nginx::fcgi
 
@@ -54,7 +56,7 @@ node default inherits basenode {
 }
 
 node basenode {
-  package { [screen, zsh, bash-completion, exuberant-ctags, tree] : ensure => installed }
+  package { [screen, zsh, bash-completion, exuberant-ctags, tree, locate] : ensure => installed }
   include ack
 }
 
