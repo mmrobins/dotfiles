@@ -1,3 +1,2 @@
 .*.sw[op]
 puppet/manifests/secrets.pp
-.vim/swp/*
