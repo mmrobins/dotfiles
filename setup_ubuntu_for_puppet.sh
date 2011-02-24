@@ -1,6 +1,6 @@
 set -u
 set -e
-sudo apt-get install git-core ruby libopenssl-ruby -y
+sudo apt-get install git-core ruby libopenssl-ruby rubygems -y
 if [ ! -d ~/config-files ]; then
   git clone git://github.com/mmrobins/config-files.git ~/config-files
 fi
