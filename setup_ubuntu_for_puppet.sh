@@ -14,4 +14,5 @@ if [ ! -d ~/work/facter ]; then
 fi
 export PATH=$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/bin:/usr/lib/git-core:/usr/local/bin:/usr/local/sbin:$PATH
 export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib
-sudo env RUBYLIB=$RUBYLIB PATH=$PATH puppet master --debug -v --mkusers
+sudo env RUBYLIB=$RUBYLIB PATH=$PATH puppet agent --onetime --debug -v --mkusers
+sudo env RUBYLIB=$RUBYLIB PATH=$PATH puppet apply -v --modulepath=$HOME/config-files/puppet/modules/ $HOME/config-files/puppet/manifests/site.pp
