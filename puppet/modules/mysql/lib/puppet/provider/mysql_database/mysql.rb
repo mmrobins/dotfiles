@@ -1,6 +1,14 @@
 require 'puppet/provider/package'
 require 'rubygems'
-require 'aws/s3'
+
+def desire(lib)
+  require lib
+  true
+rescue LoadError
+  false
+end
+
+desire 'aws/s3'
 
 Puppet::Type.type(:mysql_database).provide(:mysql,
     :parent => Puppet::Provider::Package) do
