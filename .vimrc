@@ -32,6 +32,7 @@ set sw=2 " Shift width
 set smarttab
 set ai "Auto indent
 "set list listchars=tab:>-, trail:., extends:>, precedes:<, eol:$
+" show trailing whitespace without being annoying
 set list listchars=tab:>-,trail:.,extends:>,precedes:<
 
 " file name completion
