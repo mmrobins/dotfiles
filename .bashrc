@@ -4,6 +4,7 @@ source ~/.sh_aliases
 
 # the up and down arrows and function keys weren't working in screen only on MAC
 export TERM=linux
+export PUPPET_ENABLE_ASSERTIONS=true
 
 # Keep more history
 export HISTSIZE=1000000
@@ -86,3 +87,5 @@ function cdtt ()
 }
 
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+
+complete -C ~/.completion/brew_completion.rb -o default brew

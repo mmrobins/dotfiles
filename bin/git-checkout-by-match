@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'active_resource'
+
+branch_match = ARGV[0]
+
+branches = `git show-ref --heads`.
+  scan(/^\S+ refs\/heads\/(\S+)$/).
+  map { |a| a.first }
+
+matching_branches = branches.select {|b| b =~ /#{branch_match}/}
+
+if matching_branches.size == 0
+  puts "no branches matched"
+  exit
+end
+
+if matching_branches.size > 1
+  puts "You have more than 1 matching branch, using the first"
+  matching_branches.each do |b|
+    puts "    #{b}"
+  end
+end
+
+# If we're looking for something with numbers let's assume it's a ticket
+# and look it up in redmine.  This regex could obviously be tighter,
+# but works for me
+system("ticket-status #{branch_match}") if branch_match =~ /^\d+/
+
+`git checkout #{matching_branches.first}`

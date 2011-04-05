@@ -60,7 +60,6 @@ set hl=l:Visual " make highlights easier to see
 " set mouse=nv
 
 " Buffers
-map <leader>be :BufExplorer<cr>
 map <leader>bp :BufExplorer<cr>j<cr>
 autocmd BufEnter * lcd %:p:h:gs/ /\\ / " working directory is whatever file you're working in, not root
 set hidden " allow unsaved hidden buffers
@@ -197,3 +196,7 @@ map <leader>rbn I<cr>Reviewed-by: Nick Lewis<esc>
 " central store for swap files instead of having them sprinkled throughout my projects
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
+
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1

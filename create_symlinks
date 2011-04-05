@@ -26,12 +26,13 @@ sub file_names
         .vimrc_files
         .zshrc
         bin/diff_painter.pl
-        bin/find_failed_tests
-        bin/test_all_parallel
         bin/tree.sh
         bin/tpm
         bin/tpc
         bin/hub
+        bin/git-checkout-by-match
+        bin/redmine-ticket-status
+        .completion
     };
 }
 

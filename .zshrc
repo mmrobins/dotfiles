@@ -4,6 +4,7 @@
 
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
+export PUPPET_ENABLE_ASSERTIONS=true
 
 # Completion
 unsetopt menu_complete   # do not autoselect the first completion entry
@@ -50,7 +51,7 @@ fi
 # export DISABLE_LS_COLORS="true"
 
 source ~/.sh_shared
-# source ~/.sh_aliases
+source ~/.sh_aliases
 
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)

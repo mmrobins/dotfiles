@@ -60,7 +60,7 @@ alias nf='find . -cmin -5 -ls'
 alias puppetsudo="sudo env RUBYLIB=$RUBYLIB PATH=$PATH"
 
 # Most frequent committers
-alias gitcommiters='git ls-files | xargs -n1 git blame | ruby -n -e "$_ =~ /^.*\((.*?)\s[\d]{4}/; puts $1.strip" | sort -f | uniq -c | sort -n'
+alias gitcommiters="git ls-files | xargs -n1 git blame | ruby -n -e \"$_ =~ /^.*\((.*?)\s[\d]{4}/; puts $1.strip\" | sort -f | uniq -c | sort -n"
 
 # I always forget the damned flags for this
 alias untargz="tar zxf"
@@ -97,3 +97,8 @@ function tjh () # tmux join-pane horizontal
     tmux join-pane -s ${1}.0
 }
 
+alias cdp='cd ~/work/puppet'
+alias cdd='cd ~/work/puppet-dashboard'
+alias rt='redmine-ticket-status'
+alias gcot='git-checkout-by-match'
+alias gbd='git-delete-ticket-branch'

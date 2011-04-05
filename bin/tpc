@@ -4,5 +4,7 @@ shift 1
 dir="${HOME}/work/puppet/test_data/${name}c"
 cp ~/namespaceauth.conf "${dir}/namespaceauth.conf"
 cp ~/auth.conf "${dir}/auth.conf"
-puppetd --test --debug --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster --report $@
+puppetd --listen true --debug --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster --report $@
+#puppetd --test --debug --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster --report $@
+#puppetd --test --trace --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster $@
 #puppetd --test --confdir=${dir} --vardir=${dir} --server puppetmaster $@
