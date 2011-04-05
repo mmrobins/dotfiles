@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'active_resource'
+
+ticket_number = ARGV[0]
+secrets = YAML::load(File.open("/Users/matthewrobinson/config-files/.secrets"))
+
+branches = `git show-ref --heads`.
+  scan(/^\S+ refs\/heads\/(\S+)$/).
+  map { |a| a.first }
+
+# Issue model on the client side
+class Issue < ActiveResource::Base
+  secrets = YAML::load(File.open("#{ENV['HOME']}/config-files/.secrets"))
+  self.site     = 'http://projects.puppetlabs.com/'
+  self.user     = 'mattr'
+  self.password = secrets[:redmine_password]
+end
+
+issue = Issue.find(ticket_number)
+matching_branches = branches.select {|b| b =~ /#{ticket_number}/}
+branch_field = issue.custom_fields.select {|f| f.name == "Branch"}
+
+puts "##{ticket_number} - #{issue.subject}"
+puts "matchbranch: #{matching_branches.join(' ')}"
+puts "status:      #{issue.status.name}"
+puts "author:      #{issue.author.name}"
+puts "project:     #{issue.project.name}"
+puts "created:     #{issue.created_on}"
+puts "assigned_to: #{issue.assigned_to.name}" if issue.responds_to?(:assigned_to)
+puts "targetver:   #{issue.fixed_version.name}" if issue.responds_to?(:fixed_version)
+puts "branch:      #{branch_field.first.value}" unless branch_field.empty?
+puts "description:\n#{issue.description.gsub(/^/, "        ")}" if issue.description
