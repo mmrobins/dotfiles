@@ -34,9 +34,9 @@ if [ -f ~/.bash_specific_to_local ]; then
     . ~/.bash_specific_to_local
 fi
 
-# if [ -f ~/.shrc ]; then
-#     . ~/.shrc
-# fi
+if [ -f ~/.shrc ]; then
+    . ~/.shrc
+fi
 
 export RLWRAP_HOME="${HOME}/.rlwrap_home"
 
