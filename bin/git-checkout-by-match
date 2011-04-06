@@ -26,6 +26,6 @@ end
 # If we're looking for something with numbers let's assume it's a ticket
 # and look it up in redmine.  This regex could obviously be tighter,
 # but works for me
-system("ticket-status #{branch_match}") if branch_match =~ /^\d+/
+system("redmine-ticket-status #{branch_match}") if branch_match =~ /^\d+/
 
 `git checkout #{matching_branches.first}`
