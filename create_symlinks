@@ -30,6 +30,7 @@ sub file_names
         bin/tree.sh
         bin/tpm
         bin/tpc
+        bin/tpcert
         bin/hub
         bin/git-checkout-by-match
         bin/redmine-ticket-status
