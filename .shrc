@@ -1,2 +1,2 @@
-export PATH=$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:/usr/local/bin:/usr/local/sbin:$HOME/work/puppet-module/bin:$PATH
-export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/puppet-module/lib:$RUBYLIB
+export PATH=$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:/usr/local/bin:/usr/local/sbin:$HOME/work/puppet-module-tool/bin:$PATH
+export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/puppet-module-tool/lib:$RUBYLIB

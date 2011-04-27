@@ -13,10 +13,6 @@ setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
 
-# MacPorts Installer addition: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
 WORDCHARS=''
 
 autoload -U compinit
@@ -50,7 +46,7 @@ fi
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
 
-source ~/.sh_shared
+source ~/.shrc
 source ~/.sh_aliases
 
 # Will return the current branch name
