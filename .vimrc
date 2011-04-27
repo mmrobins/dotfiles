@@ -1,6 +1,6 @@
 " tpopes pathogen makes install vim plugins easier
 call pathogen#runtime_append_all_bundles()
-exe "set path=".expand("$PATH") 
+exe "set path=".expand("$PATH")
 
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
@@ -34,6 +34,10 @@ set ai "Auto indent
 "set list listchars=tab:>-, trail:., extends:>, precedes:<, eol:$
 " show trailing whitespace without being annoying
 set list listchars=tab:>-,trail:.,extends:>,precedes:<
+
+" Remove trailing whitespace whenever I save
+" But it makes it hard to do separate whitespace commits
+" autocmd BufWritePre * :%s/\s\+$//e
 
 " file name completion
 set wildmenu
@@ -200,3 +204,7 @@ set directory=~/.vim/swp//
 " Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+
+" Mac Clipboard copy and paste
+map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
+map <leader>+ :r ~/tmp/vimclipboard<cr>
