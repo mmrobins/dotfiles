@@ -101,7 +101,7 @@ local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
 local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %T${red_cp}"
 local rvm_prompt_info=`~/.rvm/bin/rvm-prompt`
 PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)$(~/.rvm/bin/rvm-prompt i v p g)
-╰─ %# '
+╰─ [%?]%# '
 local cur_cmd="${red_op}%_${red_cp}"
 PROMPT2="${cur_cmd}> "
 # git theming default: Variables for theming the git info prompt
