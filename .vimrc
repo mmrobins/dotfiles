@@ -201,9 +201,10 @@ map <leader>rbn I<cr>Reviewed-by: Nick Lewis<esc>
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
-" Syntastic
+" Syntastic syntax checking on save
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes = ['prolog']
 
 " Mac Clipboard copy and paste
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
