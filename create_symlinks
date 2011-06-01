@@ -2,6 +2,7 @@
 
 use strict;
 use File::Copy;
+use File::Path qw(make_path);
 
 sub file_names
 {
@@ -60,6 +61,7 @@ sub file_links
 
 sub link_files
 {
+    make_path(glob('~/bin'));
     my %file_links = file_links();
     my $backup_date = get_timestamp();
 

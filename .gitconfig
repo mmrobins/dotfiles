@@ -9,7 +9,7 @@
     status = auto
     branch = auto
 [alias]
-    ff = pull --ff-only
+    ff = pull -ff-only -ff
     st = status
     ci = commit
     co = checkout
@@ -27,7 +27,7 @@
 [status]
     submodulesummary = true
 [rerere]
-    enabled = false
+    enabled = true
 [merge]
     log = true
     conflictstyle = diff3

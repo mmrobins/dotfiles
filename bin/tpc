@@ -8,4 +8,4 @@ dir="${HOME}/work/puppet/test_data/${name}c"
 #puppetd --test --debug --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster --report $@
 #puppetd --test --trace --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster $@
 
-puppet agent --onetime --debug --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster $@
+puppet agent -v --onetime --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster $@
