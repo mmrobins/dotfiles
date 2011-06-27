@@ -31,6 +31,7 @@ sub file_names
         bin/tree.sh
         bin/tpm
         bin/tpc
+        bin/tpi
         bin/tpcert
         bin/hub
         bin/git-checkout-by-match

@@ -2,6 +2,10 @@
 
 source ~/.sh_aliases
 
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
 # the up and down arrows and function keys weren't working in screen only on MAC
 export TERM=linux
 export PUPPET_ENABLE_ASSERTIONS=true
