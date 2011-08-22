@@ -2,5 +2,5 @@
 name=$1
 shift 1
 dir="${HOME}/work/puppet/test_data/${name}c"
-tpc $name
-puppet inspect --archive_files --certname ${name} --verbose --debug --confdir=${dir} --vardir=${dir} --server puppetmaster --report $@
+tpc $name $@
+puppet inspect --archive_files --certname ${name} --verbose --debug --confdir=${dir} --vardir=${dir} --server puppetmaster --report --trace $@

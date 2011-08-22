@@ -9,7 +9,7 @@
     status = auto
     branch = auto
 [alias]
-    ff = pull -ff-only -ff
+    ff = pull --ff-only --ff
     st = status
     ci = commit
     co = checkout
@@ -31,17 +31,5 @@
 [merge]
     log = true
     conflictstyle = diff3
-[branch "master"]
-    mergeoptions = --no-ff
-[branch "next"]
-    mergeoptions = --no-ff
-[branch "2.6.x"]
-    mergeoptions = --no-ff
-[branch "2.6.next"]
-    mergeoptions = --no-ff
-[branch "2.7.next"]
-    mergeoptions = --no-ff
-[branch "2.7.x"]
-    mergeoptions = --no-ff
 [apply]
     whitespace = fix
