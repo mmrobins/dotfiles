@@ -2,7 +2,7 @@
 
 source ~/.sh_aliases
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
+if `which brew` && [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
@@ -90,6 +90,5 @@ function cdtt ()
     cd ${BASH_REMATCH[1]}
 }
 
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-
 complete -C ~/.completion/brew_completion.rb -o default brew
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
