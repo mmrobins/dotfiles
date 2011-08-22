@@ -2,6 +2,8 @@
 name=$1
 shift 1
 dir="${HOME}/work/puppet/test_data/${name}c"
+mkdir -p "${dir}/manifests"
+
 #cp ~/namespaceauth.conf "${dir}/namespaceauth.conf"
 #cp ~/auth.conf "${dir}/auth.conf"
 #puppetd --listen true --debug --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster --report $@

@@ -14,6 +14,8 @@ IRB.conf[:EVAL_HISTORY]  = 300
 $LOAD_PATH.unshift(File.expand_path('~/.ruby/lib'),File.expand_path('~/.ruby'))
 $LOAD_PATH.uniq!
 
+require 'pp'
+
 def desire(lib)
   require lib
   true
@@ -69,34 +71,10 @@ class IRB::Irb
   end
 end
 
-class Class
-  def inspect_filter(method = :inspect)
-    alias_method "unfiltered_#{method}", method unless method_defined?("unfiltered_#{method}")
-    define_method(method) do
-      filtered_caller = caller.reject {|t| t =~ /`\w*inspect\w*'/}
-      if filtered_caller.first(5).any? {|t| t =~ /\birb\.?r[bc]:\d+:in `output_value'$/}
-        $caller = filtered_caller
-        if ENV['TERM'] && ENV['TERM'] != 'dumb'
-          return yield(send("unfiltered_#{method}"))
-        end
-      end
-      send "unfiltered_#{method}"
-    end
-  end
-end
-
-if RUBY_VERSION =~ /^1\.8/
-  [String, Numeric, TrueClass, FalseClass].each do |klass|
-    klass.inspect_filter {|text| "\e[1;35m#{text}\e[0m"}
-  end
-  Array.inspect_filter do |text|
-    text[0] == ?% ?  "\e[1;35m#{text}\e[0m" : text
-  end
-  NilClass.inspect_filter {|text| "\e[1;30m#{text}\e[0m"}
-  Symbol.inspect_filter {|text| "\e[1;36m#{text}\e[0m"}
-  Module.inspect_filter {|text| "\e[1;32m#{text}\e[0m"}
-  Object.inspect_filter do |text|
-    text.gsub(/#<([A-Z]\w*(?:::\w+)*)/,"#<\e[1;32m\\1\e[0m")
+# convenience method for a shorter, more relevant list of methods on an object
+class Object
+  def my_methods
+    methods.sort - Object.methods
   end
 end
 

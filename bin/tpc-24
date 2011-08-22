@@ -1,7 +1,0 @@
-name=$1
-dir=/Users/markus/projects/puppet/test_data/${name}c
-shift 1
-#sudo ruby install.rb &> /dev/null
-#sudo chmod -R +x /Library/Ruby/Site/1.8/
-RUBYLIB=lib:/Users/markus/projects/facter/lib bin/puppetd --no-daemonize --debug --trace --verbose --confdir=${dir} --vardir=${dir} --server localhost $@
-
