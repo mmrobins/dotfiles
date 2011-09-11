@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
+require 'fileutils'
+require 'yaml'
+require 'digest/md5'
 
 # from ptools https://github.com/djberg96/ptools/blob/master/lib/ptools.rb
 class File
@@ -10,11 +13,20 @@ class File
   end
 end
 
+class Array
+  def sum
+    inject(:+)
+  end
+end
+
+git_head = `git rev-parse HEAD`.chomp
+exit unless $?.exitstatus == 0
+
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: git-rank-contributors-by-blame [options]"
 
-  options[:exclude]  = []
+  options[:exfile]  = []
   options[:exline]   = []
   options[:exauthor] = []
 
@@ -23,7 +35,7 @@ OptionParser.new do |opts|
     options[:author] << author
   end
 
-  opts.on("-b", "--exclude-author [EXCLUDE]", "Exclude files or directories") do |exauthor|
+  opts.on("-b", "--exclude-author [EXCLUDE]", "Exclude authors") do |exauthor|
     options[:exauthor] << exauthor
   end
 
@@ -32,8 +44,8 @@ OptionParser.new do |opts|
     options[:all_authors] << author
   end
 
-  opts.on("-x", "--exclude-file [EXCLUDE]", "Exclude files or directories") do |exclude|
-    options[:exclude] << exclude
+  opts.on("-x", "--exclude-file [EXCLUDE]", "Exclude files or directories") do |exfile|
+    options[:exfile] << exfile
   end
 
   opts.on("-y", "--exclude-line [EXCLUDE]", "Exclude lines matching a string") do |exline|
@@ -62,34 +74,49 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-authors = Hash.new {|h, k| h[k] = h[k] = Hash.new(0)}
-files = Dir.glob("**/*").reject { |f| !File.file? f or f =~ /\.git/ or File.binary? f }
+cached_data_dir = File.expand_path("~/.git_rank/#{git_head}")
+FileUtils.mkdir_p(cached_data_dir)
 
-options[:exclude].each do |exclude|
-  files.reject! { |f| f =~ /^#{exclude}/ }
+# only count the options that affect line counts
+options_digest = Digest::MD5.hexdigest(options[:exline].to_s)
+
+cached_author_data = File.join(cached_data_dir, options_digest)
+
+if File.exist? cached_author_data
+  authors = YAML::load( File.open(cached_author_data) )
+else
+  authors = Hash.new {|h, k| h[k] = h[k] = Hash.new(0)}
+  files = Dir.glob("**/*").reject { |f| !File.file? f or f =~ /\.git/ or File.binary? f }
+
+  files.each do |file|
+    lines = `git blame -w #{file}`
+
+    puts "git blame failed on #{file}" unless $?.exitstatus == 0
+
+    lines.each do |line|
+      next if options[:exline].any? { |exline| line =~ /#{exline}/ }
+
+      line =~ / \((.*?)\d/
+      raise line unless $1
+      authors[$1.strip][file] += 1
+    end
+  end
 end
 
-files.each do |file|
-  lines = `git blame -w #{file}`
+File.open(File.join(cached_data_dir, options_digest), 'w') do |f|
+  f.puts authors.to_yaml
+end
 
-  unless $?.exitstatus == 0
-    puts "git blame failed on #{file}"
-  end
-
-  lines.each do |line|
-    next if options[:exline].any? { |exline| line =~ /#{exline}/ }
-
-    line =~ / \((.*?)\d/
-    raise line unless $1
-    authors[$1.strip][file] += 1
-    authors[$1.strip]['total'] += 1
+authors.each do |author, line_counts|
+  line_counts.each do |file, count|
+    line_counts.delete(file) if options[:exfile].any? {|ex| file =~ /^#{ex}/}
   end
 end
 
 def print_author_breakdown(author_name, author_data, padding_size=nil)
   padding_size ||= author_name.size
   padding = ' ' * padding_size
-  total = author_data.delete('total')
+  total = author_data.values.sum
   author_data.sort_by {|k, v| v }.each do |file, count|
     puts "#{padding} #{count} #{file}"
   end
@@ -98,7 +125,7 @@ end
 
 if options[:author] and !options[:all_authors]
   options[:author].each do |author_name|
-    puts "#{author_name} #{authors[author_name]['total']}"
+    puts "#{author_name} #{authors[author_name].values.sum}"
 
     print_author_breakdown(author_name, authors[author_name])
   end
@@ -107,13 +134,14 @@ else
 
   max_author = authors.keys.max {|a,b| a.length <=> b.length }.length
 
-  authors.sort_by {|k, v| v['total'] }.each do |author, line_counts|
+  authors.sort_by {|k, v| v.values.sum }.each do |author, line_counts|
     padding = ' ' * (max_author - author.size)
 
-    puts "#{author}#{padding} #{line_counts['total']}"
+    puts "#{author}#{padding} #{line_counts.values.sum}"
 
     if options[:all_authors]
       print_author_breakdown(author, line_counts, max_author)
     end
   end
 end
+
