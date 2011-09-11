@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: git-rank-contributors-by-blame [options]"
+
+  opts.on("-a", "--author [AUTHOR]", "Author breakdown by file") do |author|
+    options[:author] = author
+  end
+
+  opts.on("-x", "--exclude [EXCLUDE]", "Exclude files or directories") do |exclude|
+    options[:exclude] ||= []
+    options[:exclude] << exclude
+  end
+end.parse!
+
+authors = Hash.new {|h, k| h[k] = h[k] = Hash.new(0)}
+files = Dir.glob("**/*").reject { |f| !File.file? f or f =~ /\.git/ }
+
+options[:exclude].each do |exclude|
+  files.reject! { |f| f =~ /^#{exclude}/ }
+end if options[:exclude]
+
+files.each do |f|
+  lines = `git blame -w #{f}`
+  unless lines.respond_to? 'each'
+    puts f
+    exit
+  end
+  lines.each do |l|
+    l =~ / \((.*?)\d/
+    raise l unless $1
+    authors[$1.strip][f] += 1
+    authors[$1.strip]['total'] += 1
+  end
+end
+
+if options[:author]
+  author_name = options[:author]
+  author = authors[author_name]
+  puts "#{author_name} #{author.delete('total')}"
+
+  author.sort_by {|k, v| v }.each do |file, count|
+    puts "#{' ' * author_name.size} #{count} #{file}"
+  end
+else
+  max_author = authors.keys.max {|a,b| a.length <=> b.length }.length
+
+  authors.sort_by {|k, v| v['total'] }.each do |author, line_counts|
+    padding = ' ' * (max_author - author.size)
+
+    puts "#{author}#{padding} #{line_counts['total']}"
+  end
+end
