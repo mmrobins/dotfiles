@@ -28,6 +28,27 @@ OptionParser.new do |opts|
     options[:exclude] ||= []
     options[:exclude] << exclude
   end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+
+    puts <<-HEREDOC
+
+    Examples:
+
+    # Shows authors and how many lines they're
+    # blamed for in all files in this directory
+    git-rank-contributors-by-blame
+
+    # Shows file breakdown for all authors
+    # and excludes files in a few directories
+    git-rank-contributors-by-blame -z -x spec/fixtures -x vendor
+
+    # Shows file breakdown for just a few authors
+    git-rank-contributors-by-blame -a "Bob Johnson" -a prince
+    HEREDOC
+    exit
+  end
 end.parse!
 
 authors = Hash.new {|h, k| h[k] = h[k] = Hash.new(0)}
@@ -60,7 +81,7 @@ def print_author_breakdown(author_name, author_data, padding_size=nil)
   end
 end
 
-if options[:author]
+if options[:author] and !options[:all_authors]
   options[:author].each do |author_name|
     puts "#{author_name} #{authors[author_name].delete('total')}"
 
