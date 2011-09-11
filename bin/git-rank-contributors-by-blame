@@ -2,6 +2,14 @@
 
 require 'optparse'
 
+# from ptools https://github.com/djberg96/ptools/blob/master/lib/ptools.rb
+class File
+  def self.binary?(file)
+    s = (File.read(file, File.stat(file).blksize) || "").split(//)
+    ((s.size - s.grep(" ".."~").size) / s.size.to_f) > 0.30
+  end
+end
+
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: git-rank-contributors-by-blame [options]"
@@ -17,7 +25,7 @@ OptionParser.new do |opts|
 end.parse!
 
 authors = Hash.new {|h, k| h[k] = h[k] = Hash.new(0)}
-files = Dir.glob("**/*").reject { |f| !File.file? f or f =~ /\.git/ }
+files = Dir.glob("**/*").reject { |f| !File.file? f or f =~ /\.git/ or File.binary? f }
 
 options[:exclude].each do |exclude|
   files.reject! { |f| f =~ /^#{exclude}/ }
