@@ -9,3 +9,14 @@
   file count cutoff so you can ignore files with 1 or 2 lines
   allow user aliases - like for luke - so you can combine users
   make whitespace, file copying and line moving options (git -w -M -C)
+  make argument for what directory to do instead of just doing pwd
+  option to turn of cache
+  option to clear cache
+  always surpress not yet commited.  maybe
+  ignore blank lines
+
+* git rank between commits
+  probably just modify git-rank-contributors
+
+* make git tools repo
+* maybe make git subcommands instead
