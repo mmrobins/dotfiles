@@ -1,0 +1,8 @@
+--type-set
+less=less
+
+--type-set
+coffee=coffee
+
+--type-set
+markdown=md,markdown
