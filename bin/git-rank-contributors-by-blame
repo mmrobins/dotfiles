@@ -14,9 +14,17 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: git-rank-contributors-by-blame [options]"
 
+  options[:exclude]  = []
+  options[:exline]   = []
+  options[:exauthor] = []
+
   opts.on("-a", "--author [AUTHOR]", "Author breakdown by file") do |author|
     options[:author] ||= []
     options[:author] << author
+  end
+
+  opts.on("-b", "--exclude-author [EXCLUDE]", "Exclude files or directories") do |exauthor|
+    options[:exauthor] << exauthor
   end
 
   opts.on("-z", "--all-authors-breakdown", "All authors breakdown by file") do |author|
@@ -24,9 +32,12 @@ OptionParser.new do |opts|
     options[:all_authors] << author
   end
 
-  opts.on("-x", "--exclude [EXCLUDE]", "Exclude files or directories") do |exclude|
-    options[:exclude] ||= []
+  opts.on("-x", "--exclude-file [EXCLUDE]", "Exclude files or directories") do |exclude|
     options[:exclude] << exclude
+  end
+
+  opts.on("-y", "--exclude-line [EXCLUDE]", "Exclude lines matching a string") do |exline|
+    options[:exline] << exline
   end
 
   opts.on_tail("-h", "--help", "Show this message") do
@@ -56,19 +67,21 @@ files = Dir.glob("**/*").reject { |f| !File.file? f or f =~ /\.git/ or File.bina
 
 options[:exclude].each do |exclude|
   files.reject! { |f| f =~ /^#{exclude}/ }
-end if options[:exclude]
+end
 
-files.each do |f|
-  lines = `git blame -w #{f}`
+files.each do |file|
+  lines = `git blame -w #{file}`
 
   unless $?.exitstatus == 0
-    puts "git blame failed on #{f}"
+    puts "git blame failed on #{file}"
   end
 
-  lines.each do |l|
-    l =~ / \((.*?)\d/
-    raise l unless $1
-    authors[$1.strip][f] += 1
+  lines.each do |line|
+    next if options[:exline].any? { |exline| line =~ /#{exline}/ }
+
+    line =~ / \((.*?)\d/
+    raise line unless $1
+    authors[$1.strip][file] += 1
     authors[$1.strip]['total'] += 1
   end
 end
@@ -76,24 +89,28 @@ end
 def print_author_breakdown(author_name, author_data, padding_size=nil)
   padding_size ||= author_name.size
   padding = ' ' * padding_size
+  total = author_data.delete('total')
   author_data.sort_by {|k, v| v }.each do |file, count|
     puts "#{padding} #{count} #{file}"
   end
+  puts "#{author_name}#{' ' * (padding_size - author_name.size)} #{total}"
 end
 
 if options[:author] and !options[:all_authors]
   options[:author].each do |author_name|
-    puts "#{author_name} #{authors[author_name].delete('total')}"
+    puts "#{author_name} #{authors[author_name]['total']}"
 
     print_author_breakdown(author_name, authors[author_name])
   end
 else
+  authors.reject! {|k, v| options[:exauthor].include? k}
+
   max_author = authors.keys.max {|a,b| a.length <=> b.length }.length
 
   authors.sort_by {|k, v| v['total'] }.each do |author, line_counts|
     padding = ' ' * (max_author - author.size)
 
-    puts "#{author}#{padding} #{line_counts.delete( 'total' )}"
+    puts "#{author}#{padding} #{line_counts['total']}"
 
     if options[:all_authors]
       print_author_breakdown(author, line_counts, max_author)
