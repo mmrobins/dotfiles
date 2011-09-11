@@ -15,7 +15,13 @@ OptionParser.new do |opts|
   opts.banner = "Usage: git-rank-contributors-by-blame [options]"
 
   opts.on("-a", "--author [AUTHOR]", "Author breakdown by file") do |author|
-    options[:author] = author
+    options[:author] ||= []
+    options[:author] << author
+  end
+
+  opts.on("-z", "--all-authors-breakdown", "All authors breakdown by file") do |author|
+    options[:all_authors] ||= []
+    options[:all_authors] << author
   end
 
   opts.on("-x", "--exclude [EXCLUDE]", "Exclude files or directories") do |exclude|
@@ -33,10 +39,11 @@ end if options[:exclude]
 
 files.each do |f|
   lines = `git blame -w #{f}`
-  unless lines.respond_to? 'each'
-    puts f
-    exit
+
+  unless $?.exitstatus == 0
+    puts "git blame failed on #{f}"
   end
+
   lines.each do |l|
     l =~ / \((.*?)\d/
     raise l unless $1
@@ -45,13 +52,19 @@ files.each do |f|
   end
 end
 
-if options[:author]
-  author_name = options[:author]
-  author = authors[author_name]
-  puts "#{author_name} #{author.delete('total')}"
+def print_author_breakdown(author_name, author_data, padding_size=nil)
+  padding_size ||= author_name.size
+  padding = ' ' * padding_size
+  author_data.sort_by {|k, v| v }.each do |file, count|
+    puts "#{padding} #{count} #{file}"
+  end
+end
 
-  author.sort_by {|k, v| v }.each do |file, count|
-    puts "#{' ' * author_name.size} #{count} #{file}"
+if options[:author]
+  options[:author].each do |author_name|
+    puts "#{author_name} #{authors[author_name].delete('total')}"
+
+    print_author_breakdown(author_name, authors[author_name])
   end
 else
   max_author = authors.keys.max {|a,b| a.length <=> b.length }.length
@@ -59,6 +72,10 @@ else
   authors.sort_by {|k, v| v['total'] }.each do |author, line_counts|
     padding = ' ' * (max_author - author.size)
 
-    puts "#{author}#{padding} #{line_counts['total']}"
+    puts "#{author}#{padding} #{line_counts.delete( 'total' )}"
+
+    if options[:all_authors]
+      print_author_breakdown(author, line_counts, max_author)
+    end
   end
 end
