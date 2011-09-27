@@ -11,7 +11,8 @@ alias rm="rm -i"
 alias llast='less `ls -tr1 | tail -1`'
 #alias splitmp3="mp3splt -a -t 5.0 -d split_files -o @n_@f"
 alias splitmp3="mp3splt -a -t 5.0 -o @f/@n"
-alias ack="ack --all --follow --ignore-dir data --ignore-dir images"
+# better to use an ackrc
+#alias ack="ack --all --follow --ignore-dir data --ignore-dir images"
 
 
 # Version Control
@@ -104,3 +105,4 @@ alias rt='redmine-ticket-status'
 alias gcot='git-checkout-by-match'
 alias gbd='git-delete-ticket-branch'
 alias cdm='cd ~/work/marionette-collective'
+alias remove-trailing-whitespace='perl -p -i -e "s/\s+\n$/\n/g" `find . -type f | grep -v .git`'
