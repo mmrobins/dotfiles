@@ -14,6 +14,10 @@
   option to clear cache
   always surpress not yet commited.  maybe
   ignore blank lines
+  fix line filter to be regex, not just string
+  more explanation of program in help - mention caching and slow first run
+  heaven forbid, doc strings
+  total lines of code for all users - check against cloc
 
 * git rank between commits
   probably just modify git-rank-contributors

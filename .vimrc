@@ -204,7 +204,7 @@ set directory=~/.vim/swp//
 " Syntastic syntax checking on save
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes = ['prolog']
+let g:syntastic_disabled_filetypes = ['prolog', 'html']
 
 " Mac Clipboard copy and paste
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
