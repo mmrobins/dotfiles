@@ -209,3 +209,6 @@ let g:syntastic_disabled_filetypes = ['prolog', 'html']
 " Mac Clipboard copy and paste
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
 map <leader>+ :r ~/tmp/vimclipboard<cr>
+
+" LESS CSS syntax highlighting
+au BufNewFile,BufRead *.less set filetype=less
