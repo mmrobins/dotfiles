@@ -37,7 +37,7 @@ let g:colors_name = "adrian"
 
 " Normal is for the normal (unhighlighted) text and background.
 " NonText is below the last line (~ lines).
-highlight Normal                  guibg=Black      guifg=Green 
+highlight Normal                  guibg=Black      guifg=Green
 highlight Cursor                  guibg=Grey70     guifg=White
 highlight NonText                 guibg=Grey80
 highlight StatusLine     gui=bold guibg=DarkGrey   guifg=Orange
@@ -56,7 +56,7 @@ highlight Error                     ctermfg=White      ctermbg=Red     guifg=Whi
 highlight Todo                      ctermfg=Blue       ctermbg=Yellow  guifg=Blue     guibg=Yellow
 
 " Change the highlight of search matches (for use with :set hls).
-highlight Search                    ctermfg=Black      ctermbg=Yellow  guifg=Black    guibg=Yellow  
+highlight Search                    ctermfg=Black      ctermbg=Yellow  guifg=Black    guibg=Yellow
 
 " Change the highlight of visual highlight.
 highlight Visual      cterm=NONE    ctermfg=Black      ctermbg=LightGrey  gui=NONE    guifg=Black guibg=Grey70

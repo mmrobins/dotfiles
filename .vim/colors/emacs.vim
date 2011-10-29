@@ -5,7 +5,7 @@
 
 " This color scheme uses a White background. It's based on Bram's
 " morning theme, but doesn't try to work for non-GUI editing.
-" 
+"
 " It's supposed to look like the Emacs standard colors, at least
 " for C. But Emacs has different categories, so it's not very good.
 

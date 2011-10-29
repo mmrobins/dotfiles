@@ -9,7 +9,7 @@
 #  under the same terms as Perl itself.
 #
 # Larry(?)'s RCS header:
-#  RCSfile: rename,v   Revision: 4.1   Date: 92/08/07 17:20:30 
+#  RCSfile: rename,v   Revision: 4.1   Date: 92/08/07 17:20:30
 #
 # $RCSfile: rename,v $$Revision: 1.5 $$Date: 1998/12/18 16:16:31 $
 #
@@ -87,7 +87,7 @@ B<rename> S<[ B<-v> ]> S<[ B<-n> ]> S<[ B<-f> ]> I<perlexpr> S<[ I<files> ]>
 C<rename>
 renames the filenames supplied according to the rule specified as the
 first argument.
-The I<perlexpr> 
+The I<perlexpr>
 argument is a Perl expression which is expected to modify the C<$_>
 string in Perl for at least some of the filenames specified.
 If a given filename is not modified by the expression, it will not be

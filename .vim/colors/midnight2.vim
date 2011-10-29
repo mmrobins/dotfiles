@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:   Michael Brailsford <brailsmt@yahoo.com>
-" Date:			$Date: 2002/04/11 03:29:51 $ 
+" Date:			$Date: 2002/04/11 03:29:51 $
 " Version: 		$Revision: 1.4 $
 " Inspiration:	This colorscheme was inspired by midnight.vim.  It is a darker
 " 				version of it.  With some colors tweaked.
@@ -15,7 +15,7 @@
 "				like your monitor in a fog bank.  :)
 
 " your pick:
-set background=dark	
+set background=dark
 hi clear
 if exists("syntax_on")
     syntax reset
@@ -40,34 +40,34 @@ endfunction
 "}}}
 
 hi Cursor guifg=bg guibg=fg ctermfg=0 ctermbg=11
-"hi CursorIM	
+"hi CursorIM
 hi Directory gui=bold
 hi DiffAdd guifg=yellow3 guibg=darkgreen ctermbg=0
-"hi DiffChange	
-"hi DiffDelete	
-"hi DiffText	
+"hi DiffChange
+"hi DiffDelete
+"hi DiffText
 hi ErrorMsg	guibg=red3 ctermfg=1
-"hi VertSplit	
+"hi VertSplit
 hi Folded guibg=#00001a ctermbg=4 guifg=yellow3 ctermfg=11 gui=NONE
 hi FoldColumn guibg=steelblue3 ctermbg=14 guifg=navyblue ctermfg=11 gui=bold
-"hi IncSearch	
+"hi IncSearch
 hi LineNr guifg=yellow3 ctermfg=11
 hi ModeMsg guifg=yellow3 gui=bold
-"hi MoreMsg		
-"hi NonText		
-"hi Question	
+"hi MoreMsg
+"hi NonText
+"hi Question
 hi Search guibg=yellow3 guifg=bg
-"hi SpecialKey	
+"hi SpecialKey
 hi StatusLine guifg=steelblue3
 hi StatusLineNC guifg=steelblue4
-"hi Title		
+"hi Title
 hi Visual guifg=fg guibg=bg
-"hi VisualNOS	
-"hi WarningMsg	
-"hi WildMenu	
-"hi Menu		
-"hi Scrollbar	
-"hi Tooltip		
+"hi VisualNOS
+"hi WarningMsg
+"hi WildMenu
+"hi Menu
+"hi Scrollbar
+"hi Tooltip
 
 " syntax highlighting groups
 hi Comment guifg=chartreuse3 ctermfg=10
@@ -75,12 +75,12 @@ hi Constant	guifg=plum3 gui=bold ctermfg=13
 hi String guifg=indianred3 ctermfg=5
 hi Character guifg=mediumpurple3 ctermfg=5
 hi Number guifg=turquoise3 ctermfg=5
-"hi Identifier	
+"hi Identifier
 hi Statement guifg=khaki3 gui=bold ctermfg=15 cterm=underline
 hi PreProc guifg=firebrick3 gui=italic ctermfg=9
 hi Type	guifg=gold3 gui=bold ctermfg=3
-"hi Special	
-"hi Underlined	
-"hi Ignore		
-"hi Error		
+"hi Special
+"hi Underlined
+"hi Ignore
+"hi Error
 hi Todo guifg=yellow3 guibg=blue3 gui=bold

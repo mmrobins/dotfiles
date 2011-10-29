@@ -15,9 +15,9 @@ if exists("syntax_on")
 endif
 let colors_name = "mod_tcsoft"
 
-hi Normal       guifg=#000000   guibg=floralwhite 
+hi Normal       guifg=#000000   guibg=floralwhite
 hi Ignore       guifg=bg
-hi Comment      guifg=#1050ff   gui=italic  
+hi Comment      guifg=#1050ff   gui=italic
 hi Folded       guifg=black     guibg=#d1cdc5
 hi FoldColumn   guifg=black     guibg=#d1cdc5
 hi Constant     guifg=#666666   gui=NONE    "grau
@@ -31,7 +31,7 @@ hi LineNr       guifg=#000000   gui=NONE    "schwarz
 hi StatusLine   guifg=#000000   gui=reverse,bold "schwarz
 hi Title        guifg=#1050ff   gui=bold
 hi Todo         guibg=#1050ff   guifg=floralwhite gui=bold
-hi Search       guifg=white   guibg=#1050ff   
+hi Search       guifg=white   guibg=#1050ff
 
 
 hi link   Function    PreProc

@@ -1,5 +1,5 @@
 set background=dark
-hi clear          
+hi clear
 
 hi Boolean         guifg=#dca3a3 gui=bold
 hi Character       guifg=#dca3a3 gui=bold

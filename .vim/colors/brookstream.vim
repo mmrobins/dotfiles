@@ -35,7 +35,7 @@ hi NonText																guifg=#4444ff
 hi Question																guifg=#ffff00
 hi SpecialKey															guifg=#4444ff
 hi StatusLine			gui=none	guibg=#2f4f4f	guifg=#ffffff
-hi StatusLineNC		gui=none	guibg=#bbbbbb	guifg=#000000		
+hi StatusLineNC		gui=none	guibg=#bbbbbb	guifg=#000000
 hi Title																	guifg=#ffffff
 hi Visual					gui=none	guibg=#bbbbbb	guifg=#000000
 hi WarningMsg								guifg=#ffff00
@@ -80,4 +80,4 @@ hi Boolean									guifg=#9bcd9b
 "hi link Debug   Special
 "hi link FoldColumn  Folded
 
-"- end of colorscheme -----------------------------------------------	
+"- end of colorscheme -----------------------------------------------

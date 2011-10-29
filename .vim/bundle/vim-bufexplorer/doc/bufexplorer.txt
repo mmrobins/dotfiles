@@ -306,7 +306,7 @@ CHANGE LOG                                              *bufexplorer-changelog*
 
          But the worse thing is, when I want to save the current buffer and
          type ':w', I get another error message:
-         E382: Cannot write, 'buftype' option is set 
+         E382: Cannot write, 'buftype' option is set
          --------8<--------
 
 7.0.15 - Thanks to Mark Smithfield for suggesting bufexplorer needed to handle

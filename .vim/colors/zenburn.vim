@@ -5,45 +5,45 @@
 " License:      GPL
 "
 " Nothing too fancy, just some alien fruit salad to keep you in the zone.
-" This syntax file was designed to be used with dark environments and 
+" This syntax file was designed to be used with dark environments and
 " low light situations. Of course, if it works during a daybright office, go
 " ahead :)
 "
 " Owes heavily to other Vim color files! With special mentions
 " to "BlackDust", "Camo" and "Desert".
 "
-" To install, copy to ~/.vim/colors directory. Then :colorscheme zenburn.  
+" To install, copy to ~/.vim/colors directory. Then :colorscheme zenburn.
 " See also :help syntax
 "
 " CONFIGURABLE PARAMETERS:
-" 
+"
 " You can use the default (don't set any parameters), or you can
 " set some parameters to tweak the Zenlook colours.
 "
 " * To get more contrast to the Visual selection, use
-"   
+"
 "      let g:zenburn_alternate_Visual = 1
-" 
+"
 " * To use alternate colouring for Error message, use
-"     
+"
 "      let g:zenburn_alternate_Error = 1
 "
 " * The new default for Include is a duller orang.e To use the original
 "   colouring for Include, use
-"     
+"
 "      let g:zenburn_alternate_Include = 1
 "
 " * To turn the parameter(s) back to defaults, use unlet.
 "
 " That's it, enjoy!
-" 
+"
 " TODO
 "   - IME colouring (CursorIM)
 "   - obscure syntax groups: check and colourize
 "   - add more groups if necessary
 
 set background=dark
-hi clear          
+hi clear
 if exists("syntax_on")
     syntax reset
 endif
@@ -117,7 +117,7 @@ endif
 
 if exists("g:zenburn_alternate_Error")
     " use a bit different Error
-    hi Error           guifg=#ef9f9f guibg=#201010 gui=bold  
+    hi Error           guifg=#ef9f9f guibg=#201010 gui=bold
 else
     " default
     hi Error           guifg=#e37170 guibg=#332323 gui=none

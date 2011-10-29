@@ -136,14 +136,14 @@ endfunction
 
 "
 function s:renewCachesOfAllModes()
-  for m in g:fuf_modes 
+  for m in g:fuf_modes
     call fuf#{m}#renewCache()
   endfor
 endfunction
 
 "
 function s:onBufEnter()
-  for m in g:fuf_modes 
+  for m in g:fuf_modes
     call fuf#{m}#onBufEnter()
   endfor
 endfunction

@@ -2,8 +2,8 @@
 " Maintainer:  Brian Nelson <nelsonbc@gmail.com>
 " Last Change: $Revision: 1.1 $ $Date: 2003/12/15 17:25:08 $
 "
-" Less is More - A minimal color scheme. 
-" Disigned to work equally well on 8 or 16 colors, terminal or gui. 
+" Less is More - A minimal color scheme.
+" Disigned to work equally well on 8 or 16 colors, terminal or gui.
 
 hi clear
 set background=dark

@@ -3,7 +3,7 @@
 " Last Change:	Thu May 20 16:27:13 EEST 2004
 " Version:	2.2
 " URL:		http://www.c7obs.net/~david/stuff/darkdot.vim
-" 
+"
 " This colorscheme script was created using Hans Fugal's colorscheme template
 
 set background=dark
@@ -35,15 +35,15 @@ hi Search	ctermbg=NONE		ctermfg=green		guibg=NONE	guifg=green
 hi SpecialKey				ctermfg=blue				guifg=#4444ff
 hi StatusLine	cterm=none ctermbg=darkcyan	ctermfg=white	gui=none	guibg=#00aaaa	guifg=#ffffff
 hi StatusLineNC	cterm=none ctermbg=gray		ctermfg=black	gui=none	guibg=#bbbbbb	guifg=#000000
-hi link VertSplit StatusLineNC			
+hi link VertSplit StatusLineNC
 hi Title				ctermfg=white				guifg=#ffffff
 hi Visual	cterm=none ctermbg=gray		ctermfg=black	gui=none	guibg=#bbbbbb	guifg=#000000
 hi link VisualNOS Visual
 hi WarningMsg				ctermfg=yellow				guifg=#ffff00
-"hi WildMenu	
-"hi Menu		
-"hi Scrollbar	
-"hi Tooltip		
+"hi WildMenu
+"hi Menu
+"hi Scrollbar
+"hi Tooltip
 
 " syntax highlighting groups
 hi Comment	ctermfg=blue			guifg=#4444ff

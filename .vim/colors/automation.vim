@@ -1,10 +1,10 @@
-" Vim color file (automation.vim)                                            
-" Maintainer:	Ken McConnell <nacer@yahoo.com>                                
-" Last Change:	2004 Jan 15                                                  
-"                                                                            
+" Vim color file (automation.vim)
+" Maintainer:	Ken McConnell <nacer@yahoo.com>
+" Last Change:	2004 Jan 15
+"
 " This color scheme uses a light grey background.  It was created to simulate
 " the look of an IDE.  It is named after the MFP Automation Team at HP Boise.
-"                                                                            
+"
 
 " First remove all existing highlighting.
 set background=light
@@ -52,7 +52,7 @@ hi Label 				gui=bold guifg=DarkBlue
 hi Constant 		term=underline ctermfg=DarkBlue guifg=DarkBlue guibg=Grey96
 hi Special 			term=bold ctermfg=LightRed guifg=DarkBlue guibg=Grey96
 if &t_Co > 8
-  hi Statement 	term=bold cterm=bold ctermfg=DarkBlue guifg=DarkBlue 
+  hi Statement 	term=bold cterm=bold ctermfg=DarkBlue guifg=DarkBlue
 endif
 hi Ignore 			ctermfg=LightGrey guifg=grey90
 

@@ -3,16 +3,16 @@
 " Last Modified: 14 Aug 2006 02:24:33 PM by Dave V
 " Maintainer:    Dave Vehrs (dvehrs at gmail.com)
 " Copyright:     2002,2003,2004,2005,2006 Dave Vehrs
-"                This script is free software; you can redistribute it and/or 
-"                modify it under the terms of the GNU General Public License as 
-"                published by the Free Software Foundation; either version 2 of 
-"                the License, or (at your option) any later version. 
+"                This script is free software; you can redistribute it and/or
+"                modify it under the terms of the GNU General Public License as
+"                published by the Free Software Foundation; either version 2 of
+"                the License, or (at your option) any later version.
 " Description:   Vim colorscheme file.
-" Install:       Put this file in the users colors directory (~/.vim/colors) or 
+" Install:       Put this file in the users colors directory (~/.vim/colors) or
 "                in the shared colors directory (/usr/shared/vim/vim<version>/colors/),
 "                then load it with :colorscheme relaxedgreen
 "
-"               
+"
 " ----------------------------------------------------------------------------------------------------------------------------------
 set background=dark
 hi clear
@@ -46,10 +46,10 @@ highlight ModeMsg       term=bold         cterm=bold                            
 highlight MoreMsg       term=bold         cterm=bold                                      gui=bold
 highlight NonText                         ctermfg=darkcyan                                guifg=#999999
 highlight Normal                          ctermfg=gray ctermbg=black                      guifg=#aaaaaa guibg=#000000
-highlight Pmenu         term=reverse      ctermfg=black ctermbg=green                     guifg=#000000 guibg=#337733 
-highlight PmenuSel      term=bold         ctermfg=black  ctermbg=gray                     guifg=#000000 guibg=#999999 
-highlight PmenuSbar     term=reverse      ctermfg=black ctermbg=green                     guifg=#000000 guibg=#337733 
-highlight PmenuThumb    term=reverse      ctermfg=gray ctermbg=black                      guifg=#999999 guibg=#000000 
+highlight Pmenu         term=reverse      ctermfg=black ctermbg=green                     guifg=#000000 guibg=#337733
+highlight PmenuSel      term=bold         ctermfg=black  ctermbg=gray                     guifg=#000000 guibg=#999999
+highlight PmenuSbar     term=reverse      ctermfg=black ctermbg=green                     guifg=#000000 guibg=#337733
+highlight PmenuThumb    term=reverse      ctermfg=gray ctermbg=black                      guifg=#999999 guibg=#000000
 highlight PreProc       term=standout     ctermfg=darkgreen                               guifg=#22bb22
 highlight Question      term=standout     ctermfg=red                                     guifg=#ff0000
 highlight Search        term=reverse      ctermfg=black ctermbg=darkgreen                 guifg=#000000 guibg=#228822
@@ -74,7 +74,7 @@ highlight VisualNOS     term=reverse,bold cterm=reverse ctermbg=darkgreen       
 highlight VertSplit     term=reverse      ctermfg=darkgreen                               guifg=#336633
 highlight User1         term=standout     cterm=bold ctermbg=darkgreen ctermfg=red        gui=bold guibg=#228822 guifg=#FF0000
 highlight WarningMsg    term=reverse      ctermfg=black ctermbg=yellow                    guifg=#000000 guibg=#007a7a
-highlight WildMenu      term=reverse      ctermfg=blue ctermbg=darkgreen                  guifg=#000099 guibg=#00ac00   
+highlight WildMenu      term=reverse      ctermfg=blue ctermbg=darkgreen                  guifg=#000099 guibg=#00ac00
 
 " ----------------------------------------------------------------------------------------------------------------------------------
 " Common groups that link to other highlight definitions.

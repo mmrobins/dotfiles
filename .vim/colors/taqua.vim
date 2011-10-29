@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer:   TaQ <eustaquiorangel@yahoo.com>
 " Last Change:  18 March 2003
-" URL: http://taq.cjb.net		
+" URL: http://taq.cjb.net
 
 " cool help screens
 " :he group-name
@@ -55,10 +55,10 @@ hi Visual       gui=NONE guifg=#404060 guibg=#dddde8
 
 " Syntax group
 " purple was #8000FF
-hi Comment    gui=NONE guifg=#0E8ED3 guibg=#DBF2FF 
+hi Comment    gui=NONE guifg=#0E8ED3 guibg=#DBF2FF
 hi Constant	  gui=NONE guifg=#303030 guibg=#F5F5F5
 hi Error      gui=BOLD guifg=#FF0000 guibg=#FFFFFF
-hi Identifier gui=NONE guifg=#1F89E0 guibg=#FFFFFF 
+hi Identifier gui=NONE guifg=#1F89E0 guibg=#FFFFFF
 hi Ignore     gui=NONE guifg=#f8f8f8 guibg=#FFFFFF
 hi PreProc	  gui=BOLD guifg=#0BBF20 guibg=#FFFFFF
 hi Special    gui=NONE guifg=#0E8ED3 guibg=#DBF2FF

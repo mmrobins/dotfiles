@@ -44,9 +44,9 @@ hi Visual	cterm=inverse	ctermfg=White	ctermbg=DarkGray	gui=inverse	guifg=DarkGra
 hi VisualNOS	cterm=bold,underline					gui=bold,underline
 hi WarningMsg			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=DarkRed
 hi WildMenu	cterm=bold	ctermfg=Black	ctermbg=Yellow		gui=bold	guifg=Black	guibg=Yellow
-"hi Menu	
-"hi Scrollbar	
-"hi Tooltip	
+"hi Menu
+"hi Scrollbar
+"hi Tooltip
 
 " syntax highlighting groups
 hi Comment			ctermfg=DarkCyan					guifg=DarkCyan

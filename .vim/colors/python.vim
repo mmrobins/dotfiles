@@ -35,7 +35,7 @@ if version < 600
 else
     " Bottom fill (use e.g. same as LineNr)
     highlight NonText       gui=None guibg=bg guifg=fg
-endif 
+endif
 highlight Normal        gui=None guibg=#f6ffe5 guifg=black
 highlight Question      gui=bold  guifg=SeaGreen2 guibg=bg
 highlight Search        gui=NONE guibg=LightSkyBlue4 guifg=NONE

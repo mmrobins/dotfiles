@@ -21,7 +21,7 @@ hi IncSearch    gui=NONE guifg=#303040 guibg=#ffff00
 hi Search       gui=NONE guifg=#303040 guibg=#ccff00
 
 " Messages
-hi ErrorMsg     gui=NONE guifg=#FF0000 guibg=NONE    
+hi ErrorMsg     gui=NONE guifg=#FF0000 guibg=NONE
 hi WarningMsg   gui=NONE guifg=#FF6600 guibg=NONE
 hi ModeMsg      gui=NONE guifg=#0070ff guibg=NONE
 hi MoreMsg      gui=NONE guifg=#a800ff guibg=NONE

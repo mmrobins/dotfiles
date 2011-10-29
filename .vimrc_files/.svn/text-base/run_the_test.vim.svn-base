@@ -22,7 +22,7 @@ function! s:RTK_shell_run_tests(flags, test)
 
     let parse_errors_bin = g:rtk_vimrc_files_dir . 'parse_errors.pl'
     if (!executable(parse_errors_bin))
-        let cmd = cmd . 'echo; echo ' . parse_errors_bin . ' was not found or is not executable, cannot create error list ' 
+        let cmd = cmd . 'echo; echo ' . parse_errors_bin . ' was not found or is not executable, cannot create error list '
         let can_parse_errors=0
     else
         let cmd = cmd . parse_errors_bin . ' < ' . test_results_file . ' > ' . parsed_errors_file
@@ -59,7 +59,7 @@ endfunction
 function! RTK_All_Tests(flags)
     write!
     call GoToTheTest()
-    
+
     call s:RTK_shell_run_tests(a:flags, expand("%:p"))
 endfunction
 

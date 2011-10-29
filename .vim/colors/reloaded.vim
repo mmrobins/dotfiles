@@ -84,13 +84,13 @@ endf
     " trim to the first period
     let l:hue = s:guard(a:hue, 360)
 
-    if l:hue < 60 
+    if l:hue < 60
       retu a:v1 + l:hue * (a:v2 - a:v1) / 60
     en
-    if l:hue < 180 
+    if l:hue < 180
       retu a:v2
     en
-    if l:hue < 240 
+    if l:hue < 240
       retu a:v1 + (240 - l:hue) * (a:v2 - a:v1) / 60
     en
     retu a:v1
@@ -110,7 +110,7 @@ fu! s:hsb2colors(hue,sat,bri)
 
   if a:bri < 512
     let l:v2 = a:bri * ( 1023 + a:sat )
-  el           
+  el
     let l:v2 = ( a:bri + a:sat ) * 1023 - ( a:sat * a:bri )
   en
 
@@ -138,19 +138,19 @@ fu! s:rgb2hsb(red,green,blue)
   let l:green = a:green * 1023 / 255
   let l:blue = a:blue * 1023 / 255
 
-  let l:min = s:min(l:red, l:green, l:blue) 
-  let l:max = s:max(l:red, l:green, l:blue) 
+  let l:min = s:min(l:red, l:green, l:blue)
+  let l:max = s:max(l:red, l:green, l:blue)
   let l:delta = l:max - l:min
 
   let s:bri = (l:max + l:min) / 2
 
-  if  l:delta == 0 
+  if  l:delta == 0
     let s:hue = 180	" When sat = 0, hue default to 180
     let s:sat = 0
-  el 
-    if s:bri < 512 
+  el
+    if s:bri < 512
       let s:sat = l:delta * 1023 / (l:max + l:min)
-    el           
+    el
       let s:sat = l:delta * 1023 / (2*1023 - l:max - l:min)
     en
 
@@ -158,11 +158,11 @@ fu! s:rgb2hsb(red,green,blue)
     let l:del_g = ( (l:max-l:green) + (l:delta*3) ) * 60 / l:delta
     let l:del_b = ( (l:max-l:blue) + (l:delta*3) ) * 60 / l:delta
 
-    if l:red == l:max 
+    if l:red == l:max
       let s:hue = l:del_b - l:del_g
-    elsei  l:green == l:max  
+    elsei  l:green == l:max
       let s:hue = 120 + l:del_r - l:del_b
-    elsei  l:blue == l:max  
+    elsei  l:blue == l:max
       let s:hue = 240 + l:del_g - l:del_r
     en
 
@@ -173,7 +173,7 @@ endf
 " sub-functions
   if !exists("s:loaded") | let s:hue_range = 0 | let s:hue_phase = 0 | en
   fu! s:cast_hue(hue)
-    retu a:hue * s:hue_range / 360 - s:hue_range / 2 + s:hue_phase 
+    retu a:hue * s:hue_range / 360 - s:hue_range / 2 + s:hue_phase
   endf
 
   if !exists("s:loaded") | let s:sat_base = 0 | let s:sat_modify = 0 | en
@@ -303,7 +303,7 @@ fu! s:psc_reload(...)
     en
   en
 
-  if a:0 >= 8 
+  if a:0 >= 8
     let s:plainfont = a:8
   el
     InitOpt fontface 'mixed'
@@ -356,10 +356,10 @@ fu! s:psc_reload(...)
   exe "sil! 1new ".s:tempfile
   sil! %d
   exe "sil! 0r ".s:reload_filename
-  if s:verbose 
-    ec '" Reloaded color scheme from '.s:reload_filename 
-    ec '" with param ' s:hue_range s:sat_modify s:bri_modify 
-          \s:hue_phase s:sat_base s:bri_base s:lightbg s:plainfont 
+  if s:verbose
+    ec '" Reloaded color scheme from '.s:reload_filename
+    ec '" with param ' s:hue_range s:sat_modify s:bri_modify
+          \s:hue_phase s:sat_base s:bri_base s:lightbg s:plainfont
     ec '" '
   en
 
@@ -382,7 +382,7 @@ fu! s:psc_reload(...)
 
     let s:nnb = s:nnb + 1
 
-    " Skip invalid lines 
+    " Skip invalid lines
     if s:line !~ '^\s*hi\%[ghlight]\s*.*' | con | en
 
     exe substitute(s:line, '\<hi\%[ghlight]\>', 'PscHi', '')
@@ -425,7 +425,7 @@ fu! s:psc_reload(...)
     let s:line = getline(s:nnb)
 
     let s:nnb = s:nnb + 1
-    " Skip invalid lines 
+    " Skip invalid lines
     if s:line !~ '^\s*hi\%[ghlight]\s*.*' | con | en
 
     if s:verbose | ec s:line | en
@@ -554,22 +554,22 @@ PSC USAGE                                                         *pcr-usage*
         in your Vim or append to your |.vimrc|.  The [runtimepath] can be any
         'writable' directory listed in |vimfiles|, normally your $HOME/.vim in
         Unix or $HOME/vimfiles in Windows.
-	
+
 	Note that you don't need to remove your current :colo lines in .vimrc,
         since the :colo reloaded does nothing on color scheme, the
-        reloaded.vim has to be a color scheme for some bizarre reason.  
+        reloaded.vim has to be a color scheme for some bizarre reason.
 
 	Note if you do not want to have ps_color.vim, go to FAQ section to see
 	how to create your own.
 
 	Experiencing ~
-        
+
 	Normally, nothing will happen when you sourced the colorscheme
 	reloaded, this only enables the command :Reload.
 
 	The :Reload command will be available after you sourced the
-	colorscheme reloaded.  If not, type :colo reloaded now. 
-	
+	colorscheme reloaded.  If not, type :colo reloaded now.
+
 	Now try the following:
 >
 		:Reload 60 100 100 120 341 0 0 0 0
@@ -593,7 +593,7 @@ PSC USAGE                                                         *pcr-usage*
 	may be good samples.)
 
 	. The first line will give you a golden feeling, followed by
-	  a reversed version. 
+	  a reversed version.
 	. Next comes a low contrast dark-cyan-background scheme.
 	. Next comes a black background with decreased saturation.
 	. The Hue can be changed anyway. This is a cyan-green style, call it
@@ -631,7 +631,7 @@ PCR OPTIONS                                                     *pcr-options*
 	White has saturation=0, The pure Red, Green, and Blue has
 	saturation=max, usually, saturation is defined to be between 0 and 1.
 	But Vim is not capable of handling floating points, so I defined the
-	saturation to be between 0 and 1023. 
+	saturation to be between 0 and 1023.
 
 	The saturation is the amount the different color elements differs, if
 	the red, green, blue are similar, the saturation is low.
@@ -645,13 +645,13 @@ PCR OPTIONS                                                     *pcr-options*
 	Parameter h_r and h_p ~
 
 	This refers to hue range and hue phase.
-	
+
 	set the hue range to any positive value, the hue will be in the range
 	of hue_phase-(hue_range/2) to hue_phase-(hue_range/2)
 
 	The normal hue is from 0 to 360, let hue_range=360 and hue_phase=180
 	will have the range 0 to 360, hence the hue of original color scheme
-	will be retained. 
+	will be retained.
 
 	Set the hue range to between 0 and 360 will have the hue range
 	compressed, or to say a color-filtered look.  Set the hue range to
@@ -659,7 +659,7 @@ PCR OPTIONS                                                     *pcr-options*
 	as hue_phase.  You may not want it to be that low, since the
 	hue_range=60 will in most cases enough to give the whole color scheme
 	a color-filtered look.
-	
+
 	Set the hue range to >360 will have the color changed without compress
 	the hue range, the behavior is not easy to describe, you need to do
 	more experiments to understand what it does.
@@ -678,9 +678,9 @@ PCR OPTIONS                                                     *pcr-options*
 
 	This refers to saturation modify and saturation base
 
-	The saturation modify is a percent value, 100 means no modify. 
-	If set to 50, all saturation will be decreased to 50%, 
-	If set to 0, the screen will be black and white (greyscale), 
+	The saturation modify is a percent value, 100 means no modify.
+	If set to 50, all saturation will be decreased to 50%,
+	If set to 0, the screen will be black and white (greyscale),
 	If set to 200, all saturation will be increased to 200% times the
 	original value.
 
@@ -698,16 +698,16 @@ PCR OPTIONS                                                     *pcr-options*
 
 	This refers to luminance modify and luminance base
 
-	The luminance modify is a percent value, 100 means no modify. 
-	If set to 50, all luminance will be decreased to 50%, 
+	The luminance modify is a percent value, 100 means no modify.
+	If set to 50, all luminance will be decreased to 50%,
 	If set to 0, the screen will be completely dark (can be possibly used
 	for boss key?)
 	If set to 200, all luminance will be increased to 200% times the
 	original value.
 
 	The luminance base is a linear value, it defines the minimum
-	luminance. 
-	
+	luminance.
+
 	Main use of this is to tune the background for a dark background
 	colorscheme.
 	If set to 0, the background will be black.
@@ -742,7 +742,7 @@ PCR OPTIONS                                                     *pcr-options*
 
 	When set to 1, some debug messages will be echoed when running the
 	command.
-	
+
 	Parameter cdf ~
 
 	This refers to custom data file
@@ -790,15 +790,15 @@ PCR OPTIONS                                                     *pcr-options*
 		" COLOR LINKS DEFINE START
 		" COLOR LINKS DEFINE END
 <
-	  the highlight statement should be placed in between START and END.  
+	  the highlight statement should be placed in between START and END.
 	  All statement other than the 'highlight' will be silently discarded.
 
 	  You can put dark color scheme defines in dark color define section,
 	  or light color scheme in light color section.  It doesn't matter if
 	  you have nothing in the section, since the defaults are used.
 	  However, the defaults will not be tuned in the HSL color space,
-	  which may be you want, and may not! 
-	  
+	  which may be you want, and may not!
+
 	  Further statements can be put in color links define section, you can
 	  put any 'highlight' statements in this section since the statements
 	  in this section will be execute unparsed, if you want to manually
@@ -810,7 +810,7 @@ PCR FAQ AND TIPS                                                    *pcr-faq*
 >
 	Q: How to make my own color to be tunable?
 <
-	A: Your own color scheme must conform to some restrictions, 
+	A: Your own color scheme must conform to some restrictions,
 	   see |pcr-custom-data| for details.
 >
 	Q: How to run reloaded.vim without having ps_color.vim?

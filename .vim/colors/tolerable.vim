@@ -34,7 +34,7 @@ hi VertSplit    gui=none guibg=#333333 guifg=white
 hi Visual       gui=none guibg=green guifg=black
 hi Search       gui=none guibg=yellow
 hi Directory    gui=none guifg=darkblue
-hi WarningMsg   gui=none guifg=red 
+hi WarningMsg   gui=none guifg=red
 hi Error        gui=none guifg=white guibg=red
 hi Todo         gui=none guifg=black guibg=yellow
 

@@ -16,7 +16,7 @@ let g:colors_name = "print_bw"
 
 highlight Normal	    cterm=NONE ctermfg=black ctermbg=white gui=NONE guifg=black guibg=white
 highlight NonText	    ctermfg=black ctermbg=white guifg=black guibg=white
-highlight LineNr        cterm=italic ctermfg=black ctermbg=white gui=italic guifg=black guibg=white 
+highlight LineNr        cterm=italic ctermfg=black ctermbg=white gui=italic guifg=black guibg=white
 
 " Syntax highlighting scheme
 highlight Comment	    cterm=italic ctermfg=black ctermbg=white gui=italic guifg=black guibg=white

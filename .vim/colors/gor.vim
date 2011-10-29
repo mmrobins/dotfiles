@@ -2,7 +2,7 @@
 " vim: tw=0 ts=4 sw=4
 " Vim color file
 " Maintainer:	Jokes
-" Last Change:	
+" Last Change:
 
 set background=light
 hi clear
@@ -13,12 +13,12 @@ let g:colors_name = "gor"
 hi Normal		guifg=white	guibg=#005856
 hi NonText		guifg=white	guibg=#005856
 hi comment		guifg=darkgrey
-hi constant		guifg=orange	
+hi constant		guifg=orange
 hi identifier	guifg=orange gui=NONE
 hi statement	guifg=cyan	gui=NONE
 "hi preproc		guifg=#6063CD
 hi preproc		guifg=cyan
-hi type			guifg=green gui=NONE	
+hi type			guifg=green gui=NONE
 hi special		guifg=yellow
 hi ErrorMsg		guifg=Black	guibg=Red
 hi WarningMsg	guifg=Black	guibg=Green

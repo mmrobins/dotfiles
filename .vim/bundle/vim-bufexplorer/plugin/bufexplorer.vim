@@ -142,20 +142,20 @@ function! s:BEAddBuffer()
   if !exists('s:raw_buffer_listing') || empty(s:raw_buffer_listing)
     silent let s:raw_buffer_listing = s:BEGetBufferInfo(0)
   else
-    " We cannot use :buffers! or :ls! to gather information 
+    " We cannot use :buffers! or :ls! to gather information
     " about this buffer since it was only just added.
-    " Any changes to the buffer (setlocal buftype, ...) 
+    " Any changes to the buffer (setlocal buftype, ...)
     " happens after this event fires.
     "
     " So we will indicate the :buffers! command must be re-run.
     " This should help with the performance of the plugin.
 
-    " There are some checks which can be performed 
+    " There are some checks which can be performed
     " before deciding to refresh the buffer list.
     let bufnr = expand('<abuf>') + 0
 
     if s:BEIgnoreBuffer(bufnr) == 1
-      return 
+      return
     else
       let s:refreshBufferList = 1
     endif
@@ -174,7 +174,7 @@ function! s:BEActivateBuffer()
   endif
 
   if !empty(l) && l[0] == '-1'
-    " The first time we add a tab Vim uses the current 
+    " The first time we add a tab Vim uses the current
     " buffer as it's starting page, even though we are about
     " to edit a new page (BufEnter triggers after), so
     " remove the -1 entry indicating we have covered this case.
@@ -214,7 +214,7 @@ function! s:BEActivateBuffer()
     let shortlist = filter(copy(s:raw_buffer_listing), "v:val.attributes =~ '".'^\s*'.b.'u\>'."'")
 
     if !empty(shortlist)
-      " If it is unlisted (ie deleted), but now we editing it again 
+      " If it is unlisted (ie deleted), but now we editing it again
       " rebuild the buffer list.
       let s:refreshBufferList = 1
     endif
@@ -279,7 +279,7 @@ function! s:BEInitialize()
   let s:running = 1
 endfunction
 
-" BEIgnoreBuffer 
+" BEIgnoreBuffer
 function! s:BEIgnoreBuffer(buf)
   " Check to see if this buffer should be ignore by BufExplorer.
 
@@ -308,7 +308,7 @@ function! s:BEIgnoreBuffer(buf)
     return 1
   end
 
-  return 0 
+  return 0
 endfunction
 
 " BECleanup {{{1
@@ -363,7 +363,7 @@ function! StartBufExplorer(open)
     let s:originBuffer = bufnr("%") + 0
 
     " Create or rebuild the raw buffer list if necessary.
-    if !exists('s:raw_buffer_listing') || 
+    if !exists('s:raw_buffer_listing') ||
             \ empty(s:raw_buffer_listing) ||
             \ s:refreshBufferList == 1
         silent let s:raw_buffer_listing = s:BEGetBufferInfo(0)
@@ -401,8 +401,8 @@ endfunction
 
 " BEDisplayBufferList {{{1
 function! s:BEDisplayBufferList()
-  " Do not set bufhidden since it wipes out 
-  " the data if we switch away from the buffer 
+  " Do not set bufhidden since it wipes out
+  " the data if we switch away from the buffer
   " using CTRL-^
   setlocal buftype=nofile
   setlocal modifiable
@@ -589,7 +589,7 @@ function! s:BEGetBufferInfo(bufnr)
   redir END
 
   if (a:bufnr > 0)
-    " Since we are only interested in this specified buffer 
+    " Since we are only interested in this specified buffer
     " remove the other buffers listed
     let bufoutput = substitute(bufoutput."\n", '^.*\n\(\s*'.a:bufnr.'\>.\{-}\)\n.*', '\1', '')
   endif
@@ -658,7 +658,7 @@ function! s:BEBuildBufferList()
                 endif
             endfor
 
-            if show_buffer == 0 
+            if show_buffer == 0
                 continue
             endif
         endif
@@ -715,7 +715,7 @@ function! s:BESelectBuffer(...)
     else
       call WinManagerFileEdit(bufname, 0)
     endif
- 
+
     return
   endif
 
@@ -775,7 +775,7 @@ function! s:BESelectBuffer(...)
 
     " Make the buffer 'listed' again.
     call setbufvar(_bufNbr, "&buflisted", "1")
- 
+
  	" call any associated function references
  	" g:bufExplorerFuncRef may be an individual function reference
  	"                or it may be a list containing function references.
@@ -843,7 +843,7 @@ function! s:BERemoveBuffer(type, mode) range
             if bufNbr !~ '^\d\+$' || getbufvar(bufNbr+0, '&modified') != 0
                 call s:BEError("Sorry, no write since last change for buffer ".bufNbr.", unable to delete")
             else
-                let _bufNbrs = _bufNbrs . (_bufNbrs==''?'':' '). bufNbr 
+                let _bufNbrs = _bufNbrs . (_bufNbrs==''?'':' '). bufNbr
             endif
         endif
     endfor

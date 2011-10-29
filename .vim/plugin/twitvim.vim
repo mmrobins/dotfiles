@@ -117,7 +117,7 @@ function! s:get_twitvim_login()
     elseif exists('g:twitvim_login') && g:twitvim_login != ''
 	return g:twitvim_login
     else
-	" Beep and error-highlight 
+	" Beep and error-highlight
 	execute "normal \<Esc>"
 	call s:errormsg('Twitter login not set. Please add to .vimrc: let twitvim_login="USER:PASS"')
 	return ''
@@ -205,7 +205,7 @@ function! s:conv_month(s)
     for mon in range(len(monthnames))
 	if monthnames[mon] == tolower(a:s)
 	    return mon + 1
-	endif	
+	endif
     endfor
     return 0
 endfunction
@@ -239,7 +239,7 @@ function! s:parse_time(str)
     if matchres != []
 	return s:timegm2(matchres, [6, -1, 2, 3, 4, 5])
     endif
-	
+
     " This timestamp format is used by Twitter Search.
     let matchres = matchlist(a:str, '^\(\d\+\)-\(\d\+\)-\(\d\+\)T\(\d\+\):\(\d\+\):\(\d\+\)Z$')
     if matchres != []
@@ -500,7 +500,7 @@ def make_base64(s)
 end
 
 def parse_user_password(s)
-    (s =~ /:/ ? s : Base64.decode64(s)).split(':', 2)    
+    (s =~ /:/ ? s : Base64.decode64(s)).split(':', 2)
 end
 
 url = URI.parse(VIM.evaluate('a:url'))
@@ -533,7 +533,7 @@ keys.split(/\n/).each { |k|
     parms[k] = VIM.evaluate("a:parms['#{k}']")
 }
 
-res = net.start { |http| 
+res = net.start { |http|
     path = "#{url.path}?#{url.query}"
     if parms == {}
 	req = Net::HTTP::Get.new(path)
@@ -695,7 +695,7 @@ function! s:run_curl(url, login, proxy, proxylogin, parms)
 endfunction
 
 function! s:reset_curl_method()
-    if exists('s:curl_method')	
+    if exists('s:curl_method')
 	unlet s:curl_method
     endif
 endfunction
@@ -1199,7 +1199,7 @@ vmenu Plugin.TwitVim.Post\ selection <Plug>TwitvimVisual
 " Launch web browser with the given URL.
 function! s:launch_browser(url)
     if !exists('g:twitvim_browser_cmd') || g:twitvim_browser_cmd == ''
-	" Beep and error-highlight 
+	" Beep and error-highlight
 	execute "normal \<Esc>"
 	call s:errormsg('Browser cmd not set. Please add to .vimrc: let twitvim_browser_cmd="browsercmd"')
 	return -1
@@ -1303,12 +1303,12 @@ function! s:do_longurl(s)
 endfunction
 
 " Get info on the given user. If no user is provided, use the current word and
-" strip off the @ or : if the current word is @user or user:. 
+" strip off the @ or : if the current word is @user or user:.
 function! s:do_user_info(s)
     let s = a:s
     if s == ''
 	let s = expand("<cword>")
-	
+
 	" Handle @-replies.
 	let matchres = matchlist(s, '^@\(\w\+\)')
 	if matchres != []
@@ -1398,7 +1398,7 @@ function! s:twitter_win(wintype)
 	execute "new " . winname
 	setlocal noswapfile
 	setlocal buftype=nofile
-	setlocal bufhidden=delete 
+	setlocal bufhidden=delete
 	setlocal foldcolumn=0
 	setlocal nobuflisted
 	setlocal nospell
