@@ -6,11 +6,11 @@
 
 " -----------------------------------------------------------------------------
 " This color scheme uses a dark grey background.
-" This theme, based on evening (with some input from Torte) is designed to 
-" seperate active text (code) from background/line numbers/folds/listchars by 
-" having different background colors on the non-code and the code (just 
-" slightly).  If you look at the screenshot below, you will get the idea.  
-" All non-code(include indents) and string literals have a black background 
+" This theme, based on evening (with some input from Torte) is designed to
+" seperate active text (code) from background/line numbers/folds/listchars by
+" having different background colors on the non-code and the code (just
+" slightly).  If you look at the screenshot below, you will get the idea.
+" All non-code(include indents) and string literals have a black background
 " while code has a very dark grey background.
 " -----------------------------------------------------------------------------
 set background=dark
@@ -30,7 +30,7 @@ let colors_name = "metacosm"
 hi IncSearch guibg=black guifg=#00ff00
 hi Search guibg=black guifg=#00ff00
 
-" Visual 
+" Visual
 hi Visual guibg=#00b741 guifg=black
 hi VisualNOS guibg=#00b741 guifg=black gui=underline
 

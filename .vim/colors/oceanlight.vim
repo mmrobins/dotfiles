@@ -2,7 +2,7 @@
 " Maintainer: Håkan Wikström <hakan@wikstrom.st>
 " Last Change: 2005-01-06
 " Version: 0.1
-" URL: 
+" URL:
 " Originally based on oceandeep by Tom Regner (Vim script #368)
 
 

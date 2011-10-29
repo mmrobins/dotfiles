@@ -114,7 +114,7 @@ endfunction
 
 "
 function fuf#hash224(str)
-  let a = 0x00000800 " shift 11 bit 
+  let a = 0x00000800 " shift 11 bit
   let b = 0x001fffff " extract 11 bit
   let nHash = 7
   let hashes = repeat([0], nHash)
@@ -141,7 +141,7 @@ function fuf#getFileLines(file)
   endif
   try
     return readfile(expand(a:file))
-  catch /.*/ 
+  catch /.*/
   endtry
   return []
 endfunction
@@ -255,7 +255,7 @@ function fuf#prejump(mode)
         \   s:OPEN_TYPE_SPLIT   : 'split'    ,
         \   s:OPEN_TYPE_VSPLIT  : 'vsplit'   ,
         \   s:OPEN_TYPE_TAB     : 'tab split',
-        \ }[a:mode] 
+        \ }[a:mode]
 endfunction
 
 "
@@ -473,7 +473,7 @@ function fuf#loadInfoFile(modeName)
       let g:fuf_infoFile = ''
       throw 1
     endif
-  catch /.*/ 
+  catch /.*/
     let lines = []
   endtry
   let s:lastInfoMap = s:deserializeInfoMap(lines)
@@ -493,7 +493,7 @@ function fuf#saveInfoFile(modeName, info)
   let lines = [ s:INFO_FILE_VERSION_LINE ] + s:serializeInfoMap(s:lastInfoMap)
   try
     call writefile(lines, expand(g:fuf_infoFile))
-  catch /.*/ 
+  catch /.*/
   endtry
 endfunction
 
@@ -514,12 +514,12 @@ function fuf#editInfoFile()
   setlocal nomodified
 endfunction
 
-" 
+"
 function fuf#getRunningHandler()
   return s:runningHandler
 endfunction
 
-" 
+"
 function fuf#onComplete(findstart, base)
   return s:runningHandler.onComplete(a:findstart, a:base)
 endfunction
@@ -568,7 +568,7 @@ function s:makePartialMatchingExpr(target, pattern)
         \ string(s:convertWildcardToRegexp(a:pattern)) . patternMigemo
 endfunction
 
-" 
+"
 function s:makeRefiningExpr(pattern)
   let expr = s:makePartialMatchingExpr('v:val.wordForRefining', a:pattern)
   if a:pattern =~# '\D'
@@ -578,7 +578,7 @@ function s:makeRefiningExpr(pattern)
   endif
 endfunction
 
-" 
+"
 function s:makeAdditionalMigemoPattern(pattern)
   if !g:fuf_useMigemo || a:pattern =~# '[^\x01-\x7e]'
     return ''
@@ -635,14 +635,14 @@ function s:setRanks(item, pattern, exprBoundary, stats)
   let a:item.ranks = [
         \   s:evaluateLearningRank(a:item.word, a:stats),
         \   -s:scoreSequentialMatching(a:item.wordForRank, a:pattern),
-        \   -s:scoreBoundaryMatching(a:item.wordForBoundary, 
+        \   -s:scoreBoundaryMatching(a:item.wordForBoundary,
         \                            a:pattern, a:exprBoundary),
         \   a:item.index,
         \ ]
   return a:item
 endfunction
 
-" 
+"
 function s:evaluateLearningRank(word, stats)
   for i in range(len(a:stats))
     if a:stats[i].word ==# a:word
@@ -822,7 +822,7 @@ endfunction
 
 let s:originalGlobalOptions = {}
 
-" 
+"
 function s:setTemporaryGlobalOption(name, value)
   call extend(s:originalGlobalOptions, { a:name : eval('&' . a:name) }, 'keep')
   execute printf('let &%s = a:value', a:name)
@@ -895,19 +895,19 @@ let s:handlerBase = {}
 "
 " "
 " s:handler.getModeName()
-" 
+"
 " "
 " s:handler.getPrompt()
-" 
+"
 " " returns true if the mode deals with file paths.
 " s:handler.targetsPath()
 "
 " "
 " s:handler.getCompleteItems(patternSet)
-" 
+"
 " "
 " s:handler.onOpen(word, mode)
-" 
+"
 " " Before entering FuzzyFinder buffer. This function should return in a short time.
 " s:handler.onModeEnterPre()
 "

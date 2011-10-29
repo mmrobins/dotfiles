@@ -1,7 +1,7 @@
 " local syntax file - set colors on a per-machine basis:
 " vim: tw=0 ts=4 sw=4
 " Vim color file
-" Maintainer:Sean Richards	
+" Maintainer:Sean Richards
 " Last Change:Fri Aug 30  8:50 2002 NZST
 
 hi clear
@@ -30,10 +30,10 @@ hi FoldColumn		ctermfg=Black ctermbg=Grey guibg=DarkGrey guifg=Black
 hi Folded			ctermfg=Black ctermbg=Grey guifg=Black
 hi Cursor			guifg=bg	guibg=Green
 hi Comment			cterm=none ctermfg=darkgreen gui=italic guifg=green
-hi Constant			ctermfg=darkcyan guifg=darkcyan 
+hi Constant			ctermfg=darkcyan guifg=darkcyan
 hi Special			ctermfg=darkyellow guifg=Orange
-hi Identifier		ctermfg=cyan guifg=cyan 
-hi Statement		ctermfg=darkyellow gui=bold guifg=darkyellow 
+hi Identifier		ctermfg=cyan guifg=cyan
+hi Statement		ctermfg=darkyellow gui=bold guifg=darkyellow
 hi Number			ctermfg=Cyan guifg=Cyan
 hi PreProc			ctermfg=darkmagenta guifg=darkmagenta
 hi String			ctermfg=darkred guifg=Red

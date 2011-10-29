@@ -1,7 +1,7 @@
 " Vim color file based on bluegreen
 " Maintainer:   Sergey Khorev
-" Last Change:  
-" URL:			 
+" Last Change:
+" URL:
 
 
 " cool help screens

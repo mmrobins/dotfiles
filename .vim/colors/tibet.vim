@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer:   Miguel Figueiredo
 
-" /usr/X11R6/lib/X11 
+" /usr/X11R6/lib/X11
 set background=dark
 
 if exists("syntax_on")
@@ -15,16 +15,16 @@ hi Normal	guifg=ivory guibg=darkred
 " highlight groups
 "hi Cursor	guibg=khaki guifg=slategrey
 hi Cursor	guibg=blue4 guifg=white
-"hi CursorIM	
-"hi Directory	
-"hi DiffAdd				
-"hi DiffChange	
-"hi DiffDelete	
-"hi DiffText	
-"hi ErrorMsg	
+"hi CursorIM
+"hi Directory
+"hi DiffAdd
+"hi DiffChange
+"hi DiffDelete
+"hi DiffText
+"hi ErrorMsg
 "hi VertSplit	guibg=#c2bfa5 guifg=grey50 gui=none
 hi VertSplit	guibg=darkgreen guifg=white gui=none
-hi Folded	guibg=darkred guifg=gold 
+hi Folded	guibg=darkred guifg=gold
 hi FoldColumn	guibg=grey30 guifg=tan
 hi IncSearch	guifg=slategrey guibg=khaki
 hi LineNr		guifg=yellow guibg=darkred
@@ -39,12 +39,12 @@ hi StatusLineNC	guibg=#c2bfa5 guifg=grey50 gui=none
 hi Title	guifg=indianred
 "hi Visual	gui=none guifg=khaki guibg=olivedrab
 hi Visual	gui=none guifg=white guibg=#003300
-"hi VisualNOS	
+"hi VisualNOS
 hi WarningMsg	guifg=salmon
-"hi WildMenu	
-"hi Menu				
-"hi Scrollbar	
-"hi Tooltip				
+"hi WildMenu
+"hi Menu
+"hi Scrollbar
+"hi Tooltip
 
 " syntax highlighting groups
 hi Comment	 guifg=goldenrod
@@ -56,9 +56,9 @@ hi PreProc	 guifg=#ffa0a0
 "hi Type		 guifg=darkkhaki
 hi Type		 guifg=khaki
 hi Special	 guifg=navajowhite
-"hi Underlined	
+"hi Underlined
 hi Ignore 	 guifg=grey40
-"hi Error			
+"hi Error
 hi Todo		 guifg=yellow guibg=#003300
 
 " color terminal definitions

@@ -19,7 +19,7 @@ hi Comment		cterm=NONE		ctermfg=DarkGreen	ctermbg=White		gui=italic			guifg=Dark
 hi Constant		cterm=NONE		ctermfg=Red			ctermbg=White		gui=NONE			guifg=Red	 		guibg=NONE
 hi Identifier	cterm=NONE		ctermfg=LightBlue	ctermbg=White		gui=NONE			guifg=LightBlue		guibg=NONE
 hi Statement 	cterm=bold		ctermfg=Blue		ctermbg=White		gui=bold			guifg=Blue			guibg=NONE
-hi PreProc		cterm=NONE		ctermfg=DarkRed		ctermbg=White		gui=NONE			guifg=DarkRed		guibg=NONE	
+hi PreProc		cterm=NONE		ctermfg=DarkRed		ctermbg=White		gui=NONE			guifg=DarkRed		guibg=NONE
 hi Type			cterm=NONE		ctermfg=Blue		ctermbg=White		gui=NONE			guifg=Blue			guibg=NONE
 hi Underlined	cterm=NONE		ctermfg=Black		ctermbg=White		gui=underline		guifg=NONE			guibg=NONE
 hi Error		cterm=NONE		ctermfg=Yellow		ctermbg=Red			gui=NONE			guifg=Yellow		guibg=Red

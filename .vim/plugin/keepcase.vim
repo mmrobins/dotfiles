@@ -6,9 +6,9 @@
 
 " Usage: Using KeepCase or KeepCaseSameLen defined here, do a substitution like this:
 " %s/\u\<old_word\>/\=KeepCaseSameLen(submatch(0), 'new_word')/g
-" 
-" * KeepCase( original_word , new_word )  
-"   returns the new word maintaining case 
+"
+" * KeepCase( original_word , new_word )
+"   returns the new word maintaining case
 "   simply uses heuristics to work out some different common situations
 "     given   NewWord
 "     Word   	--> Newword
@@ -16,8 +16,8 @@
 "     word    --> newword
 "     WoRd    --> NewWord
 "     woRd    --> newWord
-" 
-" * KeepCaseSameLen( original_word , new_word )    
+"
+" * KeepCaseSameLen( original_word , new_word )
 " 	Returns the new word maintaining case
 " 	  Keeps the case exactly the same letter-for-letter
 " 	  It does work if the words aren't the same length, as it truncates or
@@ -101,5 +101,5 @@ function! s:SubstituteCase(repl_arg) range
   exe cmd
 endfunction
 
-:command! -nargs=1 -range SubstituteCase 
+:command! -nargs=1 -range SubstituteCase
       \ <line1>,<line2>call s:SubstituteCase(<f-args>)

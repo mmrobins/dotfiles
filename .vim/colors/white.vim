@@ -1,5 +1,5 @@
 " Vim color file
-" created by mksa on 30.10.2003 10:58:20 
+" created by mksa on 30.10.2003 10:58:20
 " cool help screens
 " :he group-name
 " :he highlight-groups
@@ -29,7 +29,7 @@ hi ModeMsg          ctermfg=red                             guifg=red
 hi LineNr           ctermfg=yellow      ctermbg=darkgrey    guifg=yellow        guibg=darkgrey
 hi Question         ctermfg=darkgreen                       guifg=darkgreen
 "hi StatusLine       cterm=reverse
-hi StatusLineNC     cterm=reverse                           
+hi StatusLineNC     cterm=reverse
 hi VertSplit        cterm=reverse
 hi Title            ctermfg=lightred    ctermbg=yellow      guifg=red
 hi Visual           cterm=reverse

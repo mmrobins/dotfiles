@@ -154,7 +154,7 @@ numbers, dates, or daynames.
 
 		See |visincr-raggedright| for a discussion on ragged-right
 		handling.
- 							
+
 			*:IX* *visincr-IX* *:IO* *visincr-IO*
 		The following two commands are variants of :I : >
 		    :IO [#] left justified octal incrementing
@@ -167,7 +167,7 @@ numbers, dates, or daynames.
 		Roman numeral enumeration.  The increment for these
 		commands is in the usual arabic numerals (ie. decimal)
 		as Roman numerals don't support negative numbers.
-		
+
 
 
 

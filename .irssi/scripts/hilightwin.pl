@@ -1,11 +1,11 @@
 # Print hilighted messages & private messages to window named "hilight"
 # for irssi 0.7.99 by Timo Sirainen
 use Irssi;
-use vars qw($VERSION %IRSSI); 
+use vars qw($VERSION %IRSSI);
 $VERSION = "0.01";
 %IRSSI = (
     authors	=> "Timo \'cras\' Sirainen",
-    contact	=> "tss\@iki.fi", 
+    contact	=> "tss\@iki.fi",
     name	=> "hilightwin",
     description	=> "Print hilighted messages & private messages to window named \"hilight\"",
     license	=> "Public Domain",

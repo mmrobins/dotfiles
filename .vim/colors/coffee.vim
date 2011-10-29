@@ -3,7 +3,7 @@
 " Last Change:	Fri Jan 31 01:08:13 UTC 2003
 " Version:	1.0
 " URL:		http://c7.campus.utcluj.ro/~david/coffee.vim
-" 
+"
 " This colorscheme script was created using Hans Fugal's colorscheme template
 
 set background=dark
@@ -40,10 +40,10 @@ hi Title					guifg=#ffffff
 hi Visual			guifg=#fff0d6	guibg=#000000
 hi VisualNOS			guifg=#dddddd	guibg=bg
 hi WarningMsg					guifg=#ffff00
-"hi WildMenu	
-"hi Menu		
-"hi Scrollbar	
-"hi Tooltip		
+"hi WildMenu
+"hi Menu
+"hi Scrollbar
+"hi Tooltip
 
 " syntax highlighting groups
 hi Comment					guifg=#1a1813

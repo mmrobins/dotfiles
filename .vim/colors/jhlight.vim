@@ -76,5 +76,5 @@ hi PreProc        guifg=#004466 guibg=bg      gui=none ctermfg=darkcyan ctermbg=
 
 hi Error          guifg=fg      guibg=#880000 gui=none ctermfg=bg       ctermbg=red   cterm=none
 
-hi Ignore         guifg=bg      ctermfg=bg   
+hi Ignore         guifg=bg      ctermfg=bg
 hi Underlined     guifg=fg guibg=bg ctermfg=fg ctermbg=bg cterm=underline term=underline gui=underline

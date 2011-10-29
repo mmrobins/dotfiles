@@ -6,7 +6,7 @@
 "
 " TODO : add colors for diff and other non-implemented
 "        stuff
-" 
+"
 " LICENCE (heh) : Emailware.  Basically it means use it,
 "   abuse it, change it, love it, leave it, whatever!  I
 "   do however make the simple request that if you use the
@@ -19,7 +19,7 @@
 "   Perl, PHP, and C/C++ too (at least I think so).
 "
 "   Brian
-"   
+"
 " ---------------------------------------------------------
 
 set background=dark

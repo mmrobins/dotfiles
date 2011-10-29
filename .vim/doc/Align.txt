@@ -322,7 +322,7 @@ ALIGNMENT CONTROL				*alignctrl* *align-control* {{{2
 <
 	where "ws" stands for "white space" such as blanks and/or tabs.
 
-	
+
 	SEPARATORS				*alignctrl-separators* {{{3
 
 	As a result, separators may not have white space (tabs or blanks) on
@@ -611,7 +611,7 @@ ALIGNMENT CONTROL				*alignctrl* *align-control* {{{2
 
 	The second "Align =" had a AlignCtrl v-pattern which caused it to skip
 	(ignore) the "skip=this" line when aligning.
-	
+
 	To remove AlignCtrl's g and v patterns, use (as appropriate) >
 
 		AlignCtrl g
@@ -934,7 +934,7 @@ ALIGNMENT						*align-align* {{{2
 		aa:=bb:=cc:=1;
 		a:=b:=c:=1;
 		aaa:=bbb:=ccc:=1;
-<	
+<
 	Bcomes: select the three assignment lines, then \a:= >
 		aa  := bb  := cc  := 1;
 		a   := b   := c   := 1;

@@ -4,7 +4,7 @@
 "
 " Based on an original vim color file by
 " Ron Aaron <ron@mossbayeng.com> (2001 Jul 28)
-" 
+"
 " Maintainer:	Adam Krouskop
 " Last Change:	2003 Jul 3
 

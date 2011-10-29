@@ -4,8 +4,8 @@
 " URI: http://mh.dropbear.id.au/vim/navajo-night.png
 "
 " This colour scheme uses a "navajo-black" background
-" I have added colours for the statusbar and for spell checking 
-" as taken from Cream (http://cream.sf.net/) 
+" I have added colours for the statusbar and for spell checking
+" as taken from Cream (http://cream.sf.net/)
 
 
 set background=dark
@@ -19,27 +19,27 @@ let g:colors_name = "navajo-night"
 " This is the list of colour changes from Navajo that
 " weren't a simple mathematical subtraction from 0xffffff
 " DarkBlue -> #ffff74
-" DarkRed -> #74ffff 
-" DarkGreen -> #ff9bff 
-" DarkCyan -> #ff7474 
-" DarkMagenta -> #74ff74 
-" DarkYellow -> #7474ff 
-" DarkGray -> #565656 
+" DarkRed -> #74ffff
+" DarkGreen -> #ff9bff
+" DarkCyan -> #ff7474
+" DarkMagenta -> #74ff74
+" DarkYellow -> #7474ff
+" DarkGray -> #565656
 " Blue -> Yellow
-" Red -> Cyan 
-" Yellow -> Blue 
-" Gray -> #414141 
-" Brown -> #5ad5d5 
-" #ff8060 -> #007f9f 
-" #f6e8d0 -> #09172f 
-" #edb5cd -> #124a32 
-" #c0c0c0 -> #3f3f3f 
-" #907050 -> #6f8faf 
+" Red -> Cyan
+" Yellow -> Blue
+" Gray -> #414141
+" Brown -> #5ad5d5
+" #ff8060 -> #007f9f
+" #f6e8d0 -> #09172f
+" #edb5cd -> #124a32
+" #c0c0c0 -> #3f3f3f
+" #907050 -> #6f8faf
 " #808080 -> #7f7f7f
 " #707070 -> #8f8f8f
-" SeaGreen -> #d174a8 
-" LightRed (assuming #ee9090) -> #116f6f 
-" LightBlue -> #522719 
+" SeaGreen -> #d174a8
+" LightRed (assuming #ee9090) -> #116f6f
+" LightBlue -> #522719
 
 hi Normal ctermfg=White guifg=White guibg=#35536f
 

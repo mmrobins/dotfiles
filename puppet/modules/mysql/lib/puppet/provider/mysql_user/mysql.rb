@@ -19,14 +19,14 @@ Puppet::Type.type(:mysql_user).provide(:mysql,
 
 	def munge_args(*args)
 		@resource[:defaults] ||= ""
-		if @resource[:defaults] != "" 
+		if @resource[:defaults] != ""
 			[ "--defaults-file="+@resource[:defaults] ] + args
 		else
 			args
 		end
 	end
 
-	def mysql_flush 
+	def mysql_flush
 		mysqladmin munge_args("flush-privileges")
 	end
 

@@ -16,17 +16,17 @@ let g:colors_name = "wintersday"
 hi   Normal      guifg=#CCCCCC guibg=#000000
 
 hi Cursor		gui=NONE    guifg=#B9D3EE   guibg=#8B8878
-"hi CursorIM	
+"hi CursorIM
 hi Directory	gui=NONE    guifg=#FFFFFF   guibg=#000000
 hi DiffAdd      gui=NONE    guifg=#A0D0FF   guibg=#0020A0
 hi DiffChange   gui=NONE    guifg=#E03870   guibg=#601830
 hi DiffDelete   gui=NONE    guifg=#A0D0FF   guibg=#0020A0
 hi DiffText     gui=NONE    guifg=#FF9933   guibg=#A02860
 hi ErrorMsg     gui=BOLD    guifg=#FF6347   guibg=NONE
-hi VertSplit    gui=BOLD    guifg=#FFFFFF   guibg=#8B4513 
+hi VertSplit    gui=BOLD    guifg=#FFFFFF   guibg=#8B4513
 hi Folded       gui=NONE    guifg=#40F0F0   guibg=#005080
 hi FoldColumn   gui=NONE    guifg=#40C0FF   guibg=#00305C
-hi IncSearch    gui=UNDERLINE guifg=#FFD700 guibg=#778899 
+hi IncSearch    gui=UNDERLINE guifg=#FFD700 guibg=#778899
 hi LineNr       gui=NONE    guifg=#696969
 hi ModeMsg      gui=BOLD    guifg=#990000   guibg=NONE
 hi MoreMsg      gui=BOLD    guifg=#CC6666   guibg=NONE
@@ -38,12 +38,12 @@ hi StatusLine   gui=BOLD    guifg=#FFFFFF   guibg=#8B4513
 hi StatusLineNC gui=BOLD    guifg=#8B4513   guibg=#FFFFFF
 hi Title        gui=BOLD    guifg=#CCCCCC   guibg=NONE
 hi Visual       gui=NONE    guifg=#B9D3EE   guibg=#8B8878
-"hi VisualNOS	
+"hi VisualNOS
 hi WarningMsg   gui=BOLD    guifg=#FFA0FF   guibg=NONE
 hi WildMenu     gui=NONE    guifg=#000000   guibg=#a0a0ff
-"hi Menu		
-"hi Scrollbar	
-"hi Tooltip		
+"hi Menu
+"hi Scrollbar
+"hi Tooltip
 
 " syntax highlighting groups
 hi Comment      gui=NONE    guifg=#6699CC   guibg=NONE

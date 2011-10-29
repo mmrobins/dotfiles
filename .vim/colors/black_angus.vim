@@ -40,12 +40,12 @@ highlight SignColumn 	guifg=LightGreen	guibg=#003300 gui=none ctermfg=LightGreen
 highlight WildMenu 		guifg=LightGreen	guibg=#003300 gui=none ctermfg=LightGreen ctermbg=DarkGreen term=none
 
 highlight LineNr 		guifg=DarkGreen	guibg=Black gui=none ctermfg=DarkGreen ctermbg=Black term=none
-highlight Directory 	guifg=LightGreen 					ctermfg=LightGreen 
+highlight Directory 	guifg=LightGreen 					ctermfg=LightGreen
 highlight Comment   	guifg=DarkGrey 						ctermfg=DarkGray
 
 highlight Special   	guifg=Orange	ctermfg=Brown
 highlight Title   		guifg=Orange	ctermfg=Brown
-highlight Tag  		 	guifg=DarkRed	ctermfg=DarkRed 
+highlight Tag  		 	guifg=DarkRed	ctermfg=DarkRed
 highlight link Delimiter		Special
 highlight link SpecialChar		Special
 highlight link SpecialComment 	Special
@@ -69,11 +69,11 @@ highlight link Macro			Include
 highlight link Define			Include
 
 " lang
-highlight Function 		guifg=#AAEEAA 		gui=none   		ctermfg=LightGreen	
-highlight Identifier  	guifg=#bbccbb 		gui=none   		ctermfg=Grey 		
-highlight Statement  	guifg=LightGreen	gui=underline 	ctermfg=LightGreen 	
-highlight Operator  	guifg=Yellow 		gui=none    	ctermfg=Yellow 		
-highlight Conditional  	guifg=lightslateblue gui=none    	ctermfg=LightBlue 	
+highlight Function 		guifg=#AAEEAA 		gui=none   		ctermfg=LightGreen
+highlight Identifier  	guifg=#bbccbb 		gui=none   		ctermfg=Grey
+highlight Statement  	guifg=LightGreen	gui=underline 	ctermfg=LightGreen
+highlight Operator  	guifg=Yellow 		gui=none    	ctermfg=Yellow
+highlight Conditional  	guifg=lightslateblue gui=none    	ctermfg=LightBlue
 
 highlight link Exception		Statement
 highlight link Label 	 		Statement

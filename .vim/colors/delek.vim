@@ -46,7 +46,7 @@ hi Comment    term=NONE      cterm=NONE ctermfg=darkred      gui=NONE guifg=red2
 hi Constant   term=underline cterm=NONE ctermfg=darkgreen    gui=NONE guifg=green3
 hi Special    term=bold      cterm=NONE ctermfg=lightred     gui=NONE guifg=deeppink
 hi Statement  term=bold      cterm=bold ctermfg=blue         gui=bold guifg=blue
-hi Type	      term=underline cterm=NONE ctermfg=blue         gui=bold guifg=blue 
+hi Type	      term=underline cterm=NONE ctermfg=blue         gui=bold guifg=blue
 
 if exists("syntax_on")
   let syntax_cmd = "enable"

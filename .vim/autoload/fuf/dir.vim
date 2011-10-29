@@ -98,7 +98,7 @@ function s:handler.makePreviewLines(word, count)
   return fuf#makePreviewLinesAround(
         \ split(glob(fnamemodify(a:word, ':p') . '*'), "\n"),
         \ [], a:count, self.getPreviewHeight())
-  return 
+  return
 endfunction
 
 "

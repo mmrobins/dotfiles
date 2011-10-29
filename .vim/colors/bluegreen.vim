@@ -1,9 +1,9 @@
 
 
 " Vim color file
-" Maintainer:   
-" Last Change:  
-" URL:			 
+" Maintainer:
+" Last Change:
+" URL:
 
 
 " cool help screens
@@ -30,7 +30,7 @@ hi ModeMsg guifg=#404040 guibg=#C0C0C0
 hi MoreMsg guifg=darkturquoise guibg=#188F90
 hi NonText guibg=#334C75 guifg=#9FADC5
 hi Question	guifg=#F4BB7E
-hi Search guibg=fg guifg=bg 
+hi Search guibg=fg guifg=bg
 hi SpecialKey	guifg=#BF9261
 hi StatusLine	guibg=#004443 guifg=#c0ffff gui=none
 hi StatusLineNC	guibg=#067C7B guifg=#004443 gui=bold

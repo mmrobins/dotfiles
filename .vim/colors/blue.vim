@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer:   TaQ <taq@taq.cjb.net>
 " Last Change:  10 October 2001 - 0.2
-" URL: http://taq.cjb.net		
+" URL: http://taq.cjb.net
 
 " cool help screens
 " :he group-name
@@ -32,7 +32,7 @@ hi ErrorMsg   ctermfg=white ctermbg=Red   guifg=#FFFFFF guibg=#FF0000
 hi WarningMsg ctermfg=Black ctermbg=Yellow   guifg=#000000 guibg=#FFFF00
 hi VertSplit  ctermfg=White ctermbg=Blue     guifg=#000090 guibg=#000090
 hi Directory  ctermfg=Cyan  ctermbg=DarkBlue guifg=#00A0F0 guibg=#000040
-hi Visual	  ctermfg=Black ctermbg=Cyan     guifg=#5050FF guibg=#FFFFFF 
+hi Visual	  ctermfg=Black ctermbg=Cyan     guifg=#5050FF guibg=#FFFFFF
 hi Title      ctermfg=White ctermbg=Blue     guifg=#FFFFFF guibg=#0050EE gui=NONE
 
 hi StatusLine   term=bold cterm=bold ctermfg=White ctermbg=Blue		gui=bold guifg=#FFFFFF guibg=#0050EE

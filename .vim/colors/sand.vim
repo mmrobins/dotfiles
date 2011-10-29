@@ -1,9 +1,9 @@
 " Vim color file
 " Maintainer:   Tim Alexeevsky <realtim@mail.ru>
-" Last Change:  2002-03-14 
+" Last Change:  2002-03-14
 " Version:      0.5
-" URL:		    http://sunsite.cs.msu.su/~tim/vim/sand.vim 
-" 
+" URL:		    http://sunsite.cs.msu.su/~tim/vim/sand.vim
+"
 " Thanx to Hans Fugal for his colorscheme_template.vim
 
 set background=light

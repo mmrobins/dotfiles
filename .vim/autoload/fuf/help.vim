@@ -60,7 +60,7 @@ function s:parseHelpTagEntry(line, tagFile)
     return {}
   endif
   let suffix = matchstr(a:tagFile, '-\zs..$')
-  if empty(suffix) 
+  if empty(suffix)
     let suffix = '@en'
   else
     let suffix = '@' . suffix

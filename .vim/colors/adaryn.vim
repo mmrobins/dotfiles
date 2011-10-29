@@ -3,7 +3,7 @@
 " Last Change:	2003-04-11
 
 " adaryn - A color scheme named after my daughter, Adaryn. (A-da-rin)
-" I like deep, sharp colors and this scheme is inspired by 
+" I like deep, sharp colors and this scheme is inspired by
 " Bohdan Vlasyuk's darkblue.
 " The cterm background is black since the dark blue was just too light.
 " Also the cterm colors are very close to an old Borland C++ color setup.

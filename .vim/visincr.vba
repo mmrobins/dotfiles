@@ -24,16 +24,16 @@ set cpo&vim
 
 " ---------------------------------------------------------------------
 "  Methods: {{{1
-let s:I      = 0 
-let s:II     = 1 
-let s:IMDY   = 2 
-let s:IYMD   = 3 
-let s:IDMY   = 4 
-let s:ID     = 5 
-let s:IM     = 6 
-let s:IA     = 7 
-let s:IX     = 8 
-let s:IIX    = 9 
+let s:I      = 0
+let s:II     = 1
+let s:IMDY   = 2
+let s:IYMD   = 3
+let s:IDMY   = 4
+let s:ID     = 5
+let s:IM     = 6
+let s:IA     = 7
+let s:IX     = 8
+let s:IIX    = 9
 let s:IO     = 10
 let s:IIO    = 11
 let s:IR     = 12
@@ -126,16 +126,16 @@ set cpo&vim
 
 " ---------------------------------------------------------------------
 "  Methods: {{{1
-let s:I      = 0 
-let s:II     = 1 
-let s:IMDY   = 2 
-let s:IYMD   = 3 
-let s:IDMY   = 4 
-let s:ID     = 5 
-let s:IM     = 6 
-let s:IA     = 7 
-let s:IX     = 8 
-let s:IIX    = 9 
+let s:I      = 0
+let s:II     = 1
+let s:IMDY   = 2
+let s:IYMD   = 3
+let s:IDMY   = 4
+let s:ID     = 5
+let s:IM     = 6
+let s:IA     = 7
+let s:IX     = 8
+let s:IIX    = 9
 let s:IO     = 10
 let s:IIO    = 11
 let s:IR     = 12
@@ -231,13 +231,13 @@ fun! visincr#VisBlockIncr(method,...)
 
   elseif a:method == s:RIMDY
    let restrict= '\%'.col(".").'c\d\{1,2}'.g:visincr_datedivset.'\d\{1,2}'.g:visincr_datedivset.'\d\{2,4}'
-"   call Decho(":IMDY restricted<".restrict.">")       
-                                                       
-  elseif a:method == s:RIYMD                           
+"   call Decho(":IMDY restricted<".restrict.">")
+
+  elseif a:method == s:RIYMD
    let restrict= '\%'.col(".").'c\d\{2,4}'.g:visincr_datedivset.'\d\{1,2}'.g:visincr_datedivset.'\d\{1,2}'
-"   call Decho(":IYMD restricted<".restrict.">")       
-                                                       
-  elseif a:method == s:RIDMY                           
+"   call Decho(":IYMD restricted<".restrict.">")
+
+  elseif a:method == s:RIDMY
    let restrict= '\%'.col(".").'c\d\{1,2}'.g:visincr_datedivset.'\d\{1,2}'.g:visincr_datedivset.'\d\{2,4}'
 "   call Decho(":IDMY restricted<".restrict.">")
 
@@ -1173,7 +1173,7 @@ numbers, dates, or daynames.
 
 		See |visincr-raggedright| for a discussion on ragged-right
 		handling.
- 							
+
 			*:IX* *visincr-IX* *:IO* *visincr-IO*
 		The following two commands are variants of :I : >
 		    :IO [#] left justified octal incrementing
@@ -1186,7 +1186,7 @@ numbers, dates, or daynames.
 		Roman numeral enumeration.  The increment for these
 		commands is in the usual arabic numerals (ie. decimal)
 		as Roman numerals don't support negative numbers.
-		
+
 
 
 

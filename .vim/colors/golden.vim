@@ -2,7 +2,7 @@
 " Vim color file
 "
 " Creator: Ryan Phillips <ryan@trolocsis.com>
-" Credits: This color scheme originated from the idea of 
+" Credits: This color scheme originated from the idea of
 "          Jeffrey Bakker, the creator of webcpp (http://webcpp.sourceforge.net/).
 "     URL: http://www.trolocsis.com/vim/golden.vim
 "
@@ -16,7 +16,7 @@ let g:colors_name = "golden"
 hi Normal		  ctermfg=yellow guifg=#ddbb00  guibg=black
 hi Scrollbar	  ctermfg=Yellow guifg=#ddbb00  guibg=black
 hi Menu			  ctermfg=darkyellow guifg=#ffddaa  guibg=black
-hi SpecialKey	  ctermfg=yellow term=bold  cterm=bold  guifg=#ffddaa 
+hi SpecialKey	  ctermfg=yellow term=bold  cterm=bold  guifg=#ffddaa
 hi NonText		  ctermfg=LightBlue term=bold  cterm=bold  gui=bold	guifg=#DBCA98
 hi Directory	  ctermfg=DarkYellow term=bold  cterm=bold  guifg=#ffddaa
 hi ErrorMsg		  term=standout  cterm=bold  ctermfg=White  ctermbg=Red  guifg=White  guibg=Red

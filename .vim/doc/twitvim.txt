@@ -4,7 +4,7 @@
 		      TwitVim: A Twitter client for Vim
 		      ---------------------------------
 
-Author: Po Shan Cheah <morton@mortonfox.com> 
+Author: Po Shan Cheah <morton@mortonfox.com>
 	http://twitter.com/mortonfox
 
 License: The Vim License applies to twitvim.vim and twitvim.txt (see
@@ -226,7 +226,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	vimrc:
 
 		let twitvim_api_root = "http://identi.ca/api"
-	
+
 	A server implementing a Twitter-compatible API may not support all of
 	Twitter's features, so some TwitVim commands may not work.
 
@@ -243,7 +243,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	To do that, set the following in your vimrc:
 
 		let twitvim_login_b64 = "base64string"
-	
+
 						*twitvim_proxy_login_b64*
 	If your HTTP proxy needs authentication, set the following:
 
@@ -277,7 +277,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	TwitVim supports http networking through Vim's Perl, Python, Ruby, and
 	Tcl interfaces, so if you have any of those interfaces compiled into
 	your Vim program, you can use that instead of cURL.
-	
+
 	Generally, it is slightly faster to use one of those scripting
 	interfaces for networking because it avoids running an external
 	program. On Windows, it also avoids a brief taskbar flash when cURL
@@ -605,7 +605,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	mentioned in @-replies on the current line.
 
 
-							*TwitVim-retweet*	
+							*TwitVim-retweet*
 	<Leader>R					*TwitVim-Leader-S-r*
 
 	This mapping (Note: uppercase 'R' instead of 'r'.) is local to the
@@ -710,7 +710,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	an @-reply tweet, it calls the Twitter API to retrieve the tweet to
 	which this one is replying. Then it will display that predecessor
 	tweet below the current one.
-	
+
 	If there is no in-reply-to information, it will show a warning and do
 	nothing.
 
@@ -751,7 +751,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	This mapping loads the next (older) page in the timeline.
 	See |:NextTwitter|.
 
-	
+
 							*TwitVim-previous*
 	Ctrl-PageUp					*TwitVim-C-PageUp*
 
@@ -782,7 +782,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PTweetburner					*:PTweetburner*
 	:PTweetburner {url}
-	
+
 	Same as :Tweetburner but prompts for a tweet on the command line with
 	the short URL already inserted.
 
@@ -806,7 +806,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PSnipurl					*:PSnipurl*
 	:PSnipurl {url}
-	
+
 	Same as :Snipurl but prompts for a tweet on the command line with
 	the short URL already inserted.
 
@@ -830,7 +830,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PMetamark					*:PMetamark*
 	:PMetamark {url}
-	
+
 	Same as :Metamark but prompts for a tweet on the command line with
 	the short URL already inserted.
 
@@ -854,7 +854,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PTinyURL					*:PTinyURL*
 	:PTinyURL {url}
-	
+
 	Same as :TinyURL but prompts for a tweet on the command line with
 	the short URL already inserted.
 
@@ -878,7 +878,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PBitLy						*:PBitLy*
 	:PBitLy {url}
-	
+
 	Same as :BitLy but prompts for a tweet on the command line with
 	the short URL already inserted.
 
@@ -902,7 +902,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PIsGd						*:PIsGd*
 	:PIsGd {url}
-	
+
 	Same as :IsGd but prompts for a tweet on the command line with the
 	short URL already inserted.
 
@@ -937,7 +937,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PUrlBorg					*:PUrlBorg*
 	:PUrlBorg {url}
-	
+
 	Same as :UrlBorg but prompts for a tweet on the command line with the
 	short URL already inserted.
 
@@ -977,7 +977,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PTrim						*:PTrim*
 	:PTrim {url}
-	
+
 	Same as :Trim but prompts for a tweet on the command line with the
 	short URL already inserted.
 
@@ -1009,14 +1009,14 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 	:PCligs						*:PCligs*
 	:PCligs {url}
-	
+
 	Same as :Cligs but prompts for a tweet on the command line with the
 	short URL already inserted.
 
 
 	:[count]SearchTwitter					*:SearchTwitter*
 	:[count]SearchTwitter {query}
-	
+
 	This command calls the Twitter Search API to search for {query}. If
 	{query} is not provided on the command line, the command will prompt
 	you for it. Search results are then displayed in the timeline buffer.
@@ -1070,7 +1070,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	on how to customize these highlighting groups.
 
 	twitterUser					*hl-twitterUser*
-	
+
 	The Twitter user name at the beginning of each line.
 
 	twitterTime					*hl-twitterTime*
@@ -1134,7 +1134,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 
 		command! ToTwitter :call Switch_to_twitter()
 		command! ToIdentica :call Switch_to_identica()
-	
+
 	With that in place, I can use :ToTwitter and :ToIdentica to switch
 	between services. I added a call to FriendsTwitter at the end of each
 	function so that I'll have a fresh timeline view after switching. You
@@ -1149,7 +1149,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 	current line:
 
 		%{strlen(getline('.'))}
-	
+
 	This is useful if you compose tweets in a separate buffer and post
 	them with |:CPosttoTwitter|. With the line length in your status line,
 	you will know when you've reached the 140-character boundary.
@@ -1300,7 +1300,7 @@ License: The Vim License applies to twitvim.vim and twitvim.txt (see
 			   * Changed Twitter window name to avoid unsafe
 			     special characters and clashes with file names.
 	0.2.0 : 2008-04-09 * Added views for public, friends, user timelines,
-			     replies, and direct messages. 
+			     replies, and direct messages.
 			   * Automatically insert user's posts into
 			     public, friends, or user timeline, if visible.
 			   * Added syntax highlighting for timeline view.

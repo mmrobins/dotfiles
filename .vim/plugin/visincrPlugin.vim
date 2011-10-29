@@ -19,16 +19,16 @@ set cpo&vim
 
 " ---------------------------------------------------------------------
 "  Methods: {{{1
-let s:I      = 0 
-let s:II     = 1 
-let s:IMDY   = 2 
-let s:IYMD   = 3 
-let s:IDMY   = 4 
-let s:ID     = 5 
-let s:IM     = 6 
-let s:IA     = 7 
-let s:IX     = 8 
-let s:IIX    = 9 
+let s:I      = 0
+let s:II     = 1
+let s:IMDY   = 2
+let s:IYMD   = 3
+let s:IDMY   = 4
+let s:ID     = 5
+let s:IM     = 6
+let s:IA     = 7
+let s:IX     = 8
+let s:IIX    = 9
 let s:IO     = 10
 let s:IIO    = 11
 let s:IR     = 12

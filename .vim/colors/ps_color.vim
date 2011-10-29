@@ -5,7 +5,7 @@
 " URL:		http://vim.sourceforge.net/scripts/script.php?script_id=760
 "
 "	Please prepend [VIM] in the title when writing e-mail to me, or it will
-"	be automatically treated as spam and removed. 
+"	be automatically treated as spam and removed.
 "
 "	See the help document for all details, the help document will be
 "	installed after the script has been sourced once, do not open the
@@ -102,7 +102,7 @@ endif
 
 " }}}1
 
-" Relevant Help: 
+" Relevant Help:
 " :h highlight-groups
 " :h psc-cterm-color-table
 " :ru syntax/hitest.vim
@@ -115,8 +115,8 @@ endif
 
 " GUI:
 "
-" I don't want to abuse folding, but here folding is used to avoid confusion. 
-if s:style=='warm' 
+" I don't want to abuse folding, but here folding is used to avoid confusion.
+if s:style=='warm'
   " Warm style for gui here {{{2
   " LIGHT COLOR DEFINE START
 
@@ -125,7 +125,7 @@ if s:style=='warm'
   highlight Visual		guifg=fg	guibg=#a6caf0
   highlight Cursor		guifg=#f0f0f0	guibg=#008000
   " The idea of CursorIM is pretty good, however, the feature is still buggy
-  " in the current version (Vim 6.3). 
+  " in the current version (Vim 6.3).
   " The following line will be kept commented until the bug fixed.
   "
   " highlight CursorIM		guifg=#f0f0f0	guibg=#800080
@@ -176,7 +176,7 @@ if s:style=='warm'
 
   " LIGHT COLOR DEFINE END
   " }}}2
-elseif s:style=='cool' 
+elseif s:style=='cool'
   " Cool style for gui here {{{2
   " DARK COLOR DEFINE START
 
@@ -227,7 +227,7 @@ elseif s:style=='cool'
   highlight IncSearch		guifg=#000000	guibg=#d0d0d0
   highlight StatusLineNC	guifg=#000000	guibg=#c0c0c0
   highlight VertSplit		guifg=#000000	guibg=#c0c0c0
-  highlight Underlined		guifg=#80a0ff	guibg=bg	gui=underline 
+  highlight Underlined		guifg=#80a0ff	guibg=bg	gui=underline
   highlight Ignore		guifg=#000000	guibg=bg
 
   " DARK COLOR DEFINE END
@@ -277,7 +277,7 @@ endif
 " Color Term:
 
 " It's not quite possible to support 'cool' and 'warm' simultaneously, since
-" we cannot expect a terminal to have more than 16 color names. 
+" we cannot expect a terminal to have more than 16 color names.
 "
 
 " I assume Vim will never go to cterm mode when has("gui_running") returns 1,
@@ -330,7 +330,7 @@ if !has('gui_running')
       " However, the bright background color is not available for 8-color terms.
       "
       " You can manually set t_Co=16 in your .vimrc to see if your terminal
-      " supports 16 colours, 
+      " supports 16 colours,
       MultiHi cterm=none DiffText Visual Cursor Comment Todo StatusLine Question DiffChange ModeMsg VisualNOS ErrorMsg WildMenu DiffAdd Folded DiffDelete Normal
       MultiHi cterm=bold Search Special Constant Number LineNr PreProc Statement Type Error Identifier SpecialKey NonText MoreMsg Title WarningMsg FoldColumn SignColumn Directory DiffDelete
 
@@ -377,7 +377,7 @@ if (s:style=='cool') || (s:style == 'warm')
   highlight link		Character	Number
   highlight link		SpecialChar	LineNr
   highlight link		Tag		Identifier
-  " The following are not standard hi links, 
+  " The following are not standard hi links,
   " these are used by DrChip
   highlight link		Warning		MoreMsg
   highlight link		Notice		Constant
@@ -429,7 +429,7 @@ exe "silent! 1new ".expand("<sfile>:p")
 silent! /^" HelpExtractor:$/,$g/.*/d
 silent! wq!
 
-unlet docdir 
+unlet docdir
 unlet curfile
 "unlet docfile
 noh
@@ -467,8 +467,8 @@ PSC FEATURES OVERVIEW                           *psc-features* *psc-overview*
 	Features ~
 
 	. PSC is firstly a color scheme which have both dark and light
-	  background styles. 
-	. It can have the same appearance in [cterm] as in [gui]. 
+	  background styles.
+	. It can have the same appearance in [cterm] as in [gui].
 	. It is designed with gentle color to minimize fatigue of eye.
 	. It also works with other color schemes.
 	. Default foreground and background can easily be changed, it is more
@@ -487,14 +487,14 @@ PSC FEATURES OVERVIEW                           *psc-features* *psc-overview*
 	that many programmers prefer to switch off the syntax highlighting at
 	work.  That is not a good idea because you will lost the advantages of
 	syntax high-lighting.  It is often the case that we have to work for
-	300+ minutes, then I decide to do-it-myself. 
+	300+ minutes, then I decide to do-it-myself.
 
 	Many user-defined color schemes in vim.sf.net tend to achieve low
 	contrast by having a strong color-cast, i.e. looks blueish or
 	yellowish or reddish.  This does look comfortable at first, however,
 	any type of color-cast will cause the eyes less sensitive for
 	particular color after a long-time work session, and that's no good to
-	health. 
+	health.
 
 	Efforts had been made to ensure no color-cast for this scheme, all
 	elementary colors like RGB and CYMK are evenly used.  Like TeX,
@@ -506,7 +506,7 @@ PSC FEATURES OVERVIEW                           *psc-features* *psc-overview*
 	Brightness.  In this color scheme, the saturation is low and the
 	brightness are designed to be very close to each other in order not to
 	fatigue our eyes after a whole day's programming work.
-	
+
 	Portability ~
 
 	Different monitor settings led to different look.  In this color
@@ -515,8 +515,8 @@ PSC FEATURES OVERVIEW                           *psc-features* *psc-overview*
 	if the gamma curve is not optimal, the appearance may be less
 	comfortable, use adobe gamma loader or similar tools to adjust
 	your monitor if your monitor do not have the option to change color
-	temperature and/or gamma curve. 
-	
+	temperature and/or gamma curve.
+
 	Needless to say, VI is an editor originally designed to do edit tasks
 	in a text terminal, and VIM is an improved version of VI.  Its a shame
 	that a color scheme cannot have a satisfactory appearance in cterm.
@@ -542,15 +542,15 @@ PSC FEATURES OVERVIEW                           *psc-features* *psc-overview*
 	Now we talk about the brightness of the background. Why dark
 	background is preferred over others? There are many reasons, such as,
 	the monitor emits lower radiation for black background. You may have
-	lots of similar reasons... 
-	
+	lots of similar reasons...
+
 	But I'll talk about something you may not know:
 >
 	It is easier to distinguish foreground colors on a dark background
-	than on a light background. 
+	than on a light background.
 
 	At the same time, it is easier to distinguish background colors on
-	a light background than on a dark background. 
+	a light background than on a dark background.
 
 	We will mainly change foreground colors for syntax highlighting.
 <
@@ -584,10 +584,10 @@ PSC INSTALLATION                                                  *psc-usage*
 	Windows.
 
 	Step 2, Install the help document ~
-        
+
 	The help document will be automatically installed when the colorscheme
 	be sourced the first time.  If it is not, type :colo ps_color now.
-        
+
 	After successfully installed the help document, you can use >
 
 		:help psc-options
@@ -601,7 +601,7 @@ PSC OPTIONS                                                     *psc-options*
 	both GUI and cterm, only some of them do not work for both.
 
 	Options set using the 'let' command must present [BEFORE] the color
-	scheme been sourced. 
+	scheme been sourced.
 
 								*psc_style*
 	Style ~
@@ -611,8 +611,8 @@ PSC OPTIONS                                                     *psc-options*
 	let psc_style='default'
 	let psc_style='defdark'
 <
-	This selects between styles of colors, 
-	The 'cool' is the default, dark background. 
+	This selects between styles of colors,
+	The 'cool' is the default, dark background.
 	The 'warm' is the experimental, light background scheme.
 
 	See |psc-about-background| for more knowledge about the background,
@@ -633,7 +633,7 @@ PSC OPTIONS                                                     *psc-options*
 <
 	This is exactly the same to psc_style, except that it only affects the
 	console version of vim in a color terminal, the 'warm' is not
-	available for cterm.  
+	available for cterm.
 	By default, it will be set to the same value as 'psc_style'. You can
 	change it if you want different style in cterm from gui.
 
@@ -693,7 +693,7 @@ PSC OPTIONS                                                     *psc-options*
 	To do this is quite straight forward for GUI, just define the Normal
 	highlight in your .gvimrc, [AFTER] the color scheme has been sourced.
 
-	For example: 
+	For example:
 >
 	highlight Normal guibg=#103040
 <
@@ -720,12 +720,12 @@ PSC OPTIONS                                                     *psc-options*
 
 	Here is an example to define hot key of different style switching,
 	note that I had only given this example without actually define it.
-	You can choose to define it in .vimrc or anyway you prefer. 
+	You can choose to define it in .vimrc or anyway you prefer.
 >
 	nnoremap <Leader>pc :let psc_style='cool'<CR>:colo ps_color<CR>
 	nnoremap <Leader>pw :let psc_style='warm'<CR>:colo ps_color<CR>
 <
-	Alternatively, you can use the capitalized :Colo command, like 
+	Alternatively, you can use the capitalized :Colo command, like
 	:Colo cool or :Colo warm
 
 ==============================================================================
@@ -733,7 +733,7 @@ PSC WITH CTERM                                                    *psc-cterm*
 
 	Colour Term ~
 
-	The cterm color is designed mainly in these terminals: 
+	The cterm color is designed mainly in these terminals:
 >
 	1. Cygwin bash shell in NT command prompt box
 	2. XTERM and RXVT
@@ -744,13 +744,13 @@ PSC WITH CTERM                                                    *psc-cterm*
 	color, so you can have the same color with your GUI version of Vim,
 	for 'cool' color style you just change the color according to the
 	|psc-cterm-color-table|, for how to redefine the color of Windows NT
-	prompt console please see Windows Help. 
+	prompt console please see Windows Help.
 
 	NT Cygwin bash shell console supports 16 foreground colors by add bold
 	attribute to 8 color, the cterm=bold specifies which should be bright
 	color, so totally the 16 color foreground is available, but color
 	name DarkXXX and LightXXX are the same.
-	
+
 	The pre-configured Cygwin.lnk is available for download on my web page
 	for Vim, but the site seems down, if my site would be on again, it
 	should be at the following URL: >
@@ -767,7 +767,7 @@ PSC WITH CTERM                                                    *psc-cterm*
 	XTERM is a much more feature-rich terminal than Windows Console so the
 	support is much better, add the following recommend line into your
 	.Xdefaults and you can achieve the same color as in GUI version.
- 
+
 	Add the following into your .Xdefaults:
 	This works for XTERM and RXVT.
 >
@@ -809,7 +809,7 @@ PSC WITH CTERM                                                    *psc-cterm*
 <
 	If the t_Co=16 have problem, set t_Co=8 and :colo ps_color again.
 	vice versa.
-	
+
 	My rxvt works well with t_Co=16: >
 	Rxvt v2.7.10 - released: 26 MARCH 2003
 	Options:
@@ -846,8 +846,8 @@ PSC WITH CTERM                                                    *psc-cterm*
 	If your color terminal does only have 8 colors and cannot achieve 16
 	colors with cterm=bold, you may want to switch to other color schemes
 	to gain more readability. Anyway, you can specify in your .vimrc to
-	use different color scheme under different consoles and GUI. 
-	For example: 
+	use different color scheme under different consoles and GUI.
+	For example:
 >
 	let psc_cterm_style = 'foobarcolor'
 	let psc_style = 'cool'
@@ -860,7 +860,7 @@ PSC WITH CTERM                                                    *psc-cterm*
 ==============================================================================
 PSC FAQ AND TIPS                                         *psc-faq* *psc-tips*
 >
-	Q: What is meant by `PS' ? 
+	Q: What is meant by `PS' ?
 <
 	A: PS means: PostScript, PhotoShop, PerSonal, ... or anything you can
 	   imagine and anything you want it do be.
@@ -931,7 +931,7 @@ PSC RELEASE NOTES                                         *psc-release-notes*
 	2.81 Release Note: ~
 
 	Provided a separate utility reloaded.vim to fine tune the GUI color
-	scheme based on Hue, Saturation and Brightness(Luminance).  
+	scheme based on Hue, Saturation and Brightness(Luminance).
 
 	Added some groups to meet the need of reloaded.vim, no essential
 	change.
@@ -954,7 +954,7 @@ PSC RELEASE NOTES                                         *psc-release-notes*
 
 	2.7 Release Note: ~
 
-	Now it is possible to change the Background, 
+	Now it is possible to change the Background,
 	see :h psc-change-background for details.
 
 	Linked the Tag group to Identifier.
@@ -978,7 +978,7 @@ PSC RELEASE NOTES                                         *psc-release-notes*
 	2.6 Release Note: ~
 
 	As stated in the v2.3, the only 'todo' thing seems to be the 'warm'
-	style, now in this version I had been working on it. 
+	style, now in this version I had been working on it.
 
 	There also are some minor fixes for the document, to be more friendly
 	for new readers.

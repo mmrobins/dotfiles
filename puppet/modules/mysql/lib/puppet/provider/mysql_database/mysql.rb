@@ -19,7 +19,7 @@ Puppet::Type.type(:mysql_database).provide(:mysql,
 
   def munge_args(*args)
     @resource[:defaults] ||= ""
-    if @resource[:defaults] != "" 
+    if @resource[:defaults] != ""
       [ "--defaults-file="+@resource[:defaults] ] + args
     else
       args
