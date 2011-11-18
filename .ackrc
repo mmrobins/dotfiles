@@ -6,3 +6,9 @@ coffee=coffee
 
 --type-set
 markdown=md,markdown
+
+--type-set
+haml=haml
+
+--type-set
+sass=scss
