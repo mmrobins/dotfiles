@@ -65,8 +65,10 @@ set hl=l:Visual " make highlights easier to see
 
 " Buffers
 map <leader>bp :BufExplorer<cr>j<cr>
-autocmd BufEnter * lcd %:p:h:gs/ /\\ / " working directory is whatever file you're working in, not root
 set hidden " allow unsaved hidden buffers
+" working directory is whatever file you're working in, not root
+" but this messes up Gblame
+" autocmd BufEnter * lcd %:p:h:gs/ /\\ / 
 
 " For modifying the .vimrc
 nmap <leader>e :e $HOME/.vimrc<cr>
@@ -182,6 +184,7 @@ function! CdRoot()
     endif
 endfunction
 map <leader>cr <esc>:call CdRoot()<CR>
+map <leader>cf <esc>:cd %:p:h:gs/ /\\ /<CR>
 map <leader>ack <esc>:call CdRoot()<CR>:Ack
 
 " A hackish attempt at doing an autoalign like I used to have at Rentrak
@@ -212,3 +215,9 @@ map <leader>+ :r ~/tmp/vimclipboard<cr>
 
 " LESS CSS syntax highlighting
 au BufNewFile,BufRead *.less set filetype=less
+
+" Nerdtree toggle
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+
+" Fuzzy Finder
+map <leader>f :FufFile<CR>
