@@ -87,7 +87,6 @@ function cdtt
 alias drivespeed='dd if=/dev/zero of=test.file bs=1024k count=128 && rm -f test.file'
 alias diary="dt=`date +%Y%m%d_%H_%M`; encfs ~/.encrypted ~/encrypted; vim ~/encrypted/diary_${dt}; fusermount -u ~/encrypted"
 
-#alias git="hub"
 
 function tj () # tmux join-pane vertical
 {

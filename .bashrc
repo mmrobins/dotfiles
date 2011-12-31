@@ -70,10 +70,10 @@ export TEST_FLUSH="but_of_course"
 export PSQL_EDITOR='vim -c "set ft=sql"'
 
 # git
-if [ -f ~/.git-completion.sh ]; then
-    source ~/.git-completion.sh # command line completion for git if the system doesn't already have it installed
-    complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
-fi
+#if [ -f ~/.git-completion.sh ]; then
+#    source ~/.git-completion.sh # command line completion for git if the system doesn't already have it installed
+#    complete -o default -o nospace -F _git_checkout gco # so that autocomplete works with gco alias
+#fi
 #GIT_PS1_SHOWDIRTYSTATE=1 # puts + and * to show the state of files in branch but is slow when changing to directory
 
 export SQLPATH=$HOME/sql
@@ -92,3 +92,4 @@ function cdtt ()
 
 complete -C ~/.completion/brew_completion.rb -o default brew
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+complete -C ~/.completion/puppet_completion.rb -o default puppet

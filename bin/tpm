@@ -10,9 +10,13 @@ touch "${dir}/manifests/site.pp"
 #puppetmasterd --no-daemonize --trace --autosign=true --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
 
 #with reporting
-puppetmasterd --no-daemonize --trace --autosign=true --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster --reporturl http://localhost:3000/reports/upload --reports=http,store $@
+#puppetmasterd --no-daemonize --trace --autosign=true --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster --reporturl http://localhost:3000/reports/upload --reports=http,store $@
 
-#puppetmasterd --no-daemonize --trace --autosign=true --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster --reports=http,store $@
+# with just store reporting
+# puppetmasterd --no-daemonize --trace --autosign=true --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster --reports=store $@
+
+#without reporting
+puppetmasterd --no-daemonize --trace --autosign=true --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
 
 #puppetmasterd --no-daemonize --trace --debug --confdir=${dir} --vardir=${dir} --certname puppetmaster $@
 #puppetmasterd --no-daemonize --autosign=true --confdir=${dir} --vardir=${dir} --certname puppetmaster $@

@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'active_resource'
+require 'yaml'
 
 ticket_number = ARGV[0]
 secrets = YAML::load(File.open("/Users/matthewrobinson/config-files/.secrets"))

@@ -10,4 +10,6 @@ mkdir -p "${dir}/manifests"
 #puppetd --test --debug --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster --report $@
 #puppetd --test --trace --no-daemonize --confdir=${dir} --vardir=${dir} --server puppetmaster $@
 
+#puppetd -v --onetime --no-daemonize --certname ${name} --confdir=${dir} --vardir=${dir} --server puppetmaster $@
 puppet agent -v --onetime --no-daemonize --certname ${name} --confdir=${dir} --vardir=${dir} --report --server puppetmaster $@
+#puppet agent -v --certname ${name} --confdir=${dir} --vardir=${dir} --report --server puppetmaster $@
