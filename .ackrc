@@ -12,3 +12,6 @@ haml=haml
 
 --type-set
 sass=scss
+
+--type-set
+puppet=pp
