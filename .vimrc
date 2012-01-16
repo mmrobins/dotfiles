@@ -130,7 +130,11 @@ function! GoToTheImplementation()
           let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
           let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
           exec(":e ". imp_file)
-      endif
+      else
+          let imp_file = substitute(expand("%:p"), 'spec/\(\w\+\)', 'lib/\1', "")
+          let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
+          exec(":e ". imp_file)
+      end
     end
 endfunc
 
@@ -144,7 +148,11 @@ function! GoToTheTest()
           let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
           let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
           exec(":e ". test_file)
-      endif
+      else
+          let test_file = substitute(expand("%:p"), 'lib/\(\w\+\)', 'spec/\1', "")
+          let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
+          exec(":e ". test_file)
+      end
     end
 endfunc
 map  <leader>gt      :call GoToTheTest()<CR>
