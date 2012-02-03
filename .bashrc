@@ -3,7 +3,8 @@
 source ~/.sh_aliases
 
 if `which brew` && [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+  #. `brew --prefix &> /dev/null`/etc/bash_completion
+  echo 'foo'
 fi
 
 # the up and down arrows and function keys weren't working in screen only on MAC
@@ -90,6 +91,11 @@ function cdtt ()
     cd ${BASH_REMATCH[1]}
 }
 
-complete -C ~/.completion/brew_completion.rb -o default brew
+if `which brew`; then
+  #complete -C ~/.completion/brew_completion.rb -o default brew
+  echo 'foo'
+fi
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-complete -C ~/.completion/puppet_completion.rb -o default puppet
+#complete -C ~/.completion/puppet-completion.rb -o default puppet
+source ~/.completion/puppet -o default puppet

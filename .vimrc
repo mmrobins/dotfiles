@@ -148,7 +148,7 @@ function! GoToTheTest()
           let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
           let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
           exec(":e ". test_file)
-      else
+      elseif match( expand("%:p"), "lib/" ) > -1
           let test_file = substitute(expand("%:p"), 'lib/\(\w\+\)', 'spec/\1', "")
           let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
           exec(":e ". test_file)
