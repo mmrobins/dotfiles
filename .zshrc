@@ -113,3 +113,6 @@ zstyle ':completion:*' group-name ''
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
 compdef _git hub
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export CC="/usr/bin/gcc-4.2"
