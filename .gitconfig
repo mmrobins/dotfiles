@@ -1,6 +1,6 @@
 [user]
     name = Matt Robinson
-    email = matt@puppetlabs.com
+    email = matt@mattrobinson.net
 [core]
     excludesfile = ~/.gitignore
     whitespace = trailing-space,space-before-tab
@@ -22,8 +22,6 @@
     up-shared = submodule update --reference ~/work/shared
 [diff]
     renames = copy # makes the diff much shorter when moving or copying files
-[commit]
-    template = ~/work/developer/util_src/git/.gitcommittemplate
 [status]
     submodulesummary = true
 [rerere]

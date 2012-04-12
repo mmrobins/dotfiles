@@ -2,6 +2,19 @@
 call pathogen#runtime_append_all_bundles()
 exe "set path=".expand("$PATH")
 
+" :echo g:colors_name to find out current color scheme
+colorscheme desert256
+" I like these colors better but the visual highlighting mode is terrible
+" colors wombat
+" colors zenburn
+"
+" When using non-terminal vim this proved necessary and can't hurt to have anyway
+set background=dark
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -12,17 +25,8 @@ runtime! macros/matchit.vim
 " history for vim
 set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
 
-" :echo g:colors_name to find out current color scheme
-colors desert
-" I like these colors better but the visual highlighting mode is terrible
-" colors wombat
-" colors zenburn
-
 " remember buffers between sessions - strange, didnt need this until using mac
 :exec 'set viminfo=%,' . &viminfo
-
-" When using non-terminal vim this proved necessary and can't hurt to have anyway
-set background=dark
 
 " Tab spacing
 set shiftwidth=2 "number of space characters inserted for indentation
@@ -41,7 +45,7 @@ set list listchars=tab:>-,trail:.,extends:>,precedes:<
 
 " file name completion
 set wildmenu
-set wildmode=longest,list
+set wildmode=list,full
 
 " Status Line
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
@@ -121,7 +125,7 @@ set grepprg=ack\ -a\ --nobinary\ --sort-files\ --color
 
 "puppet test switching - may want to encapsulate this for other projects if I find I need that
 function! GoToTheImplementation()
-    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+    if exists("b:rails_root") " && filereadable(b:rails_root . "/script/spec")
       if match( expand("%:p"), "spec" ) > -1
         exec(":A")
       endif
@@ -139,7 +143,7 @@ function! GoToTheImplementation()
 endfunc
 
 function! GoToTheTest()
-    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+    if exists("b:rails_root") " && filereadable(b:rails_root . "/script/spec")
       if match( expand("%:p"), "spec" ) <= 0
         exec(":A")
       endif
@@ -233,3 +237,5 @@ map <leader>f :call CdRoot()<CR>:FufFile<CR>
 
 " Gblame
 map <leader>gb :Gblame wCM<CR>
+
+cabbr <expr> %% expand('%:p:h')
