@@ -15,3 +15,13 @@ sass=scss
 
 --type-set
 puppet=pp
+
+--type-set
+handlebars=handlebars
+
+--type-set
+cucumber=feature
+
+--ignore-dir=cache
+--type=nojs
+--ignore-dir=node_modules

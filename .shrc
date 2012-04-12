@@ -1,3 +1,12 @@
 export PATH=$HOME/work/mcollective-agent-debugger:/$HOME/bin:$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/work/puppet-module-tool/bin:/usr/local/bin:/usr/local/sbin:$PATH
-export RUBYLIB=$HOME/work/puppetlabs-cloud-provisioner/lib:$HOME/work/mcollective-test/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/puppet-module-tool/lib:$RUBYLIB
+export RUBYLIB=$HOME/work/puppetlabs-cloud-provisioner/lib:$HOME/work/mcollective-test/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/puppet-module-tool/lib:$HOME/work/git-rank/lib:$RUBYLIB
 export RUBYOPT=rubygems
+export ARCHFLAGS='-arch x86_64' export CC=/usr/bin/gcc-4.2
+export SBT_OPTS="-Xms2048M -Xmx4096M -XX:MaxPermSize=512m"
+
+# REE for LivingSocial
+export RUBY_HEAP_FREE_MIN=1024
+export RUBY_HEAP_MIN_SLOTS=4000000
+export RUBY_HEAP_SLOTS_INCREMENT=250000
+export RUBY_GC_MALLOC_LIMIT=500000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
