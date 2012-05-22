@@ -82,8 +82,9 @@ nmap <leader>b :e $HOME/.bashrc<cr>
 nmap <leader>d :write!<cr>:!source $HOME/.bashrc<cr>
 
 " pasting without alignment problems
-map! <leader>p <Esc>:set paste!<cr>i
-map  <leader>p :set paste!<cr>i
+"map! <leader>p <Esc>:set paste!<cr>i
+"map  <leader>p :set paste!<cr>i
+set pastetoggle=<leader>p
 
 " Perl Debugging
 map <leader>dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
@@ -97,6 +98,7 @@ map <leader>wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
 " Toggling the taglist
 map <leader>l :TlistToggle<cr>
 
+" Reformat sql to look nice
 map <leader>sql <Esc>:g/,/:%s/, /,\r/g<cr>:%s/select /select\r/<cr>:%s/from\\|where\\|group by\\|order by/\r&/g<cr>:%s/\(from\\|where\\|group by\\|order by\) /&\r/g<cr>:g/ inner join/:%s/ inner join/\rinner join/g<cr>:g/ and/:%s/ and/\rand/g<cr>:g!/select\\|from\\|where\\|group by\\|order by\\|\//><cr>
 
 " Highlights code that goes beyond 100 chars
@@ -201,7 +203,7 @@ map <leader>cf <esc>:cd %:p:h:gs/ /\\ /<CR>
 map <leader>ack <esc>:call CdRoot()<CR>:Ack
 
 " A hackish attempt at doing an autoalign like I used to have at Rentrak
-map  <leader>a <esc>?^$\\|{\\|(<CR>/=><CR>V/^$\\|}\\|)<CR>?=><CR>:Align =><CR>/nofindme<CR>
+"map  <leader>a <esc>?^$\\|{\\|(<CR>/ => <CR>V/^$\\|}\\|)<CR>? => <CR>:Align => <CR>/nofindme<CR>
 "map! <leader>a <esc>?/^$<CR>V/^$<CR>:Align =><CR>i
 
 "map <leader>pr A<cr>require 'profiler'<cr>Profiler__::start_profile<cr>Profiler__::stop_profile<cr>Profiler__::print_profile($stderr)<ESC>
@@ -209,9 +211,8 @@ map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyP
 
 " Insert debugger into code at cursor
 map <leader>rd A<cr>require 'ruby-debug'; debugger; 1;
-
-" Reviewed by lines
-map <leader>rbn I<cr>Reviewed-by: Nick Lewis<esc>
+map <leader>jd A<cr>debugger;<ESC>
+map <leader>jc A<cr>console.log();<ESC>hi
 
 " central store for swap files instead of having them sprinkled throughout my projects
 set backupdir=~/.vim/backup//
@@ -239,3 +240,12 @@ map <leader>f :call CdRoot()<CR>:FufFile<CR>
 map <leader>gb :Gblame wCM<CR>
 
 cabbr <expr> %% expand('%:p:h')
+
+" not sure why vim has a problem finding ctags
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+set iskeyword+=?
+set iskeyword+=!
+map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
+autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
+
+map <leader>a :execute "Ack " . expand("<cword>") <CR>

@@ -22,6 +22,10 @@ handlebars=handlebars
 --type-set
 cucumber=feature
 
+--type-set
+json=json
+
 --ignore-dir=cache
---type=nojs
 --ignore-dir=node_modules
+--ignore-dir=dist/assets
+--ignore-dir=dist/files
