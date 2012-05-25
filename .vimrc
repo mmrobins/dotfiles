@@ -68,7 +68,8 @@ set hl=l:Visual " make highlights easier to see
 " set mouse=nv
 
 " Buffers
-map <leader>bp :BufExplorer<cr>j<cr>
+" previous buffer
+map <leader>bp <C-^>
 set hidden " allow unsaved hidden buffers
 " working directory is whatever file you're working in, not root
 " but this messes up Gblame, screw Gblame, I can change to root if I need it
@@ -211,6 +212,7 @@ map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyP
 
 " Insert debugger into code at cursor
 map <leader>rd A<cr>require 'ruby-debug'; debugger; 1;
+map <leader>rp A<cr>binding.pry<ESC>
 map <leader>jd A<cr>debugger;<ESC>
 map <leader>jc A<cr>console.log();<ESC>hi
 
