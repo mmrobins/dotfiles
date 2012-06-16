@@ -43,6 +43,9 @@ set list listchars=tab:>-,trail:.,extends:>,precedes:<
 " But it makes it hard to do separate whitespace commits
 " autocmd BufWritePre * :%s/\s\+$//e
 
+" turn off paste on save because I forget to and it messes up my formatting
+autocmd BufWritePre * :set nopaste
+
 " file name completion
 set wildmenu
 set wildmode=list,full
@@ -172,14 +175,14 @@ map  <leader>sd      :w!<CR>:! git diff --color-words HEAD %<CR>
 map! <leader>sd <ESC>:w!<CR>:! git diff --color-words HEAD %<CR>
 
 function! RunSpec(args)
-    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
-      :call CdRoot()
-      let spec = b:rails_root . "/script/spec"
-      let cmd = ":!" . spec . ' ' . expand("%:p") . " -cfn --debugger --loadby mtime --backtrace " . a:args
-    else
-      let spec = "rspec"
+"   if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
+"     :call CdRoot()
+"     let spec = b:rails_root . "/script/spec"
+"     let cmd = ":!" . spec . ' ' . expand("%:p") . " -cfn --debugger --loadby mtime --backtrace " . a:args
+"   else
+      let spec = "bundle exec rspec"
       let cmd = ":!" . spec . ' ' . expand("%:p") . " -bcfd " . a:args
-    end
+"   end
     execute cmd
 endfunction
 
