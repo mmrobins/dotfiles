@@ -107,3 +107,4 @@ alias cdm='cd ~/work/marionette-collective'
 alias f='find . | grep'
 alias remove-trailing-whitespace='perl -p -i -e "s/\s+\n$/\n/g" `find . -type f | grep -v .git`'
 alias evilchrome='open -b com.google.chrome --args --disable-web-security'
+alias vim="mvim -v"
