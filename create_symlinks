@@ -28,6 +28,7 @@ sub file_names
         .vimrc
         .vimrc_files
         .zshrc
+        .zshenv
         bin/diff_painter.pl
         bin/tree.sh
         bin/tpm
