@@ -37,6 +37,7 @@ sub file_names
         bin/hub
         bin/git-checkout-by-match
         bin/redmine-ticket-status
+        bin/git-rmbranch
         .completion
     };
 }
