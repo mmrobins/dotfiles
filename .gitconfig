@@ -31,3 +31,7 @@
     conflictstyle = diff3
 [apply]
     whitespace = fix
+[credential]
+	helper = osxkeychain
+[hub]
+	host = code.livingsocial.net
