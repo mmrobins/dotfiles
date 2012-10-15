@@ -109,10 +109,14 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
-# load rvm (Ruby Version Manager)
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-
-compdef _git hub
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export CC="/usr/bin/gcc-4.2"
+
+# setting EDITOR to vim causes zsh to auto set keybindings on command line to vim style
+# i DONT like vim style on the command line so set command line back to emacs style
+bindkey -e
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
