@@ -14,6 +14,7 @@ puts "Fetching merged branches..."
 remote_branches= `git branch -r --merged`.
   split("\n").
   map(&:strip).
+  select {|b| b =~ /mmrobins/}.
   reject {|b| b =~ /\/(#{current_branch}|master)/}
 
 local_branches= `git branch --merged`.
