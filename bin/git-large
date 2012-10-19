@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+head, treshold = ARGV
+head ||= 'HEAD'
+Megabyte = 1000 ** 2
+treshold = (treshold || 0.1).to_f * Megabyte
+
+big_files = {}
+
+revs = `git rev-list #{head}`.split("\n")
+
+require 'ruby-progressbar'
+progress_bar = ProgressBar.create(
+  :title => "Revisions",
+  :total => revs.size,
+  :format => '%e %B %p%% %t',
+  :smoothing => 0.9
+)
+
+revs.each do |commit|
+  progress_bar.increment
+  commit.chomp!
+  for object in `git ls-tree -zrl #{commit}`.split("\0")
+    bits, type, sha, size, path = object.split(/\s+/, 5)
+    size = size.to_i
+    big_files[sha] = [path, size, commit] if size >= treshold
+  end
+end
+
+big_files.sort_by {|sha, (path, size, commit)| size}.each do |sha, (path, size, commit)|
+  where = `git show -s #{commit} --format='%h: %cr'`.chomp
+  puts "%4.1fM\t%s\t(%s)" % [size.to_f / Megabyte, path, where]
+end
