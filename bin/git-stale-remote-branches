@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+older_than = Time.now
+
+remote_branches = `git branch -r`.split("\n").reject {|b| b =~ /->/}
+
+branches_with_dates = remote_branches.map do |branch|
+  branch_last_updated = Time.at(`git show -s #{branch} --format='%ct'`.to_i)
+  committer_name_and_email = `git show -s #{branch} --format='%cN - %cE'`
+  { :branch => branch, :branch_last_updated => branch_last_updated, :name_and_email => committer_name_and_email }
+end
+
+branches_with_dates.sort_by {|b| b[:branch_last_updated]}.reverse.each do |branch|
+  puts "#{branch[:branch_last_updated].strftime('%Y-%m-%d')} - #{branch[:branch]} #{branch[:name_and_email]}"
+end
