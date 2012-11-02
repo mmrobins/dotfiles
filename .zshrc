@@ -116,7 +116,8 @@ export CC="/usr/bin/gcc-4.2"
 # i DONT like vim style on the command line so set command line back to emacs style
 bindkey -e
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+#fpath=(/usr/local/share/zsh-completions $fpath)
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
