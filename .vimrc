@@ -96,8 +96,8 @@ map <leader>wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
 
 " Folding and unfolding
 " I almost never use these anymore now that I'm not in Perl
-" map <leader>f :set foldmethod=indent<cr>zM<cr>
-" map <leader>F :set foldmethod=manual<cr>zR<cr>
+map <leader>f :set foldmethod=indent<cr>zM<cr>
+map <leader>F :set foldmethod=manual<cr>zR<cr>
 
 " Toggling the taglist
 map <leader>l :TlistToggle<cr>
@@ -237,9 +237,6 @@ au BufNewFile,BufRead *.less set filetype=less
 
 " Nerdtree toggle
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-
-" Fuzzy Finder
-map <leader>f :call CdRoot()<CR>:FufFile<CR>
 
 " Gblame
 map <leader>gb :Gblame wCM<CR>
