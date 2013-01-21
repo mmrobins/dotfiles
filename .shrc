@@ -1,5 +1,5 @@
-export PATH=$HOME/work/mcollective-agent-debugger:/$HOME/bin:$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/work/puppet-module-tool/bin:/usr/local/bin:/usr/local/sbin:$HOME/android-sdk-macosx/tools:$PATH
-export RUBYLIB=$HOME/work/puppetlabs-cloud-provisioner/lib:$HOME/work/mcollective-test/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/puppet-module-tool/lib:$HOME/work/git-rank/lib:$RUBYLIB
+export PATH=$HOME/bin:$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/work/puppet-module-tool/bin:/usr/local/bin:/usr/local/sbin:$HOME/android-sdk-macosx/tools:$HOME/work/hub/bin:$PATH
+export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
 export RUBYOPT=rubygems
 export ARCHFLAGS='-arch x86_64' export CC=/usr/bin/gcc-4.2
 export SBT_OPTS="-Xms2048M -Xmx4096M -XX:MaxPermSize=512m"
