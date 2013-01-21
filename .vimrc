@@ -214,7 +214,7 @@ map <leader>ack <esc>:call CdRoot()<CR>:Ack
 map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyProf.stop<cr>printer = RubyProf::GraphPrinter.new(rprofresult)<cr>printer.print(STDOUT,0)<ESC>
 
 " Insert debugger into code at cursor
-map <leader>rd A<cr>require 'ruby-debug'; debugger; 1;
+map <leader>rd A<cr>debugger<ESC>
 map <leader>rp A<cr>binding.pry<ESC>
 map <leader>jd A<cr>debugger;<ESC>
 map <leader>jc A<cr>console.log();<ESC>hi
