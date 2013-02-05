@@ -3,7 +3,7 @@ call pathogen#runtime_append_all_bundles()
 exe "set path=".expand("$PATH")
 
 " :echo g:colors_name to find out current color scheme
-colorscheme desert256
+colorscheme desert
 " I like these colors better but the visual highlighting mode is terrible
 " colors wombat
 " colors zenburn
@@ -247,6 +247,7 @@ cabbr <expr> %% expand('%:p:h')
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 set iskeyword+=?
 set iskeyword+=!
+" set iskeyword-=_ " not sure if I'll like this...
 map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
 autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
 
