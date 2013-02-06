@@ -18,7 +18,7 @@ hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
 " This fixes the visual highlighting being too light
-" autocmd VimEnter,Colorscheme * :hi Visual term=reverse cterm=reverse guibg=LightGrey 
+" autocmd VimEnter,Colorscheme * :hi Visual term=reverse cterm=reverse guibg=LightGrey
 
 " When using non-terminal vim this proved necessary and can't hurt to have anyway
 set background=dark
@@ -88,14 +88,14 @@ map <leader>bp <C-^>
 set hidden " allow unsaved hidden buffers
 " working directory is whatever file you're working in, not root
 " but this messes up Gblame, screw Gblame, I can change to root if I need it
-" autocmd BufEnter * lcd %:p:h:gs/ /\\ / 
+" autocmd BufEnter * lcd %:p:h:gs/ /\\ /
 
 " For modifying the .vimrc
 nmap <leader>e :e $HOME/.vimrc<cr>
 nmap <leader>s :write!<cr>:source $HOME/.vimrc<cr>
 " For modifying the .bashrc
-nmap <leader>b :e $HOME/.bashrc<cr>
-nmap <leader>d :write!<cr>:!source $HOME/.bashrc<cr>
+" nmap <leader>b :e $HOME/.bashrc<cr>
+" nmap <leader>d :write!<cr>:!source $HOME/.bashrc<cr>
 
 " pasting without alignment problems
 "map! <leader>p <Esc>:set paste!<cr>i
@@ -103,8 +103,8 @@ nmap <leader>d :write!<cr>:!source $HOME/.bashrc<cr>
 set pastetoggle=<leader>p
 
 " Perl Debugging
-map <leader>dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
-map <leader>wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
+" map <leader>dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
+" map <leader>wd A<cr>use Data::Dump qw/ dump /;<cr>warn dump
 
 " Folding and unfolding
 " I almost never use these anymore now that I'm not in Perl
