@@ -3,11 +3,23 @@ call pathogen#runtime_append_all_bundles()
 exe "set path=".expand("$PATH")
 
 " :echo g:colors_name to find out current color scheme
-colorscheme desert
+" colorscheme desert
+colorscheme desert256
+" colorscheme darkocean
+" colorscheme evening_2
 " I like these colors better but the visual highlighting mode is terrible
-" colors wombat
-" colors zenburn
-"
+" colorscheme wombat
+" colorscheme zenburn
+" colorscheme solarized
+
+" change the default EasyMotion shading to something more readable with many
+" color schemes
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
+" This fixes the visual highlighting being too light
+" autocmd VimEnter,Colorscheme * :hi Visual term=reverse cterm=reverse guibg=LightGrey 
+
 " When using non-terminal vim this proved necessary and can't hurt to have anyway
 set background=dark
 
