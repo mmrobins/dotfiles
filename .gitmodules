@@ -43,6 +43,3 @@
 [submodule ".vim/bundle/vim-colorschemes"]
 	path = .vim/bundle/vim-colorschemes
 	url = git@github.com:flazz/vim-colorschemes.git
-[submodule ".vim/bundle/YouCompleteMe"]
-	path = .vim/bundle/YouCompleteMe
-	url = git://github.com/Valloric/YouCompleteMe.git
