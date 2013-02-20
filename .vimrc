@@ -257,10 +257,11 @@ cabbr <expr> %% expand('%:p:h')
 
 " not sure why vim has a problem finding ctags
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-set iskeyword+=?
-set iskeyword+=!
 " set iskeyword-=_ " not sure if I'll like this...
 map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
 autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
+
+set iskeyword+=?
+set iskeyword+=!
 
 map <leader>a :execute "Ack " . expand("<cword>") <CR>
