@@ -1,5 +1,4 @@
-" tpopes pathogen makes install vim plugins easier
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 exe "set path=".expand("$PATH")
 
 " :echo g:colors_name to find out current color scheme
@@ -70,6 +69,8 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%0
 "set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 set laststatus=2 "Always show status line
+set encoding=utf-8 " Necessary to show Unicode glyphs
+
 highlight StatusLine ctermfg=darkblue ctermbg=grey
 
 " Searching
