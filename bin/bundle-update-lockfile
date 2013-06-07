@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+
+gems = ARGV
+
+if gems.empty?
+  puts "Updating all gems"
+
+  Bundler.definition(true)
+else
+  puts "Updating gems: #{gems.join(', ')}"
+
+  lock = Bundler.read_file(Bundler.default_lockfile)
+  names = Bundler::LockfileParser.new(lock).specs.map{ |s| s.name }
+
+  gems.each do |g|
+    next if names.include?(g)
+    puts "Unable to find '#{g}'"
+  end
+
+  Bundler.definition(:gems => gems, :sources => [])
+end
+
+d = Bundler.definition
+
+puts "Resolving remotely..."
+
+d.resolve_remotely!
+d.lock(Bundler.default_lockfile)
+
+puts "Updated lockfile! Enjoy!"
