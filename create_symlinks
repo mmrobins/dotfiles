@@ -20,6 +20,7 @@ sub file_names
         .irbrc
         .irssi
         .rdebugrc
+        .rvmrc
         .screenrc
         .sh_aliases
         .shrc
