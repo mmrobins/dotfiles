@@ -227,7 +227,7 @@ map <leader>ack <esc>:call CdRoot()<CR>:Ack
 map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyProf.stop<cr>printer = RubyProf::GraphPrinter.new(rprofresult)<cr>printer.print(STDOUT,0)<ESC>
 
 " Insert debugger into code at cursor
-map <leader>rd A<cr>debugger<ESC>
+map <leader>rd A<cr>require 'debugger'; debugger<ESC>
 map <leader>rp A<cr>binding.pry<ESC>
 map <leader>jd A<cr>debugger;<ESC>
 map <leader>jc A<cr>console.log();<ESC>hi
@@ -260,7 +260,8 @@ cabbr <expr> %% expand('%:p:h')
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 " set iskeyword-=_ " not sure if I'll like this...
 map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
-autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
+"autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
+" bundle list --paths=true | xargs ctags --extra=+f --exclude=.git --exclude=public --exclude=tmp --exclude=*.js --exclude=log -R *
 
 set iskeyword+=?
 set iskeyword+=!

@@ -68,6 +68,20 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
+function _update_ruby_version()
+{
+    typeset -g ruby_version=''
+    if which rvm-prompt &> /dev/null; then
+      ruby_version="$(rvm-prompt i v g)"
+      rvm-prompt i v g
+    else
+      if which rbenv &> /dev/null; then
+        ruby_version="$(rbenv version | sed -e "s/ (set.*$//")"
+      fi
+    fi
+}
+chpwd_functions+=(_update_ruby_version)
+
 # parse_git_dirty () {
 #   if [[ -n $(git status -s 2> /dev/null) ]]; then
 #     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
@@ -93,7 +107,9 @@ if [ -e ~/.rvm/bin/rvm-prompt ] ; then
 else
   local rvm_prompt_info=""
 fi
-PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)${rvm_prompt_info}
+#PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)${rvm_prompt_info}
+#PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)$(~/.rvm/bin/rvm-prompt i v p g)
+PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)-$(ruby_version)
 ╰─ [%?]%# '
 local cur_cmd="${red_op}%_${red_cp}"
 PROMPT2="${cur_cmd}> "
