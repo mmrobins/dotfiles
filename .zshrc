@@ -68,20 +68,16 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-function _update_ruby_version()
+function ruby_version()
 {
-    typeset -g ruby_version=''
     if which rvm-prompt &> /dev/null; then
-      ruby_version="$(rvm-prompt i v g)"
       rvm-prompt i v g
     else
       if which rbenv &> /dev/null; then
-        ruby_version="$(rbenv version | sed -e "s/ (set.*$//")"
+        rbenv version | sed -e "s/ (set.*$//"
       fi
     fi
 }
-chpwd_functions+=(_update_ruby_version)
-
 # parse_git_dirty () {
 #   if [[ -n $(git status -s 2> /dev/null) ]]; then
 #     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
@@ -102,11 +98,6 @@ local red_cp="%{$fg[red]%}]%{$reset_color%}"
 local path_p="${red_op}%{$fg[green]%}%~${red_cp}"
 local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
 local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %T${red_cp}"
-if [ -e ~/.rvm/bin/rvm-prompt ] ; then
-  local rvm_prompt_info=`~/.rvm/bin/rvm-prompt i v p g`
-else
-  local rvm_prompt_info=""
-fi
 #PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)${rvm_prompt_info}
 #PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)$(~/.rvm/bin/rvm-prompt i v p g)
 PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)-$(ruby_version)
