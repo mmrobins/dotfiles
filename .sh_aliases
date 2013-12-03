@@ -109,7 +109,7 @@ alias f='find . | grep'
 alias remove-trailing-whitespace='perl -p -i -e "s/\s+\n$/\n/g" `find . -type f | grep -v .git`'
 alias evilchrome='open -b com.google.chrome --args --disable-web-security'
 alias vi='vim'
-if mvim 2>/dev/null; then
+if command -v mvim >/dev/null 2>&1; then
   alias vim="mvim -v"
 fi
 alias historybackup="NAME=$HOME/backup/.zsh_history_`hostname`_`date +'%Y%m%d'`.gz.gpg; gzip -c ~/.zsh_history | gpg --encrypt -r C2620DCC > $NAME && ln -fs $NAME ~/backup/.zsh_history.gz.gpg && rsync -avz ~/backup matt@mmrobins.com:~"
