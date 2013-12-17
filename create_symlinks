@@ -28,6 +28,7 @@ sub file_names
         .vim
         .vimrc
         .vimrc_files
+        .zprofile
         .zshrc
         .zshenv
         bin/diff_painter.pl
