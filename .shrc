@@ -1,5 +1,19 @@
-export PATH=$HOME/.rbenv/bin:$HOME/gocode/bin:/usr/local/share/npm/bin:$HOME/bin:$HOME/work/facter/bin:$HOME/work/puppet/sbin:$HOME/work/puppet/bin:$HOME/work/puppet-module-tool/bin:/usr/local/bin:/usr/local/sbin:$HOME/android-sdk-macosx/tools:$HOME/work/hub/bin:$PATH
 export RUBYLIB=$HOME/work/myqa-commandline/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/gocode/bin:$PATH"
+export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/work/facter/bin:$PATH"
+export PATH="$HOME/work/puppet/sbin:$PATH"
+export PATH="$HOME/work/puppet/bin:$PATH"
+export PATH="$HOME/work/puppet-module-tool/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/work/hub/bin:$PATH"
+
 #export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
 #export RUBYOPT=rubygems
 #export ARCHFLAGS='-arch x86_64' export CC=/usr/bin/gcc-4.2
@@ -15,4 +29,3 @@ export EDITOR=/usr/bin/vim
 
 export GOPATH=/Users/matt/gocode
 source ~/.secret
-eval "$(rbenv init -)"

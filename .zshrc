@@ -46,7 +46,6 @@ fi
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
 
-source ~/.shrc
 source ~/.sh_aliases
 
 ## Command history configuration
@@ -129,5 +128,5 @@ bindkey -e
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+eval "$(rbenv init -)"
