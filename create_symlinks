@@ -45,6 +45,9 @@ sub file_names
         bin/git-stale-remote-branches
         bin/bundle-update-lockfile
         .completion
+        soloistrc
+        Cheffile
+        Cheffile.lock
     };
 }
 

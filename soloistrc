@@ -1,0 +1,8 @@
+recipes:
+  - sprout-homebrew::default
+
+node_attributes:
+  sprout:
+    homebrew:
+      casks:
+      - skitch
