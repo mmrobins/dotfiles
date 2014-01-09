@@ -4,10 +4,13 @@
 [core]
     excludesfile = ~/.gitignore
     whitespace = trailing-space,space-before-tab
+	pager = less -FXRS -x2
 [color]
-    diff = auto
-    status = auto
-    branch = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = auto
 [alias]
     ff = pull --ff-only --ff
     st = status
@@ -20,6 +23,16 @@
     squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
     ri = rebase --interactive --autosquash
     up-shared = submodule update --reference ~/work/shared
+	di = diff
+	br = branch
+	sta = stash
+	flog = log --pretty=fuller --decorate
+	lol = log --graph --decorate --oneline
+	lola = log --graph --decorate --oneline --all
+	blog = log origin/master... --left-right
+	ds = diff --staged
+	unstage = reset HEAD
+	rum = rebase master@{u}
 [diff]
     renames = copy # makes the diff much shorter when moving or copying files
 [status]
@@ -30,8 +43,12 @@
     log = true
     conflictstyle = diff3
 [apply]
-    whitespace = fix
+	whitespace = nowarn
 [credential]
 	helper = osxkeychain
 [hub]
 	host = code.livingsocial.net
+[branch]
+	autosetupmerge = true
+[rebase]
+	autosquash = true

@@ -4,3 +4,4 @@ puppet/manifests/secrets.pp
 tags
 TODO
 .netrwhist
+tmp
