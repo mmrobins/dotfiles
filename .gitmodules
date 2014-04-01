@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "puppet/modules/vcsrepo"]
-	path = puppet/modules/vcsrepo
-	url = git://github.com/puppetlabs/puppet-vcsrepo.git
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
