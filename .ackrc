@@ -1,3 +1,5 @@
+--ignore-file=is:tags
+
 --type-set
 less=less
 
@@ -26,6 +28,8 @@ cucumber=feature
 json=json
 
 --ignore-dir=cache
+--ignore-dir=log
 --ignore-dir=node_modules
 --ignore-dir=dist/assets
 --ignore-dir=dist/files
+--ignore-dir=coverage

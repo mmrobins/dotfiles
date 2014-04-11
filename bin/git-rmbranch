@@ -33,7 +33,7 @@ else
   if gets =~ /^y/i
 
     remote_branches.each do |b|
-      remote, branch = b.split(/\//)
+      remote, seperator, branch = b.partition(/\//)
       `git push #{remote} :#{branch}`
     end
 
