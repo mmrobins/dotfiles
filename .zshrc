@@ -129,4 +129,3 @@ bindkey -e
 
 ### Added by the Heroku Toolbelt
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-eval "$(rbenv init -)"
