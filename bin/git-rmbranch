@@ -10,11 +10,14 @@ if current_branch != "master"
   puts
 end
 
+# The -p will delete remote deleted branches from your local repo
+# so you don't try to delete them and fail later
+`git fetch -p --all`
 puts "Fetching merged branches..."
 remote_branches= `git branch -r --merged`.
   split("\n").
   map(&:strip).
-  #select {|b| b =~ /mmrobins/}.
+  #select {|b| b =~ /mmrobins/ || b =~ /origin/}. # should probably make this an arg or something
   reject {|b| b =~ /\/(#{current_branch}|master)/}
 
 local_branches= `git branch --merged`.
