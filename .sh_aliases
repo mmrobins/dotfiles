@@ -118,3 +118,6 @@ alias be='bundle exec'
 # otherwise zsh can't pass rake arguments
 # errors with zsh: no matches found
 alias rake='noglob rake'
+function zh(){
+  ack "$1" ~/.zsh_history
+}
