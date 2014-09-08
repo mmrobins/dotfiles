@@ -228,6 +228,7 @@ map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyP
 
 " Insert debugger into code at cursor
 map <leader>rd A<cr>require 'debugger'; debugger<ESC>
+map <leader>rb A<cr>require 'byebug'; byebug<ESC>
 map <leader>rp A<cr>binding.pry<ESC>
 map <leader>jd A<cr>debugger;<ESC>
 map <leader>jc A<cr>console.log();<ESC>hi
@@ -267,3 +268,21 @@ set iskeyword+=?
 set iskeyword+=!
 
 map <leader>a :execute "Ack " . expand("<cword>") <CR>
+
+noremap Q gqap
+command! Prose inoremap <buffer> . .<C-G>u|
+            \ inoremap <buffer> ! !<C-G>u|
+            \ inoremap <buffer> ? ?<C-G>u|
+            \ setlocal spell spelllang=en
+            \     nolist nowrap tw=74 fo=t1 nonu|
+            \ augroup PROSE|
+            \   autocmd InsertEnter <buffer> set fo+=a|
+            \   autocmd InsertLeave <buffer> set fo-=a|
+            \ augroup END
+
+command! Code silent! iunmap <buffer> .|
+            \ silent! iunmap <buffer> !|
+            \ silent! iunmap <buffer> ?|
+            \ setlocal nospell list nowrap
+            \     tw=74 fo=cqr1 showbreak=…|
+            \ silent! autocmd! PROSE * <buffer>

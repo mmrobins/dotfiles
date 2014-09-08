@@ -1,19 +1,10 @@
-# .bash_profile
+export PATH="/usr/local/bin:$PATH"
 
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
+# Path to the bash it configuration
+export BASH_IT="/Users/matt/.bash_it"
 
-# User specific environment and startup programs
+# Lock and Load a custom theme file
+export BASH_IT_THEME="bobby"
 
-#ORACLE_HOME=/usr/lib/oracle/xe/app/oracle/product/10.2.0/server
-#PATH=$PATH:$ORACLE_HOME/bin
-#PATH=$PATH:/usr/lib/oracle/xe/app/oracle/product/10.2.0/client/lib/
-#export ORACLE_HOME
-#export ORACLE_SID=XE
-
-##
-# Your previous /Users/matthewrobinson/.bash_profile file was backed up as /Users/matthewrobinson/.bash_profile.macports-saved_2010-06-14_at_09:53:36
-##
-
+# Load Bash It
+source $BASH_IT/bash_it.sh

@@ -1,4 +1,4 @@
-export RUBYLIB=$HOME/work/myqa-commandline/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
+export RUBYLIB=$HOME/work/techops-cli/lib:$HOME/work/myqa-commandline/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
 
 # I want my custom bin files ahead of rbenv shims
 eval "$(rbenv init -)"
@@ -6,6 +6,7 @@ eval "$(rbenv init -)"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/gocode/bin:$PATH"
 export PATH="/usr/local/share/npm/bin:$PATH"
@@ -33,3 +34,6 @@ export EDITOR=/usr/bin/vim
 export GOPATH=/Users/matt/gocode
 source ~/.secret
 export DOCKER_HOST=tcp://
+#export PATH="$HOME/work/site/bin:$PATH"
+
+#test "$(ps -ocommand= -p $PPID | awk '{print $1}')" == 'script' || (script -f $HOME/$(date +"%d-%b-%y_%H-%M-%S")_shell.log)
