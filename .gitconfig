@@ -4,14 +4,15 @@
 [core]
     excludesfile = ~/.gitignore
     whitespace = trailing-space,space-before-tab
-	pager = less -FXRS -x2
+    pager = less -FXRS -x2
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
 [alias]
+    rom = rebase origin/master
     ff = pull --ff-only --ff
     st = status
     ci = commit
@@ -23,16 +24,20 @@
     squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
     ri = rebase --interactive --autosquash
     up-shared = submodule update --reference ~/work/shared
-	di = diff
-	br = branch
-	sta = stash
-	flog = log --pretty=fuller --decorate
-	lol = log --graph --decorate --oneline
-	lola = log --graph --decorate --oneline --all
-	blog = log origin/master... --left-right
-	ds = diff --staged
-	unstage = reset HEAD
-	rum = rebase master@{u}
+    changed = !git log --pretty="format:" --name-only head ORIG_HEAD..HEAD | sort | uniq
+    di = diff
+    br = branch
+    sta = stash
+    flog = log --pretty=fuller --decorate
+    lol = log --graph --decorate --oneline
+    lola = log --graph --decorate --oneline --all
+    blog = log origin/master... --left-right
+    ds = diff --staged
+    unstage = reset HEAD
+    rum = rebase master@{u}
+    al = "!git config -l | grep alias | cut -c 7-"
+    poh = push origin HEAD
+    copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
 [diff]
     renames = copy # makes the diff much shorter when moving or copying files
 [status]
@@ -43,12 +48,12 @@
     log = true
     conflictstyle = diff3
 [apply]
-	whitespace = nowarn
+    whitespace = nowarn
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [hub]
-	host = code.livingsocial.net
+    host = code.livingsocial.net
 [branch]
-	autosetupmerge = true
+    autosetupmerge = true
 [rebase]
-	autosquash = true
+    autosquash = true

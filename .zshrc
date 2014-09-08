@@ -48,6 +48,10 @@ fi
 
 source ~/.sh_aliases
 
+if [ -f ~/.sh_work_aliases ]; then
+  source ~/.sh_work_aliases
+fi
+
 ## Command history configuration
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000000
@@ -127,5 +131,27 @@ bindkey -e
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
-### Added by the Heroku Toolbelt
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)
+if [[ $PARENTCOMMAND != *ttyrec* ]]; then
+  TTYRECFILE=~/.ttyrec/`date +"%Y%m%d_%H_%M_%S"`
+  echo "Recording at $TTYRECFILE"
+  ttyrec $TTYRECFILE
+  echo "Done with $TTYRECFILE"
+fi
+
+alias ttylast=ttyplay ~/.ttyrec/$(ls -1tr ~/.ttyrec | tail -1)
+
+#PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)
+#if [[ -z $TTYREC_ACTIVE  ]]; then
+#  export TTYREC_ACTIVE=1
+#  TTYRECFILE=~/.ttyrec/`date +"%Y%m%d_%H_%M_%S"`
+#  echo "Recording at $TTYRECFILE"
+#  # If I exec I don't need 2 exits...
+#  ttyrec $TTYRECFILE
+#  # but if I don't exec I can run stuff after it's done
+#  # like maybe compress and encrypt
+#  echo "Done with $TTYRECFILE"
+#fi
+
+# so that rake arguments work http://robots.thoughtbot.com/how-to-use-arguments-in-a-rake-task
+unsetopt nomatch
