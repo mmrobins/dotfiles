@@ -137,3 +137,4 @@ END_SCRIPT
   fi
 }
 #alias ssh='vpn; command ssh'
+alias wip='git commit -a -m "wip"'
