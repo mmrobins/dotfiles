@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-dispatch"]
 	path = .vim/bundle/vim-dispatch
 	url = git://github.com/tpope/vim-dispatch.git
+[submodule ".vim/bundle/vim-elixir.git"]
+	path = .vim/bundle/vim-elixir.git
+	url = https://github.com/elixir-lang/vim-elixir.git
