@@ -33,3 +33,4 @@ json=json
 --ignore-dir=dist/assets
 --ignore-dir=dist/files
 --ignore-dir=coverage
+--ignore-dir=tmp

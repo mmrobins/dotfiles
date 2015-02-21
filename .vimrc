@@ -238,9 +238,17 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
 " Syntastic syntax checking on save
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes = ['prolog', 'html']
+let g:syntastic_disabled_filetypes = ['prolog', 'html', 'javascript']
 
 " Mac Clipboard copy and paste
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
@@ -264,8 +272,8 @@ map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
 "autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
 " bundle list --paths=true | xargs ctags --extra=+f --exclude=.git --exclude=public --exclude=tmp --exclude=*.js --exclude=log -R *
 
-set iskeyword+=?
-set iskeyword+=!
+"set iskeyword+=?
+"set iskeyword+=!
 
 map <leader>a :execute "Ack " . expand("<cword>") <CR>
 
@@ -286,3 +294,8 @@ command! Code silent! iunmap <buffer> .|
             \ setlocal nospell list nowrap
             \     tw=74 fo=cqr1 showbreak=…|
             \ silent! autocmd! PROSE * <buffer>
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
