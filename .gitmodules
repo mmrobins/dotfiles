@@ -50,5 +50,8 @@
 	path = .vim/bundle/vim-elixir.git
 	url = https://github.com/elixir-lang/vim-elixir.git
 [submodule ".vim/bundle/vim-syntastic.git"]
-	path = .vim/bundle/vim-syntastic.git
+	path = .vim/bundle/vim-syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/rainbow_parentheses"]
+	path = .vim/bundle/rainbow_parentheses
+	url = git@github.com:kien/rainbow_parentheses.vim.git
