@@ -137,4 +137,5 @@ END_SCRIPT
   fi
 }
 #alias ssh='vpn; command ssh'
-alias wip='git commit -a -m "wip"'
+alias wip='git add -A && git commit -m "wip"'
+alias raccoon='sudo launchctl stop com.apple.racoon; dscacheutil -flushcache; sudo killall -HUP mDNSResponder; sudo launchctl start com.apple.racoon'

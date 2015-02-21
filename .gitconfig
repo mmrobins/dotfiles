@@ -4,15 +4,15 @@
 [core]
     excludesfile = ~/.gitignore
     whitespace = trailing-space,space-before-tab
-    pager = less -FXRS -x2
+  pager = less -FXRS -x2
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    interactive = auto
-    ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
 [alias]
-    rom = rebase origin/master
+    rom = !"git fetch; git rebase origin/master"
     ff = pull --ff-only --ff
     st = status
     ci = commit
@@ -40,6 +40,7 @@
     copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
 [diff]
     renames = copy # makes the diff much shorter when moving or copying files
+    noprefix = true
 [status]
     submodulesummary = true
 [rerere]
@@ -48,12 +49,14 @@
     log = true
     conflictstyle = diff3
 [apply]
-    whitespace = nowarn
+  whitespace = nowarn
 [credential]
     helper = osxkeychain
 [hub]
     host = code.livingsocial.net
 [branch]
-    autosetupmerge = true
+  autosetupmerge = true
 [rebase]
-    autosquash = true
+  autosquash = true
+[push]
+  default = simple
