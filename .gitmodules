@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/vim-elixir.git"]
 	path = .vim/bundle/vim-elixir.git
 	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule ".vim/bundle/vim-syntastic.git"]
+	path = .vim/bundle/vim-syntastic.git
+	url = https://github.com/scrooloose/syntastic.git
