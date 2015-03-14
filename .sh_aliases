@@ -113,7 +113,7 @@ alias historyrestore="rsync -avz matt@mmrobins.com:~/backup/.zsh_history.gz.gpg 
 alias be='bundle exec'
 # otherwise zsh can't pass rake arguments
 # errors with zsh: no matches found
-alias rake='noglob rake'
+#alias rake='noglob rake'
 function zh(){
   ack "$1" ~/.zsh_history
 }
@@ -138,4 +138,8 @@ END_SCRIPT
 }
 #alias ssh='vpn; command ssh'
 alias wip='git add -A && git commit -m "wip"'
-alias raccoon='sudo launchctl stop com.apple.racoon; dscacheutil -flushcache; sudo killall -HUP mDNSResponder; sudo launchctl start com.apple.racoon'
+# mavericks
+# alias raccoondance='sudo launchctl stop com.apple.racoon; dscacheutil -flushcache; sudo killall -HUP mDNSResponder; sudo launchctl start com.apple.racoon'
+# yosemite
+alias raccoondance='sudo launchctl stop com.apple.racoon; sudo discoveryutil mdnsflushcache; sudo discoveryutil udnsflushcaches; sudo launchctl start com.apple.racoon'
+
