@@ -1,7 +1,7 @@
 export RUBYLIB=$HOME/work/ls-deployment/lib:$HOME/work/techops-cli/lib:$HOME/work/ls-platform/lib:$HOME/work/myqa-commandline/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
 
 # I want my custom bin files ahead of rbenv shims
-eval "$(rbenv init -)"
+eval "$(/usr/local/bin/rbenv init -)"
 
 export GOPATH=/Users/matt/gocode
 
