@@ -132,15 +132,15 @@ bindkey -e
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
-PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)
-if [[ $PARENTCOMMAND != *ttyrec* ]]; then
-  TTYRECFILE=~/.ttyrec/`date +"%Y%m%d_%H_%M_%S"`
-  echo "Recording at $TTYRECFILE"
-  ttyrec $TTYRECFILE
-  echo "Done with $TTYRECFILE"
-fi
-
-alias ttylast=ttyplay ~/.ttyrec/$(ls -1tr ~/.ttyrec | tail -1)
+#PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)
+#if [[ $PARENTCOMMAND != *ttyrec* ]]; then
+#  TTYRECFILE=~/.ttyrec/`date +"%Y%m%d_%H_%M_%S"`
+#  echo "Recording at $TTYRECFILE"
+#  ttyrec $TTYRECFILE
+#  echo "Done with $TTYRECFILE"
+#fi
+#
+#alias ttylast=ttyplay ~/.ttyrec/$(ls -1tr ~/.ttyrec | tail -1)
 
 #PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)
 #if [[ -z $TTYREC_ACTIVE  ]]; then

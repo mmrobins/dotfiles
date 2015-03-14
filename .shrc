@@ -3,6 +3,8 @@ export RUBYLIB=$HOME/work/ls-deployment/lib:$HOME/work/techops-cli/lib:$HOME/wor
 # I want my custom bin files ahead of rbenv shims
 eval "$(/usr/local/bin/rbenv init -)"
 
+$(boot2docker shellinit 2>/dev/null)
+
 export GOPATH=/Users/matt/gocode
 
 ### Added by the Heroku Toolbelt
