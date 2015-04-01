@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-older_than = Time.now
-
 remote_branches = `git branch -r`.split("\n").reject {|b| b =~ /->/}
 
 branches_with_dates = remote_branches.map do |branch|

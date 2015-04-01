@@ -41,6 +41,7 @@ sub file_names
         bin/git-checkout-by-match
         bin/redmine-ticket-status
         bin/git-rmbranch
+        bin/git-rmstale
         bin/git-large
         bin/git-stale-remote-branches
         bin/bundle-update-lockfile
