@@ -299,3 +299,11 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" craxy slow with long lines
+" https://superuser.com/questions/302186/vim-scrolls-very-slow-when-a-line-is-too-long
+set synmaxcol=120
+set ttyfast " u got a fast terminal
+set ttyscroll=3
+set lazyredraw " to avoid scrolling problems
+set nocursorline

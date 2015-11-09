@@ -138,9 +138,13 @@ END_SCRIPT
 }
 #alias ssh='vpn; command ssh'
 alias wip='git add -A && git commit -m "wip"'
+alias wtc='git add -A && git commit -m "`curl whatthecommit.com/index.txt`"'
 # mavericks
 # alias raccoondance='sudo launchctl stop com.apple.racoon; dscacheutil -flushcache; sudo killall -HUP mDNSResponder; sudo launchctl start com.apple.racoon'
 # yosemite
 alias raccoondance='sudo launchctl stop com.apple.racoon; sudo discoveryutil mdnsflushcache; sudo discoveryutil udnsflushcaches; sudo launchctl start com.apple.racoon'
 
 alias ack='ag'
+alias dobby='ssh -t dobby@app-shell01.iad.livingsocial.net ssh '
+
+alias dockerclean='docker rm $(docker ps -a -q); docker rmi $(docker images -q --filter "dangling=true")'
