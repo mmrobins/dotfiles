@@ -156,3 +156,7 @@ bindkey -e
 
 # so that rake arguments work http://robots.thoughtbot.com/how-to-use-arguments-in-a-rake-task
 unsetopt nomatch
+
+# Report CPU usage for commands running longer than 10 seconds
+REPORTTIME=10
+source /usr/local/share/zsh/site-functions/_aws
