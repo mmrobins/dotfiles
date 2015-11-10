@@ -255,6 +255,9 @@ let g:syntastic_disabled_filetypes = ['prolog', 'html', 'javascript']
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
 map <leader>+ :r ~/tmp/vimclipboard<cr>
 
+" Split line, autoformat, autoalign
+map <leader>x V:s/\([({[]\)/\1\r/<cr>V:s/\([])}]\)/\r\1/<cr>V%:s/,/,\r/g<cr>jV%=V%:EasyAlign:<cr>
+
 " LESS CSS syntax highlighting
 au BufNewFile,BufRead *.less set filetype=less
 
