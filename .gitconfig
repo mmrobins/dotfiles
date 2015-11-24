@@ -46,7 +46,7 @@
 [status]
     submodulesummary = true
 [rerere]
-    enabled = true
+    enabled = false
 [merge]
     log = true
     conflictstyle = diff3
