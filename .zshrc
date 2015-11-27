@@ -131,6 +131,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 bindkey -e
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=($HOME/config-files/zsh-completion $fpath)
 
 #PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)
 #if [[ $PARENTCOMMAND != *ttyrec* ]]; then

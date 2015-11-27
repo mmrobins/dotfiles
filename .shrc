@@ -23,22 +23,10 @@ export PATH="$HOME/work/hub/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
-#export RUBYLIB=$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
-#export RUBYOPT=rubygems
-#export ARCHFLAGS='-arch x86_64' export CC=/usr/bin/gcc-4.2
-#export SBT_OPTS="-Xms2048M -Xmx4096M -XX:MaxPermSize=512m"
-
-# REE for LivingSocial
-#export RUBY_HEAP_FREE_MIN=1024
-#export RUBY_HEAP_MIN_SLOTS=4000000
-#export RUBY_HEAP_SLOTS_INCREMENT=250000
-#export RUBY_GC_MALLOC_LIMIT=500000000
-#export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export EDITOR=/usr/bin/vim
 
 source ~/.secret
-#export DOCKER_HOST=tcp://
-#export PATH="$HOME/work/site/bin:$PATH"
 
 #test "$(ps -ocommand= -p $PPID | awk '{print $1}')" == 'script' || (script -f $HOME/$(date +"%d-%b-%y_%H-%M-%S")_shell.log)
 export CDPATH=".:$HOME/work"
+export LANG=en_US.UTF-8
