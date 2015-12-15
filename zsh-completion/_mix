@@ -42,6 +42,7 @@ _1st_arguments=(
     'local.hex:Install Hex locally'
     'new:Creates a new Elixir project'
     'phoenix.gen.resource:Generates resource files'
+    'phoenix.gen.model:Generates an Ecto model'
     'phoenix.new:Create a new Phoenix application'
     'phoenix.routes:Prints all routes'
     'phoenix.server:Starts applications and their servers'
