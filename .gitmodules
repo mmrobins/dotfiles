@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/vim-easy-align"]
 	path = .vim/bundle/vim-easy-align
 	url = git@github.com:junegunn/vim-easy-align.git
+[submodule ".vim/bundle/portkey"]
+	path = .vim/bundle/portkey
+	url = git@github.com:dsawardekar/portkey.git
