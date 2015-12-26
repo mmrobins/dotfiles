@@ -55,8 +55,8 @@ fi
 
 ## Command history configuration
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=10000000
+SAVEHIST=10000000
 setopt hist_ignore_dups # ignore duplication command history list
 #setopt share_history # share command history data # use fc -IR to share
 
