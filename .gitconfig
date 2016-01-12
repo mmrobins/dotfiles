@@ -2,15 +2,15 @@
     name = Matt Robinson
     email = matt@mattrobinson.net
 [core]
-    excludesfile = ~/.gitignore
+	excludesfile = /Users/matt/.gitignore_global
     whitespace = trailing-space,space-before-tab
-    pager = less -FXRS -x2
+	pager = less -FXRS -x2
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    interactive = auto
-    ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = auto
 [alias]
     amend = "commit --amend"
     rom = !"git fetch; git rebase origin/master"
@@ -51,14 +51,14 @@
     log = true
     conflictstyle = diff3
 [apply]
-  whitespace = nowarn
+	whitespace = nowarn
 [credential]
     helper = osxkeychain
 [hub]
     host = code.livingsocial.net
 [branch]
-    autosetupmerge = true
+	autosetupmerge = true
 [rebase]
-    autosquash = true
+	autosquash = true
 [push]
-    default = simple
+	default = simple

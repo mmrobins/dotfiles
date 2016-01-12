@@ -74,12 +74,8 @@ function git_prompt_info() {
 
 function ruby_version()
 {
-    if which rvm-prompt &> /dev/null; then
-      rvm-prompt i v g
-    else
-      if which rbenv &> /dev/null; then
-        rbenv version | sed -e "s/ (set.*$//"
-      fi
+    if which rbenv &> /dev/null; then
+      rbenv version | sed -e "s/ (set.*$//"
     fi
 }
 # parse_git_dirty () {
@@ -102,8 +98,6 @@ local red_cp="%{$fg[red]%}]%{$reset_color%}"
 local path_p="${red_op}%{$fg[green]%}%~${red_cp}"
 local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
 local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %T${red_cp}"
-#PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)${rvm_prompt_info}
-#PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)$(~/.rvm/bin/rvm-prompt i v p g)
 PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)-$(ruby_version)
 ╰─ [%?]%# '
 local cur_cmd="${red_op}%_${red_cp}"
@@ -123,8 +117,6 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # setting EDITOR to vim causes zsh to auto set keybindings on command line to vim style
 # i DONT like vim style on the command line so set command line back to emacs style
@@ -160,5 +152,5 @@ unsetopt nomatch
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
-source /usr/local/share/zsh/site-functions/_aws
+#source /usr/local/share/zsh/site-functions/_aws
 source $HOME/config-files/per-directory-history.zsh

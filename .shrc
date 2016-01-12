@@ -1,8 +1,5 @@
 export RUBYLIB=$HOME/work/ls-deployment/lib:$HOME/work/techops-cli/lib:$HOME/work/ls-platform/lib:$HOME/work/myqa-commandline/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
 
-# I want my custom bin files ahead of rbenv shims
-eval "$(/usr/local/bin/rbenv init -)"
-
 #eval "$(docker-machine env default)"
 
 export GOPATH=/Users/matt/gocode
@@ -12,7 +9,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$HOME/work/site/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/share/npm/bin:$PATH"
 export PATH="$HOME/work/facter/bin:$PATH"
 export PATH="$HOME/work/puppet/sbin:$PATH"
@@ -20,8 +16,12 @@ export PATH="$HOME/work/puppet/bin:$PATH"
 export PATH="$HOME/work/puppet-module-tool/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/work/hub/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
+
+# I want my custom bin files ahead of rbenv shims
+eval "$(/usr/local/bin/rbenv init -)"
+
+export PATH="$HOME/bin:$PATH"
 
 export EDITOR=/usr/bin/vim
 
