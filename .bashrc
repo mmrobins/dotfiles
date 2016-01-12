@@ -96,7 +96,4 @@ function cdtt ()
 }
 
 complete -C ~/.completion/brew_completion.rb -o default brew
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 complete -C ~/.completion/puppet_completion.rb -o default puppet
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
