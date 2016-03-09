@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/portkey"]
 	path = .vim/bundle/portkey
 	url = git@github.com:dsawardekar/portkey.git
+[submodule ".vim/bundle/vim-mustache-handlebars"]
+	path = .vim/bundle/vim-mustache-handlebars
+	url = git@github.com:mustache/vim-mustache-handlebars.git
