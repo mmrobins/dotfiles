@@ -91,7 +91,7 @@ function bgh ()
 
 function cdtt ()
 {
-    `pwd` =~ '(.*/work)/.*'
+    `pwd` =~ '(.*/(work|bonobos))/.*'
     cd ${BASH_REMATCH[1]}
 }
 

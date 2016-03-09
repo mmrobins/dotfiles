@@ -28,5 +28,8 @@ export EDITOR=/usr/bin/vim
 source ~/.secret
 
 #test "$(ps -ocommand= -p $PPID | awk '{print $1}')" == 'script' || (script -f $HOME/$(date +"%d-%b-%y_%H-%M-%S")_shell.log)
-export CDPATH=".:$HOME/work"
+export CDPATH=".:$HOME/work:$HOME/bonobos"
 export LANG=en_US.UTF-8
+
+export CHEFPATH="$HOME/bonobos/chef"
+export KnifeLocation="`which knife`"
