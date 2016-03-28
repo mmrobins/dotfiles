@@ -17,9 +17,9 @@ puts "Fetching merged branches..."
 remote_branches= `git branch -r --merged`.
   split("\n").
   map(&:strip).
-  #select {|b| b =~ /mmrobins/ || b =~ /origin/}. # should probably make this an arg or something
-  select {|b| b =~ /mmrobins/ }.
-  reject {|b| b =~ /\/(#{current_branch}|master)/}
+  select {|b| b =~ /mmrobins/ || b =~ /origin/}. # should probably make this an arg or something
+  #select {|b| b =~ /mmrobins/ }.
+  reject {|b| b =~ /\/(#{current_branch}|master|staging|production)/}
 
 local_branches= `git branch --merged`.
   gsub(/^\* /, '').

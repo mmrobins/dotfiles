@@ -147,3 +147,4 @@ alias raccoondance='sudo launchctl stop com.apple.racoon; dscacheutil -flushcach
 alias dobby='ssh -t dobby@app-shell01.iad.livingsocial.net ssh '
 
 alias dockerclean='docker rm $(docker ps -a -q); docker rmi $(docker images -q --filter "dangling=true")'
+alias fixcamera='sudo killall VDCAssistant' # when hangouts just won't see the camera this fixes it
