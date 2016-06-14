@@ -36,6 +36,7 @@ runtime! macros/matchit.vim
 
 " history for vim
 set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
+"set history=100000
 
 " remember buffers between sessions - strange, didnt need this until using mac
 :exec 'set viminfo=%,' . &viminfo
@@ -273,7 +274,7 @@ cabbr <expr> %% expand('%:p:h')
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 " set iskeyword-=_ " not sure if I'll like this...
 map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
-"autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
+autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
 " bundle list --paths=true | xargs ctags --extra=+f --exclude=.git --exclude=public --exclude=tmp --exclude=*.js --exclude=log -R *
 
 "set iskeyword+=?

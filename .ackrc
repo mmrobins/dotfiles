@@ -34,3 +34,5 @@ json=json
 --ignore-dir=dist/files
 --ignore-dir=coverage
 --ignore-dir=tmp
+
+--ignore-file=match:webpack.*bundle

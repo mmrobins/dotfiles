@@ -6,3 +6,4 @@ TODO
 .netrwhist
 tmp
 cache
+.byebug_history

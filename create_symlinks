@@ -38,13 +38,14 @@ sub file_names
         bin/tpi
         bin/tpcert
         bin/hub
+        bin/bundle-update-lockfile
         bin/git-checkout-by-match
-        bin/redmine-ticket-status
+        bin/git-large
+        bin/git-obliterate
         bin/git-rmbranch
         bin/git-rmstale
-        bin/git-large
         bin/git-stale-remote-branches
-        bin/bundle-update-lockfile
+        bin/redmine-ticket-status
         .completion
         soloistrc
         Cheffile
