@@ -1,9 +1,9 @@
 [user]
-    name = Matt Robinson
-    email = matt@mattrobinson.net
+  name = Matt Robinson
+  email = matt@mattrobinson.net
 [core]
-	excludesfile = /Users/matt/.gitignore
-    whitespace = trailing-space,space-before-tab
+  excludesfile = /Users/matt/.gitignore
+  whitespace = trailing-space,space-before-tab
   pager = less -FXRS -x2
 [color]
   diff = auto
@@ -12,50 +12,37 @@
   interactive = auto
   ui = auto
 [alias]
-    amend = "commit --amend"
-    rom = !"git fetch; git rebase origin/master"
-    ff = pull --ff-only --ff
-    st = status
-    ci = commit
-    co = checkout
-    llog = log --date=local
-    lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order"
-    review = "log --stat=160,180 -p -w --patience --reverse -M -C -C -c"
-    fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-    squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-    ri = rebase --interactive --autosquash
-    up-shared = submodule update --reference ~/work/shared
-    changed = !git log --pretty="format:" --name-only head ORIG_HEAD..HEAD | sort | uniq
-    di = diff
-    br = branch
-    sta = stash
-    flog = log --pretty=fuller --decorate
-    lol = log --graph --decorate --oneline
-    lola = log --graph --decorate --oneline --all
-    blog = log origin/master... --left-right
-    ds = diff --staged
-    unstage = reset HEAD
-    rum = rebase master@{u}
-    al = "!git config -l | grep alias | cut -c 7-"
-    poh = push origin HEAD
-    copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
-    recent = "!git for-each-ref --sort=committerdate refs/heads/ refs/remotes --format='%(committerdate:short) %(refname:short) %(authorname) %(contents:subject)'"
+  amend = "commit --amend"
+  rom = !"git fetch; git rebase origin/master"
+  ff = pull --ff-only --ff
+  st = status
+  ci = commit
+  co = checkout
+  llog = log --date=local
+  lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order"
+  review = "log --stat=160,180 -p -w --patience --reverse -M -C -C -c"
+  fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+  squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+  ri = rebase --interactive --autosquash
+  unstage = reset HEAD
+  poh = push origin HEAD
+  copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
+  recent = "!git for-each-ref --sort=committerdate refs/heads/ refs/remotes --format='%(committerdate:short) %(refname:short) %(authorname) %(contents:subject)'"
 [diff]
-    renames = copy # makes the diff much shorter when moving or copying files
-    noprefix = true
+  renames = copy # makes the diff much shorter when moving or copying files
+  noprefix = true
+  compaction-heuristic = true
 [status]
-    submodulesummary = true
+  submodulesummary = true
 [rerere]
-    enabled = false
+  enabled = false
 [merge]
-    log = true
-    conflictstyle = diff3
+  log = true
+  conflictstyle = diff3
 [apply]
   whitespace = nowarn
 [credential]
-    helper = osxkeychain
-[hub]
-    host = code.livingsocial.net
+  helper = osxkeychain
 [branch]
   autosetupmerge = true
 [rebase]
