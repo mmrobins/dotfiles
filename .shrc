@@ -17,9 +17,10 @@ export PATH="$HOME/work/puppet-module-tool/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/work/hub/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/.rbenv/bin"
 
 # I want my custom bin files ahead of rbenv shims
-eval "$(/usr/local/bin/rbenv init -)"
+eval "$(rbenv init -)"
 
 export PATH="$HOME/bin:$PATH"
 
