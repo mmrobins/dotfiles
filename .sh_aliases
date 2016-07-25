@@ -148,3 +148,7 @@ alias dobby='ssh -t dobby@app-shell01.iad.livingsocial.net ssh '
 
 alias dockerclean='docker rm $(docker ps -a -q); docker rmi $(docker images -q --filter "dangling=true")'
 alias fixcamera='sudo killall VDCAssistant' # when hangouts just won't see the camera this fixes it
+
+alias ssh-start='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)'
+command -v pbcopy > /dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
+command -v pbpaste > /dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
