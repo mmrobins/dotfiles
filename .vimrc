@@ -34,6 +34,9 @@ let mapleader = ","
 
 runtime! macros/matchit.vim
 
+" show line numbers
+set number
+
 " history for vim
 set viminfo='100,\"50,<500,:100 " 100 files, 50 registers, 500 lines in registers, 100 command history
 "set history=100000
