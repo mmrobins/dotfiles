@@ -2,7 +2,7 @@
   name = Matt Robinson
   email = matt@mattrobinson.net
 [core]
-  excludesfile = /Users/matt/.gitignore
+  excludesfile = /Users/matt/.gitignore_global
   whitespace = trailing-space,space-before-tab
   pager = less -FXRS -x2
 [color]
@@ -19,7 +19,7 @@
   ci = commit
   co = checkout
   llog = log --date=local
-  lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order"
+  lg = "log --date=format:'%Y%m%d %H:%M' --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cd %cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order"
   review = "log --stat=160,180 -p -w --patience --reverse -M -C -C -c"
   fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
   squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
