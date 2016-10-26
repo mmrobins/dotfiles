@@ -31,5 +31,9 @@ source ~/.secret
 export CDPATH=".:$HOME/work:$HOME/bonobos"
 export LANG=en_US.UTF-8
 
-export CHEFPATH="$HOME/bonobos/chef"
-export KnifeLocation="`which knife`"
+#export CHEFPATH="$HOME/bonobos/chef"
+#export KnifeLocation="`which knife`"
+
+export NVM_DIR="$HOME/.nvm"
+source "$(brew --prefix nvm)/nvm.sh"
+

@@ -4,7 +4,7 @@ exe "set path=".expand("$PATH")
 " :echo g:colors_name to find out current color scheme
 " colorscheme desert
 " colorscheme desert256
-colorscheme desert256v2
+ colorscheme desert256v2
 " colorscheme darkocean
 " colorscheme evening_2
 " I like these colors better but the visual highlighting mode is terrible
