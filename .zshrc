@@ -154,3 +154,8 @@ unsetopt nomatch
 REPORTTIME=10
 #source /usr/local/share/zsh/site-functions/_aws
 source $HOME/config-files/per-directory-history.zsh
+
+# only really useful on linux
+if type keychain > /dev/null 2>&1; then
+  eval `keychain --eval id_rsa`
+fi
