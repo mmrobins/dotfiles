@@ -35,7 +35,9 @@ export LANG=en_US.UTF-8
 #export CHEFPATH="$HOME/bonobos/chef"
 #export KnifeLocation="`which knife`"
 
-if type nvm > /dev/null 2>&1; then
-  export NVM_DIR="$HOME/.nvm"
-  source "$(brew --prefix nvm)/nvm.sh"
-fi
+# nvm is frickin slow
+#export NVM_DIR="$HOME/.nvm"
+#source "$(brew --prefix nvm)/nvm.sh"
+
+#export NVM_DIR="$HOME/.nvm"
+#. "/usr/local/opt/nvm/nvm.sh"

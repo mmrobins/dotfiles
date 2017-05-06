@@ -152,3 +152,4 @@ alias fixcamera='sudo killall VDCAssistant' # when hangouts just won't see the c
 alias ssh-start='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)'
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
 command -v pbpaste > /dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
+alias clegane='git diff `git merge-base origin/master HEAD` --name-only | xargs -I {} rubocop --auto-correct {}'
