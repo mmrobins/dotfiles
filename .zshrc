@@ -97,7 +97,7 @@ local red_op="%{$fg[red]%}[%{$reset_color%}"
 local red_cp="%{$fg[red]%}]%{$reset_color%}"
 local path_p="${red_op}%{$fg[green]%}%~${red_cp}"
 local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
-local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %T${red_cp}"
+local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %*${red_cp}"
 PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)-$(ruby_version)
 ╰─ [%?]%# '
 local cur_cmd="${red_op}%_${red_cp}"

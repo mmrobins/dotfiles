@@ -315,3 +315,5 @@ set ttyfast " u got a fast terminal
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 set nocursorline
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
