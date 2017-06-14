@@ -2,7 +2,7 @@
 
 older_than = Time.now
 
-stale_branches = `/usr/local/bin/git for-each-ref --sort=committerdate refs/heads refs/remotes --format='%(refname:short)'`
+stale_branches = `/usr/bin/git for-each-ref --sort=committerdate refs/heads refs/remotes --format='%(refname:short)'`
 
 stale_branches.split("\n").each do |b|
   puts `git log -1 --pretty=format:'%C(cyan)%cr%C(reset) %C(yellow)%h%C(reset) %s %C(blue)%an%C(reset) %C(green)%d%C(reset)' #{b}`
@@ -11,7 +11,7 @@ stale_branches.split("\n").each do |b|
   puts "Delete?"
   if gets =~ /^y/i
     puts "Deleting"
-    b =~ %r{\A(.*)/(.*)\z}
+    b =~ %r{\A(.*?)/(.*)\z}
     if $1
       cmd = "git push #{$1} :#{$2}"
       puts cmd

@@ -96,4 +96,4 @@ function cdtt ()
 }
 
 complete -C ~/.completion/brew_completion.rb -o default brew
-complete -C ~/.completion/puppet_completion.rb -o default puppet
+#complete -C ~/.completion/puppet_completion.rb -o default puppet
