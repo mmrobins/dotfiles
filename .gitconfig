@@ -12,6 +12,7 @@
   interactive = auto
   ui = auto
 [alias]
+  br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
   amend = "commit --amend"
   rom = !"git fetch; git rebase origin/master"
   ff = pull --ff-only --ff
