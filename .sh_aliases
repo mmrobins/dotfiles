@@ -117,6 +117,9 @@ alias be='bundle exec'
 function zh(){
   ack "$1" ~/.zsh_history
 }
+# close, but not quite to get dates instead of timestamps
+#zh "tree.*build" | sed "s/^: \([0-9]*\):.;\(.*\)$/`date -r \1 +%Y%m%d-%H:%M` \2/"
+
 alias bi='(bundle check || bundle --local --jobs=4 || bundle --jobs=4)'
 
 function vpn() {
@@ -153,3 +156,57 @@ alias ssh-start='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
 command -v pbpaste > /dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
 alias clegane='git diff `git merge-base origin/master HEAD` --name-only | xargs -I {} rubocop --auto-correct {}'
+
+# kubernetes
+alias k="kubectl"
+alias kd="kubectl --context=dev"
+alias kp="kubectl --context=prod"
+
+# docker
+alias dc="docker-compose"
+
+# Quickly display / switch Kubernetes contexts
+function kcsc
+{
+  local context=${1}
+  if [[ -z "$context" ]]; then
+    kubectl config get-contexts
+  else
+    kubectl config use-context ${context}
+  fi
+}
+
+# Quickly display / switch Kubernetes namespaces
+function kcns
+{
+  local namespace=${1}
+  if [[ -z "$namespace" ]]; then
+    kubectl get ns
+  else
+    local context=$(kubectl config current-context)
+    echo "Setting context ${context} to namespace ${namespace}..."
+    kubectl config set-context ${context} --namespace ${namespace}
+  fi
+}
+
+function kcapacity {
+for node in $(kubectl get no --no-headers | awk '$0 !~ /Disabled/ {print $1}'); do
+  echo -n "Node ${node} - "
+  kubectl describe no $node \
+    | grep -A4 'Allocated resources' \
+    | tail -n1 \
+    | awk '{print "CPU Requests " $1 " " $2 " Memory Requests: " $5 " " $6}'
+  done
+}
+
+alias dt="docker-compose run tests"
+
+function kdpod
+{
+  kd get pods -l deployment=$1 -o name | head -n 1 | sed -e 's/pods\///'
+}
+
+function kppod
+{
+  kp get pods -l deployment=$1 -o name | head -n 1 | sed -e 's/pods\///'
+}

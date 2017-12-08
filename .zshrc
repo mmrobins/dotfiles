@@ -122,7 +122,7 @@ zstyle ':completion:*' group-name ''
 # i DONT like vim style on the command line so set command line back to emacs style
 bindkey -e
 
-#fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
 fpath=($HOME/config-files/zsh-completion $fpath)
 
 #PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)

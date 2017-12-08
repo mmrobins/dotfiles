@@ -253,7 +253,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_enable_signs=1
-let g:syntastic_disabled_filetypes = ['prolog', 'html', 'javascript']
+let g:syntastic_disabled_filetypes = ['prolog', 'html']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Mac Clipboard copy and paste
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
@@ -316,4 +317,4 @@ set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 set nocursorline
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|deps\'
