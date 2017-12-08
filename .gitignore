@@ -7,3 +7,4 @@ TODO
 tmp
 cache
 .byebug_history
+queries.sql

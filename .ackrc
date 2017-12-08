@@ -34,5 +34,8 @@ json=json
 --ignore-dir=dist/files
 --ignore-dir=coverage
 --ignore-dir=tmp
+--ignore-dir=.nyc_output
+--ignore-dir=dist
+--ignore-dir=deps
 
 --ignore-file=match:webpack.*bundle
