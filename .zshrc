@@ -151,7 +151,7 @@ fpath=($HOME/config-files/zsh-completion $fpath)
 unsetopt nomatch
 
 # Report CPU usage for commands running longer than 10 seconds
-REPORTTIME=10
+export REPORTTIME=10
 #source /usr/local/share/zsh/site-functions/_aws
 source $HOME/config-files/per-directory-history.zsh
 
@@ -159,3 +159,7 @@ source $HOME/config-files/per-directory-history.zsh
 if type keychain > /dev/null 2>&1; then
   eval `keychain --eval id_rsa`
 fi
+
+# https://superuser.com/questions/847838/zsh-backward-delete-word-does-not-recognize-character
+# change characters considered when moving forward and back words
+local WORDCHARS='*?_[]~=&;!#$%^(){}<>.'
