@@ -12,6 +12,7 @@ sub file_names
         .bashrc
         bash_completion
         .dir_colors
+        .editrc
         .gemrc
         .gitconfig
         .gitignore
