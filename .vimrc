@@ -255,10 +255,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs=1
 let g:syntastic_disabled_filetypes = ['prolog', 'html']
 let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_elixir_checkers = ['elixir']
+" let g:syntastic_enable_elixir_checker = 1
+" let g:syntastic_debug = 1
 
 " Mac Clipboard copy and paste
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
 map <leader>+ :r ~/tmp/vimclipboard<cr>
+" http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+set clipboard=unnamed
 
 " Split line, autoformat, autoalign
 map <leader>x V:s/\([({[]\)/\1\r/<cr>V:s/\([])}]\)/\r\1/<cr>V%:s/,/,\r/g<cr>jV%=V%:EasyAlign:<cr>
