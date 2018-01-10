@@ -1,4 +1,17 @@
-execute pathogen#infect()
+call plug#begin()
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'flazz/vim-colorschemes'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/vim-easy-align'
+Plug 'kien/ctrlp.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+call plug#end()
+
 exe "set path=".expand("$PATH")
 
 " :echo g:colors_name to find out current color scheme
