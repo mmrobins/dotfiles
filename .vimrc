@@ -248,6 +248,7 @@ map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyP
 " Insert debugger into code at cursor
 map <leader>rd A<cr>require 'debugger'; debugger<ESC>
 map <leader>rb A<cr>require 'byebug'; byebug<ESC>
+map <leader>ep A<cr>require IEx; IEx.pry<ESC>
 map <leader>rp A<cr>binding.pry<ESC>
 map <leader>jd A<cr>debugger;<ESC>
 map <leader>jc A<cr>console.log();<ESC>hi
@@ -335,4 +336,4 @@ set ttyfast " u got a fast terminal
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 set nocursorline
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|deps\'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|deps\|_build'
