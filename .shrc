@@ -29,11 +29,14 @@ export EDITOR=/usr/bin/vim
 source ~/.secret
 
 #test "$(ps -ocommand= -p $PPID | awk '{print $1}')" == 'script' || (script -f $HOME/$(date +"%d-%b-%y_%H-%M-%S")_shell.log)
-export CDPATH=".:$HOME/work:$HOME/2u"
+export CDPATH=".:$HOME/work:$HOME/sfwork"
 export LANG=en_US.UTF-8
 
 #export CHEFPATH="$HOME/bonobos/chef"
 #export KnifeLocation="`which knife`"
+
+# https://stackoverflow.com/questions/45405070/how-do-i-save-iex-history
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # nvm is frickin slow
 #export NVM_DIR="$HOME/.nvm"
@@ -42,5 +45,7 @@ export LANG=en_US.UTF-8
 #export NVM_DIR="$HOME/.nvm"
 #. "/usr/local/opt/nvm/nvm.sh"
 
-# https://stackoverflow.com/questions/45405070/how-do-i-save-iex-history
-export ERL_AFLAGS="-kernel shell_history enabled"
+# Node nvm oh geez
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

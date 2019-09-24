@@ -5,7 +5,6 @@
 source ~/.shrc
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
-export PUPPET_ENABLE_ASSERTIONS=true
 
 # Completion
 unsetopt menu_complete   # do not autoselect the first completion entry
@@ -52,6 +51,10 @@ source ~/.sh_aliases
 
 if [ -f ~/.sh_work_aliases ]; then
   source ~/.sh_work_aliases
+fi
+
+if [ -f ~/.sh_work_env ]; then
+  source ~/.sh_work_env
 fi
 
 ## Command history configuration
@@ -164,3 +167,8 @@ fi
 # https://superuser.com/questions/847838/zsh-backward-delete-word-does-not-recognize-character
 # change characters considered when moving forward and back words
 local WORDCHARS='*?_[]~=&;!#$%^(){}<>.'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extended"
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

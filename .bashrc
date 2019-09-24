@@ -97,3 +97,9 @@ function cdtt ()
 
 complete -C ~/.completion/brew_completion.rb -o default brew
 #complete -C ~/.completion/puppet_completion.rb -o default puppet
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
