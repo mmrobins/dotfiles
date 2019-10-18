@@ -1,6 +1,8 @@
 [user]
   name = Matt Robinson
-  email = matt.robinson@salesforce.com
+  email = matt@mattrobinson.net
+[includeIf "gitdir:~/sfwork/"]
+  path = .gitconfig-salesforce
 [core]
   excludesfile = ~/.gitignore
   whitespace = trailing-space,space-before-tab
