@@ -211,3 +211,5 @@ function kppod
 {
   kp get pods -l deployment=$1 -o name | head -n 1 | sed -e 's/pods\///'
 }
+
+alias tf="cd ~/sfwork/trailhead-terraform"

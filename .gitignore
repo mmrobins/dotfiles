@@ -2,6 +2,7 @@
 .vim/plugged
 puppet/manifests/secrets.pp
 .secrets
+.secret
 tags
 TODO
 .netrwhist
