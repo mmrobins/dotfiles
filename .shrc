@@ -1,23 +1,19 @@
-export RUBYLIB=$HOME/work/ls-deployment/lib:$HOME/work/techops-cli/lib:$HOME/work/ls-platform/lib:$HOME/work/myqa-commandline/lib:$HOME/work/facter/lib:$HOME/work/puppet/lib:$HOME/work/git-rank/lib:$HOME/work/hub/lib:$RUBYLIB
-
-#eval "$(docker-machine env default)"
-
-export GOPATH=/Users/matt/gocode
+# clear out PATH so it's not duplicating parent shell
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export PATH="$HOME/work/site/bin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-export PATH="/usr/local/share/npm/bin:$PATH"
-export PATH="$HOME/work/facter/bin:$PATH"
-export PATH="$HOME/work/puppet/sbin:$PATH"
-export PATH="$HOME/work/puppet/bin:$PATH"
-export PATH="$HOME/work/puppet-module-tool/bin:$PATH"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# github
 export PATH="$HOME/work/hub/bin:$PATH"
+
+export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# golang
+export GOPATH=/Users/matt/gocode
+export PATH="/usr/local/go/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
-#export PATH="$PATH:$HOME/.rbenv/bin"
 
 # I want my custom bin files ahead of rbenv shims
 eval "$(rbenv init -)"
@@ -32,20 +28,5 @@ source ~/.secret
 export CDPATH=".:$HOME/work:$HOME/sfwork"
 export LANG=en_US.UTF-8
 
-#export CHEFPATH="$HOME/bonobos/chef"
-#export KnifeLocation="`which knife`"
-
 # https://stackoverflow.com/questions/45405070/how-do-i-save-iex-history
 export ERL_AFLAGS="-kernel shell_history enabled"
-
-# nvm is frickin slow
-#export NVM_DIR="$HOME/.nvm"
-#source "$(brew --prefix nvm)/nvm.sh"
-
-#export NVM_DIR="$HOME/.nvm"
-#. "/usr/local/opt/nvm/nvm.sh"
-
-# Node nvm oh geez
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

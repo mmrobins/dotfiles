@@ -1,7 +1,3 @@
-# Path to your oh-my-zsh configuration.
-# export ZSH=$HOME/.oh-my-zsh
-# source $ZSH/oh-my-zsh.sh
-
 source ~/.shrc
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"

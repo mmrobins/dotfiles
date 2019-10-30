@@ -59,9 +59,6 @@ alias mvrsync='rsync -avvP --remove-source-files'
 # newly updated files in the last 5 minutes
 alias nf='find . -cmin -5 -ls'
 
-# sudo on both OSX and Ubuntu strip the environment variables
-alias puppetsudo="sudo env RUBYLIB=$RUBYLIB PATH=$PATH MCOLLECTIVE_EXTRA_OPTS=$MCOLLECTIVE_EXTRA_OPTS"
-
 # Most frequent committers
 alias gitcommiters="git ls-files | xargs -n1 git blame | ruby -n -e \"$_ =~ /^.*\((.*?)\s[\d]{4}/; puts $1.strip\" | sort -f | uniq -c | sort -n"
 
@@ -211,5 +208,3 @@ function kppod
 {
   kp get pods -l deployment=$1 -o name | head -n 1 | sed -e 's/pods\///'
 }
-
-alias tf="cd ~/sfwork/trailhead-terraform"
