@@ -11,7 +11,7 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # golang
-export GOPATH=/Users/matt/gocode
+export GOPATH="$HOME/gocode"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
