@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
 current_branch = `git symbolic-ref --short HEAD`.chomp
-if current_branch != "master"
+if !["master", "main"].include?(current_branch)
   if $?.exitstatus == 0
-    puts "WARNING: You are on branch #{current_branch}, NOT master."
+    puts "WARNING: You are on branch #{current_branch}, NOT master or main."
   else
     puts "WARNING: You are not on a branch"
   end
@@ -19,13 +19,13 @@ remote_branches= `git branch -r --merged`.
   map(&:strip).
   select {|b| b =~ /mmrobins/ || b =~ /origin/}. # should probably make this an arg or something
   #select {|b| b =~ /mmrobins/ }.
-  reject {|b| b =~ /\/(#{current_branch}|master|staging|production|develop|v2020)/}
+  reject {|b| b =~ /\/(#{current_branch}|master|main}staging|production|develop|v2020)/}
 
 local_branches= `git branch --merged`.
   gsub(/^\* /, '').
   split("\n").
   map(&:strip).
-  reject {|b| b =~ /(#{current_branch}|master|develop)/}
+  reject {|b| b =~ /(#{current_branch}|master|main|develop)/}
 
 if remote_branches.empty? && local_branches.empty?
   puts "No existing branches have been merged into #{current_branch}."

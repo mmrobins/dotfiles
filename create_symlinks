@@ -43,7 +43,7 @@ sub file_names
         bin/git-checkout-by-match
         bin/git-large
         bin/git-obliterate
-        bin/git-rmbranch
+        bin/git-rm-merged-branches
         bin/git-rmstale
         bin/git-stale-remote-branches
         bin/redmine-ticket-status
