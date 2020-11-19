@@ -30,12 +30,16 @@ local_branches= `git branch --merged`.
 if remote_branches.empty? && local_branches.empty?
   puts "No existing branches have been merged into #{current_branch}."
 else
+  combined_branches = (remote_branches + local_branches)
+  max = combined_branches.max_by(&:length).length
+  formatted_branches = combined_branches.map do |b|
+    branch_commit = `git log -1 --pretty=format:'%cr %an' #{b}`
+    "#{b} #{' ' * (max - b.length)} #{branch_commit}"
+  end
   puts "This will remove the following branches:"
-  puts remote_branches.join("\n")
-  puts local_branches.join("\n")
+  puts formatted_branches.join("\n")
   puts "Proceed?"
   if gets =~ /^y/i
-
     remote_branches.each do |b|
       remote, _seperator, branch = b.partition(/\//)
       `git push #{remote} :#{branch}`
