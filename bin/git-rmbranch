@@ -19,13 +19,13 @@ remote_branches= `git branch -r --merged`.
   map(&:strip).
   select {|b| b =~ /mmrobins/ || b =~ /origin/}. # should probably make this an arg or something
   #select {|b| b =~ /mmrobins/ }.
-  reject {|b| b =~ /\/(#{current_branch}|master|staging|production)/}
+  reject {|b| b =~ /\/(#{current_branch}|master|staging|production|develop|v2020)/}
 
 local_branches= `git branch --merged`.
   gsub(/^\* /, '').
   split("\n").
   map(&:strip).
-  reject {|b| b =~ /(#{current_branch}|master)/}
+  reject {|b| b =~ /(#{current_branch}|master|develop)/}
 
 if remote_branches.empty? && local_branches.empty?
   puts "No existing branches have been merged into #{current_branch}."
@@ -37,7 +37,7 @@ else
   if gets =~ /^y/i
 
     remote_branches.each do |b|
-      remote, seperator, branch = b.partition(/\//)
+      remote, _seperator, branch = b.partition(/\//)
       `git push #{remote} :#{branch}`
     end
 

@@ -38,5 +38,6 @@ json=json
 --ignore-dir=dist
 --ignore-dir=deps
 --ignore-dir=target
+--ignore-dir=vendor
 
 --ignore-file=match:webpack.*bundle

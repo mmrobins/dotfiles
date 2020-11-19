@@ -168,3 +168,7 @@ local WORDCHARS='*?_[]~=&;!#$%^(){}<>.'
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

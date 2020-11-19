@@ -11,3 +11,4 @@ cache
 .byebug_history
 queries.sql
 apps/db/priv/repo/structure.sql
+.env.test

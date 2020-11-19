@@ -9,9 +9,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
 call plug#end()
+"Plug 'vim-syntastic/syntastic'
 
 exe "set path=".expand("$PATH")
 
@@ -81,7 +83,7 @@ set wildmenu
 set wildmode=list,full
 
 " Status Line
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+" set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 "set statusline=[%n]\ %.300F\ %(\ %M%R%H)%)\%=\@(%l\,%c%V)\ %P
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 "set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%d/%m/%Y-%H:%M\")}%=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l\,%L\ %P
@@ -90,7 +92,7 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%0
 set laststatus=2 "Always show status line
 set encoding=utf-8 " Necessary to show Unicode glyphs
 
-highlight StatusLine ctermfg=darkblue ctermbg=grey
+" highlight StatusLine ctermfg=darkblue ctermbg=grey
 
 " Searching
 set ignorecase
@@ -132,7 +134,7 @@ map <leader>f :set foldmethod=indent<cr>zM<cr>
 map <leader>F :set foldmethod=manual<cr>zR<cr>
 
 " Toggling the taglist
-map <leader>l :TlistToggle<cr>
+"map <leader>l :TlistToggle<cr>
 
 " Reformat sql to look nice
 map <leader>sql <Esc>:g/,/:%s/, /,\r/g<cr>:%s/select /select\r/<cr>:%s/from\\|where\\|group by\\|order by/\r&/g<cr>:%s/\(from\\|where\\|group by\\|order by\) /&\r/g<cr>:g/ inner join/:%s/ inner join/\rinner join/g<cr>:g/ and/:%s/ and/\rand/g<cr>:g!/select\\|from\\|where\\|group by\\|order by\\|\//><cr>
@@ -163,39 +165,15 @@ set grepprg=ack\ -a\ --nobinary\ --sort-files\ --color
 
 "puppet test switching - may want to encapsulate this for other projects if I find I need that
 function! GoToTheImplementation()
-    if exists("b:rails_root") " && filereadable(b:rails_root . "/script/spec")
-      if match( expand("%:p"), "spec" ) > -1
-        exec(":A")
-      endif
-    else
-      if match( expand("%:p"), "spec/unit" ) > -1
-          let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
-          let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
-          exec(":e ". imp_file)
-      else
-          let imp_file = substitute(expand("%:p"), 'spec/\(\w\+\)', 'lib/\1', "")
-          let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
-          exec(":e ". imp_file)
-      end
-    end
+  if match( expand("%:p"), "spec" ) > -1
+    exec(":A")
+  endif
 endfunc
 
 function! GoToTheTest()
-    if exists("b:rails_root") " && filereadable(b:rails_root . "/script/spec")
-      if match( expand("%:p"), "spec" ) <= 0
-        exec(":A")
-      endif
-    else
-      if match( expand("%:p"), "lib/puppet" ) > -1
-          let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
-          let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
-          exec(":e ". test_file)
-      else
-          let test_file = substitute(expand("%:p"), 'lib/\(\w\+\)', 'spec/\1', "")
-          let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
-          exec(":e ". test_file)
-      end
-    end
+  if match( expand("%:p"), "spec" ) <= 0
+    exec(":A")
+  endif
 endfunc
 map  <leader>gt      :call GoToTheTest()<CR>
 map! <leader>gt <ESC>:call GoToTheTest()<CR>i
@@ -213,13 +191,13 @@ function! RunSpec(args)
 "     let cmd = ":!" . spec . ' ' . expand("%:p") . " -cfn --debugger --loadby mtime --backtrace " . a:args
 "   else
       let spec = "bundle exec rspec"
-      let cmd = ":!" . spec . ' ' . expand("%:p") . " -bcfd " . a:args
+      let cmd = ":!" . spec . ' ' . expand("%:p") . a:args . " -bcfd "
 "   end
     execute cmd
 endfunction
 
 " run one rspec example or describe block based on cursor position
-map <leader>t <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("-l " . <C-r>=line('.')<CR>)<CR>
+map <leader>t <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec(":" . <C-r>=line('.')<CR>)<CR>
 " run full rspec file
 map <leader>T <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("")<CR>
 
@@ -258,18 +236,18 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
 " Syntastic syntax checking on save
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_enable_signs=1
-let g:syntastic_disabled_filetypes = ['prolog', 'html']
-let g:syntastic_javascript_checkers = ['eslint']
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"
+"let g:syntastic_enable_signs=1
+"let g:syntastic_disabled_filetypes = ['prolog', 'html']
+"let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_elixir_checkers = ['elixir']
 " let g:syntastic_enable_elixir_checker = 1
 " let g:syntastic_debug = 1
@@ -295,10 +273,10 @@ map <leader>gb :Gblame wCM<CR>
 cabbr <expr> %% expand('%:p:h')
 
 " not sure why vim has a problem finding ctags
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+"let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 " set iskeyword-=_ " not sure if I'll like this...
-map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
-autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
+"map <leader>ct <esc>:!/usr/local/bin/ctags -R<CR>
+"autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R &> /dev/null &
 " bundle list --paths=true | xargs ctags --extra=+f --exclude=.git --exclude=public --exclude=tmp --exclude=*.js --exclude=log -R *
 
 "set iskeyword+=?
@@ -337,3 +315,33 @@ set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 set nocursorline
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|deps\|_build'
+
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+" Set specific linters
+"let g:ale_linters = {
+"\   'javascript': ['eslint'],
+"\   'ruby': ['standardrb', 'rubocop'],
+"\}
+" Only run linters named in ale_linters settings.
+"let g:ale_linters_explicit = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+"let g:ale_set_highlights = 1
+"let g:ale_set_loclist = 0
+"let g:ale_set_quickfix = 1
+"let g:ale_sign_error = '●'
+"let g:ale_sign_warning = '.'
+let g:ale_lint_on_save = 1
+let g:ale_terraform_terraform_executable = 'terraform'
+let g:ale_linters = {
+      \ 'ruby': ['ruby', 'rubocop'],
+      \ 'vim': ['vint'],
+      \}
+let g:ale_ruby_rubocop_executable = $HOME.'/.rbenv/shims/bundle'
+
+" https://github.com/vim-airline/vim-airline/issues/1845
+let g:airline_section_a = '' " hide mode
+let g:airline_section_b = '' " hide git branch, it's in my prompt
+let g:airline_section_z = '%l ascii:%b' " add ascii code
