@@ -44,7 +44,7 @@ sub file_names
         bin/git-large
         bin/git-obliterate
         bin/git-rm-merged-branches
-        bin/git-rmstale
+        bin/git-rm-stale-branches
         bin/git-stale-remote-branches
         bin/redmine-ticket-status
         .completion

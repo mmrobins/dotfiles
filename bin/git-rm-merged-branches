@@ -33,7 +33,7 @@ else
   combined_branches = (remote_branches + local_branches)
   max = combined_branches.max_by(&:length).length
   formatted_branches = combined_branches.map do |b|
-    branch_commit = `git log -1 --pretty=format:'%cr %an' #{b}`
+    branch_commit = `git log -1 --pretty=format:'%ad %an' --date=format:'%Y-%m-%d' #{b}` # author date, author name
     "#{b} #{' ' * (max - b.length)} #{branch_commit}"
   end
   puts "This will remove the following branches:"

@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+options = {
+  listonly: false,
+  filter: nil,
+  daysago: nil,
+}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: git-rm-stale-branches [options] [files]"
+  opts.separator "Iterates through oldest remote and local branches, prints context, and asks to delete"
+  opts.separator "Options:"
+  opts.on("-l", "--list-only", "Just list the branches, don't offer to delete") do |l|
+    options[:listonly] = l
+  end
+  opts.on("-d", "--days-ago DAYS", "Only list branches older than n days ago") do |d|
+    options[:daysago] = d
+  end
+  opts.on("-f", "--filter FILTER", 'Only list branches that match this string.  Ex `--filter "Matt Robinson"`') do |f|
+    options[:filter] = f
+  end
+end.parse!
+
+all_branches = `git for-each-ref --sort=committerdate refs/heads refs/remotes --format='%(refname:short)'`.split("\n")
+
+branch_with_commit = all_branches.map do |b|
+  branch_commit = `git log -1 --pretty=format:'%ad %an - %s' #{b} --date=format:'%Y-%m-%d'` # author date, author, commit message
+  if options[:filter]
+    next unless "#{b} #{branch_commit}" =~ /#{options[:filter]}/
+  end
+  if options[:daysago]
+    require 'date'
+    commit_date = `git log -1 --pretty=format:'%aD' #{b}`
+    parsed_date = Date.rfc2822(commit_date).to_time
+    older_than = Time.now - (options[:daysago].to_i * 60 * 60 * 24)
+
+    next unless parsed_date < older_than
+  end
+  [b, branch_commit]
+end.compact
+
+if options[:listonly]
+  max = branch_with_commit.map(&:first).max_by(&:length).length
+  branch_with_commit.each do |b, branch_commit|
+    puts "#{b} #{' ' * (max - b.length)} #{branch_commit}"
+  end
+  exit 0
+end
+
+
+branch_with_commit.each do |b, branch_commit|
+  puts b
+  puts branch_commit
+
+  puts "Delete?"
+  if gets =~ /^y/i
+    puts "Deleting"
+    b =~ %r{\A(.*?)/(.*)\z}
+    if $1
+      cmd = "git push #{$1} :#{$2}"
+      puts cmd
+      `#{cmd}`
+    else
+      cmd = "git branch -D #{b}"
+      puts cmd
+      `#{cmd}`
+    end
+  end
+  puts
+end
