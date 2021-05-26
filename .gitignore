@@ -1,5 +1,6 @@
 .*.sw[op]
 .vim/plugged
+.vim/autoload
 puppet/manifests/secrets.pp
 .secrets
 .secret

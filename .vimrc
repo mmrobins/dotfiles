@@ -233,8 +233,11 @@ map <leader>jd A<cr>debugger;<ESC>
 map <leader>jc A<cr>console.log();<ESC>hi
 
 " central store for swap files instead of having them sprinkled throughout my projects
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+"set backupdir=~/.vim/backup//
+"set directory=~/.vim/swp//
+" I just don't need swap, have git and save all the time
+set nobackup
+set noswapfile
 
 " Syntastic syntax checking on save
 "set statusline+=%#warningmsg#
