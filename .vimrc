@@ -2,8 +2,9 @@ call plug#begin()
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'flazz/vim-colorschemes'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
@@ -216,7 +217,10 @@ function! CdRoot()
 endfunction
 map <leader>cr <esc>:call CdRoot()<CR>
 map <leader>cf <esc>:cd %:p:h:gs/ /\\ /<CR>
-map <leader>ack <esc>:call CdRoot()<CR>:Ack
+" old habits
+map <leader>ack <esc>:call CdRoot()<CR>:Rg
+" depends on fzf
+map <leader>rg <esc>:call CdRoot()<CR>:Rg
 
 " A hackish attempt at doing an autoalign like I used to have at Rentrak
 "map  <leader>a <esc>?^$\\|{\\|(<CR>/ => <CR>V/^$\\|}\\|)<CR>? => <CR>:Align => <CR>/nofindme<CR>
@@ -370,3 +374,7 @@ let g:rails_projections = {
       \     "app/controllers/{}_controller.rb",
       \   ],
       \ }}
+
+" replacing ctrlp with fzf
+nmap <C-P> :FZF<CR>
+let g:fzf_layout = { 'down': '~40%' }
