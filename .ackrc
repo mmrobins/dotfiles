@@ -39,5 +39,7 @@ json=json
 --ignore-dir=deps
 --ignore-dir=target
 --ignore-dir=vendor
+--ignore-dir=.terraform
 
 --ignore-file=match:webpack.*bundle
+--ignore-file=match:state.json

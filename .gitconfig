@@ -1,6 +1,7 @@
 [user]
   name = Matt Robinson
   email = matt@mattrobinson.net
+  signingkey = 4B5D3D66BAD31C2B
 [includeIf "gitdir:~/sfwork/"]
   path = .gitconfig-salesforce
 [core]
@@ -17,6 +18,8 @@
   br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
   amend = "commit --amend"
   rom = !"git fetch; git rebase origin/master"
+  ron = !"git fetch; git rebase origin/main" # not sure how to handle main and master in same
+  tagdate = "tag -l --sort=-creatordate --format='%(creatordate:short):  %(refname:short)'"
   ff = pull --ff-only --ff
   st = status
   ci = commit
@@ -54,3 +57,8 @@
   default = simple
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

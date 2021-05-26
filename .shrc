@@ -1,6 +1,8 @@
 # clear out PATH so it's not duplicating parent shell
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 
+export PATH="/Applications/Postgres.app/Contents/Versions/12/bin:$PATH"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -74,3 +76,5 @@ function proxy-off(){
 
 # Turn on by default
 #proxy-on
+
+export GPG_TTY=$(tty)

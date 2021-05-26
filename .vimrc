@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rails'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
@@ -268,7 +269,7 @@ au BufNewFile,BufRead *.less set filetype=less
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Gblame
-map <leader>gb :Gblame wCM<CR>
+map <leader>gb :Gblame<CR>
 
 cabbr <expr> %% expand('%:p:h')
 
@@ -335,6 +336,10 @@ let g:ale_sign_column_always = 1
 "let g:ale_sign_warning = '.'
 let g:ale_lint_on_save = 1
 let g:ale_terraform_terraform_executable = 'terraform'
+"let g:ale_linters = {
+"      \ 'ruby': ['ruby', 'standardrb', 'rubocop'],
+"      \ 'vim': ['vint'],
+"      \}
 let g:ale_linters = {
       \ 'ruby': ['ruby', 'rubocop'],
       \ 'vim': ['vint'],
@@ -344,4 +349,18 @@ let g:ale_ruby_rubocop_executable = $HOME.'/.rbenv/shims/bundle'
 " https://github.com/vim-airline/vim-airline/issues/1845
 let g:airline_section_a = '' " hide mode
 let g:airline_section_b = '' " hide git branch, it's in my prompt
-let g:airline_section_z = '%l ascii:%b' " add ascii code
+let g:airline_section_z = '%l:%c ascii:%b' " line:column ascii:code
+
+" https://flowfx.de/blog/teach-vim-rails-about-request-specs/
+let g:rails_projections = {
+      \ "app/controllers/*_controller.rb": {
+      \   "test": [
+      \     "spec/controllers/{}_controller_spec.rb",
+      \     "spec/requests/{}_spec.rb"
+      \   ],
+      \ },
+      \ "spec/requests/*_spec.rb": {
+      \   "alternate": [
+      \     "app/controllers/{}_controller.rb",
+      \   ],
+      \ }}

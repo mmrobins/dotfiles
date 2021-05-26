@@ -55,21 +55,22 @@ fi
 
 ## Command history configuration
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTSIZE=100000000
+SAVEHIST=100000000
 setopt hist_ignore_dups # ignore duplication command history list
 
 setopt hist_verify
 #setopt share_history # share command history data # use fc -IR to share. exclusive from inc_append_history_time
 setopt inc_append_history_time
-setopt extended_history
+setopt extended_history # includes timestamp and elapsed time ': <beginning time>:<elapsed seconds>;<command>'
 setopt hist_expire_dups_first
-setopt hist_ignore_space
+setopt hist_ignore_space # space prefix means it won't stay in history
 
 # get the name of the branch we are on
 function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  branch="${ref#refs/heads/}"
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${branch}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function ruby_version()
@@ -78,6 +79,19 @@ function ruby_version()
       rbenv version | sed -e "s/ (set.*$//"
     fi
 }
+
+function terraform_workspace()
+{
+  if [[ -d .terraform ]]; then
+    if [[ -f .terraform/environment ]]; then
+      WORKSPACE="%{$fg[red]%}$(cat .terraform/environment 2> /dev/null)%{$reset_color%}"
+    else
+      WORKSPACE="default"
+    fi
+    echo "-<${WORKSPACE}>"
+  fi
+}
+
 # parse_git_dirty () {
 #   if [[ -n $(git status -s 2> /dev/null) ]]; then
 #     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
@@ -97,14 +111,15 @@ local red_op="%{$fg[red]%}[%{$reset_color%}"
 local red_cp="%{$fg[red]%}]%{$reset_color%}"
 local path_p="${red_op}%{$fg[green]%}%~${red_cp}"
 local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
-local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d} - %*${red_cp}"
-PROMPT='╭─${path_p}─${user_host}─${date_time}-$(git_prompt_info)-$(ruby_version)
+local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d}-%*${red_cp}"
+
+PROMPT='╭─${path_p}─${date_time}-$(git_prompt_info)-<$(ruby_version)>$(terraform_workspace)
 ╰─ [%?]%# '
 local cur_cmd="${red_op}%_${red_cp}"
 PROMPT2="${cur_cmd}> "
 # git theming default: Variables for theming the git info prompt
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
-ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="›%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
 ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
 
@@ -172,3 +187,5 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+#export PATH="/usr/local/opt/terraform@0.13/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"

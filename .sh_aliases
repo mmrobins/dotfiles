@@ -5,6 +5,7 @@ if [[ `uname -a` =~ Darwin ]]; then
 else
     alias ls="ls -FC --color"
 fi
+alias tfm="terraform"
 alias ll="ls -l"
 alias l='ls -la'
 alias rm="rm -i"
@@ -208,3 +209,5 @@ function kppod
 {
   kp get pods -l deployment=$1 -o name | head -n 1 | sed -e 's/pods\///'
 }
+
+alias tfm_remove_all_state="terraform state list | cut -f 1 -d '[' | xargs -L 0 terraform state rm"
