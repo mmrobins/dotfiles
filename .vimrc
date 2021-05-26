@@ -222,10 +222,6 @@ map <leader>ack <esc>:call CdRoot()<CR>:Rg
 " depends on fzf
 map <leader>rg <esc>:call CdRoot()<CR>:Rg
 
-" A hackish attempt at doing an autoalign like I used to have at Rentrak
-"map  <leader>a <esc>?^$\\|{\\|(<CR>/ => <CR>V/^$\\|}\\|)<CR>? => <CR>:Align => <CR>/nofindme<CR>
-"map! <leader>a <esc>?/^$<CR>V/^$<CR>:Align =><CR>i
-
 "map <leader>pr A<cr>require 'profiler'<cr>Profiler__::start_profile<cr>Profiler__::stop_profile<cr>Profiler__::print_profile($stderr)<ESC>
 map <leader>pr A<cr>require 'ruby-prof'<cr>RubyProf.start<cr>rprofresult = RubyProf.stop<cr>printer = RubyProf::GraphPrinter.new(rprofresult)<cr>printer.print(STDOUT,0)<ESC>
 
@@ -323,7 +319,6 @@ set ttyfast " u got a fast terminal
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 set nocursorline
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|deps\|_build'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
