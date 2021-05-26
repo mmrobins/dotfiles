@@ -5,14 +5,15 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-rails'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-ruby/vim-ruby'
+Plug 'w0rp/ale'
 call plug#end()
 "Plug 'vim-syntastic/syntastic'
 
@@ -320,8 +321,10 @@ set lazyredraw " to avoid scrolling problems
 set nocursorline
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|deps\|_build'
 
-nmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Set specific linters
 "let g:ale_linters = {
