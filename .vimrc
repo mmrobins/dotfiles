@@ -287,19 +287,24 @@ cabbr <expr> %% expand('%:p:h')
 "set iskeyword+=?
 "set iskeyword+=!
 
-map <leader>a :execute "Ack " . expand("<cword>") <CR>
+map <leader>a :execute "Rg " . expand("<cword>") <CR>
 
 noremap Q gqap
+
+" turn on prose mode for spell checking
 command! Prose inoremap <buffer> . .<C-G>u|
             \ inoremap <buffer> ! !<C-G>u|
             \ inoremap <buffer> ? ?<C-G>u|
-            \ setlocal spell spelllang=en
+            \ setlocal spell spelllang=en_us
             \     nolist nowrap tw=74 fo=t1 nonu|
             \ augroup PROSE|
             \   autocmd InsertEnter <buffer> set fo+=a|
             \   autocmd InsertLeave <buffer> set fo-=a|
             \ augroup END
 
+map <leader>pz :execute "Prose" <CR>
+
+" turn off prose mode
 command! Code silent! iunmap <buffer> .|
             \ silent! iunmap <buffer> !|
             \ silent! iunmap <buffer> ?|
@@ -311,6 +316,8 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+map <leader>npz :execute "Code" <CR>
 
 " craxy slow with long lines
 " https://superuser.com/questions/302186/vim-scrolls-very-slow-when-a-line-is-too-long

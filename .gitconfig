@@ -1,7 +1,7 @@
 [user]
   name = Matt Robinson
   email = matt@mattrobinson.net
-  signingkey = 4B5D3D66BAD31C2B
+  signingkey = 96A9D440AC1A57C9
 [includeIf "gitdir:~/sfwork/"]
   path = .gitconfig-salesforce
 [core]
