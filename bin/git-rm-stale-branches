@@ -24,6 +24,15 @@ OptionParser.new do |opts|
 end.parse!
 
 all_branches = `git for-each-ref --sort=committerdate refs/heads refs/remotes --format='%(refname:short)'`.split("\n")
+all_branches.reject! do |b| 
+  %w{
+    main
+    master
+    origin/HEAD
+    origin/main
+    origin/master
+  }.include?(b)
+end
 
 branch_with_commit = all_branches.map do |b|
   branch_commit = `git log -1 --pretty=format:'%ad %an - %s' #{b} --date=format:'%Y-%m-%d'` # author date, author, commit message
