@@ -1,6 +1,7 @@
 # clear out PATH so it's not duplicating parent shell
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/12/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
