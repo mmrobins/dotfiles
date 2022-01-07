@@ -17,6 +17,7 @@ sub file_names
         .gitconfig
         .gitignore
         .git-completion.sh
+        .gnupg/gpg-agent.conf
         .inputrc
         .irbrc
         .irssi
