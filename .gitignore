@@ -19,3 +19,4 @@ cache
 queries.sql
 apps/db/priv/repo/structure.sql
 .env.test
+Brewfile.lock.json
