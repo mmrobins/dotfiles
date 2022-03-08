@@ -1,14 +1,17 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-
-# all environments
+tap "superfly/tap"
 brew "ack"
 brew "cloc"
+brew "elixir"
+brew "fd"
 brew "fzf"
+brew "gh"
 brew "gnu-sed"
-brew "gpg"
+brew "gnupg"
 brew "macvim"
+brew "ruby-build"
 brew "rbenv"
 brew "reattach-to-user-namespace"
 brew "ripgrep"
@@ -16,14 +19,13 @@ brew "the_silver_searcher"
 brew "tmux"
 brew "tree"
 brew "zsh"
-
+brew "superfly/tap/flyctl"
+cask "airflow"
+cask "android-file-transfer"
 cask "bluesnooze"
 cask "middleclick"
-cask "rectangle"
-cask "vlc"
-
-#optional depending on environment
-brew "elixir"
-
-# personal machines only
+cask "monitorcontrol"
 cask "qbittorrent"
+cask "rectangle"
+cask "skitch"
+cask "vlc"

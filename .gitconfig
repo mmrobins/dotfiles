@@ -64,4 +64,4 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
 [commit]
-  gpgSign = true
+  #gpgSign = true
