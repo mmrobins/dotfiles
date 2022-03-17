@@ -273,7 +273,7 @@ au BufNewFile,BufRead *.less set filetype=less
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Gblame
-map <leader>gb :Gblame<CR>
+map <leader>gb :Git blame<CR>
 
 cabbr <expr> %% expand('%:p:h')
 

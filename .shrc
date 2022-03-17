@@ -1,8 +1,12 @@
 # clear out PATH so it's not duplicating parent shell
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 
-export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/12/bin:$PATH"
+
+if [ -d "/opt/homebrew/bin" ]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -19,8 +23,9 @@ export PATH="/usr/local/go/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
 # I want my custom bin files ahead of rbenv shims
-eval "$(rbenv init -)"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+if [ -x "$(command -v rbenv)" ]; then
+  eval "$(rbenv init -)"
+fi
 
 export PATH="$HOME/bin:$PATH"
 
@@ -32,10 +37,12 @@ export PATH="/usr/local/opt/node@10/bin:$PATH"
 
 export EDITOR=/usr/bin/vim
 
-source ~/.secret
+if [ -f ~/.secret ]; then
+  source ~/.secret
+fi
 
 #test "$(ps -ocommand= -p $PPID | awk '{print $1}')" == 'script' || (script -f $HOME/$(date +"%d-%b-%y_%H-%M-%S")_shell.log)
-export CDPATH=".:$HOME/work:$HOME/sfwork:$HOME/sfsomawork"
+export CDPATH=".:$HOME/work:$HOME/ghwork"
 export LANG=en_US.UTF-8
 
 # https://stackoverflow.com/questions/45405070/how-do-i-save-iex-history

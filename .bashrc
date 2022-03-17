@@ -56,9 +56,9 @@ P_USER="\u@\H"
 P_PATH="\w"
 
 if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash ]; then
-    . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+  source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+  source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 fi
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 GITBRANCH=`if which git &> /dev/null; then echo '$(__git_ps1 "(%s)")'; else echo ''; fi`
 PS1="$P_COLOR1  $P_TIME $P_COLOR2 $P_USER : $P_PATH $GITBRANCH\n >$P_END_COLOR"
 umask 022

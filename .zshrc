@@ -109,11 +109,22 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 # PROMPT PS1
 local red_op="%{$fg[red]%}[%{$reset_color%}"
 local red_cp="%{$fg[red]%}]%{$reset_color%}"
-local path_p="${red_op}%{$fg[green]%}%~${red_cp}"
-local user_host="${red_op}%{$fg[cyan]%}%n@%m${red_cp}"
-local date_time="${red_op}%{$fg[green]%}%D{%Y%m%d}-%*${red_cp}"
 
-PROMPT='╭─${path_p}─${date_time}-$(git_prompt_info)-<$(ruby_version)>$(terraform_workspace)
+if [[ "$CODESPACES" == "true" ]]; then
+  local host_color="magenta"
+  local date_time_color="green"
+  local path_color="cyan"
+else
+  local host_color="cyan"
+  local date_time_color="blue"
+  local path_color="green"
+fi
+
+local path_p="${red_op}%{$fg[$path_color]%}%~${red_cp}"
+local user_host="${red_op}%{$fg[$host_color]%}%n@%m${red_cp}"
+local date_time="${red_op}%{$fg[$date_time_color]%}%D{%Y%m%d}-%*${red_cp}"
+
+PROMPT='╭─${path_p}─${user_host}-${date_time}-$(git_prompt_info)-<$(ruby_version)>$(terraform_workspace)
 ╰─ [%?]%# '
 local cur_cmd="${red_op}%_${red_cp}"
 PROMPT2="${cur_cmd}> "
@@ -168,7 +179,9 @@ unsetopt nomatch
 # Report CPU usage for commands running longer than 10 seconds
 export REPORTTIME=10
 #source /usr/local/share/zsh/site-functions/_aws
-source $HOME/config-files/per-directory-history.zsh
+if [ -f $HOME/config-files/per-directory-history.zsh ]; then
+  source $HOME/config-files/per-directory-history.zsh
+fi
 
 # only really useful on linux
 if type keychain > /dev/null 2>&1; then
