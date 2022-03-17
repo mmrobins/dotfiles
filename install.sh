@@ -5,8 +5,6 @@ exec > >(tee -i $HOME/dotfiles_install.log)
 exec 2>&1
 set -x
 
-# switch shells
-sudo chsh -s "$(which zsh)" "$(whoami)"
 
 dotfiles_dir=$(pwd)
 os=$(uname -s)
@@ -15,6 +13,10 @@ os=$(uname -s)
 if [ "$os" == "Darwin" ]; then
   brew bundle
 else
+  # already zsh by default on macos these days
+  # switch shells
+  chsh -s "$(which zsh)" "$(whoami)"
+
   apt-get update -y
   apt-get install -y \
     ack \
@@ -54,4 +56,6 @@ for link_file in "${ln_files[@]}"; do
 done
 
 # Install vim plugins
-vim +'PlugInstall --sync' +qa
+# extra flags to ignore startup errors
+# https://stackoverflow.com/questions/54606581/ignore-all-errors-in-vimrc-at-vim-startup
+vim -E -s -u ~/.vimrc +PlugInstall +qall
