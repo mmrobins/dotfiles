@@ -20,6 +20,7 @@ else
   apt-get update -y
   apt-get install -y \
     ack \
+    fd-find \
     fuse \
     fzf \
     jq \
