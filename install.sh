@@ -38,6 +38,7 @@ declare -a ln_files=(
   .gemrc
   .git-completion.sh
   .gitconfig
+  .gitconfig-github
   .gitignore
   .gnupg/gpg-agent.conf
   .inputrc

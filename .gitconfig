@@ -1,9 +1,10 @@
 [user]
   name = Matt Robinson
   email = matt@mattrobinson.net
-  signingkey = 96A9D440AC1A57C9
-[includeIf "gitdir:~/sfwork/"]
-  path = .gitconfig-salesforce
+[includeIf "gitdir:~/ghwork/"]
+  path = .gitconfig-github
+[includeIf "gitdir:/workspaces/"]
+  path = .gitconfig-github # at least for now not doing personal projects in codespaces...
 [core]
   excludesfile = ~/.gitignore
   whitespace = trailing-space,space-before-tab
