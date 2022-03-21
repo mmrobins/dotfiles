@@ -33,8 +33,6 @@ fi
 # symlink files
 declare -a ln_files=(
   .ackrc
-  .bash_profile
-  .bashrc
   .editrc
   .gemrc
   .git-completion.sh
