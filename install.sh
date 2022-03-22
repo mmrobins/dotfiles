@@ -9,13 +9,15 @@ set -x
 dotfiles_dir=$(pwd)
 os=$(uname -s)
 
+mkdir -p ~/bin
+
 # Install packages
 if [ "$os" == "Darwin" ]; then
   brew bundle
 else
   # already zsh by default on macos these days
   # switch shells
-  chsh -s "$(which zsh)" "$(whoami)"
+  sudo chsh -s "$(which zsh)" "$(whoami)"
 
   apt-get update -y
   apt-get install -y \
@@ -29,6 +31,9 @@ else
     tree \
     universal-ctags \
     yamllint
+
+  # https://github.com/sharkdp/fd#on-ubuntu
+  ln -s $(which fdfind) ~/bin/fd
 fi
 
 # symlink files
