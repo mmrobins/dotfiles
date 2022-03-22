@@ -36,7 +36,7 @@ else
     branch_commit = `git log -1 --pretty=format:'%ad %an' --date=format:'%Y-%m-%d' #{b}` # author date, author name
     "#{b} #{' ' * (max - b.length)} #{branch_commit}"
   end
-  puts "This will remove the following branches:"
+  puts "This will remove the following branches (#{remote_branches.count} remote and #{local_branches.count} local):"
   puts formatted_branches.join("\n")
   puts "Proceed?"
   if gets =~ /^y/i

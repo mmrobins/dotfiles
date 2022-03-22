@@ -100,3 +100,6 @@ function proxy-off(){
 #proxy-on
 
 export GPG_TTY=$(tty)
+
+# send text to clipper like pbcopy
+alias clip="nc -U ~/.clipper.sock"

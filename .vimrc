@@ -380,3 +380,6 @@ let g:rails_projections = {
 " replacing ctrlp with fzf
 nmap <C-P> :FZF<CR>
 let g:fzf_layout = { 'down': '~40%' }
+
+" clipper like pbcopy that works across ssh
+nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>

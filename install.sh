@@ -26,6 +26,7 @@ else
     fuse \
     fzf \
     jq \
+    netcat \
     ripgrep \
     ruby-dev \
     tree \
@@ -39,6 +40,7 @@ fi
 # symlink files
 declare -a ln_files=(
   .ackrc
+  .clipper.json
   .editrc
   .gemrc
   .git-completion.sh
