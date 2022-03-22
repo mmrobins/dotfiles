@@ -52,7 +52,11 @@ if [ -f ~/.secret ]; then
 fi
 
 #test "$(ps -ocommand= -p $PPID | awk '{print $1}')" == 'script' || (script -f $HOME/$(date +"%d-%b-%y_%H-%M-%S")_shell.log)
-export CDPATH=".:$HOME/work:$HOME/ghwork"
+
+if [[ -z "${CODESPACES}" ]]; then
+  # at least until github can handle setting RAILS_PATH in a sane way
+  export CDPATH=".:$HOME/work:$HOME/ghwork"
+fi
 export LANG=en_US.UTF-8
 
 # https://stackoverflow.com/questions/45405070/how-do-i-save-iex-history
