@@ -25,6 +25,7 @@ else
     fzf \
     jq \
     ripgrep \
+    ruby-dev \
     tree \
     universal-ctags \
     yamllint

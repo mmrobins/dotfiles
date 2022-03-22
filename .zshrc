@@ -114,14 +114,15 @@ if [[ "$CODESPACES" == "true" ]]; then
   local host_color="magenta"
   local date_time_color="green"
   local path_color="cyan"
+  local user_host="${red_op}%{$fg[$host_color]%}%n@$CODESPACE_NAME${red_cp}"
 else
   local host_color="cyan"
   local date_time_color="blue"
   local path_color="green"
+  local user_host="${red_op}%{$fg[$host_color]%}%n@%m${red_cp}"
 fi
 
 local path_p="${red_op}%{$fg[$path_color]%}%~${red_cp}"
-local user_host="${red_op}%{$fg[$host_color]%}%n@%m${red_cp}"
 local date_time="${red_op}%{$fg[$date_time_color]%}%D{%Y%m%d}-%*${red_cp}"
 
 PROMPT='╭─${path_p}─${user_host}-${date_time}-$(git_prompt_info)-<$(ruby_version)>$(terraform_workspace)
