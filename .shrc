@@ -1,7 +1,10 @@
 # clear out PATH so it's not duplicating parent shell
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-export PATH="/Applications/Postgres.app/Contents/Versions/12/bin:$PATH"
+if [ -d "/Applications/Postgres.app/Contents/Versions/12/bin" ]; then
+  export PATH="/Applications/Postgres.app/Contents/Versions/12/bin:$PATH"
+fi
 
 if [ -d "/opt/homebrew/bin" ]; then
   export PATH="/opt/homebrew/bin:$PATH"
@@ -9,10 +12,13 @@ if [ -d "/opt/homebrew/bin" ]; then
 fi
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+if [ -d "/usr/local/heroku/bin" ]; then
+  export PATH="/usr/local/heroku/bin:$PATH"
+fi
 
-export PATH="/usr/local/share/npm/bin:$PATH"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+if [ -d "/usr/local/share/npm/bin" ]; then
+  export PATH="/usr/local/share/npm/bin:$PATH"
+fi
 
 # golang
 export GOPATH="$HOME/gocode"
@@ -26,11 +32,18 @@ fi
 
 export PATH="$HOME/bin:$PATH"
 
-# mostly for extdns-ng right now
-export PATH="/usr/local/opt/python3/bin:$PATH"
-alias python=/usr/local/opt/python3/bin/python3
+if [ -d "/usr/local/opt/python3/bin" ]; then
+  export PATH="/usr/local/opt/python3/bin:$PATH"
+  alias python=/usr/local/opt/python3/bin/python3
+fi
 
-export PATH="/usr/local/opt/node@10/bin:$PATH"
+if [ -d "/usr/local/opt/node@10/bin" ]; then
+  export PATH="/usr/local/opt/node@10/bin:$PATH"
+fi
+
+if [ -d "/usr/local/opt/openjdk/bin" ]; then
+  export PATH="/usr/local/opt/openjdk/bin:$PATH"
+fi
 
 export EDITOR=/usr/bin/vim
 
