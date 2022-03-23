@@ -101,5 +101,4 @@ function proxy-off(){
 
 export GPG_TTY=$(tty)
 
-# send text to clipper like pbcopy
-alias clip="nc -U ~/.clipper.sock"
+export RIPGREP_CONFIG_PATH="$HOME/.rgconfig"

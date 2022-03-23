@@ -27,6 +27,7 @@ else
     fzf \
     jq \
     netcat \
+    socat \
     ripgrep \
     ruby-dev \
     tree \
@@ -50,6 +51,7 @@ declare -a ln_files=(
   .gnupg/gpg-agent.conf
   .inputrc
   .irbrc
+  .rgconfig
   .sh_aliases
   .shrc
   .tmux.conf

@@ -382,4 +382,4 @@ nmap <C-P> :FZF<CR>
 let g:fzf_layout = { 'down': '~40%' }
 
 " clipper like pbcopy that works across ssh
-nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>
+nnoremap <leader>y :call system('socat - UNIX-CLIENT:$HOME/.clipper.sock', @0)<CR>
