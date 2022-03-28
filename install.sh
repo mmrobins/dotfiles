@@ -50,7 +50,6 @@ declare -a ln_files=(
   .gitignore
   .gnupg/gpg-agent.conf
   .inputrc
-  .irbrc
   .rgconfig
   .sh_aliases
   .shrc
