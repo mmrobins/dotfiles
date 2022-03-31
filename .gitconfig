@@ -50,8 +50,6 @@
   conflictstyle = diff3
 [apply]
   whitespace = nowarn
-[credential]
-  helper = osxkeychain
 [branch]
   autosetupmerge = true
 [rebase]

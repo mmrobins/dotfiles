@@ -383,3 +383,4 @@ let g:fzf_layout = { 'down': '~40%' }
 
 " clipper like pbcopy that works across ssh
 nnoremap <leader>y :call system('socat - UNIX-CLIENT:$HOME/.clipper.sock', @0)<CR>
+autocmd TextYankPost * if v:event.operator ==# 'y' | call system('socat - UNIX-CLIENT:$HOME/.clipper.sock', @0) | endif
