@@ -49,6 +49,7 @@ declare -a ln_files=(
   .ackrc
   .clipper.json
   .config/nvim
+  .ctags.d
   .ctags
   .editrc
   .gemrc
