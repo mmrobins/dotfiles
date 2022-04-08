@@ -5,7 +5,6 @@ if [[ `uname -a` =~ Darwin ]]; then
 else
     alias ls="ls -FC --color"
 fi
-alias tfm="terraform"
 alias ll="ls -l"
 alias l='ls -la'
 alias rm="rm -i"
@@ -22,8 +21,6 @@ alias sdl='git diff master --no-prefix | diff_painter.pl | less -R'
 alias gdl='git diff --color-words'
 alias gst='git status'
 alias grh='git fetch upstream; git reset --hard'
-alias viall='vi `git diff --name-only HEAD`';
-alias paintless='diff_painter.pl | less -R'
 alias gco='git co'
 alias gph='git push origin HEAD'
 
@@ -103,8 +100,8 @@ alias f='find . | grep'
 alias remove-trailing-whitespace='perl -p -i -e "s/\s+\n$/\n/g" `find . -type f | grep -v .git`'
 alias evilchrome='open -b com.google.chrome --args --disable-web-security'
 alias vi='vim'
-if command -v mvim >/dev/null 2>&1; then
-  alias vim="mvim -v"
+if command -v nvim >/dev/null 2>&1; then
+  alias vim="nvim"
 fi
 alias historybackup="NAME=$HOME/backup/.zsh_history_`hostname`_`date +'%Y%m%d'`.gz.gpg; gzip -c ~/.zsh_history | gpg --encrypt -r C2620DCC > $NAME && ln -fs $NAME ~/backup/.zsh_history.gz.gpg && rsync -avz ~/backup matt@mmrobins.com:~"
 alias historyrestore="rsync -avz matt@mmrobins.com:~/backup/.zsh_history.gz.gpg /tmp/ && gpg --decrypt /tmp/.zsh_history.gz.gpg | gunzip > ~/.zsh_history.restored && echo 'restored to ~/.zsh_history.restored'"
@@ -211,6 +208,7 @@ function kppod
 }
 
 alias tfm_remove_all_state="terraform state list | cut -f 1 -d '[' | xargs -L 0 terraform state rm"
+alias tfm="terraform"
 alias vf='vim $(fzf)'
 alias gssh="gh codespace ssh -c"
 

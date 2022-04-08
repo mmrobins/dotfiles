@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
+Plug 'github/copilot.vim'
 call plug#end()
 "Plug 'vim-syntastic/syntastic'
 
@@ -102,7 +103,8 @@ set ignorecase
 set smartcase " Smart case in search patterns when 'ignorecase' is on
 set incsearch " Incremental search
 set hlsearch  " highlight matches
-set hl=l:Visual " make highlights easier to see
+" doesn't work with nvim, do I still need it?
+"set hl=l:Visual " make highlights easier to see
 
 " Still trying to figure out if the mouse is usefull.  Messes up copy paste from terminal
 " set mouse=nv
@@ -323,7 +325,9 @@ map <leader>npz :execute "Code" <CR>
 " https://superuser.com/questions/302186/vim-scrolls-very-slow-when-a-line-is-too-long
 set synmaxcol=120
 set ttyfast " u got a fast terminal
-set ttyscroll=3
+
+" doesn't work with nvim, do I still need it?
+" set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 set nocursorline
 

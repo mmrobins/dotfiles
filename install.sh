@@ -13,7 +13,8 @@ mkdir -p ~/bin
 
 # Install packages
 if [ "$os" == "Darwin" ]; then
-  brew bundle
+  #brew bundle
+  echo "foo"
 else
   # already zsh by default on macos these days
   # switch shells
@@ -26,6 +27,8 @@ else
     fuse \
     fzf \
     jq \
+    libfuse2 \
+    neovim \
     netcat \
     socat \
     ripgrep \
@@ -36,12 +39,17 @@ else
 
   # https://github.com/sharkdp/fd#on-ubuntu
   ln -s $(which fdfind) ~/bin/fd
+
+  curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+  chmod a+x $HOME/bin/nvim
 fi
 
 # symlink files
 declare -a ln_files=(
   .ackrc
   .clipper.json
+  .config/nvim
+  .ctags
   .editrc
   .gemrc
   .git-completion.sh
