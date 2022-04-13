@@ -10,6 +10,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -276,6 +277,8 @@ map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Gblame
 map <leader>gb :Git blame<CR>
+" GBrowse
+map <leader>gt :GBrowse<CR>
 
 cabbr <expr> %% expand('%:p:h')
 
@@ -388,3 +391,20 @@ let g:fzf_layout = { 'down': '~40%' }
 " clipper like pbcopy that works across ssh
 nnoremap <leader>y :call system('socat - UNIX-CLIENT:$HOME/.clipper.sock', @0)<CR>
 autocmd TextYankPost * if v:event.operator ==# 'y' | call system('socat - UNIX-CLIENT:$HOME/.clipper.sock', @0) | endif
+
+function! OpenPR(sha)
+  let pr_number = system("git log --merges --ancestry-path --oneline ". a:sha . "..master | grep 'pull request' | tail -n1 | awk '{print $5}' | cut -c2-")
+  let remote = fugitive#RemoteUrl(".")
+  let root = rhubarb#homepage_for_url(remote)
+  let url = root . '/pull/' . substitute(pr_number, '\v\C\n', '', 1)
+  call netrw#BrowseX(url, 0)
+endfunction
+
+augroup fugitive_ext
+  autocmd!
+  " Browse to the commit under my cursor
+  autocmd FileType fugitiveblame nnoremap <buffer> <leader>gc :execute ":Gbrowse " . expand("<cword>")<cr>
+
+  " Browse to the PR for commit under my cursor
+  autocmd FileType fugitiveblame nnoremap <buffer> <leader>gp :call OpenPR(expand("<cword>"))<cr>
+augroup END

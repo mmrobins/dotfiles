@@ -37,6 +37,7 @@
   poh = push origin HEAD
   copr = "!f() { git fetch -fu origin refs/pull/$1/head:pr-$1; git checkout pr-$1; } ; f"
   recent = "!git for-each-ref --sort=committerdate refs/heads/ refs/remotes --format='%(committerdate:short) %(refname:short) %(authorname) %(contents:subject)'"
+
 [diff]
   renames = copy # makes the diff much shorter when moving or copying files
   noprefix = true
