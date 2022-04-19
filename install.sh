@@ -44,6 +44,17 @@ else
   chmod a+x $HOME/bin/nvim
 fi
 
+if [ "$CODESPACES" = true ] ; then
+  # make clipper stale socket cleanup work after disconnects
+  if grep -qxF 'StreamLocalBindUnlink yes' /etc/ssh/sshd_config; then
+    echo 'sshd StreamLocalBindUnlink already set'
+  else
+    echo 'StreamLocalBindUnlink yes' >> /etc/ssh/sshd_config
+    pkill -HUP -F /var/run/sshd.pid
+    echo 'StreamLocalBindUnlink set for sshd_config'
+  fi
+fi
+
 # symlink files
 declare -a ln_files=(
   .ackrc
