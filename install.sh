@@ -13,15 +13,14 @@ mkdir -p ~/bin
 
 # Install packages
 if [ "$os" == "Darwin" ]; then
-  #brew bundle
-  echo "foo"
+  brew bundle
 else
   # already zsh by default on macos these days
   # switch shells
   sudo chsh -s "$(which zsh)" "$(whoami)"
 
-  apt-get update -y
-  apt-get install -y \
+  sudo apt-get update -y
+  sudo apt-get install -y \
     ack \
     fd-find \
     fuse \
