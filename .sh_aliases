@@ -134,6 +134,20 @@ function zshhistoryrestore(){(
 )}
 
 # https://david-kerwick.github.io/2017-01-04-combining-zsh-history-files/
+function zshcombinehistories(){(
+  set -e
+  set -x
+  DEST_COMBINED=/tmp/zsh_history.combined
+  echo $1
+  echo $2
+  cat $1 $2 > $DEST_COMBINED.unsorted
+  cat $DEST_COMBINED.unsorted \
+    | awk -v date="WILL_NOT_APPEAR$(date +"%s")" '{if (sub(/\\$/,date)) printf "%s", $0; else print $0}' \
+    | LC_ALL=C sort -u \
+    | awk -v date="WILL_NOT_APPEAR$(date +"%s")" '{gsub('date',"\\\n"); print $0}' \
+    > $DEST_COMBINED
+  echo "combined to $DEST_COMBINED"
+)}
 
 alias be='bundle exec'
 

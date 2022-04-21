@@ -57,14 +57,18 @@ fi
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
-setopt hist_ignore_dups # ignore duplication command history list
+# https://unix.stackexchange.com/questions/599641/why-do-i-have-duplicates-in-my-zsh-history
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
-setopt hist_verify
+setopt HIST_VERIFY
 #setopt share_history # share command history data # use fc -IR to share. exclusive from inc_append_history_time
-setopt inc_append_history_time
-setopt extended_history # includes timestamp and elapsed time ': <beginning time>:<elapsed seconds>;<command>'
-setopt hist_expire_dups_first
-setopt hist_ignore_space # space prefix means it won't stay in history
+setopt INC_APPEND_HISTORY_TIME
+setopt EXTENDED_HISTORY # includes timestamp and elapsed time ': <beginning time>:<elapsed seconds>;<command>'
+setopt HIST_IGNORE_SPACE # space prefix means it won't stay in history
 
 # get the name of the branch we are on
 function git_prompt_info() {
