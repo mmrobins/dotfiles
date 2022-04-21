@@ -103,12 +103,40 @@ alias vi='vim'
 if command -v nvim >/dev/null 2>&1; then
   alias vim="nvim"
 fi
-alias historybackup="NAME=$HOME/backup/.zsh_history_`hostname`_`date +'%Y%m%d'`.gz.gpg; gzip -c ~/.zsh_history | gpg --encrypt -r C2620DCC > $NAME && ln -fs $NAME ~/backup/.zsh_history.gz.gpg && rsync -avz ~/backup matt@mmrobins.com:~"
-alias historyrestore="rsync -avz matt@mmrobins.com:~/backup/.zsh_history.gz.gpg /tmp/ && gpg --decrypt /tmp/.zsh_history.gz.gpg | gunzip > ~/.zsh_history.restored && echo 'restored to ~/.zsh_history.restored'"
+
+# need to forward ssh and gpg for this to work on codspaces
+# RemoteForward /home/vscode/.gnupg/S.gpg-agent /Users/mmrobins/.gnupg/S.gpg-agent.extra
+# ForwardAgent yes
+function zshhistorybackup(){(
+  set -e
+  set -x
+  # you'd better make sure this dir is backed up :-)
+  ZSH_BACKUP_DIR="$HOME/backup/zsh_history"
+  mkdir -p $ZSH_BACKUP_DIR
+  NAME=zsh_history_(`hostname`)_`date +'%Y%m%d'`.gz.gpg
+
+  # would be nice to not hard code the pgp key
+  gzip -c ~/.zsh_history | gpg --encrypt -r 96A9D440AC1A57C9 > $ZSH_BACKUP_DIR/$NAME
+  cd $ZSH_BACKUP_DIR
+  ln -fs $NAME zsh_history_(`hostname`)_latest.gz.gpg
+  rsync -avz ~/backup matt@mmrobins.com:~
+)}
+function zshhistoryrestore(){(
+  set -e
+  set -x
+  HOSTNAME=${1:=$(hostname)}
+  rsync -avz matt@mmrobins.com:~/backup/zsh_history /tmp/
+
+  UNESCAPED_BASENAME=zsh_history_($HOSTNAME)_latest
+  RESTORE_FILE=/tmp/$UNESCAPED_BASENAME.restored
+  gpg --decrypt /tmp/zsh_history/$UNESCAPED_BASENAME.gz.gpg | gunzip > $RESTORE_FILE
+  echo "restored to $RESTORE_FILE"
+)}
+
+# https://david-kerwick.github.io/2017-01-04-combining-zsh-history-files/
+
 alias be='bundle exec'
-# otherwise zsh can't pass rake arguments
-# errors with zsh: no matches found
-#alias rake='noglob rake'
+
 function zh(){
   ack "$1" ~/.zsh_history
 }
@@ -214,3 +242,5 @@ alias gssh="gh codespace ssh -c"
 
 # send text to clipper like pbcopy
 alias clip="socat - UNIX-CLIENT:$HOME/.clipper.sock"
+
+alias rt="bin/rails test"

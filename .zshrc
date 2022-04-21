@@ -68,7 +68,7 @@ setopt hist_ignore_space # space prefix means it won't stay in history
 
 # get the name of the branch we are on
 function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || echo "nogit" && return
   branch="${ref#refs/heads/}"
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${branch}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
@@ -76,7 +76,8 @@ function git_prompt_info() {
 function ruby_version()
 {
     if which rbenv &> /dev/null; then
-      rbenv version | sed -e "s/ (set.*$//"
+      RUBY_VERSION=$(rbenv version | sed -e "s/ (set.*$//")
+      echo "-<${RUBY_VERSION}>"
     fi
 }
 
@@ -125,7 +126,7 @@ fi
 local path_p="${red_op}%{$fg[$path_color]%}%~${red_cp}"
 local date_time="${red_op}%{$fg[$date_time_color]%}%D{%Y%m%d}-%*${red_cp}"
 
-PROMPT='╭─${path_p}─${user_host}-${date_time}-$(git_prompt_info)-<$(ruby_version)>$(terraform_workspace)
+PROMPT='╭─${path_p}─${user_host}-${date_time}-$(git_prompt_info)$(ruby_version)$(terraform_workspace)
 ╰─ [%?]%# '
 local cur_cmd="${red_op}%_${red_cp}"
 PROMPT2="${cur_cmd}> "
