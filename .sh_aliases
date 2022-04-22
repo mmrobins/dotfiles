@@ -109,7 +109,7 @@ fi
 # ForwardAgent yes
 function zshhistorybackup(){(
   set -e
-  set -x
+  #set -x
   # you'd better make sure this dir is backed up :-)
   ZSH_BACKUP_DIR="$HOME/backup/zsh_history"
   mkdir -p $ZSH_BACKUP_DIR
@@ -123,12 +123,13 @@ function zshhistorybackup(){(
 )}
 function zshhistoryrestore(){(
   set -e
-  set -x
+  #set -x
   HOSTNAME=${1:=$(hostname)}
   rsync -avz matt@mmrobins.com:~/backup/zsh_history $HOME/tmp/
+  mkdir -p $HOME/tmp/zsh_history
 
   UNESCAPED_BASENAME=zsh_history_($HOSTNAME)_latest
-  RESTORE_FILE=$HOME/tmp/$UNESCAPED_BASENAME.restored
+  RESTORE_FILE=$HOME/tmp/zsh_history/$UNESCAPED_BASENAME.restored
   gpg --decrypt $HOME/tmp/zsh_history/$UNESCAPED_BASENAME.gz.gpg | gunzip > $RESTORE_FILE
   echo "restored to $RESTORE_FILE"
 )}
@@ -136,15 +137,19 @@ function zshhistoryrestore(){(
 # https://david-kerwick.github.io/2017-01-04-combining-zsh-history-files/
 function zshcombinehistories(){(
   set -e
-  set -x
+  #set -x
   DEST_COMBINED=$HOME/tmp/zsh_history.combined
   echo $1
   echo $2
+
+  export LC_ALL=C # handle weird characters in history when awk and sort
+
   cat $1 $2 > $DEST_COMBINED.unsorted
   cat $DEST_COMBINED.unsorted \
     | awk -v date="WILL_NOT_APPEAR$(date +"%s")" '{if (sub(/\\$/,date)) printf "%s", $0; else print $0}' \
-    | LC_ALL=C sort -u \
+    | sort \
     | awk -v date="WILL_NOT_APPEAR$(date +"%s")" '{gsub('date',"\\\n"); print $0}' \
+    | awk '!/^[[:space:]]*$/' \
     > $DEST_COMBINED
   echo "combined to $DEST_COMBINED"
 )}
