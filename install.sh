@@ -48,8 +48,8 @@ if [ "$CODESPACES" = true ] ; then
   if grep -qxF 'StreamLocalBindUnlink yes' /etc/ssh/sshd_config; then
     echo 'sshd StreamLocalBindUnlink already set'
   else
-    echo 'StreamLocalBindUnlink yes' >> /etc/ssh/sshd_config
-    pkill -HUP -F /var/run/sshd.pid
+    echo 'StreamLocalBindUnlink yes' | sudo tee -a /etc/ssh/sshd_config
+    sudo pkill -HUP -F /var/run/sshd.pid
     echo 'StreamLocalBindUnlink set for sshd_config'
   fi
 fi
