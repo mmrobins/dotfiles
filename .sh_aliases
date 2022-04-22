@@ -125,11 +125,11 @@ function zshhistoryrestore(){(
   set -e
   set -x
   HOSTNAME=${1:=$(hostname)}
-  rsync -avz matt@mmrobins.com:~/backup/zsh_history /tmp/
+  rsync -avz matt@mmrobins.com:~/backup/zsh_history $HOME/tmp/
 
   UNESCAPED_BASENAME=zsh_history_($HOSTNAME)_latest
-  RESTORE_FILE=/tmp/$UNESCAPED_BASENAME.restored
-  gpg --decrypt /tmp/zsh_history/$UNESCAPED_BASENAME.gz.gpg | gunzip > $RESTORE_FILE
+  RESTORE_FILE=$HOME/tmp/$UNESCAPED_BASENAME.restored
+  gpg --decrypt $HOME/tmp/zsh_history/$UNESCAPED_BASENAME.gz.gpg | gunzip > $RESTORE_FILE
   echo "restored to $RESTORE_FILE"
 )}
 
@@ -137,7 +137,7 @@ function zshhistoryrestore(){(
 function zshcombinehistories(){(
   set -e
   set -x
-  DEST_COMBINED=/tmp/zsh_history.combined
+  DEST_COMBINED=$HOME/tmp/zsh_history.combined
   echo $1
   echo $2
   cat $1 $2 > $DEST_COMBINED.unsorted

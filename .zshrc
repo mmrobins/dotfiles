@@ -185,9 +185,13 @@ unsetopt nomatch
 # Report CPU usage for commands running longer than 10 seconds
 export REPORTTIME=10
 #source /usr/local/share/zsh/site-functions/_aws
-if [ -f $HOME/config-files/per-directory-history.zsh ]; then
-  source $HOME/config-files/per-directory-history.zsh
-fi
+
+#https://github.com/jimhester/per-directory-history
+#messes up exentended history elapsed time
+#maybe still worth it? try without for awhile, see how it goes
+#if [ -f $HOME/config-files/per-directory-history.zsh ]; then
+#  source $HOME/config-files/per-directory-history.zsh
+#fi
 
 # only really useful on linux
 if type keychain > /dev/null 2>&1; then
@@ -202,7 +206,3 @@ local WORDCHARS='*?_[]~=&;!#$%^(){}<>.'
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
