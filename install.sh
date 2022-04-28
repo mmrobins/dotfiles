@@ -52,6 +52,8 @@ if [ "$CODESPACES" = true ] ; then
     sudo pkill -HUP -F /var/run/sshd.pid
     echo 'StreamLocalBindUnlink set for sshd_config'
   fi
+  # makes it possible to forward my private GPG key via SSH https://wiki.gnupg.org/AgentForwarding
+  gpg --import mattrobinson.gpg.pub
 fi
 
 # symlink files
