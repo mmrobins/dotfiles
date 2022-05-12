@@ -70,13 +70,6 @@ setopt INC_APPEND_HISTORY_TIME
 setopt EXTENDED_HISTORY # includes timestamp and elapsed time ': <beginning time>:<elapsed seconds>;<command>'
 setopt HIST_IGNORE_SPACE # space prefix means it won't stay in history
 
-# get the name of the branch we are on
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || echo "nogit" && return
-  branch="${ref#refs/heads/}"
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${branch}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
 function ruby_version()
 {
     if which rbenv &> /dev/null; then
@@ -139,6 +132,14 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="›%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
 ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
+
+# get the name of the branch we are on
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || (echo "nogit" && return)
+  branch="${ref#refs/heads/}"
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${branch}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
 
 # Setup the prompt with pretty colors
 setopt prompt_subst

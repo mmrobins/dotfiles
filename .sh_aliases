@@ -257,7 +257,7 @@ function kppod
 alias tfm_remove_all_state="terraform state list | cut -f 1 -d '[' | xargs -L 0 terraform state rm"
 alias tfm="terraform"
 alias vf='vim $(fzf)'
-alias gssh="gh codespace ssh -c"
+alias gssh="gh codespace ssh --profile github-codespaces -c"
 
 # send text to clipper like pbcopy
 alias clip="socat - UNIX-CLIENT:$HOME/.clipper.sock"
