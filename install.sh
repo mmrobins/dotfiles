@@ -91,3 +91,8 @@ done
 # extra flags to ignore startup errors
 # https://stackoverflow.com/questions/54606581/ignore-all-errors-in-vimrc-at-vim-startup
 vim -E -s -u ~/.vimrc +PlugInstall +qall
+
+# hacky, probably a better way, but I want this for my prompt
+if [ ! -f ~/.codespace_created_at ]; then
+  echo $(date +'%Y%m%d-%H%M') > ~/.codespace_created_at
+fi

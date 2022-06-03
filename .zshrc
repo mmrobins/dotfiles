@@ -111,8 +111,21 @@ local red_cp="%{$fg[red]%}]%{$reset_color%}"
 if [[ "$CODESPACES" == "true" ]]; then
   local host_color="magenta"
   local date_time_color="green"
+  if [ -f ~/.codespace_created_at ]; then
+    local cs_created_at=$(cat ~/.codespace_created_at)
+  else
+    local cs_created_at=no_cs_createdat_error
+  fi
   local path_color="cyan"
-  local user_host="${red_op}%{$fg[$host_color]%}%n@$CODESPACE_NAME${red_cp}"
+
+  # https://stackoverflow.com/questions/3162385/how-to-split-a-string-in-shell-and-get-the-last-field
+  local myhost=$(echo ${CODESPACE_NAME##*-})
+
+  # username not so useful
+  local username="%n@"
+  local username=""
+
+  local user_host="${red_op}%{$fg[$host_color]%}$username$myhost@${cs_created_at}${red_cp}"
 else
   local host_color="cyan"
   local date_time_color="blue"
