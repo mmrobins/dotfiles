@@ -33,6 +33,7 @@ else
     socat \
     ripgrep \
     ruby-dev \
+    socat \
     tree \
     universal-ctags \
     yamllint
