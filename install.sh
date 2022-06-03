@@ -25,6 +25,7 @@ else
     fd-find \
     fuse \
     fzf \
+    fuse \
     jq \
     libfuse2 \
     neovim \
