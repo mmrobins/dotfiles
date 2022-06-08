@@ -26,6 +26,7 @@
   st = status
   ci = commit
   co = checkout
+  com = !"git checkout $(git main)"
   llog = log --date=local
   lg = "log --date=format:'%Y%m%d %H:%M' --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cd %cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order"
   llg = !"git log --date=format:'%Y%m%d %H:%M' --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cd %cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --no-merges --first-parent origin/$(git main)..."

@@ -263,3 +263,4 @@ alias gssh="gh codespace ssh --profile github-codespaces -c"
 alias clip="socat - UNIX-CLIENT:$HOME/.clipper.sock"
 
 alias rt="bin/rails test"
+alias tree="tree --gitignore" # prevents node_modules and other such spammy dirs

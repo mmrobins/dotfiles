@@ -14,7 +14,7 @@ tags
 TODO
 .netrwhist
 tmp
-cache
+#cache # super annoying that github checks vendor/cache into git :-/
 .byebug_history
 queries.sql
 apps/db/priv/repo/structure.sql

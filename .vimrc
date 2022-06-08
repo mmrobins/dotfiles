@@ -408,3 +408,5 @@ augroup fugitive_ext
   " Browse to the PR for commit under my cursor
   autocmd FileType fugitiveblame nnoremap <buffer> <leader>gp :call OpenPR(expand("<cword>"))<cr>
 augroup END
+
+map <leader>md :w<cr>:silent! !open -a MacDown % > /dev/null &<cr>:redraw!<cr>

@@ -1,32 +1,45 @@
 #!/usr/bin/env ruby
-head, treshold = ARGV
-head ||= 'HEAD'
-Megabyte = 1000 ** 2
-treshold = (treshold || 0.1).to_f * Megabyte
 
-big_files = {}
+require 'pathname'
 
-revs = `git rev-list #{head}`.split("\n")
+@sizes = {}
 
-require 'ruby-progressbar'
-progress_bar = ProgressBar.create(
-  :title => "Revisions",
-  :total => revs.size,
-  :format => '%e %B %p%% %t',
-  :smoothing => 0.9
-)
-
-revs.each do |commit|
-  progress_bar.increment
-  commit.chomp!
-  for object in `git ls-tree -zrl #{commit}`.split("\0")
-    bits, type, sha, size, path = object.split(/\s+/, 5)
-    size = size.to_i
-    big_files[sha] = [path, size, commit] if size >= treshold
+def dig_set(keys, size)
+  key = keys.first
+  if keys.length == 1
+    @sizes[key] ||= { size: 0 }
+    @sizes[key][:size] += size
+  else
+    @sizes[key] = {} unless @sizes[key]
+    dig_set(@sizes[key], keys.slice(1..-1), size)
   end
 end
 
-big_files.sort_by {|sha, (path, size, commit)| size}.each do |sha, (path, size, commit)|
-  where = `git show -s #{commit} --format='%h: %cr'`.chomp
-  puts "%4.1fM\t%s\t(%s)" % [size.to_f / Megabyte, path, where]
+# https://stackoverflow.com/questions/10622179/how-to-find-identify-large-commits-in-git-history/42544963#42544963
+
+def blobs
+  raw_objects = `git rev-list --objects --all --filter=object:type=blob | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)'`.split("\n")
+  # even with --filter=object:type=blob some commits end up in the output
+  raw_objects.select {|o| o =~ /^blob /}
 end
+
+blobs.each do |blob|
+  # TODO handle spaces in file names
+  _blob,sha,size,file = blob.split(' ')
+
+  path_parts = Pathname(file).each_filename.to_a
+  pp file
+
+  path_parts.each_with_index do |part, i|
+  require 'byebug'; byebug if part == 'alacritty.terminfo'
+    dig_set(path_parts[0..i], size.to_i)
+  end
+  pp @sizes
+  pp
+end
+
+
+#  sed -n 's/^blob //p' |
+#  sort --numeric-sort --key=2 |
+#  cut -c 1-12,41- |
+#  $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
