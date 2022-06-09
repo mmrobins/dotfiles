@@ -24,11 +24,11 @@ fi
 if [ "$CODESPACES" = true ] ; then
   export PATH="/usr/lib/go-1.18/bin:$PATH"
 else
-  export GOPATH="$HOME/gocode"
   export PATH="/usr/local/go/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
-  export PATH="$PATH:$GOPATH/bin"
 fi
+export GOPATH="$HOME/gocode"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOBIN"
 
 # I want my custom bin files ahead of rbenv shims
 if [ -x "$(command -v rbenv)" ]; then
