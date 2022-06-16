@@ -264,3 +264,22 @@ alias clip="socat - UNIX-CLIENT:$HOME/.clipper.sock"
 
 alias rt="bin/rails test"
 alias tree="tree --gitignore" # prevents node_modules and other such spammy dirs
+
+alias tmux_colors='for i in {0..255}; do; printf "\x1b[38;5;${i}mcolour${i}\n"; done'
+# https://stackoverflow.com/questions/5609192/how-to-set-up-tmux-so-that-it-starts-up-with-specified-windows-opened
+# maybe use tmuxinator, but that seems overkill
+function cs_tmux_start
+{
+  tmux attach ||
+  tmux new-session \; \
+    send-keys 'vim' C-m \; \
+    split-window -h \; \
+    send-keys 'rg test_string_to_warm_disks' C-m \; \
+    split-window -v \; \
+    send-keys 'tmux set -g status-bg green' C-m \; \
+    new-window -n 'srv' \; \
+    send-keys 'script/server' C-m \; \
+    split-window -h \; \
+    send-keys 'bin/rails test test/api/versioning_test.rb' C-m
+}
+
