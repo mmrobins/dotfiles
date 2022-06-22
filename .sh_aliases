@@ -266,6 +266,22 @@ alias rt="bin/rails test"
 alias tree="tree --gitignore" # prevents node_modules and other such spammy dirs
 
 alias tmux_colors='for i in {0..255}; do; printf "\x1b[38;5;${i}mcolour${i}\n"; done'
+
+# first arg is purpose, if left off uses last purpose set
+function cs_tmux_set_purpose
+{
+  tmux set -g status-right-length 90
+  local cs_black="#[fg=brightwhite,bg=#363636]"
+  local cs_bright_black="#[fg=brightwhite,bg=brightblack]"
+  local cs_name=" $(echo ${CODESPACE_NAME##*-}) "
+  local cs_created="$(cat ~/.codespace_created_at) "
+  if [[ ! -z "$1" ]]; then
+    echo $1 > ~/.codespace_purpose
+  fi
+  local cs_purpose="$(cat ~/.codespace_purpose) "
+  tmux set-option -g status-right " $cs_black $cs_name $cs_bright_black $cs_created_at $cs_black $cs_purpose "
+}
+
 # https://stackoverflow.com/questions/5609192/how-to-set-up-tmux-so-that-it-starts-up-with-specified-windows-opened
 # maybe use tmuxinator, but that seems overkill
 function cs_tmux_start
@@ -278,6 +294,7 @@ function cs_tmux_start
     send-keys 'git fetch' C-m \; \
     split-window -v \; \
     send-keys 'tmux set -g status-bg green' C-m \; \
+    send-keys 'cs_tmux_set_purpose' C-m \; \
     new-window -n 'srv' \; \
     send-keys 'script/server' C-m \; \
     split-window -h \; \
