@@ -275,6 +275,7 @@ function cs_tmux_start
     send-keys 'vim' C-m \; \
     split-window -h \; \
     send-keys 'rg test_string_to_warm_disks' C-m \; \
+    send-keys 'git fetch' C-m \; \
     split-window -v \; \
     send-keys 'tmux set -g status-bg green' C-m \; \
     new-window -n 'srv' \; \
@@ -282,4 +283,3 @@ function cs_tmux_start
     split-window -h \; \
     send-keys 'bin/rails test test/api/versioning_test.rb' C-m
 }
-
