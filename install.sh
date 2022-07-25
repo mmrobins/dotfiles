@@ -58,6 +58,8 @@ if [ "$CODESPACES" = true ] ; then
   gpg --import mattrobinson.gpg.pub
 fi
 
+mkdir $HOME/.config
+
 # symlink files
 declare -a ln_files=(
   .ackrc
