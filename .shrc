@@ -22,7 +22,7 @@ fi
 
 # golang
 if [ "$CODESPACES" = true ] ; then
-  export PATH="/usr/lib/go-1.18/bin:$PATH"
+  export PATH="/usr/lib/go-1.19/bin:$PATH"
 else
   export PATH="/usr/local/go/bin:$PATH"
 fi
@@ -107,3 +107,6 @@ function proxy-off(){
 export GPG_TTY=$(tty)
 
 export RIPGREP_CONFIG_PATH="$HOME/.rgconfig"
+
+# https://stackoverflow.com/questions/65612411/forcing-docker-to-use-linux-amd64-platform-by-default-on-macos
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
