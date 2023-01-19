@@ -40,7 +40,9 @@
   # https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
   recent = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
   recent-all = "!git for-each-ref --sort=committerdate refs/heads/ refs/remotes --format='%(committerdate:short) %(refname:short) %(authorname) %(contents:subject)'"
-
+  find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+  show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
+  # find the pr of a commit
 [diff]
   renames = copy # makes the diff much shorter when moving or copying files
   noprefix = true

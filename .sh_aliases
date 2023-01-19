@@ -205,8 +205,8 @@ alias kd="kubectl --context=dev"
 alias kp="kubectl --context=prod"
 
 # docker
-alias dc="docker-compose"
-alias dcr="docker-compose run"
+alias dc="docker compose"
+alias dcr="docker-compose run --platform linux/amd64"
 
 # Quickly display / switch Kubernetes contexts
 function kcsc
@@ -300,3 +300,14 @@ function cs_tmux_start
     split-window -h \; \
     send-keys 'bin/rails test test/api/versioning_test.rb' C-m
 }
+
+#function git_pr
+#{
+#  pr_commit=$(git log --merges --ancestry-path --oneline $1..master | grep 'pull request' | tail -n1)
+#  pr_num=$(echo $pr_commit | awk '{print $5}' | cut -c2-)
+#  gh_pr_regex=':\w+\/\w+\.git'
+#  repo=$(git remote -v
+#  open https://github.com/github/github/pull/229148
+#}
+
+alias d=docker
