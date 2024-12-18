@@ -220,3 +220,9 @@ local WORDCHARS='*?_[]~=&;!#$%^(){}<>.'
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }

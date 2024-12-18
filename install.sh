@@ -63,6 +63,7 @@ mkdir $HOME/.config
 # symlink files
 declare -a ln_files=(
   .ackrc
+  .bashrc
   .clipper.json
   .config/nvim
   .ctags.d

@@ -71,3 +71,5 @@
   process = git-lfs filter-process
 [commit]
   #gpgSign = true
+[include]
+	path = /Users/mattrobinson/.config/dev/gitconfig
