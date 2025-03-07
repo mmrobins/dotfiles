@@ -1,0 +1,24 @@
+{
+  "remote.SSH.connectTimeout": 150,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "workbench.editor.wrapTabs": true, // Makes it so that lots of tabs open alls how, no horizontal scroll
+  "git.openRepositoryInParentFolders": "always",
+  "vim.leader": ",",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "b", "e"],
+      "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"]
+    },
+    {
+      "before": ["<leader>", "b", "p"],
+      "commands": ["workbench.action.navigateBack"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "git.autofetch": true
+}

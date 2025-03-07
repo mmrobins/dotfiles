@@ -171,6 +171,8 @@ bindkey -e
 fpath=(/usr/local/share/zsh-completions $fpath)
 fpath=($HOME/config-files/zsh-completion $fpath)
 
+[ -f ~/.zsh_completion ] && source ~/.zsh_completion
+
 #PARENTCOMMAND=$(ps -p $(ps -p ${1:-$$} -o ppid=) -o command=)
 #if [[ $PARENTCOMMAND != *ttyrec* ]]; then
 #  TTYRECFILE=~/.ttyrec/`date +"%Y%m%d_%H_%M_%S"`

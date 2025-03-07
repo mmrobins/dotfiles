@@ -1,0 +1,118 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+k t",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k t",
+    "command": "terminal.focus",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+k h",
+    "command": "workbench.action.focusSideBar",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+k c",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "ctrl+k f",
+    "command": "extension.searchUnderCursor"
+  },
+  {
+    "key": "ctrl+k l",
+    "command": "workbench.action.nextEditorInGroup",
+  },
+  {
+    "key": "ctrl+k h",
+    "command": "workbench.action.previousEditorInGroup"
+  },
+  {
+    "key": "ctrl+k p",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+k n",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+      "key": "ctrl+k b",
+      "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+k 1",
+    "command": "workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "ctrl+k 2",
+    "command": "workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "ctrl+k 3",
+    "command": "workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "ctrl+k 4",
+    "command": "workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "ctrl+k 5",
+    "command": "workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "ctrl+k 6",
+    "command": "workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "ctrl+k 7",
+    "command": "workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "ctrl+k v",
+    "command": "workbench.action.splitEditor"
+  },
+  {
+    "key": "ctrl+k s",
+    "command": "workbench.action.splitEditorDown"
+  },
+  {
+    "key": "ctrl+k u",
+    "command": "DevTestRunner.goToTestSuite",
+    "when": "editorTextFocus && resourceExtname == '.rb' && resourceFilename =~ /^(?!.*_(test|spec)[.]rb$).*$/ || editorTextFocus && resourceExtname =~ /[.]tsx?/ && resourceFilename =~ /^(?!.*[.](test|[ui]spec)[.]tsx?$).*$/"
+  },
+  {
+    "key": "ctrl+k u",
+    "command": "DevTestRunner.goToSourceCode",
+    "when": "editorTextFocus && resourceExtname == '.rb' && resourceFilename =~ /_(test|spec).rb/ || editorTextFocus && resourceExtname =~ /[.]tsx?/ && resourceFilename =~ /[.](test|[ui]spec)[.]tsx?/"
+  },
+  {
+    "key": "ctrl+k z",
+    "command": "DevTestRunner.runLastTest",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k x",
+    "command": "DevTestRunner.runAllTests",
+    "when": "editorTextFocus && resourceExtname == '.rb' && resourceFilename =~ /_(test|spec).rb/ || editorTextFocus && resourceExtname =~ /[.]tsx?/ && resourceFilename =~ /[.](test|[ui]spec)[.]tsx?/"
+  },
+  {
+    "key": "ctrl+k e",
+    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+    "when": "!activeEditorGroupEmpty"
+  },
+  //{
+    //"key": "j",
+    //"command": "workbench.action.quickopennavigatenext",
+    //"when": "inquickopen"
+  //},
+  //{
+    //"key": "k",
+    //"command": "workbench.action.quickopennavigateprevious",
+    //"when": "inquickopen"
+  //}
+]

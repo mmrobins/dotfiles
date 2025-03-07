@@ -1,10 +1,8 @@
 [user]
   name = Matt Robinson
   email = matt@mattrobinson.net
-[includeIf "gitdir:~/ghwork/"]
-  path = .gitconfig-github
-[includeIf "gitdir:/workspaces/"]
-  path = .gitconfig-github # at least for now not doing personal projects in codespaces...
+[includeIf "gitdir:~/src/"]
+  path = ~/.gitconfig-work
 [core]
   excludesfile = ~/.gitignore
   whitespace = trailing-space,space-before-tab
@@ -47,6 +45,7 @@
   renames = copy # makes the diff much shorter when moving or copying files
   noprefix = true
   compaction-heuristic = true
+  renameLimit = 4326
 [status]
   submodulesummary = true
 [rerere]
@@ -64,12 +63,3 @@
   default = simple
 [init]
   defaultBranch = main
-[filter "lfs"]
-  required = true
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-[commit]
-  #gpgSign = true
-[include]
-	path = /Users/mattrobinson/.config/dev/gitconfig

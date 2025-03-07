@@ -1,4 +1,5 @@
 # https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
 --glob=!.git
 --glob=!vendor
+--glob=!sorbet
 --hidden

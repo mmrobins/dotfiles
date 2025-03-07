@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Branch Modified Files",
+      "type": "shell",
+      "command": "git diff --relative --name-only origin/main... | xargs -I {} cursor {}",
+      "windows": {
+        "command": "git diff --relative --name-only origin/main... | ForEach-Object { cursor $_ }"
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": []
+    }
+  ]
+} 

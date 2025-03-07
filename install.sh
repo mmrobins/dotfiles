@@ -85,6 +85,7 @@ declare -a ln_files=(
   .zprofile
   .zshenv
   .zshrc
+  bin
 )
 for link_file in "${ln_files[@]}"; do
   ln -sfn $dotfiles_dir/$link_file $HOME/$link_file

@@ -311,3 +311,6 @@ function cs_tmux_start
 #}
 
 alias d=docker
+function port(){
+  lsof -n -i tcp:$1
+}
