@@ -13,7 +13,8 @@ mkdir -p ~/bin
 
 # Install packages
 if [ "$os" == "Darwin" ]; then
-  brew bundle
+  #brew bundle
+  echo 'darwin'
 else
   # already zsh by default on macos these days
   # switch shells
@@ -104,5 +105,5 @@ fi
 # nvm was easier to install than nodenv ¯\_(ツ)_/¯
 # need newer version to run copilot on nvim
 # Node.js version 16.x or newer required but found 12.22.12
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-nvm install 18.13.0
+#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+#nvm install 18.13.0

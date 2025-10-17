@@ -18,7 +18,7 @@ alias splitmp3="mp3splt -a -t 5.0 -o @f/@n"
 # Version Control
 alias sdl='git diff master --no-prefix | diff_painter.pl | less -R'
 #alias gdl='git diff --no-prefix | diff_painter.pl | less -R'
-alias gdl='git diff --color-words'
+alias gdl='git diff --color-words --relative'
 alias gst='git status'
 alias grh='git fetch upstream; git reset --hard'
 alias gco='git co'

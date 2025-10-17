@@ -126,9 +126,18 @@ nmap <leader>s :write!<cr>:source $HOME/.vimrc<cr>
 " nmap <leader>d :write!<cr>:!source $HOME/.bashrc<cr>
 
 " pasting without alignment problems
+" shouldn't need this in neovim nvim
 "map! <leader>p <Esc>:set paste!<cr>i
 "map  <leader>p :set paste!<cr>i
-set pastetoggle=<leader>p
+"set pastetoggle=<leader>p
+" vim 8+ supposed to work with pasting better, but sometimes doesn't
+" somehow this makes it work right...
+if !has('nvim')
+    let &t_BE = "\e[?2004h"
+    let &t_BD = "\e[?2004l"
+    let &t_PS = "\e[200~"
+    let &t_PE = "\e[201~"
+endif
 
 " Perl Debugging
 " map <leader>dd A<cr>use Data::Dump qw/ dump /;<cr>die dump
@@ -415,3 +424,43 @@ map <leader>cd :Copilot disable<cr>
 map <leader>ce :Copilot enable<cr>
 
 map <leader>cf :let @*=expand("%:p")<CR>
+
+function! OpenChangedFiles()
+  " Get git root directory
+  let git_root = systemlist('git rev-parse --show-toplevel')[0]
+
+  " Get list of changed files compared to origin/main
+  let files = systemlist('git diff --name-only origin/main...')
+
+  if empty(files)
+    echo "No changed files found"
+    return
+  endif
+
+  " Prepend git root to each file path
+  let full_paths = map(files, 'git_root . "/" . v:val')
+
+  " Filter out deleted files
+  let valid_files = filter(full_paths, 'filereadable(v:val)')
+
+  if empty(valid_files)
+    echo "No valid files to open (files may be deleted)"
+    return
+  endif
+
+  " Open first file in current window
+  execute 'edit' fnameescape(valid_files[0])
+
+  " Open remaining files in new buffers
+  for file in valid_files[1:]
+    execute 'badd' fnameescape(file)
+  endfor
+
+  echo "Opened" len(valid_files) "changed file(s)"
+endfunction
+
+command! OpenChanged call OpenChangedFiles()
+map <leader>oc :call OpenChangedFiles()<CR>
+map <leader>ob :call OpenChangedFiles()<CR>
+nnoremap <leader>cr :let @+ = expand('%:.')<CR>:echo 'Copied: ' .  expand('%:.')<CR>
+
