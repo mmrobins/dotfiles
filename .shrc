@@ -8,7 +8,7 @@ fi
 
 if [ -d "/opt/homebrew/bin" ]; then
   export PATH="/opt/homebrew/bin:$PATH"
-  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 fi
 
 ### Added by the Heroku Toolbelt
@@ -48,6 +48,10 @@ fi
 
 if [ -d "/usr/local/opt/openjdk/bin" ]; then
   export PATH="/usr/local/opt/openjdk/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
 fi
 
 export EDITOR=/usr/bin/vim
