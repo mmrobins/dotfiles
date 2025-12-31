@@ -113,12 +113,12 @@ function zshhistorybackup(){(
   # you'd better make sure this dir is backed up :-)
   ZSH_BACKUP_DIR="$HOME/backup/zsh_history"
   mkdir -p $ZSH_BACKUP_DIR
-  NAME=zsh_history_(`hostname`)_`date +'%Y%m%d'`.gz.gpg
+  NAME="zsh_history_$(hostname)_$(date +'%Y%m%d').gz.gpg"
 
   # would be nice to not hard code the pgp key
   gzip -c ~/.zsh_history | gpg --encrypt -r 96A9D440AC1A57C9 > $ZSH_BACKUP_DIR/$NAME
   cd $ZSH_BACKUP_DIR
-  ln -fs $NAME zsh_history_(`hostname`)_latest.gz.gpg
+  ln -fs "$NAME" "zsh_history_$(hostname)_latest.gz.gpg"
   rsync -avz ~/backup matt@mmrobins.com:~
 )}
 function zshhistoryrestore(){(
@@ -128,7 +128,7 @@ function zshhistoryrestore(){(
   rsync -avz matt@mmrobins.com:~/backup/zsh_history $HOME/tmp/
   mkdir -p $HOME/tmp/zsh_history
 
-  UNESCAPED_BASENAME=zsh_history_($HOSTNAME)_latest
+  UNESCAPED_BASENAME="zsh_history_${HOSTNAME}_latest"
   RESTORE_FILE=$HOME/tmp/zsh_history/$UNESCAPED_BASENAME.restored
   gpg --decrypt $HOME/tmp/zsh_history/$UNESCAPED_BASENAME.gz.gpg | gunzip > $RESTORE_FILE
   echo "restored to $RESTORE_FILE"
