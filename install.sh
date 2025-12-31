@@ -21,23 +21,25 @@ else
   sudo chsh -s "$(which zsh)" "$(whoami)"
 
   sudo apt-get update -y
-  sudo apt-get install -y \
-    ack \
-    fd-find \
-    fuse \
-    fzf \
-    fuse \
-    jq \
-    libfuse2 \
-    neovim \
-    netcat \
-    socat \
-    ripgrep \
-    ruby-dev \
-    socat \
-    tree \
-    universal-ctags \
+  packages=(
+    ack
+    fd-find
+    fuse
+    fzf
+    jq
+    libfuse2
+    neovim
+    netcat
+    ripgrep
+    ruby-dev
+    socat
+    tree
+    universal-ctags
     yamllint
+  )
+  for pkg in "${packages[@]}"; do
+    sudo apt-get install -y "$pkg" || echo "Warning: failed to install $pkg"
+  done
 
   # https://github.com/sharkdp/fd#on-ubuntu
   ln -s $(which fdfind) ~/bin/fd
