@@ -267,6 +267,17 @@ alias tree="tree --gitignore" # prevents node_modules and other such spammy dirs
 
 alias tmux_colors='for i in {0..255}; do; printf "\x1b[38;5;${i}mcolour${i}\n"; done'
 
+# Copy tmux buffer to system clipboard (cross-platform)
+function tmux-copy() {
+  if [[ "$(uname)" == "Darwin" ]]; then
+    tmux save-buffer - | reattach-to-user-namespace pbcopy
+  elif [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    tmux save-buffer - | wl-copy
+  else
+    tmux save-buffer - | xclip -selection clipboard
+  fi
+}
+
 # first arg is purpose, if left off uses last purpose set
 function cs_tmux_set_purpose
 {
