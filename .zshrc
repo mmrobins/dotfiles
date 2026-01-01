@@ -218,6 +218,9 @@ fi
 # change characters considered when moving forward and back words
 local WORDCHARS='*?_[]~=&;!#$%^(){}<>.'
 
+# asdf like version manager for elixir and more (must be before fzf)
+eval "$(/home/matt/.local/bin/mise activate zsh)"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if command -v fzf >/dev/null; then
   source <(fzf --zsh)
