@@ -40,7 +40,9 @@ else
   done
 
   # https://github.com/sharkdp/fd#on-ubuntu
-  ln -s $(which fdfind) ~/bin/fd
+  if command -v fdfind &>/dev/null && ! command -v fd &>/dev/null; then
+    sudo ln -sf $(which fdfind) /usr/local/bin/fd
+  fi
 
   curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
   chmod a+x $HOME/bin/nvim
