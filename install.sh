@@ -9,8 +9,6 @@ set -x
 dotfiles_dir=$(pwd)
 os=$(uname -s)
 
-mkdir -p ~/bin
-
 # Install packages
 if [ "$os" == "Darwin" ]; then
   #brew bundle
