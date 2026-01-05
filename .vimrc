@@ -273,7 +273,7 @@ set noswapfile
 map <leader>- :w! ~/tmp/vimclipboard<cr>:!cat ~/tmp/vimclipboard \| pbcopy<cr><cr>
 map <leader>+ :r ~/tmp/vimclipboard<cr>
 " http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 " Split line, autoformat, autoalign
 map <leader>x V:s/\([({[]\)/\1\r/<cr>V:s/\([])}]\)/\r\1/<cr>V%:s/,/,\r/g<cr>jV%=V%:EasyAlign:<cr>
